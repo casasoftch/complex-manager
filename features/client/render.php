@@ -29,6 +29,10 @@ class render extends Feature {
 				'field' => 'story',
 				'label' => __('Story', 'complexmanager')
 			),
+			array(
+				'field' => 'status',
+				'label' => __('Status', 'complexmanager')
+			),
 		);
 	}
 
@@ -151,8 +155,8 @@ class render extends Feature {
 		return $message;
 	}
 
-	public function getFormData(){
-		$defaults = array(
+	public function getFormDefaults(){
+		return array(
 			'first_name' => '',
 			'last_name' => '',
 			'email' => '',
@@ -166,6 +170,10 @@ class render extends Feature {
 			'post' => 0,
 			'gender' => 'male'
 		);
+	}
+
+	public function getFormData(){
+		$defaults = $this->getFormDefaults();
 
 		$request = array_merge($_GET, $_POST);
 		if (isset($request['complex-unit-inquiry'])) {
@@ -175,6 +183,57 @@ class render extends Feature {
 		}
 
 		return $formData;
+	}
+
+	public function getFormMessages(){
+		$defaults = array(
+			'first_name' => __('First name is required', 'complexmanager'),
+			'last_name' => __('Last name is required', 'complexmanager'),
+			'email' => __('Email is not valid', 'complexmanager'),
+			'phone' => __('A phone number is required', 'complexmanager'),
+			'street' => __('A street address is required', 'complexmanager'),
+			'postal_code' => __('ZIP is required', 'complexmanager'),
+			'locality' =>  __('City is required', 'complexmanager'),
+			'subject' => '',
+			'message' => '',
+			'unit_id' => '',
+			'post' => __('Ivalid post', 'complexmanager'),
+			'gender' => ''
+		);
+
+		$messages = array();
+		foreach ($this->getFormData() as $col => $value) {
+			switch ($col) {
+				case 'first_name':
+				case 'last_name':
+				case 'phone':
+				case 'street':
+				case 'postal_code':
+				case 'locality':
+					if (!$value) {
+						$messages[$col] = $defaults[$col];
+					}
+					break;
+				case 'email':
+					$valid = filter_var( $value, FILTER_VALIDATE_EMAIL );
+					if (!$valid) {
+						$messages[$col] = $defaults[$col];
+					}
+					break;
+				case 'post':
+					//silent but deadly
+					break;
+			}
+		}
+
+		return $messages;
+	}
+
+	public function formValid(){
+		if (count($this->getFormMessages())) {
+			return false;
+		}
+		return true;
 	}
 
 	public function renderForm(){
@@ -196,17 +255,42 @@ class render extends Feature {
 		}
 		$formData =  $this->getFormData();
 
+		$msg = '';
+		$state = '';
+		$messages = array();
 		if ($formData['post']) {
-			print_r('posted');
+			if ($this->formValid()) {
+				$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
+				$state = 'success';
+
+				//set/send inquirie(s)
+				//TODO
+
+				//empty form
+				$formData = $this->getFormDefaults();
+			} else {
+				$msg = __('Please check the following and try again:', 'complexmanager');
+				$msg .= '<ul>';
+				foreach ($this->getFormMessages() as $col => $message) {
+					$msg .= '<li>' . $message . '</li>';
+				}
+				$msg .= '</ul>';
+				$state = 'danger';
+				$messages = $this->getFormMessages();
+			}
+			
 		}
-		
+
+		$template->set('messages', $messages);
+		$template->set('message', $msg);
+		$template->set('state', $state);
 		$template->set('data', $formData);
-		$template->set( 'buildings', $buildings );
+		$template->set('buildings', $buildings);
 		$message = $template->apply( 'contact-form.php' );
 		return $message;	
 	}
 
-} // End Class
+}
 
 
 

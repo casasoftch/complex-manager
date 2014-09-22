@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-18 14:05+0100\n"
-"PO-Revision-Date: 2014-09-18 14:06+0100\n"
+"POT-Creation-Date: 2014-09-22 10:44+0100\n"
+"PO-Revision-Date: 2014-09-22 10:48+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: en_US\n"
@@ -16,9 +16,97 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
+#: ../assets/templates/contact-form.php:11
+msgid "I am interested in the unit"
+msgstr "Ich interessiere mich für die Wohnung"
+
+#: ../assets/templates/contact-form.php:28
+msgid "Salutation"
+msgstr "Anrede"
+
+#: ../assets/templates/contact-form.php:35
+msgid "Mr."
+msgstr "Herr"
+
+#: ../assets/templates/contact-form.php:42
+msgid "Mrs."
+msgstr "Frau"
+
+#: ../assets/templates/contact-form.php:49 ../features/client/render.php:14
+msgid "Name"
+msgstr "Name"
+
+#: ../assets/templates/contact-form.php:55
+msgid "First name"
+msgstr "Vorname"
+
+#: ../assets/templates/contact-form.php:60
+msgid "Last name"
+msgstr "Nachname"
+
+#: ../assets/templates/contact-form.php:65
+msgid "Email"
+msgstr "E-Mail"
+
+#: ../assets/templates/contact-form.php:72
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../assets/templates/contact-form.php:80
+msgid "Address"
+msgstr "Adresse"
+
+#: ../assets/templates/contact-form.php:84
+msgid "Streeet & Nr."
+msgstr "ßtrasse Nr."
+
+#: ../assets/templates/contact-form.php:89
+msgid "ZIP"
+msgstr "PLZ"
+
+#: ../assets/templates/contact-form.php:94
+msgid "City"
+msgstr "Ort"
+
+#: ../assets/templates/contact-form.php:105
+msgid "Subject"
+msgstr "Betreff"
+
+#: ../assets/templates/contact-form.php:109
+msgid "What do you wish to know?"
+msgstr "Was möchten Sie wissen?"
+
+#: ../assets/templates/contact-form.php:113
+msgid "Your Message"
+msgstr "Ihre Nachricht"
+
+#: ../assets/templates/contact-form.php:117
+msgid "Describe your inquiry"
+msgstr "Beschreiben Sie Ihre Anfrage"
+
+#: ../assets/templates/contact-form.php:122
+msgid "Send"
+msgstr "Senden"
+
+#: ../assets/templates/list.php:56 ../features/admin/unit_metabox.php:167
+msgid "Available"
+msgstr "Verfügbar"
+
+#: ../assets/templates/list.php:57 ../features/admin/unit_metabox.php:168
+msgid "Reserved"
+msgstr "Reserviert"
+
 #: ../features/silence.php:3
 msgid "Silence is golden... or at least isn't completely annoying."
 msgstr ""
+
+#: ../features/admin/general_options.php:113
+msgid "Project Image"
+msgstr "Projektbild"
+
+#: ../features/admin/general_options.php:195
+msgid "Upload Image"
+msgstr "Bild hochladen"
 
 #: ../features/admin/post_type_icons.php:33
 msgid "Post Type Icons"
@@ -45,77 +133,105 @@ msgstr "Verwende dieses Dokument"
 msgid "Hover color"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:154
+#: ../features/admin/unit_metabox.php:164 ../features/client/render.php:34
 msgid "Status"
 msgstr "Status"
 
-#: ../features/admin/unit_metabox.php:157
-msgid "Available"
-msgstr "Verfügbar"
-
-#: ../features/admin/unit_metabox.php:158
-msgid "Reserved"
-msgstr "Reserviert"
-
-#: ../features/admin/unit_metabox.php:159
+#: ../features/admin/unit_metabox.php:169
 msgid "Sold"
 msgstr "Verkauft"
 
-#: ../features/admin/unit_metabox.php:165
+#: ../features/admin/unit_metabox.php:175
 msgid "Number of Rooms"
 msgstr "Zimmer"
 
-#: ../features/admin/unit_metabox.php:174
+#: ../features/admin/unit_metabox.php:184
 msgid "Apartment Story"
 msgstr "Wohnung/Stockwerk"
 
-#: ../features/admin/unit_metabox.php:188
+#: ../features/admin/unit_metabox.php:198
 msgid "Currency"
 msgstr "Währung"
 
-#: ../features/admin/unit_metabox.php:200
+#: ../features/admin/unit_metabox.php:210
 msgid "Purchase Price"
 msgstr "Kaufpreis"
 
-#: ../features/admin/unit_metabox.php:204
+#: ../features/admin/unit_metabox.php:214
 msgid "\"\" = not for sale, 0 = upon request"
 msgstr "\"\" = nicht zu verkaufen, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:209
+#: ../features/admin/unit_metabox.php:219
 msgid "Rent Net Price"
 msgstr "Mietkosten Netto"
 
-#: ../features/admin/unit_metabox.php:213
+#: ../features/admin/unit_metabox.php:223
 msgid "\"\" = not for rent, 0 = upon request"
 msgstr "\"\" = nicht zu vermieten, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:223
+#: ../features/admin/unit_metabox.php:233
 msgid "No file chosen"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:224
+#: ../features/admin/unit_metabox.php:234
 msgid "Add file"
 msgstr ""
 
-#: ../features/client/render.php:13
-msgid "Name"
-msgstr "Name"
-
-#: ../features/client/render.php:17
+#: ../features/client/render.php:18
 msgid "Price"
 msgstr "Preis"
 
-#: ../features/client/render.php:21
+#: ../features/client/render.php:22
 msgid "Rent"
 msgstr "Miete"
 
-#: ../features/client/render.php:25
+#: ../features/client/render.php:26
 msgid "Rooms"
 msgstr "Zimmer"
 
-#: ../features/client/render.php:29
+#: ../features/client/render.php:30
 msgid "Story"
 msgstr "Etage"
+
+#: ../features/client/render.php:190
+msgid "First name is required"
+msgstr "Vorname ist benötigt"
+
+#: ../features/client/render.php:191
+msgid "Last name is required"
+msgstr "Nachname ist benötigt"
+
+#: ../features/client/render.php:192
+msgid "Email is not valid"
+msgstr "E-Mail ist nicht korrekt"
+
+#: ../features/client/render.php:193
+msgid "A phone number is required"
+msgstr "Eine Telefonnummer ist benötigt"
+
+#: ../features/client/render.php:194
+msgid "A street address is required"
+msgstr "Eine Strasse ist benötigt"
+
+#: ../features/client/render.php:195
+msgid "ZIP is required"
+msgstr "PLZ ist benötigt"
+
+#: ../features/client/render.php:196
+msgid "City is required"
+msgstr "Ort ist benötigt"
+
+#: ../features/client/render.php:200
+msgid "Ivalid post"
+msgstr "Falsche Absendung"
+
+#: ../features/client/render.php:263
+msgid "Inquiry has been sent. Thank you!"
+msgstr "Anfrage wurde versendet. Danke!"
+
+#: ../features/client/render.php:272
+msgid "Please check the following and try again:"
+msgstr "Bitte überprüfen Sie folgendes und versuchen Sie es erneut:"
 
 #: ../features/core/post_types.php:15
 msgctxt "post type general name"
