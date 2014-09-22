@@ -1,0 +1,126 @@
+.complex-project-graphic {
+  position: relative;
+  height: auto;
+}
+.complex-project-graphic-bg {
+  max-width: 100%;
+  height: auto;
+}
+.complex-project-graphic-interaction {
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+}
+.complex-project-graphic-interaction a {
+  transition: 0.3s all;
+  opacity: 0;
+}
+.complex-project-graphic-interaction a:hover,
+.complex-project-graphic-interaction a.active {
+  opacity: 0.3;
+}
+.complex-unit-caret-cell {
+  text-align: center;
+  width: 30px;
+}
+.complex-unit-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.active .complex-unit-caret {
+  border-top: 0px solid;
+  border-bottom: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.complex-unit-header-row:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
+.complex-unit-header-row.active {
+  font-weight: bold;
+}
+.table > tbody > tr.complex-unit-detail-row > td {
+  border-top: 0px solid #ddd;
+}
+.complex-unit-featuredimage {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.complex-unit-featuredimage img {
+  margin: auto;
+}
+.complex-contact-form-wrapper {
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.complex-contact-form dl {
+  /*background-color: white;
+		box-shadow: 0px 0px 4px rgba(0,0,0,0.4);
+		padding: 10px;*/
+}
+.complex-contact-form dt {
+  float: left;
+  width: 130px;
+  clear: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: visible;
+  line-height: 33px;
+  color: #999;
+  font-weight: 400;
+}
+.complex-contact-form dt label {
+  font-weight: 400;
+}
+.complex-contact-form dt label {
+  margin-bottom: 0px;
+}
+.complex-contact-form dd {
+  margin-left: 150px;
+}
+.complex-contact-form dd p {
+  line-height: 25px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 0px;
+  padding-left: 13px;
+}
+.complex-contact-form dt.editable {
+  cursor: pointer;
+}
+.complex-contact-form dt.editable label {
+  cursor: pointer;
+}
+.complex-contact-form .form-control {
+  border: 1px solid transparent;
+  border-bottom: 1px solid #666;
+  background-color: transparent;
+  box-shadow: none;
+  transition: 0s;
+  border-radius: 0px;
+}
+.complex-contact-form .form-control:hover {
+  background-color: #eee;
+}
+.complex-contact-form .form-control:focus {
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+}

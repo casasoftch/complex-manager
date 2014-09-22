@@ -1,0 +1,1 @@
+jQuery(function($){"use strict";$(".complex-detail-row").slideUp("fast")})(jQuery);

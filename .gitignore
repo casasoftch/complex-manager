@@ -1,0 +1,10 @@
+# Generic ignore stuffs...
+ Thumbs.db
+ .DS_Store
+ .DS_Store?
+ .Trashes
+.idea/
+.tmp/
+.sass-cache/
+node_modules/
+
