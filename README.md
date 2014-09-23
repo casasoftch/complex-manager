@@ -18,6 +18,15 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 To make things easy to fill your page with custom content, the plugin utilizes shortcodes to render the offers.
 
+### [CXM-graphic] ###
+
+Renders a interactive jumpotron graphic. Sadly IE8> will only render the image without the interactivity.
+
+
+### [CXM-list] ###
+
+cols="name, number_of_rooms, story, purchase_price, rent_net
+
 
 ## functions ##
 
@@ -50,7 +59,6 @@ You can retrieve data from the registered post types "complex_unit" and "complex
 <?php get_footer(); ?>
 ```
 
-
 ### example archive-complex_unit.php ###
 
 ```php
@@ -78,16 +86,6 @@ You can retrieve data from the registered post types "complex_unit" and "complex
 	</section>
 <?php get_footer(); ?>
 ```
-
-### [CXM-graphic] ###
-
-Renders a interactive jumpotron graphic. Sadly IE8> will only render the image without the interactivity.
-
-
-### [CXM-list] ###
-
-cols="name, number_of_rooms, story, purchase_price, rent_net
-
 
 ## CSS ##
 
