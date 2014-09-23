@@ -17,6 +17,14 @@ Tested up to: 4</p>
 
 <p>To make things easy to fill your page with custom content, the plugin utilizes shortcodes to render the offers.</p>
 
+<h3>[CXM-graphic]</h3>
+
+<p>Renders a interactive jumpotron graphic. Sadly IE8> will only render the image without the interactivity.</p>
+
+<h3>[CXM-list]</h3>
+
+<p>cols=&ldquo;name, number_of_rooms, story, purchase_price, rent_net</p>
+
 <h2>functions</h2>
 
 <p>with <code>get_cxm($post_id, $field);</code> and <code>get_cxm_label($post_id, $field);</code></p>
@@ -25,15 +33,55 @@ Tested up to: 4</p>
 
 <h3>example single-complex_unit.php</h3>
 
+<p><code>php
+&lt;?php get_header(); ?&gt;
+    &lt;section role="main"&gt;
+        &lt;?php if ( have_posts() ) : ?&gt;
+            &lt;?php while ( have_posts() ) : the_post(); ?&gt;
+                &lt;header class="section-heading"&gt;
+                    &lt;h1 class="section-title"&gt;&lt;?php the_title(); ?&gt;&lt;/h1&gt;
+                &lt;/header&gt;
+                &lt;div class="section-content"&gt;
+                    &lt;?php get_cxm(get_the_ID(), "name") ?&gt;&lt;br&gt;
+                    &lt;?php get_cxm(get_the_ID(), "purchase_price") ?&gt;&lt;br&gt; //returns only the intiger value
+                    &lt;?php get_cxm(get_the_ID(), "full_rent_net") ?&gt;&lt;br&gt; //full_* renders with currency and formating
+                    &lt;?php get_cxm(get_the_ID(), "number_of_rooms") ?&gt;&lt;br&gt;
+                &lt;/div&gt;
+            &lt;?php endwhile; ?&gt;
+        &lt;?php else : ?&gt;
+            &lt;?php _e('no entries found', 'theme'); ?&gt;
+        &lt;?php endif; ?&gt;
+    &lt;/section&gt;
+&lt;?php get_footer(); ?&gt;
+</code></p>
+
 <h3>example archive-complex_unit.php</h3>
 
-<h3>[CXM-graphic]</h3>
-
-<p>Renders a interactive jumpotron graphic. Sadly IE8> will only render the image without the interactivity.</p>
-
-<h3>[CXM-list]</h3>
-
-<p>cols=&ldquo;name, number_of_rooms, story, purchase_price, rent_net</p>
+<p><code>php
+&lt;?php get_header(); ?&gt;
+    &lt;section role="main"&gt;
+        &lt;?php if ( have_posts() ) : ?&gt;
+            &lt;header class="section-heading"&gt;
+                &lt;h1 class="section-title"&gt;Index&lt;/h1&gt;
+            &lt;/header&gt;
+            &lt;div class="section-content"&gt;
+                &lt;?php while ( have_posts() ) : the_post(); ?&gt;
+                    &lt;article&gt;
+                        &lt;header class="article-heading"&gt;
+                            &lt;h1&gt;&lt;?php the_title(); ?&gt;&lt;/h1&gt;
+                        &lt;/header&gt;
+                        &lt;div class="article-content"&gt;
+                            &lt;?php get_cxm(get_the_ID(), "name") ?&gt; // &lt;&lt; HERE
+                        &lt;/div&gt;
+                    &lt;/article&gt;
+                &lt;?php endwhile; ?&gt;
+            &lt;/div&gt;
+        &lt;?php else : ?&gt;
+            &lt;?php _e('no entries found', 'theme'); ?&gt;
+        &lt;?php endif; ?&gt;
+    &lt;/section&gt;
+&lt;?php get_footer(); ?&gt;
+</code></p>
 
 <h2>CSS</h2>
 
@@ -47,8 +95,14 @@ Tested up to: 4</p>
 
 <h2>JavaScript</h2>
 
-<p>Although the plugin will run without javascript, some of the features, such as the &ldquo;Kontakt&rdquo; button work differently with javascript turned off. Ensure that you have implemented the wp_head and wp_foot functions within your theme where appropriate.
+<p>Although the plugin will run without javascript, some of the features, such as the &ldquo;Contact&rdquo; button work differently with javascript turned off. Ensure that you have implemented the wp_head and wp_foot functions within your theme where appropriate.
 A single javascript will be included within the front-end.</p>
+
+<h2>Translations</h2>
+
+<p>The following translations are pre-translated
++   EN englisch
++   DE german</p>
 
 <h2>Future</h2>
 

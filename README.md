@@ -96,8 +96,13 @@ This plugin was developed for the following css environments
 
 
 ## JavaScript ##
-Although the plugin will run without javascript, some of the features, such as the "Kontakt" button work differently with javascript turned off. Ensure that you have implemented the wp_head and wp_foot functions within your theme where appropriate.
+Although the plugin will run without javascript, some of the features, such as the "Contact" button work differently with javascript turned off. Ensure that you have implemented the wp_head and wp_foot functions within your theme where appropriate.
 A single javascript will be included within the front-end.
+
+## Translations ##
+The following translations are pre-translated
++	EN englisch
++	DE german
 
 ## Future ##
 
