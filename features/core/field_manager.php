@@ -22,15 +22,17 @@ class field_manager extends Feature {
 		);
 	}
 
-	public function getInquiryItem($inquiry, $key){
+	public function getInquiryItems($inquiry = false){
 		$prefix = '_complexmanager_inquiry_';
 		$metas = array();
-		foreach (get_post_meta($inquiry->ID) as $le_key => $le_value) {
-			if (strpos($le_key, $prefix) === 0) {
-				$metas[str_replace($prefix, '', $le_key)] = $le_value[0];
+		if ($inquiry) {
+			foreach (get_post_meta($inquiry->ID) as $le_key => $le_value) {
+				if (strpos($le_key, $prefix) === 0) {
+					$metas[str_replace($prefix, '', $le_key)] = $le_value[0];
+				}
 			}
 		}
-		$metas = array_merge($this->getInquryDefaults(), $metas);
+		$metas = array_merge($this->getInquiryDefaults(), $metas);
 
 		$datas = array(
 			'first_name' => array(
@@ -69,6 +71,10 @@ class field_manager extends Feature {
 				'label' => __('Message', 'complexmanager'),
 				'value' => $metas['message']
 			),
+			'gender' => array(
+				'label' => __('Gender', 'complexmanager'),
+				'value' => $metas['gender']
+			),
 
 			//specials
 			'name' => array(
@@ -101,7 +107,12 @@ class field_manager extends Feature {
 			$datas['address_text']['value'] = implode("\n", $lines);
 		}
 
-	
+		return $datas;
+
+	}
+
+	public function getInquiryItem($inquiry, $key){
+		$datas = $this->getInquiryItems($inquiry);
 
 		if (isset($datas[$key])) {
 			return $datas[$key];
@@ -109,7 +120,7 @@ class field_manager extends Feature {
 		return false;
 	}
 
-	public function getInquiryField($inquiry, $key, $label = false){
+	public function getInquiryField($inquiry = false, $key, $label = false){
 		$item = $this->getInquiryItem($inquiry, $key);
 		if ($item) {
 			if ($label) {
@@ -121,11 +132,111 @@ class field_manager extends Feature {
 		return '';
 	}
 
-	public function getUnitItem($inquiry, $key){
+	public function getUnitDefaults(){
+		return array(
+			'name' => '',
+			'purchase_price' => '',
+			'rent_net' => '',
+			'number_of_rooms' => '',
+			'story' => '',
+			'status' => 'available',
+			'currency' => 'CHF',
+			'living_space' => ''
+		);
+	}
+
+	public function getUnitItems($unit = false){
+		$prefix = '_complexmanager_unit_';
+		$metas = array();
+		if ($unit) {
+			foreach (get_post_meta($unit->ID) as $le_key => $le_value) {
+				if (strpos($le_key, $prefix) === 0) {
+					$metas[str_replace($prefix, '', $le_key)] = $le_value[0];
+				}
+			}
+		}
+		$metas = array_merge($this->getUnitDefaults(), $metas);
+
+		$datas = array(
+			'name' => array(
+				'label' => __('Unit', 'complexmanager'),
+				'value' => ($unit ? $unit->post_title : '')
+			),
+			'purchase_price' => array(
+				'label' => __('Purchase price', 'complexmanager'),
+				'value' => $metas['purchase_price']
+			),
+			'currency' => array(
+				'label' => __('Currency', 'complexmanager'),
+				'value' => $metas['currency']
+			),
+			'rent_net' => array(
+				'label' => __('Rent', 'complexmanager'),
+				'value' => $metas['rent_net']
+			),
+			'number_of_rooms' => array(
+				'label' => __('Rooms', 'complexmanager'),
+				'value' => $metas['number_of_rooms']
+			),
+			'story' => array(
+				'label' => __('Floor', 'complexmanager'),
+				'value' => $metas['story']
+			),
+			'status' => array(
+				'label' => __('Status', 'complexmanager'),
+				'value' => $metas['status']
+			),
+
+			'living_space' => array(
+				'label' => __('Living space', 'complexmanager'),
+				'value' => $metas['living_space']
+			),
+
+			//specials
+			'rendered_purchase_price' => array(
+				'label' => __('Purchase price', 'complexmanager'),
+				'value' => ''
+			),
+			'rendered_living_space' => array(
+				'label' => __('Living space', 'complexmanager'),
+				'value' => ''
+			)
+		);
+
+		//rendered_purchase_price special
+		if ((int) $metas['purchase_price']) {
+			$value = (int) $metas['purchase_price'];
+			if ($value) {
+				$currency = $metas['currency'];
+				$before = true;
+				$space = '&nbsp;';
+				switch ($currency) {
+					case 'EUR': $currency = '€'; $before = false; $space = ''; break;
+					case 'USD': $currency = '$'; break;
+					case 'GBP': $currency = '£'; break;
+					case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
+				}
+				$datas['rendered_purchase_price']['value'] = ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
+			}
+		}
+		if ((float) $metas['living_space']) {
+			$value = (float) $metas['living_space'];
+			$datas['rendered_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+		}
+
+		return $datas;
+	}
+
+	public function getUnitItem($unit = false, $key){
+		$datas = $this->getUnitItems($unit);
+
+		if (isset($datas[$key])) {
+			return $datas[$key];
+		}
 		return false;
 	}
 
-	public function getUnitField($unit, $key, $label = false){
+	public function getUnitField($unit = false, $key, $label = false){
 		$item = $this->getUnitItem($unit, $key);
 		if ($item) {
 			if ($label) {
@@ -137,21 +248,4 @@ class field_manager extends Feature {
 		return '';
 	}
 
-}
-
-function get_cxm($object_id, $key, $label = false){
-	$fm = new field_manager;
-	$post = get_post($object_id);
-	if ($post) {
-		if ($post->post_type == 'complex_unit') {
-			return $fm->getUnitField($post, $key);
-		} elseif ($post->post_type == 'complex_inquiry') {
-			return $fm->getInquiryField($post, $key);
-		}
-	}
-	return '';
-}
-
-function get_cxm_label($object_id, $key){
-	return get_cxm($object_id, $key, true);
 }

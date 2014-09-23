@@ -12,6 +12,7 @@
 namespace casasoft\complexmanager;
 require_once( 'features/silence.php' );
 
+
 define( 'casasoft\complexmanager\VERSION', '0.0.1' );
 define( 'casasoft\complexmanager\PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'casasoft\complexmanager\PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -24,7 +25,6 @@ require_once( 'features/template.php' );
 require_once( 'features/options.php' );
 require_once( 'features/class-loader.php' );
 require_once( 'features/kit.php' );
-
 /**
  * The central plugin class and bootstrap for the application.
  *
@@ -90,6 +90,10 @@ class ComplexManager extends Kit {
 	}
 
 } // End Class
+
+
+
+
 
 
 //...and away we go!

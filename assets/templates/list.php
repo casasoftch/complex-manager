@@ -10,13 +10,13 @@
 				<tbody>
 					<tr class="col-labels">
 						<?php foreach ($cols as $col): ?>
-							<th><small><?= $col['label'] ?></small></th>
+							<th class="<?= ($col['field'] == 'status' ? 'hidden-xs' : '') ?>"><small><?= $col['label'] ?></small></th>
 						<?php endforeach ?>
 						<th></th>
 					</tr>
 					<?php 
 					foreach ($building['units'] as $unit) {
-						$status = $value = get_post_meta( $unit->ID, '_complexmanager_unit_status', true );
+						$status = get_cxm($unit, 'status');
 						$state = 'default';
 						switch ($status) {
 							case 'available': $state = 'default'; break;
@@ -25,32 +25,6 @@
 						echo '<tr class="complex-unit-header-row '.$state.'" id="unit_'.$unit->ID.'">';
 						foreach ($cols as $col) {
 							switch ($col['field']) {
-								case 'name':
-									$value = $unit->post_title;
-									echo '<td><span class="text-'.$state.'">' . $value  . '</span></td>';
-									break;
-								case 'rent_net':
-								case 'purchase_price':
-									$value = (int) get_post_meta( $unit->ID, '_complexmanager_unit_'.$col['field'], true );
-									$currency = get_post_meta( $unit->ID, '_complexmanager_unit_currency', true );
-									$before = true;
-									$space = '&nbsp;';
-									switch ($currency) {
-										case 'EUR': $currency = '€'; $before = false; $space = ''; break;
-										case 'USD': $currency = '$'; break;
-										case 'GBP': $currency = '£'; break;
-										//case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
-									}
-									echo '<td><span class="text-'.$state.'">' . ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '') .'</span></td>';
-									break;
-								case 'number_of_rooms':
-									$value = get_post_meta( $unit->ID, '_complexmanager_unit_'.$col['field'], true );
-									echo '<td><span class="text-'.$state.'">' . $value . '</span></td>';
-									break;
-								case 'story':
-									$value = get_post_meta( $unit->ID, '_complexmanager_unit_'.$col['field'], true );
-									echo '<td><span class="text-'.$state.'">' . $value . '</span></td>';
-									break;
 								case 'status':
 									$value = '';
 									switch ($status) {
@@ -58,10 +32,10 @@
 										case 'reserved': $value = '<span class="text-'.$state.'">'.__('Reserved', 'complexmanager').'</span>'; break;
 										default: $value = $status;
 									}
-									echo '<td><span class="text-'.$state.'">' . $value . '</span></td>';
+									echo '<td class="hidden-xs"><span class="text-'.$state.'">' . $value . '</span></td>';
 									break;
 								default:
-									$value = get_post_meta( $unit->ID, '_complexmanager_unit_'.$col['field'], true );
+									$value = get_cxm($unit, $col['field']);
 									echo '<td><span class="text-'.$state.'">' . $value . '</span></td>';
 									break;
 							}
@@ -87,8 +61,6 @@
 				echo "</tbody>";
 			echo "</table>";
 		}
-
-
 	?>
 </div>
 <div class="complex-contact-form-wrapper" id="complexContactForm">

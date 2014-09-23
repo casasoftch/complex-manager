@@ -52,24 +52,24 @@
 					<div class="row">
 						<div class="col-xs-6">
 							<div class="<?= (isset($messages['first_name'])  ? 'has-error' : '') ?>">
-								<input type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php _e('First name', 'complexmanager') ?>" class="form-control" value="<?= $data['first_name'] ?>">											
+								<input type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= $data['first_name'] ?>">											
 							</div>
 						</div>
 						<div class="col-xs-6">
 							<div class="<?= (isset($messages['last_name'])  ? 'has-error' : '') ?>">
-								<input type="text" name="complex-unit-inquiry[last_name]" placeholder="<?php _e('Last name', 'complexmanager') ?>" class="form-control" value="<?= $data['last_name'] ?>">											
+								<input type="text" name="complex-unit-inquiry[last_name]" placeholder="<?php echo get_cxm_label(false, 'last_name', 'complex_inquiry') ?>" class="form-control" value="<?= $data['last_name'] ?>">											
 							</div>
 						</div>
 					</div>
 				</dd>
-				<dt class="editable"><label for="complex-unit-inquiry[email]"><?php _e('Email', 'complexmanager') ?></label></dt>
+				<dt class="editable"><label for="complex-unit-inquiry[email]"><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?></label></dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
 						<input type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= $data['email'] ?>">									
 					</div>
 				</dd>
 				<dt class="editable">
-					<label for="complex-unit-inquiry[phone]"><?php _e('Phone', 'complexmanager') ?></label>									
+					<label for="complex-unit-inquiry[phone]"><?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?></label>									
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
@@ -81,17 +81,17 @@
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
-						<input type="text" name="complex-unit-inquiry[street]" placeholder="<?php _e('Streeet & Nr.', 'complexmanager') ?>" class="form-control" value="<?= $data['street'] ?>">										
+						<input type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= $data['street'] ?>">										
 					</div>
 					<div class="row">
 						<div class="col-xs-4">
 							<div class="<?= (isset($messages['postal_code'])  ? 'has-error' : '') ?>">
-								<input type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php _e('ZIP', 'complexmanager') ?>" pattern="\d*" class="form-control" value="<?= $data['postal_code'] ?>">											
+								<input type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= $data['postal_code'] ?>">											
 							</div>
 						</div>
 						<div class="col-xs-8">
 							<div class="<?= (isset($messages['locality'])  ? 'has-error' : '') ?>">
-								<input type="text" name="complex-unit-inquiry[locality]" placeholder="<?php _e('City', 'complexmanager') ?>" class="form-control" value="<?= $data['locality'] ?>">											
+								<input type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= $data['locality'] ?>">											
 							</div>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 		<div class="col-md-5">
 			<dl>
 				<dt class="editable">
-					<?php _e('Subject', 'complexmanager') ?>
+					<?php echo get_cxm_label(false, 'subject', 'complex_inquiry') ?>
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['subject'])  ? 'has-error' : '') ?>">

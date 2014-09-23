@@ -3,37 +3,9 @@ namespace casasoft\complexmanager;
 
 class render extends Feature {
 
-	public $cols = array();
-	public $buildings = array();
-
 	public function __construct() {
 		$this->add_action( 'init', 'set_shortcodes' );
-		$this->cols = array(
-			array(
-				'field' => 'name',
-				'label' => __('Name', 'complexmanager')
-			),
-			array(
-				'field' => 'purchase_price',
-				'label' => __('Price', 'complexmanager')
-			),
-			array(
-				'field' => 'rent_net',
-				'label' => __('Rent', 'complexmanager')
-			),
-			array(
-				'field' => 'number_of_rooms',
-				'label' => __('Rooms', 'complexmanager')
-			),
-			array(
-				'field' => 'story',
-				'label' => __('Story', 'complexmanager')
-			),
-			array(
-				'field' => 'status',
-				'label' => __('Status', 'complexmanager')
-			),
-		);
+		
 	}
 
 	public function set_shortcodes() {
@@ -52,12 +24,12 @@ class render extends Feature {
 	    $a_cols = explode(',', $a['cols']);
 	    $a_labels = explode(',', $a['labels']);
 	    $i = 0; foreach ($a_cols as $a_col) {
-	    	foreach ($this->cols as $col) {
-	    		if ($col['field'] == trim($a_col)) {
+	    	foreach (get_default_cxm('unit') as $key => $col) {
+	    		if ($key == trim($a_col)) {
 	    			if (isset($a_labels[$i]) && trim($a_labels[$i]) != '{T}' && trim($a_labels[$i]) != '') {
 	    				$col['label'] = trim($a_labels[$i]);
 	    			}
-	    			$cols[] = $col;
+	    			$cols[] = array('field' => $key, 'label' => $col['label']);
 	    			break;
 	    		}
 	    	}
@@ -78,9 +50,9 @@ class render extends Feature {
 	public function renderTable($cols = array()){
 		if (!$cols) {
 			$cols = array();
-			foreach ($this->cols as $col) {
-				if (in_array($col['field'], array('name', 'purchase_price'))) {
-					$cols[] = $col;
+			foreach (get_default_cxm('unit') as $key => $col) {
+				if (in_array($key, array('name', 'status'))) {
+					$cols[] = array('field' => $key, 'label' => $col['label']);
 				}
 			}
 		}
@@ -155,24 +127,12 @@ class render extends Feature {
 		return $message;
 	}
 
-	public function getInquiryDefaults(){
-		return array(
-			'first_name' => '',
-			'last_name' => '',
-			'email' => '',
-			'phone' => '',
-			'street' => '',
-			'postal_code' => '',
-			'locality' => '',
-			'subject' => 'habe Intresse an: ***',
-			'message' => 'Bitte senden Sie mir Informationsunterlagen und registrieren sie mich als potenzieller käufer/vermierter',
-			'unit_id' => '',
-			'gender' => 'male'
-		);
-	}
-
 	public function getFormData($empty = false){
-		$defaults = $this->getInquiryDefaults();
+		$defaults_inq = get_default_cxm('inquiry');
+		$defaults = array();
+		foreach ($defaults_inq as $key => $inq_item) {
+			$defaults[$key] = $inq_item['value'];
+		}
 		$defaults['post'] = 0;
 
 		$request = array();
