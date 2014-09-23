@@ -53,6 +53,31 @@ You can retrieve data from the registered post types "complex_unit" and "complex
 
 ### example archive-complex_unit.php ###
 
+```php
+<?php get_header(); ?>
+	<section role="main">
+		<?php if ( have_posts() ) : ?>
+			<header class="section-heading">
+				<h1 class="section-title">Index</h1>
+			</header>
+			<div class="section-content">
+				<?php while ( have_posts() ) : the_post(); ?>
+					<article>
+						<header class="article-heading">
+							<h1><?php the_title(); ?></h1>
+						</header>
+						<div class="article-content">
+							<?php get_cxm(get_the_ID(), "name") ?> // << HERE
+						</div>
+					</article>
+				<?php endwhile; ?>
+			</div>
+		<?php else : ?>
+			<?php _e('no entries found', 'theme'); ?>
+		<?php endif; ?>
+	</section>
+<?php get_footer(); ?>
+```
 
 ### [CXM-graphic] ###
 
