@@ -4,6 +4,8 @@ namespace casasoft\complexmanager;
 
 class unit_metabox extends Feature {
 
+	public $prefix = 'complexmanager_unit_';
+
 	/**
 	 * Hook into the appropriate actions when the class is constructed.
 	 */
@@ -65,35 +67,31 @@ class unit_metabox extends Feature {
 		/* OK, its safe for us to save the data now. */
 
 		if ('complex_unit' == $_POST['post_type']) {
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_number_of_rooms'] );
-			update_post_meta( $post_id, '_complexmanager_unit_number_of_rooms', $mydata );
+			$texts = array(
+				$this->prefix.'number_of_rooms',
+				$this->prefix.'story',
+				$this->prefix.'status',
+				$this->prefix.'purchase_price',
+				$this->prefix.'purchase_price_propertysegment',
+				$this->prefix.'rent_net',
+				$this->prefix.'rent_timesegment',
+				$this->prefix.'rent_propertysegment',
+				$this->prefix.'currency',
+				$this->prefix.'document',
+				$this->prefix.'graphic_hover_color',
+				$this->prefix.'graphic_poly',
+				$this->prefix.'living_space',
+				$this->prefix.'usable_space',
+				$this->prefix.'terrace_space',
+				$this->prefix.'balcony_space'
+			);
 
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_story'] );
-			update_post_meta( $post_id, '_complexmanager_unit_story', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_status'] );
-			update_post_meta( $post_id, '_complexmanager_unit_status', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_purchase_price'] );
-			update_post_meta( $post_id, '_complexmanager_unit_purchase_price', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_rent_net'] );
-			update_post_meta( $post_id, '_complexmanager_unit_rent_net', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_currency'] );
-			update_post_meta( $post_id, '_complexmanager_unit_currency', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_document'] );
-			update_post_meta( $post_id, '_complexmanager_unit_document', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_document'] );
-			update_post_meta( $post_id, '_complexmanager_unit_document', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_graphic_hover_color'] );
-			update_post_meta( $post_id, '_complexmanager_unit_graphic_hover_color', $mydata );
-
-			$mydata = sanitize_text_field( $_POST['complexmanager_unit_graphic_poly'] );
-			update_post_meta( $post_id, '_complexmanager_unit_graphic_poly', $mydata );
+			foreach ($texts as $key) {
+				if (isset($_POST[$key] )) {
+					$mydata = sanitize_text_field( $_POST[$key] );
+					update_post_meta( $post_id, '_'.$key, $mydata );
+				}
+			}
 
 		}
 	}
@@ -160,6 +158,7 @@ class unit_metabox extends Feature {
 
 		echo '<div class="complexmanager-meta-row">';
 			echo '<div class="complexmanager-meta-col">';
+				echo "<h3>General</h3>";
 
 				$value = get_post_meta( $post->ID, '_complexmanager_unit_status', true );
 		        echo '<p><label for="complexmanager_unit_status">';
@@ -190,11 +189,6 @@ class unit_metabox extends Feature {
 		        //echo '<br> (' . __('0 = EG, +1 = 1. OG, -1 = 1. UG', 'complexmanager' ) . ')';
 		        echo '</p>';
 
-		    echo "</div>";
-		    echo '<div class="complexmanager-meta-col">';
-
-		       
-
 		        $value = get_post_meta( $post->ID, '_complexmanager_unit_currency', true );
 		        echo '<p><label for="complexmanager_unit_currency">';
 				_e( 'Currency', 'complexmanager' );
@@ -207,27 +201,123 @@ class unit_metabox extends Feature {
 		        echo '</select>';
 		        echo '</p>';
 
-		        $value = get_post_meta( $post->ID, '_complexmanager_unit_purchase_price', true );
-		        echo '<p><label for="complexmanager_unit_purchase_price">';
+
+		        
+
+		    echo "</div>";
+		    echo '<div class="complexmanager-meta-col">';
+		    	echo "<h3>Spaces m<sup>2</sup></h3>";
+		       
+		        $key = $this->prefix.'living_space';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'Living Space', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="0.1" min="0"  id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
+		        echo '</p>';
+
+		        $key = $this->prefix.'usable_space';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'Usable Space', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
+		        echo '</p>';
+
+
+		        $key = $this->prefix.'terrace_space';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'Terrace Space', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
+		        echo '</p>';
+
+		        $key = $this->prefix.'balcony_space';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'Balcony Space', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
+		        echo '</p>';
+
+		    echo "</div>";
+		    echo '<div style="clear:both"></div>';
+        echo "</div>"; 	
+
+        echo "<hr>";
+
+		echo '<div class="complexmanager-meta-row">';
+			echo '<div class="complexmanager-meta-col">';
+				echo "<h3>Buy</h3>";
+
+        		$key = $this->prefix.'purchase_price';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
 				_e( 'Purchase Price', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="1" id="complexmanager_unit_purchase_price" name="complexmanager_unit_purchase_price"';
+				echo '<input type="number" step="1" id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '<br> (' . __('"" = not for sale, 0 = upon request', 'complexmanager') . ')';
 		        echo '</p>';
 
-		        $value = get_post_meta( $post->ID, '_complexmanager_unit_rent_net', true );
-		        echo '<p><label for="complexmanager_unit_rent_net">';
+		        $key = $this->prefix.'purchase_price_propertysegment';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				_e( 'Purchase scope', 'complexmanager' );
+				echo '</label><br>';
+				echo '<select id="'.$key.'" name="'.$key.'">';
+					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>Full price</option>';
+					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>per M2</option>';
+		        echo '</select>';
+		        echo '</p>';
+
+		    echo "</div>";
+		   	echo '<div class="complexmanager-meta-col">';
+		   		echo "<h3>Rent</h3>";
+
+		   		$key = $this->prefix.'rent_net';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
 				_e( 'Rent Net Price', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="1" id="complexmanager_unit_rent_net" name="complexmanager_unit_rent_net"';
+				echo '<input type="number" step="1" id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '<br> (' . __('"" = not for rent, 0 = upon request', 'complexmanager') . ')';
 		        echo '</p>';
 
-		    echo "</div>";
-		    echo '<div style="clear:both">';
+		        $key = $this->prefix.'rent_timesegment';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				_e( 'Rent Time segment', 'complexmanager' );
+				echo '</label><br>';
+				echo '<select id="'.$key.'" name="'.$key.'">';
+					echo '<option value="M" ' . ($value == 'M' ? 'selected' : '') . '>Month</option>';
+					echo '<option value="W" ' . ($value == 'W' ? 'selected' : '') . '>Week</option>';
+		        echo '</select>';
+		        echo '</p>';
+
+		        $key = $this->prefix.'rent_propertysegment';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				_e( 'Rental scope', 'complexmanager' );
+				echo '</label><br>';
+				echo '<select id="'.$key.'" name="'.$key.'">';
+					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>Full price</option>';
+					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>per M2</option>';
+		        echo '</select>';
+		        echo '</p>';
+
+		 	echo "</div>";
+		    echo '<div style="clear:both"></div>';
         echo "</div>"; 	
+
+
+         echo "<hr>";
 
 
         $value = get_post_meta( $post->ID, '_complexmanager_unit_document', true );
@@ -269,7 +359,7 @@ class unit_metabox extends Feature {
 		';
 
 
-
+		echo '<div style="clear:both"></div>';
 
 
 

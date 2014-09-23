@@ -106,7 +106,7 @@
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['subject'])  ? 'has-error' : '') ?>">
-						<input type="text" name="complex-unit-inquiry[subject]" rows="7" class="form-control" placeholder="<?php _e('What do you wish to know?', 'complexmanager') ?>" value="<?= $data['subject'] ?>" /><br>		
+						<input type="text" name="complex-unit-inquiry[subject]" rows="7" class="form-control" placeholder="<?php _e('What do you wish to know?', 'complexmanager') ?>" value="<?= $data['subject'] ?>" />		
 					</div>
 				</dd>
 				<dt class="editable">
@@ -114,7 +114,7 @@
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['message'])  ? 'has-error' : '') ?>">
-						<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea><br>		
+						<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
 					</div>
 				</dd>
 			</dl>

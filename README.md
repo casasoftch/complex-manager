@@ -101,8 +101,8 @@ A single javascript will be included within the front-end.
 
 ## Translations ##
 The following translations are pre-translated
-+	EN englisch
-+	DE german
++	**EN** English
++	**DE** German
 
 ## Future ##
 
