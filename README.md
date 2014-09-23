@@ -28,6 +28,28 @@ You can retrieve data from the registered post types "complex_unit" and "complex
 
 ### example single-complex_unit.php ###
 
+```php
+<?php get_header(); ?>
+	<section role="main">
+		<?php if ( have_posts() ) : ?>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<header class="section-heading">
+					<h1 class="section-title"><?php the_title(); ?></h1>
+				</header>
+				<div class="section-content">
+					<?php get_cxm(get_the_ID(), "name") ?><br>
+					<?php get_cxm(get_the_ID(), "purchase_price") ?><br> //returns only the intiger value
+					<?php get_cxm(get_the_ID(), "full_rent_net") ?><br> //full_* renders with currency and formating
+					<?php get_cxm(get_the_ID(), "number_of_rooms") ?><br>
+				</div>
+			<?php endwhile; ?>
+		<?php else : ?>
+			<?php _e('no entries found', 'theme'); ?>
+		<?php endif; ?>
+	</section>
+<?php get_footer(); ?>
+```
+
 
 ### example archive-complex_unit.php ###
 
