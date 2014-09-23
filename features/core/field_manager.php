@@ -121,7 +121,7 @@ class field_manager extends Feature {
 		return '';
 	}
 
-	public function getInquiryItem($inquiry, $key){
+	public function getUnitItem($inquiry, $key){
 		return false;
 	}
 
