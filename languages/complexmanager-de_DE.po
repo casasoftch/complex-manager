@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-22 10:44+0100\n"
-"PO-Revision-Date: 2014-09-22 10:48+0100\n"
+"PO-Revision-Date: 2014-09-22 18:06+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: en_US\n"
@@ -58,7 +58,7 @@ msgstr "Adresse"
 
 #: ../assets/templates/contact-form.php:84
 msgid "Streeet & Nr."
-msgstr "ßtrasse Nr."
+msgstr "Strasse Nr."
 
 #: ../assets/templates/contact-form.php:89
 msgid "ZIP"

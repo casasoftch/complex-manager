@@ -155,7 +155,7 @@ class render extends Feature {
 		return $message;
 	}
 
-	public function getFormDefaults(){
+	public function getInquiryDefaults(){
 		return array(
 			'first_name' => '',
 			'last_name' => '',
@@ -167,15 +167,19 @@ class render extends Feature {
 			'subject' => 'habe Intresse an: ***',
 			'message' => 'Bitte senden Sie mir Informationsunterlagen und registrieren sie mich als potenzieller käufer/vermierter',
 			'unit_id' => '',
-			'post' => 0,
 			'gender' => 'male'
 		);
 	}
 
-	public function getFormData(){
-		$defaults = $this->getFormDefaults();
+	public function getFormData($empty = false){
+		$defaults = $this->getInquiryDefaults();
+		$defaults['post'] = 0;
 
-		$request = array_merge($_GET, $_POST);
+		$request = array();
+		if (!$empty) {
+			$request = array_merge($_GET, $_POST);
+		}
+		
 		if (isset($request['complex-unit-inquiry'])) {
 			$formData = array_merge($defaults, $request['complex-unit-inquiry']);	
 		} else {
@@ -221,7 +225,10 @@ class render extends Feature {
 					}
 					break;
 				case 'post':
-					//silent but deadly
+					if (!$value) {
+						//silent but deadly
+						$messages[$col] = 'Your message has been sent!?';
+					}
 					break;
 			}
 		}
@@ -234,6 +241,42 @@ class render extends Feature {
 			return false;
 		}
 		return true;
+	}
+
+
+
+	public function sendEmail($to, $inquiry){
+		
+		$html_contact_data = '';
+		if (get_cxm($inquiry->ID, 'name')) {
+			$html_contact_data .= '<strong>' . get_cxm($inquiry->ID, 'name') . '</strong><br>';
+		}
+		if (get_cxm($inquiry->ID, 'address_html')) {
+			$html_contact_data .= '' . get_cxm($inquiry->ID, 'address_html') . '<br>';
+		}
+
+		$html_contact_data .= '<br>';
+
+		if (get_cxm($inquiry->ID, 'email')) {
+			$html_contact_data .= '<a href="mailto:'.get_cxm($inquiry->ID, 'email').'">' . get_cxm($inquiry->ID, 'email') . '</a><br>';
+		}
+
+		if (get_cxm($inquiry->ID, 'phone')) {
+			$html_contact_data .= __('Phone:', 'complexmanager') . ' ' . get_cxm($inquiry->ID, 'phone'). '<br>';
+		}
+		
+		$html_contact_data .= '<br>';
+
+		if (get_cxm($inquiry->ID, 'subject')) {
+			$html_contact_data .= '<strong>'.get_cxm($inquiry->ID, 'subject') . '</strong><br>';
+		}
+
+		if (get_cxm($inquiry->ID, 'message')) {
+			$html_contact_data .= get_cxm($inquiry->ID, 'message');
+		}
+
+		echo '<div class="well"><h1>Email</h1>'.$html_contact_data.'</div>';
+		
 	}
 
 	public function renderForm(){
@@ -263,11 +306,29 @@ class render extends Feature {
 				$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
 				$state = 'success';
 
-				//set/send inquirie(s)
-				//TODO
+				//set inquiry
+				$inq_post = array(
+				  'post_content'   => '',
+				  'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
+				  'post_status'    => 'publish',
+				  'post_type'      => 'complex_inquiry',
+				  'ping_status'    => 'closed',
+				  'comment_status' => 'closed',
+				);  
+				$inq_post_id = wp_insert_post( $inq_post );
+				if ($inq_post_id) {
+					foreach ($formData as $key => $value) {
+						add_post_meta( $inq_post_id, '_complexmanager_inquiry_'.$key, $value , true);
+					}
+				}
+
+				$inquiry = get_post($inq_post_id);
+				
+				$this->sendEmail('to@email.com', $inquiry);
+				//send emails
 
 				//empty form
-				$formData = $this->getFormDefaults();
+				$formData = $this->getFormData(true);
 			} else {
 				$msg = __('Please check the following and try again:', 'complexmanager');
 				$msg .= '<ul>';

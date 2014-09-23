@@ -64,36 +64,38 @@ class unit_metabox extends Feature {
 
 		/* OK, its safe for us to save the data now. */
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_number_of_rooms'] );
-		update_post_meta( $post_id, '_complexmanager_unit_number_of_rooms', $mydata );
+		if ('complex_unit' == $_POST['post_type']) {
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_number_of_rooms'] );
+			update_post_meta( $post_id, '_complexmanager_unit_number_of_rooms', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_story'] );
-		update_post_meta( $post_id, '_complexmanager_unit_story', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_story'] );
+			update_post_meta( $post_id, '_complexmanager_unit_story', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_status'] );
-		update_post_meta( $post_id, '_complexmanager_unit_status', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_status'] );
+			update_post_meta( $post_id, '_complexmanager_unit_status', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_purchase_price'] );
-		update_post_meta( $post_id, '_complexmanager_unit_purchase_price', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_purchase_price'] );
+			update_post_meta( $post_id, '_complexmanager_unit_purchase_price', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_rent_net'] );
-		update_post_meta( $post_id, '_complexmanager_unit_rent_net', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_rent_net'] );
+			update_post_meta( $post_id, '_complexmanager_unit_rent_net', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_currency'] );
-		update_post_meta( $post_id, '_complexmanager_unit_currency', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_currency'] );
+			update_post_meta( $post_id, '_complexmanager_unit_currency', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_document'] );
-		update_post_meta( $post_id, '_complexmanager_unit_document', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_document'] );
+			update_post_meta( $post_id, '_complexmanager_unit_document', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_document'] );
-		update_post_meta( $post_id, '_complexmanager_unit_document', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_document'] );
+			update_post_meta( $post_id, '_complexmanager_unit_document', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_graphic_hover_color'] );
-		update_post_meta( $post_id, '_complexmanager_unit_graphic_hover_color', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_graphic_hover_color'] );
+			update_post_meta( $post_id, '_complexmanager_unit_graphic_hover_color', $mydata );
 
-		$mydata = sanitize_text_field( $_POST['complexmanager_unit_graphic_poly'] );
-		update_post_meta( $post_id, '_complexmanager_unit_graphic_poly', $mydata );
+			$mydata = sanitize_text_field( $_POST['complexmanager_unit_graphic_poly'] );
+			update_post_meta( $post_id, '_complexmanager_unit_graphic_poly', $mydata );
 
+		}
 	}
 
 	public function js_enqueue() {

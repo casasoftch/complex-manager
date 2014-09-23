@@ -195,6 +195,5 @@ class post_types extends Feature {
 } // End Class
 
 
-
 // Subscribe to the drop-in to the initialization event
 add_action( 'complexmanager_init', array( 'casasoft\complexmanager\post_types', 'init' ) );
