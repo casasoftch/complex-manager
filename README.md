@@ -19,6 +19,22 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 To make things easy to fill your page with custom content, the plugin utilizes shortcodes to render the offers.
 
 
+## functions ##
+
+width 
+get_cxm($object_id, $field);
+and 
+get_cxm_label($object_id, $field);
+
+You can retrieve data from the registered post types "complex_unit" and "complex_inquiry". This allows you to create custom views/templates of the archive and single pages
+
+
+### example single-complex_unit.php ###
+
+
+### example archive-complex_unit.php ###
+
+
 ### [CXM-graphic] ###
 
 Renders a interactive jumpotron graphic. Sadly IE8> will only render the image without the interactivity.
