@@ -21,10 +21,7 @@ To make things easy to fill your page with custom content, the plugin utilizes s
 
 ## functions ##
 
-width 
-get_cxm($object_id, $field);
-and 
-get_cxm_label($object_id, $field);
+with `get_cxm($post_id, $field);` and `get_cxm_label($post_id, $field);`
 
 You can retrieve data from the registered post types "complex_unit" and "complex_inquiry". This allows you to create custom views/templates of the archive and single pages
 
