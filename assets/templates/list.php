@@ -51,7 +51,12 @@
 											<img class="img-responsive" src="<?php echo $image[0]; ?>" alt="" />
 										</a>
 									<?php endif; ?>
-									<a class="btn btn-default pull-left" href="#">Grundriss</a>
+									<?php 
+										$content = $unit->post_content;
+										$content = apply_filters('the_content', $content);
+										$content = str_replace(']]>', ']]&gt;', $content);
+										echo $content;
+									 ?>
 									<a class="btn btn-primary pull-right complex-call-contact-form" data-unit-id="<?= $unit->ID?>" href="#complexContactForm">Kontakt</a>
 									<div class="clearfix"></div>
 								</td>
@@ -64,7 +69,7 @@
 	?>
 </div>
 <div class="complex-contact-form-wrapper" id="complexContactForm">
-	<a style="display:none" class="btn btn-default pull-right complex-sendback-contact-form" href="#complexContactForm">Abbrechen</a>
+	<a style="display:none" class="pull-right complex-sendback-contact-form" href="#complexContactForm"><i class="glyphicon glyphicon-remove"></i><span class="sr-only">Cancel</span></a>
 	<?= $form ?>
 </div>
 

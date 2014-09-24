@@ -38,9 +38,9 @@ class post_types extends Feature {
 			'rewrite'            => array( 'slug' => 'unit' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
-			'hierarchical'       => false,
+			'hierarchical'       => true,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'thumbnail' ) // 'editor', 'author', 
+			'supports'           => array( 'title', 'thumbnail','page-attributes', 'editor' ) // 'editor', 'author', 
 		);
 
 		register_post_type( 'complex_unit', $args );
@@ -86,7 +86,7 @@ class post_types extends Feature {
 			'menu_name'         => __( 'Types', 'complexmanager'  ),
 		);
 		$args = array(
-			'hierarchical'      => true,
+			'hierarchical'      => false,
 			'labels'            => $labels,
 			'show_ui'           => true,
 			'show_admin_column' => true,

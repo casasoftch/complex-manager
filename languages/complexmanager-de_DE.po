@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-22 10:44+0100\n"
-"PO-Revision-Date: 2014-09-22 18:06+0100\n"
+"POT-Creation-Date: 2014-09-24 08:11+0100\n"
+"PO-Revision-Date: 2014-09-24 08:13+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: en_US\n"
@@ -21,64 +21,39 @@ msgid "I am interested in the unit"
 msgstr "Ich interessiere mich für die Wohnung"
 
 #: ../assets/templates/contact-form.php:28
+#: ../features/admin/inquiry_metabox.php:140
 msgid "Salutation"
 msgstr "Anrede"
 
 #: ../assets/templates/contact-form.php:35
+#: ../features/core/field_manager.php:96
 msgid "Mr."
 msgstr "Herr"
 
 #: ../assets/templates/contact-form.php:42
+#: ../features/core/field_manager.php:96
 msgid "Mrs."
 msgstr "Frau"
 
-#: ../assets/templates/contact-form.php:49 ../features/client/render.php:14
+#: ../assets/templates/contact-form.php:49
+#: ../features/core/field_manager.php:81
 msgid "Name"
 msgstr "Name"
 
-#: ../assets/templates/contact-form.php:55
-msgid "First name"
-msgstr "Vorname"
-
-#: ../assets/templates/contact-form.php:60
-msgid "Last name"
-msgstr "Nachname"
-
-#: ../assets/templates/contact-form.php:65
-msgid "Email"
-msgstr "E-Mail"
-
-#: ../assets/templates/contact-form.php:72
-msgid "Phone"
-msgstr "Telefon"
-
 #: ../assets/templates/contact-form.php:80
+#: ../features/core/field_manager.php:85 ../features/core/field_manager.php:89
 msgid "Address"
 msgstr "Adresse"
-
-#: ../assets/templates/contact-form.php:84
-msgid "Streeet & Nr."
-msgstr "Strasse Nr."
-
-#: ../assets/templates/contact-form.php:89
-msgid "ZIP"
-msgstr "PLZ"
-
-#: ../assets/templates/contact-form.php:94
-msgid "City"
-msgstr "Ort"
-
-#: ../assets/templates/contact-form.php:105
-msgid "Subject"
-msgstr "Betreff"
 
 #: ../assets/templates/contact-form.php:109
 msgid "What do you wish to know?"
 msgstr "Was möchten Sie wissen?"
 
 #: ../assets/templates/contact-form.php:113
-msgid "Your Message"
-msgstr "Ihre Nachricht"
+#: ../features/admin/inquiry_metabox.php:229
+#: ../features/core/field_manager.php:71
+msgid "Message"
+msgstr "Nachricht"
 
 #: ../assets/templates/contact-form.php:117
 msgid "Describe your inquiry"
@@ -88,11 +63,11 @@ msgstr "Beschreiben Sie Ihre Anfrage"
 msgid "Send"
 msgstr "Senden"
 
-#: ../assets/templates/list.php:56 ../features/admin/unit_metabox.php:167
+#: ../assets/templates/list.php:31 ../features/admin/unit_metabox.php:168
 msgid "Available"
 msgstr "Verfügbar"
 
-#: ../assets/templates/list.php:57 ../features/admin/unit_metabox.php:168
+#: ../assets/templates/list.php:32 ../features/admin/unit_metabox.php:169
 msgid "Reserved"
 msgstr "Reserviert"
 
@@ -108,6 +83,65 @@ msgstr "Projektbild"
 msgid "Upload Image"
 msgstr "Bild hochladen"
 
+#: ../features/admin/inquiry_metabox.php:27
+#: ../features/admin/unit_metabox.php:27
+msgid "Unit Settings"
+msgstr "Objekt Einstellungen"
+
+#: ../features/admin/inquiry_metabox.php:104
+#: ../features/admin/unit_metabox.php:110
+msgid "Choose or Upload a Document"
+msgstr "Wähle oder lade ein Dokument hoch"
+
+#: ../features/admin/inquiry_metabox.php:105
+#: ../features/admin/unit_metabox.php:111
+msgid "Use this document"
+msgstr "Verwende dieses Dokument"
+
+#: ../features/admin/inquiry_metabox.php:131
+msgid "Unit id"
+msgstr "Objekt ID"
+
+#: ../features/admin/inquiry_metabox.php:149
+#: ../features/core/field_manager.php:39
+msgid "First name"
+msgstr "Vorname"
+
+#: ../features/admin/inquiry_metabox.php:158
+#: ../features/core/field_manager.php:43
+msgid "Last name"
+msgstr "Nachname"
+
+#: ../features/admin/inquiry_metabox.php:168
+#: ../features/core/field_manager.php:63
+msgid "Email"
+msgstr "E-Mail"
+
+#: ../features/admin/inquiry_metabox.php:177
+#: ../features/core/field_manager.php:47
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../features/admin/inquiry_metabox.php:193
+#: ../features/core/field_manager.php:51
+msgid "Street"
+msgstr "Strasse"
+
+#: ../features/admin/inquiry_metabox.php:202
+#: ../features/core/field_manager.php:55
+msgid "ZIP"
+msgstr "PLZ"
+
+#: ../features/admin/inquiry_metabox.php:211
+#: ../features/core/field_manager.php:59
+msgid "City"
+msgstr "Ort"
+
+#: ../features/admin/inquiry_metabox.php:220
+#: ../features/core/field_manager.php:67
+msgid "Subject"
+msgstr "Betreff"
+
 #: ../features/admin/post_type_icons.php:33
 msgid "Post Type Icons"
 msgstr ""
@@ -117,121 +151,157 @@ msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 "Sie haben nicht ausreichende Rechte um Zugang zu dieser Seite zu haben."
 
-#: ../features/admin/unit_metabox.php:25
-msgid "Unit Settings"
-msgstr "Objekt Einstellungen"
-
-#: ../features/admin/unit_metabox.php:110
-msgid "Choose or Upload a Document"
-msgstr "Wähle oder lade ein Dokument hoch"
-
-#: ../features/admin/unit_metabox.php:111
-msgid "Use this document"
-msgstr "Verwende dieses Dokument"
-
 #: ../features/admin/unit_metabox.php:134
 msgid "Hover color"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:164 ../features/client/render.php:34
+#: ../features/admin/unit_metabox.php:165
+#: ../features/core/field_manager.php:186
 msgid "Status"
 msgstr "Status"
 
-#: ../features/admin/unit_metabox.php:169
+#: ../features/admin/unit_metabox.php:170
 msgid "Sold"
 msgstr "Verkauft"
 
-#: ../features/admin/unit_metabox.php:175
+#: ../features/admin/unit_metabox.php:176
 msgid "Number of Rooms"
 msgstr "Zimmer"
 
-#: ../features/admin/unit_metabox.php:184
+#: ../features/admin/unit_metabox.php:185
 msgid "Apartment Story"
 msgstr "Wohnung/Stockwerk"
 
-#: ../features/admin/unit_metabox.php:198
+#: ../features/admin/unit_metabox.php:194
+#: ../features/core/field_manager.php:170
 msgid "Currency"
 msgstr "Währung"
 
-#: ../features/admin/unit_metabox.php:210
+#: ../features/admin/unit_metabox.php:214
+msgid "Living Space"
+msgstr "Wohnfläche"
+
+#: ../features/admin/unit_metabox.php:223
+msgid "Usable Space"
+msgstr "Nutzfläche"
+
+#: ../features/admin/unit_metabox.php:233
+msgid "Terrace Space"
+msgstr "Terrassenfläche"
+
+#: ../features/admin/unit_metabox.php:242
+msgid "Balcony Space"
+msgstr "Balkonfläche"
+
+#: ../features/admin/unit_metabox.php:261
 msgid "Purchase Price"
 msgstr "Kaufpreis"
 
-#: ../features/admin/unit_metabox.php:214
+#: ../features/admin/unit_metabox.php:265
 msgid "\"\" = not for sale, 0 = upon request"
 msgstr "\"\" = nicht zu verkaufen, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:219
+#: ../features/admin/unit_metabox.php:271
+msgid "Purchase scope"
+msgstr "Verkaufs-Segmentierung"
+
+#: ../features/admin/unit_metabox.php:286
 msgid "Rent Net Price"
 msgstr "Mietkosten Netto"
 
-#: ../features/admin/unit_metabox.php:223
+#: ../features/admin/unit_metabox.php:290
 msgid "\"\" = not for rent, 0 = upon request"
 msgstr "\"\" = nicht zu vermieten, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:233
+#: ../features/admin/unit_metabox.php:296
+msgid "Rent Time segment"
+msgstr "Mieten zeitabschnitt"
+
+#: ../features/admin/unit_metabox.php:307
+msgid "Rental scope"
+msgstr "Miet-Segmentierung"
+
+#: ../features/admin/unit_metabox.php:325
 msgid "No file chosen"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:234
+#: ../features/admin/unit_metabox.php:326
 msgid "Add file"
 msgstr ""
 
-#: ../features/client/render.php:18
-msgid "Price"
-msgstr "Preis"
-
-#: ../features/client/render.php:22
-msgid "Rent"
-msgstr "Miete"
-
-#: ../features/client/render.php:26
-msgid "Rooms"
-msgstr "Zimmer"
-
-#: ../features/client/render.php:30
-msgid "Story"
-msgstr "Etage"
-
-#: ../features/client/render.php:190
+#: ../features/client/render.php:154
 msgid "First name is required"
 msgstr "Vorname ist benötigt"
 
-#: ../features/client/render.php:191
+#: ../features/client/render.php:155
 msgid "Last name is required"
 msgstr "Nachname ist benötigt"
 
-#: ../features/client/render.php:192
+#: ../features/client/render.php:156
 msgid "Email is not valid"
 msgstr "E-Mail ist nicht korrekt"
 
-#: ../features/client/render.php:193
+#: ../features/client/render.php:157
 msgid "A phone number is required"
 msgstr "Eine Telefonnummer ist benötigt"
 
-#: ../features/client/render.php:194
+#: ../features/client/render.php:158
 msgid "A street address is required"
 msgstr "Eine Strasse ist benötigt"
 
-#: ../features/client/render.php:195
+#: ../features/client/render.php:159
 msgid "ZIP is required"
 msgstr "PLZ ist benötigt"
 
-#: ../features/client/render.php:196
+#: ../features/client/render.php:160
 msgid "City is required"
 msgstr "Ort ist benötigt"
 
-#: ../features/client/render.php:200
+#: ../features/client/render.php:164
 msgid "Ivalid post"
 msgstr "Falsche Absendung"
 
-#: ../features/client/render.php:263
+#: ../features/client/render.php:225
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: ../features/client/render.php:266
 msgid "Inquiry has been sent. Thank you!"
 msgstr "Anfrage wurde versendet. Danke!"
 
-#: ../features/client/render.php:272
+#: ../features/client/render.php:293
 msgid "Please check the following and try again:"
 msgstr "Bitte überprüfen Sie folgendes und versuchen Sie es erneut:"
+
+#: ../features/core/field_manager.php:75
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: ../features/core/field_manager.php:162
+msgid "Unit"
+msgstr "Objekt"
+
+#: ../features/core/field_manager.php:166
+#: ../features/core/field_manager.php:197
+msgid "Purchase price"
+msgstr "Kaufpreis"
+
+#: ../features/core/field_manager.php:174
+msgid "Rent"
+msgstr "Miete"
+
+#: ../features/core/field_manager.php:178
+msgid "Rooms"
+msgstr "Zimmer"
+
+#: ../features/core/field_manager.php:182
+msgid "Floor"
+msgstr "Stockwerk"
+
+#: ../features/core/field_manager.php:191
+#: ../features/core/field_manager.php:201
+msgid "Living space"
+msgstr "Wohnfläche"
 
 #: ../features/core/post_types.php:15
 msgctxt "post type general name"
@@ -492,6 +562,12 @@ msgstr "Neuer Grund"
 #: ../features/core/post_types.php:143
 msgid "Reasons"
 msgstr "Gründe"
+
+#~ msgid "Price"
+#~ msgstr "Preis"
+
+#~ msgid "Story"
+#~ msgstr "Etage"
 
 #~ msgid "File Upload"
 #~ msgstr "Datei hochladen"

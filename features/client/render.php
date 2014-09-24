@@ -58,7 +58,9 @@ class render extends Feature {
 		}
 
 		$unit_args = array(
-			'post_type' => 'complex_unit'
+			'post_type' => 'complex_unit',
+			'orderby' => 'menu_order',
+			'order' => 'ASC'
 		);
 		$buildings = array();
 		$building_terms = get_terms( 'building', array() );

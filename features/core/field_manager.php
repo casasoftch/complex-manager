@@ -40,7 +40,7 @@ class field_manager extends Feature {
 				'value' => $metas['first_name']
 			),
 			'last_name' => array(
-				'label' => __('First name', 'complexmanager'),
+				'label' => __('Last name', 'complexmanager'),
 				'value' => $metas['last_name']
 			),
 			'phone' => array(
@@ -145,6 +145,18 @@ class field_manager extends Feature {
 		);
 	}
 
+	public function render_money($value, $currency = ''){
+		$before = true;
+		$space = '&nbsp;';
+		switch ($currency) {
+			case 'EUR': $currency = '€'; $before = false; $space = ''; break;
+			case 'USD': $currency = '$'; break;
+			case 'GBP': $currency = '£'; break;
+			case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
+		}
+		return ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
+	}
+
 	public function getUnitItems($unit = false){
 		$prefix = '_complexmanager_unit_';
 		$metas = array();
@@ -197,6 +209,10 @@ class field_manager extends Feature {
 				'label' => __('Purchase price', 'complexmanager'),
 				'value' => ''
 			),
+			'rendered_rent_net' => array(
+				'label' => __('Rent', 'complexmanager'),
+				'value' => ''
+			),
 			'rendered_living_space' => array(
 				'label' => __('Living space', 'complexmanager'),
 				'value' => ''
@@ -208,15 +224,14 @@ class field_manager extends Feature {
 			$value = (int) $metas['purchase_price'];
 			if ($value) {
 				$currency = $metas['currency'];
-				$before = true;
-				$space = '&nbsp;';
-				switch ($currency) {
-					case 'EUR': $currency = '€'; $before = false; $space = ''; break;
-					case 'USD': $currency = '$'; break;
-					case 'GBP': $currency = '£'; break;
-					case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
-				}
-				$datas['rendered_purchase_price']['value'] = ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
+				$datas['rendered_purchase_price']['value'] = $this->render_money($value, $currency);
+			}
+		}
+		if ((int) $metas['rent_net']) {
+			$value = (int) $metas['rent_net'];
+			if ($value) {
+				$currency = $metas['currency'];
+				$datas['rendered_rent_net']['value'] = $this->render_money($value, $currency);
 			}
 		}
 		if ((float) $metas['living_space']) {
