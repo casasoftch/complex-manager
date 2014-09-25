@@ -98,15 +98,7 @@ class general_options extends Feature
             array( $this, 'id_number_callback' ), // Callback
             'my-setting-admin', // Page
             'setting_section_id' // Section           
-        );      
-
-        add_settings_field(
-            'title', 
-            'Title', 
-            array( $this, 'title_callback' ), 
-            'my-setting-admin', 
-            'setting_section_id'
-        );     */
+        );    */  
 
         add_settings_field(
             'project_image', 
@@ -115,6 +107,22 @@ class general_options extends Feature
              'my-setting-admin', 
              'setting_section_id'
         );
+
+        add_settings_field(
+            'emails', 
+             __( 'Emails', 'complexmanager' ), 
+            array( $this, 'emails_callback' ), 
+            'my-setting-admin', 
+            'setting_section_id'
+        );    
+
+        add_settings_field(
+            'remcat', 
+             __( 'Remcat', 'complexmanager' ), 
+            array( $this, 'remcat_callback' ), 
+            'my-setting-admin', 
+            'setting_section_id'
+        );  
 
 
 
@@ -132,8 +140,11 @@ class general_options extends Feature
         if( isset( $input['id_number'] ) )
             $new_input['id_number'] = absint( $input['id_number'] );
 
-        if( isset( $input['title'] ) )
-            $new_input['title'] = sanitize_text_field( $input['title'] );
+        if( isset( $input['emails'] ) )
+            $new_input['emails'] = sanitize_text_field( $input['emails'] );
+
+        if( isset( $input['remcat'] ) )
+            $new_input['remcat'] = sanitize_text_field( $input['remcat'] );
 
         if( isset( $input['project_image'] ) )
             $new_input['project_image'] = sanitize_text_field( $input['project_image'] );
@@ -163,11 +174,19 @@ class general_options extends Feature
     /** 
      * Get the settings option array and print one of its values
      */
-    public function title_callback()
+    public function emails_callback()
     {
         printf(
-            '<input type="text" id="title" name="complex_manager[title]" value="%s" />',
-            isset( $this->options['title'] ) ? esc_attr( $this->options['title']) : ''
+            '<input type="text" id="emails" name="complex_manager[emails]" value="%s" />',
+            isset( $this->options['emails'] ) ? esc_attr( $this->options['emails']) : ''
+        );
+    }
+
+    public function remcat_callback()
+    {
+        printf(
+            '<input type="text" id="remcat" name="complex_manager[remcat]" value="%s" />',
+            isset( $this->options['remcat'] ) ? esc_attr( $this->options['remcat']) : ''
         );
     }
 

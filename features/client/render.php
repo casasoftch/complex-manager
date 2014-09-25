@@ -130,7 +130,7 @@ class render extends Feature {
 	}
 
 	public function getFormData($empty = false){
-		$defaults_inq = get_default_cxm('inquiry');
+		$defaults_inq = get_default_cxm('inquiry', false);
 		$defaults = array();
 		foreach ($defaults_inq as $key => $inq_item) {
 			$defaults[$key] = $inq_item['value'];
@@ -205,40 +205,78 @@ class render extends Feature {
 		return true;
 	}
 
-
-
-	public function sendEmail($to, $inquiry){
-		
-		$html_contact_data = '';
-		if (get_cxm($inquiry->ID, 'name')) {
-			$html_contact_data .= '<strong>' . get_cxm($inquiry->ID, 'name') . '</strong><br>';
+	public function sendRemcat($to = false, $inquiry){
+		if ($to) {
+			$remcat = $to;
+		} else {
+			$remcat = $this->get_option("remcat");	
 		}
-		if (get_cxm($inquiry->ID, 'address_html')) {
-			$html_contact_data .= '' . get_cxm($inquiry->ID, 'address_html') . '<br>';
+		if ($remcat) {
+			//todo
 		}
+	}
 
-		$html_contact_data .= '<br>';
-
-		if (get_cxm($inquiry->ID, 'email')) {
-			$html_contact_data .= '<a href="mailto:'.get_cxm($inquiry->ID, 'email').'">' . get_cxm($inquiry->ID, 'email') . '</a><br>';
-		}
-
-		if (get_cxm($inquiry->ID, 'phone')) {
-			$html_contact_data .= __('Phone:', 'complexmanager') . ' ' . get_cxm($inquiry->ID, 'phone'). '<br>';
+	public function sendEmail($to = false, $inquiry){
+		if ($to) {
+			$emails = $to;
+		} else {
+			$emails = $this->get_option("emails");	
 		}
 		
-		$html_contact_data .= '<br>';
 
-		if (get_cxm($inquiry->ID, 'subject')) {
-			$html_contact_data .= '<strong>'.get_cxm($inquiry->ID, 'subject') . '</strong><br>';
+		if ($emails) {
+			$html_contact_data = '';
+			if (get_cxm($inquiry->ID, 'name')) {
+				$html_contact_data .= '<strong>' . get_cxm($inquiry->ID, 'name') . '</strong><br>';
+			}
+			if (get_cxm($inquiry->ID, 'address_html')) {
+				$html_contact_data .= '' . get_cxm($inquiry->ID, 'address_html') . '<br>';
+			}
+
+			$html_contact_data .= '<br>';
+
+			if (get_cxm($inquiry->ID, 'email')) {
+				$html_contact_data .= '<a href="mailto:'.get_cxm($inquiry->ID, 'email').'">' . get_cxm($inquiry->ID, 'email') . '</a><br>';
+			}
+
+			if (get_cxm($inquiry->ID, 'phone')) {
+				$html_contact_data .= __('Phone:', 'complexmanager') . ' ' . get_cxm($inquiry->ID, 'phone'). '<br>';
+			}
+			
+			$html_contact_data .= '<br>';
+
+			if (get_cxm($inquiry->ID, 'subject')) {
+				$html_contact_data .= '<strong>'.get_cxm($inquiry->ID, 'subject') . '</strong><br>';
+			}
+
+			if (get_cxm($inquiry->ID, 'message')) {
+				$html_contact_data .= get_cxm($inquiry->ID, 'message');
+			}
+
+
+			if (get_cxm($inquiry->ID, 'unit')) {
+				$unit = get_cxm($inquiry->ID, 'unit');
+				$html_contact_data .= '<br><br><strong>'.__('Unit', 'complexmanager').':</strong> '. get_cxm($unit->ID, 'name');
+			}
+
+
+			$multiple_to_recipients = array(
+			    $emails,
+			);
+
+			add_filter( 'wp_mail_content_type', array($this,'set_html_content_type'));
+
+			wp_mail( $multiple_to_recipients, __('Unit inquiry'), $html_contact_data );
+
+			// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
+			remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
 		}
-
-		if (get_cxm($inquiry->ID, 'message')) {
-			$html_contact_data .= get_cxm($inquiry->ID, 'message');
-		}
-
-		echo '<div class="well"><h1>Email</h1>'.$html_contact_data.'</div>';
 		
+	}
+
+	public function set_html_content_type() {
+
+		return 'text/html';
 	}
 
 	public function renderForm(){
@@ -286,7 +324,8 @@ class render extends Feature {
 
 				$inquiry = get_post($inq_post_id);
 				
-				$this->sendEmail('to@email.com', $inquiry);
+				$this->sendEmail(false, $inquiry);
+				$this->sendRemcat(false, $inquiry);
 				//send emails
 
 				//empty form

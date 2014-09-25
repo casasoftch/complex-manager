@@ -22,7 +22,7 @@ class field_manager extends Feature {
 		);
 	}
 
-	public function getInquiryItems($inquiry = false){
+	public function getInquiryItems($inquiry = false, $specials = true){
 		$prefix = '_complexmanager_inquiry_';
 		$metas = array();
 		if ($inquiry) {
@@ -75,36 +75,52 @@ class field_manager extends Feature {
 				'label' => __('Gender', 'complexmanager'),
 				'value' => $metas['gender']
 			),
-
-			//specials
-			'name' => array(
+			'unit_id' => array(
+				'label' => __('Unit', 'complexmanager'),
+				'value' => $metas['unit_id']
+			),
+		);
+		if ($specials) {
+			$datas['name'] = array(
 				'label' => __('Name', 'complexmanager'),
 				'value' => ''
-			),
-			'address_html' => array(
+			);
+			$datas['address_html'] = array(
 				'label' => __('Address', 'complexmanager'),
 				'value' => ''
-			),
-			'address_text' => array(
+			);
+			$datas['address_text'] = array(
 				'label' => __('Address', 'complexmanager'),
 				'value' => ''
-			)
-		);
+			);
+			$datas['unit'] = array(
+				'label' => __('Unit', 'complexmanager'),
+				'value' => ''
+			);
 
-		//name special
-		if ($metas['first_name'].$metas['last_name']) {
-			$salutation = ($metas['gender'] ? ($metas['gender'] == 'male' ? __('Mr.', 'complexmanager') : __('Mrs.', 'complexmanager')) : '' );
-			$datas['name']['value'] = trim($salutation . " " . $metas['first_name'] . ' ' . $metas['last_name']);
-		}
+			//name special
+			if ($metas['first_name'].$metas['last_name']) {
+				$salutation = ($metas['gender'] ? ($metas['gender'] == 'male' ? __('Mr.', 'complexmanager') : __('Mrs.', 'complexmanager')) : '' );
+				$datas['name']['value'] = trim($salutation . " " . $metas['first_name'] . ' ' . $metas['last_name']);
+			}
 
-		//address special
-		$lines = array();
-		$lines[] = $metas['street'];
-		$lines[] = trim($metas['postal_code'] . ' ' . $metas['locality']);
-		$lines = array_filter($lines);
-		if (count($lines)) {
-			$datas['address_html']['value'] = implode("<br>", $lines);
-			$datas['address_text']['value'] = implode("\n", $lines);
+			//address special
+			$lines = array();
+			$lines[] = $metas['street'];
+			$lines[] = trim($metas['postal_code'] . ' ' . $metas['locality']);
+			$lines = array_filter($lines);
+			if (count($lines)) {
+				$datas['address_html']['value'] = implode("<br>", $lines);
+				$datas['address_text']['value'] = implode("\n", $lines);
+			}
+
+			//unit special
+			if ($metas['unit_id']) {
+				$unit = get_post($metas['unit_id']);
+				if ($unit) {
+					$datas['unit']['value'] = $unit;
+				}
+			}
 		}
 
 		return $datas;
@@ -157,7 +173,7 @@ class field_manager extends Feature {
 		return ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
 	}
 
-	public function getUnitItems($unit = false){
+	public function getUnitItems($unit = false, $specials = false){
 		$prefix = '_complexmanager_unit_';
 		$metas = array();
 		if ($unit) {
@@ -203,41 +219,42 @@ class field_manager extends Feature {
 				'label' => __('Living space', 'complexmanager'),
 				'value' => $metas['living_space']
 			),
-
-			//specials
-			'rendered_purchase_price' => array(
-				'label' => __('Purchase price', 'complexmanager'),
-				'value' => ''
-			),
-			'rendered_rent_net' => array(
+		);
+		if ($specials) {
+			$datas['rendered_purchase_price'] = array(
+					'label' => __('Purchase price', 'complexmanager'),
+					'value' => ''
+				);
+			$datas['rendered_rent_net'] = array(
 				'label' => __('Rent', 'complexmanager'),
 				'value' => ''
-			),
-			'rendered_living_space' => array(
+			);
+			$datas['rendered_living_space'] = array(
 				'label' => __('Living space', 'complexmanager'),
 				'value' => ''
-			)
-		);
+			);
 
-		//rendered_purchase_price special
-		if ((int) $metas['purchase_price']) {
-			$value = (int) $metas['purchase_price'];
-			if ($value) {
-				$currency = $metas['currency'];
-				$datas['rendered_purchase_price']['value'] = $this->render_money($value, $currency);
+			if ((int) $metas['purchase_price']) {
+				$value = (int) $metas['purchase_price'];
+				if ($value) {
+					$currency = $metas['currency'];
+					$datas['rendered_purchase_price']['value'] = $this->render_money($value, $currency);
+				}
+			}
+			if ((int) $metas['rent_net']) {
+				$value = (int) $metas['rent_net'];
+				if ($value) {
+					$currency = $metas['currency'];
+					$datas['rendered_rent_net']['value'] = $this->render_money($value, $currency);
+				}
+			}
+			if ((float) $metas['living_space']) {
+				$value = (float) $metas['living_space'];
+				$datas['rendered_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
 			}
 		}
-		if ((int) $metas['rent_net']) {
-			$value = (int) $metas['rent_net'];
-			if ($value) {
-				$currency = $metas['currency'];
-				$datas['rendered_rent_net']['value'] = $this->render_money($value, $currency);
-			}
-		}
-		if ((float) $metas['living_space']) {
-			$value = (float) $metas['living_space'];
-			$datas['rendered_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
-		}
+
+		
 
 		return $datas;
 	}

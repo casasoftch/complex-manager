@@ -20,12 +20,12 @@ function get_cxm_label($object_id, $key, $type = false){
 	return get_cxm($object_id, $key, true, $type);
 }
 
-function get_default_cxm($type){
+function get_default_cxm($type, $specials = true){
 	$fm = new \casasoft\complexmanager\field_manager;
 	if ($type == 'unit') {
-		return $fm->getUnitItems();
+		return $fm->getUnitItems(false, $specials);
 	} elseif ($type == 'inquiry') {
-		return $fm->getInquiryItems();
+		return $fm->getInquiryItems(false, $specials);
 	}
 	return array();
 }
