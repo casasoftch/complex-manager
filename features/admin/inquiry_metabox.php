@@ -180,10 +180,6 @@ class inquiry_metabox extends Feature {
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
-
-
-
-
 		    echo "</div>";
 		    echo '<div class="complexmanager-meta-col">';
 

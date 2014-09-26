@@ -124,6 +124,16 @@ class general_options extends Feature
             'setting_section_id'
         );  
 
+        add_settings_field(
+            'idx_ref_property', 
+             __( 'IDX / REMCat Property Ref.', 'complexmanager' ), 
+            array( $this, 'idx_ref_property_callback' ), 
+            'my-setting-admin', 
+            'setting_section_id'
+        );  
+
+        
+
 
 
 
@@ -148,6 +158,11 @@ class general_options extends Feature
 
         if( isset( $input['project_image'] ) )
             $new_input['project_image'] = sanitize_text_field( $input['project_image'] );
+
+        if( isset( $input['idx_ref_property'] ) )
+            $new_input['idx_ref_property'] = sanitize_text_field( $input['idx_ref_property'] );
+
+        
 
         return $new_input;
     }
@@ -187,6 +202,14 @@ class general_options extends Feature
         printf(
             '<input type="text" id="remcat" name="complex_manager[remcat]" value="%s" />',
             isset( $this->options['remcat'] ) ? esc_attr( $this->options['remcat']) : ''
+        );
+    }
+
+    public function idx_ref_property_callback()
+    {
+        printf(
+            '<input type="text" id="idx_ref_property" name="complex_manager[idx_ref_property]" value="%s" />',
+            isset( $this->options['idx_ref_property'] ) ? esc_attr( $this->options['idx_ref_property']) : ''
         );
     }
 

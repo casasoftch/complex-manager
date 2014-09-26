@@ -21,7 +21,8 @@
 }
 .complex-project-graphic-interaction a:hover,
 .complex-project-graphic-interaction a.active {
-  opacity: 0.3;
+  opacity: 0.5;
+  box-shadow: 1px 1px 2px black;
 }
 .complex-unit-caret-cell {
   text-align: center;
@@ -52,6 +53,10 @@
 }
 .table > tbody > tr.complex-unit-detail-row > td {
   border-top: 0px solid #ddd;
+  padding: 0px;
+}
+.detail-row-wrapper {
+  padding: 10px;
 }
 .complex-unit-featuredimage {
   display: block;

@@ -47,7 +47,7 @@ class render extends Feature {
 	    return $this->renderGraphic();
 	}
 
-	public function renderTable($cols = array()){
+	public function renderTable($cols){
 		if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
@@ -212,8 +212,57 @@ class render extends Feature {
 			$remcat = $this->get_option("remcat");	
 		}
 		if ($remcat) {
-			//todo
+			$unit_id = get_cxm($inquiry->ID, 'unit_id');
+
+			$remcat_arr = array(
+				'' => '',
+				'Immobilienportalname' => 'wp_complex_manager', //homegate
+				'Immobilienverwaltung Name' => '', //PSP Management AG
+				'Immobilienverwaltung Adresse' => '', //Baslerstrasse 44
+				'Immobilienverwaltung PLZ' => '', //4600
+				'Immobilienverwaltung Ort' => '', //Olten
+				'Immobilienverwaltung Sachbearbeiter' => '', //Urben Michael 
+				'Immobilienverwaltung Sachbearbeiter Emailadresse' => '', //remcat@psp.info
+				'Objektreferenz' => $this->get_option("idx_ref_property").'.'.get_cxm($unit_id, 'idx_ref_house').'.'.get_cxm($unit_id, 'idx_ref_object'), //*** 6045.01.0202 
+				'Advertisement ID' => $inquiry->ID, //*** 101688233
+				'Objekt Adresse' => '', //Stalden 35
+				'Objekt PLZ Ort' => '', //4500 Solothurn
+				'Objekt Art' => '', //Wohnung
+				'Interessent Sprache' => '', //d
+				'Interessent Anredecode ' => '', //
+				'Interessent Vorname' => get_cxm($inquiry->ID, 'first_name'), //*** Fritz
+				'Interessent Name' => get_cxm($inquiry->ID, 'last_name'), //*** Muster
+				'Interessent Firma ' => '', //
+				'Interessent Strasse' => get_cxm($inquiry->ID, 'street'), //***
+				'Interessent PLZ' => get_cxm($inquiry->ID, 'postal_code'), //***
+				'Interessent Ort' => get_cxm($inquiry->ID, 'locality'), //***
+				'Interessent Telefon' => get_cxm($inquiry->ID, 'phone'), //*** 044 444 00 00
+				'Interessent Mobile' => '', //
+				'Interessent Fax' => '', //
+				'Interessent e-Mail' => get_cxm($inquiry->ID, 'email'), //*** fritz.muster@muster.ch
+				'Interessent Bemerkungen' => get_cxm($inquiry->ID, 'message'), //Dies ist ein Beispielmail
+			);
+			$remcat_arr = str_replace('#', 'Nr.', $remcat_arr);
+			$remhash = implode('#',$remcat_arr);
+			$remhash = strip_tags($remhash);
+			
+			$multiple_to_recipients = array(
+			    $remcat,
+			);
+
+			add_filter( 'wp_mail_content_type', function($content_type){
+				return 'text/plain';
+			});
+
+			wp_mail( $multiple_to_recipients, __('Unit inquiry'), $remhash );
+
+			// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
+			remove_filter( 'wp_mail_content_type', function($content_type){
+				return 'text/plain';
+			});
 		}
+
+		
 	}
 
 	public function sendEmail($to = false, $inquiry){
@@ -264,20 +313,20 @@ class render extends Feature {
 			    $emails,
 			);
 
-			add_filter( 'wp_mail_content_type', array($this,'set_html_content_type'));
+			add_filter( 'wp_mail_content_type', function($content_type){
+				return 'text/html';
+			});
 
 			wp_mail( $multiple_to_recipients, __('Unit inquiry'), $html_contact_data );
 
 			// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
-			remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
+			remove_filter( 'wp_mail_content_type', function($content_type){
+				return 'text/html';
+			});
 		}
 		
 	}
 
-	public function set_html_content_type() {
-
-		return 'text/html';
-	}
 
 	public function renderForm(){
 		$template = $this->get_template();

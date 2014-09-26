@@ -83,7 +83,9 @@ class unit_metabox extends Feature {
 				$this->prefix.'living_space',
 				$this->prefix.'usable_space',
 				$this->prefix.'terrace_space',
-				$this->prefix.'balcony_space'
+				$this->prefix.'balcony_space',
+				$this->prefix.'idx_ref_house',
+				$this->prefix.'idx_ref_object',
 			);
 
 			foreach ($texts as $key) {
@@ -199,6 +201,24 @@ class unit_metabox extends Feature {
 					echo '<option value="USD" ' . ($value == 'USD' ? 'selected' : '') . '>$</option>';
 					echo '<option value="GBP" ' . ($value == 'GBP' ? 'selected' : '') . '>£</option>';
 		        echo '</select>';
+		        echo '</p>';
+
+		        $key = $this->prefix.'idx_ref_house';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'IDX / REMCat House Ref.', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="1" min="0"  id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		        $key = $this->prefix.'idx_ref_object';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'IDX / REMCat Object Ref.', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="1" min="0"  id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
 
@@ -317,7 +337,7 @@ class unit_metabox extends Feature {
         echo "</div>"; 	
 
 
-         echo "<hr>";
+        /* echo "<hr>";
 
 
         $value = get_post_meta( $post->ID, '_complexmanager_unit_document', true );
@@ -356,7 +376,7 @@ class unit_metabox extends Feature {
 					</ul>
 				</div>
 			</div>
-		';
+		';*/
 
 
 		echo '<div style="clear:both"></div>';

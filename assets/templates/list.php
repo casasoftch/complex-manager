@@ -45,20 +45,22 @@
 						?>
 							<tr class="complex-unit-detail-row">
 								<td colspan="<?= count($cols)+1 ?>">
-									<?php if (has_post_thumbnail( $unit->ID ) ): ?>
-										<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $unit->ID ), 'large' ); ?>
-										<a href="#" class="complex-unit-featuredimage">
-											<img class="img-responsive" src="<?php echo $image[0]; ?>" alt="" />
-										</a>
-									<?php endif; ?>
-									<?php 
-										$content = $unit->post_content;
-										$content = apply_filters('the_content', $content);
-										$content = str_replace(']]>', ']]&gt;', $content);
-										echo $content;
-									 ?>
-									<a class="btn btn-primary pull-right complex-call-contact-form" data-unit-id="<?= $unit->ID?>" href="#complexContactForm">Kontakt</a>
-									<div class="clearfix"></div>
+									<div class="detail-row-wrapper">
+										<?php if (has_post_thumbnail( $unit->ID ) ): ?>
+											<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $unit->ID ), 'large' ); ?>
+											<a href="#" class="complex-unit-featuredimage">
+												<img class="img-responsive" src="<?php echo $image[0]; ?>" alt="" />
+											</a>
+										<?php endif; ?>
+										<?php 
+											$content = $unit->post_content;
+											$content = apply_filters('the_content', $content);
+											$content = str_replace(']]>', ']]&gt;', $content);
+											echo $content;
+										 ?>
+										<a class="btn btn-primary pull-right complex-call-contact-form" data-unit-id="<?= $unit->ID?>" href="#complexContactForm">Kontakt</a>
+										<div class="clearfix"></div>
+									</div>
 								</td>
 							</tr>
 						<?php

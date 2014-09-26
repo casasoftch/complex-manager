@@ -157,7 +157,13 @@ class field_manager extends Feature {
 			'story' => '',
 			'status' => 'available',
 			'currency' => 'CHF',
-			'living_space' => ''
+			'living_space' => '',
+			'idx_ref_house' => '',
+			'idx_ref_object' => '',
+
+			'rendered_purchase_price' => '',
+			'rendered_rent_net' => '',
+			'rendered_living_space' => '',
 		);
 	}
 
@@ -173,7 +179,7 @@ class field_manager extends Feature {
 		return ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
 	}
 
-	public function getUnitItems($unit = false, $specials = false){
+	public function getUnitItems($unit = false, $specials = true){
 		$prefix = '_complexmanager_unit_';
 		$metas = array();
 		if ($unit) {
@@ -213,6 +219,14 @@ class field_manager extends Feature {
 			'status' => array(
 				'label' => __('Status', 'complexmanager'),
 				'value' => $metas['status']
+			),
+			'idx_ref_house' => array(
+				'label' => __('IDX / REMCat House Ref.', 'complexmanager'),
+				'value' => $metas['idx_ref_house']
+			),
+			'idx_ref_object' => array(
+				'label' => __('IDX / REMCat Object Ref.', 'complexmanager'),
+				'value' => $metas['idx_ref_object']
 			),
 
 			'living_space' => array(
