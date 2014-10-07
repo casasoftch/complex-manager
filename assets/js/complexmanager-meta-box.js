@@ -91,6 +91,6 @@ $( cm.media.documentUpload.init );
 jQuery(document).ready(function($){
     $('#complexmanager_unit_graphic_hover_color').wpColorPicker();
     $('#complexmanager_unit_graphic_poly').hide().canvasAreaDraw();
-});
+})(jQuery);
 
 

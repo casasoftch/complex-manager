@@ -12,4 +12,5 @@ class styles_and_scripts extends Feature {
 }
 
 add_action( 'load-post.php', array( 'casasoft\complexmanager\styles_and_scripts', 'init' )  );
+add_action( 'load-post-new.php', array( 'casasoft\complexmanager\styles_and_scripts', 'init' )  );
 

@@ -13,7 +13,6 @@ class unit_metabox extends Feature {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 		add_action( 'admin_enqueue_scripts', array($this, 'js_enqueue' ));
-
 	}
 
 	/**
@@ -86,6 +85,7 @@ class unit_metabox extends Feature {
 				$this->prefix.'balcony_space',
 				$this->prefix.'idx_ref_house',
 				$this->prefix.'idx_ref_object',
+				$this->prefix.'extra_costs',
 			);
 
 			foreach ($texts as $key) {
@@ -99,26 +99,27 @@ class unit_metabox extends Feature {
 	}
 
 	public function js_enqueue() {
-		    global $typenow;
-		    if( $typenow == 'complex_unit' ) {
-		        wp_enqueue_media();
-		 		
-		 		wp_enqueue_script( 'jquery-canvasareadraw', PLUGIN_URL . 'assets/js/jquery.canvasAreaDraw.min.js', array('jquery'));
+	    global $typenow;
+	    if( $typenow == 'complex_unit' ) {
+	        wp_enqueue_media();
+	 		
+	 		wp_register_script( 'jquery-canvasareadraw', PLUGIN_URL . 'assets/js/jquery.canvasAreaDraw.min.js', array('jquery'));
 
-		        // Registers and enqueues the required javascript.
-		        wp_register_script( 'complexmanager-meta-box', PLUGIN_URL.'/assets/js/complexmanager-meta-box.js' , array( 'jquery', 'wp-color-picker', 'jquery-canvasareadraw' ) );
-		        wp_localize_script( 'complexmanager-meta-box', 'i18n',
-		            array(
-		                'title' => __( 'Choose or Upload a Document', 'complexmanager' ),
-		                'button' => __( 'Use this document', 'complexmanager' ),
-		            )
-		        );
-		        wp_enqueue_script( 'complexmanager-meta-box' );
+	        // Registers and enqueues the required javascript.
+	        wp_register_script( 'complexmanager-meta-box', PLUGIN_URL.'/assets/js/complexmanager-meta-box.js' , array( 'jquery', 'wp-color-picker', 'jquery-canvasareadraw' ) );
+	        wp_localize_script( 'complexmanager-meta-box', 'i18n',
+	            array(
+	                'title' => __( 'Choose or Upload a Document', 'complexmanager' ),
+	                'button' => __( 'Use this document', 'complexmanager' ),
+	            )
+	        );
+	        wp_enqueue_script( 'jquery-canvasareadraw' );
+	        wp_enqueue_script( 'complexmanager-meta-box' );
 
-		        wp_enqueue_style( 'wp-color-picker' ); 
+	        wp_enqueue_style( 'wp-color-picker' ); 
 
-		    }
-		}
+	    }
+	}
 
 	/**
 	 * Render Meta Box content.
@@ -160,7 +161,7 @@ class unit_metabox extends Feature {
 
 		echo '<div class="complexmanager-meta-row">';
 			echo '<div class="complexmanager-meta-col">';
-				echo "<h3>General</h3>";
+				echo "<h3>". __('General', 'complexmanager'). "</h3>";
 
 				$value = get_post_meta( $post->ID, '_complexmanager_unit_status', true );
 		        echo '<p><label for="complexmanager_unit_status">';
@@ -191,17 +192,6 @@ class unit_metabox extends Feature {
 		        //echo '<br> (' . __('0 = EG, +1 = 1. OG, -1 = 1. UG', 'complexmanager' ) . ')';
 		        echo '</p>';
 
-		        $value = get_post_meta( $post->ID, '_complexmanager_unit_currency', true );
-		        echo '<p><label for="complexmanager_unit_currency">';
-				_e( 'Currency', 'complexmanager' );
-				echo '</label><br>';
-				echo '<select id="complexmanager_unit_currency" name="complexmanager_unit_currency">';
-					echo '<option value="CHF" ' . ($value == 'CHF' ? 'selected' : '') . '>CHF</option>';
-					echo '<option value="EUR" ' . ($value == 'EUR' ? 'selected' : '') . '>€</option>';
-					echo '<option value="USD" ' . ($value == 'USD' ? 'selected' : '') . '>$</option>';
-					echo '<option value="GBP" ' . ($value == 'GBP' ? 'selected' : '') . '>£</option>';
-		        echo '</select>';
-		        echo '</p>';
 
 		        $key = $this->prefix.'idx_ref_house';
 				$value = get_post_meta( $post->ID, '_'.$key, true );
@@ -226,7 +216,7 @@ class unit_metabox extends Feature {
 
 		    echo "</div>";
 		    echo '<div class="complexmanager-meta-col">';
-		    	echo "<h3>Spaces m<sup>2</sup></h3>";
+		    	echo "<h3>". __('Spaces', 'complexmanager'). " m<sup>2</sup></h3>";
 		       
 		        $key = $this->prefix.'living_space';
 				$value = get_post_meta( $post->ID, '_'.$key, true );
@@ -273,7 +263,19 @@ class unit_metabox extends Feature {
 
 		echo '<div class="complexmanager-meta-row">';
 			echo '<div class="complexmanager-meta-col">';
-				echo "<h3>Buy</h3>";
+				echo "<h3>". __('Buy', 'complexmanager'). "</h3>";
+
+				$value = get_post_meta( $post->ID, '_complexmanager_unit_currency', true );
+		        echo '<p><label for="complexmanager_unit_currency">';
+				_e( 'Currency', 'complexmanager' );
+				echo '</label><br>';
+				echo '<select id="complexmanager_unit_currency" name="complexmanager_unit_currency">';
+					echo '<option value="CHF" ' . ($value == 'CHF' ? 'selected' : '') . '>CHF</option>';
+					echo '<option value="EUR" ' . ($value == 'EUR' ? 'selected' : '') . '>€</option>';
+					echo '<option value="USD" ' . ($value == 'USD' ? 'selected' : '') . '>$</option>';
+					echo '<option value="GBP" ' . ($value == 'GBP' ? 'selected' : '') . '>£</option>';
+		        echo '</select>';
+		        echo '</p>';
 
         		$key = $this->prefix.'purchase_price';
 		        $value = get_post_meta( $post->ID, '_'.$key, true );
@@ -298,7 +300,7 @@ class unit_metabox extends Feature {
 
 		    echo "</div>";
 		   	echo '<div class="complexmanager-meta-col">';
-		   		echo "<h3>Rent</h3>";
+		   		echo "<h3>". __('Rent', 'complexmanager'). "</h3>";
 
 		   		$key = $this->prefix.'rent_net';
 		        $value = get_post_meta( $post->ID, '_'.$key, true );
@@ -330,6 +332,15 @@ class unit_metabox extends Feature {
 					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>Full price</option>';
 					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>per M2</option>';
 		        echo '</select>';
+		        echo '</p>';
+
+		        $key = $this->prefix.'extra_costs';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				_e( 'Extra Costs', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
 		 	echo "</div>";
@@ -396,4 +407,3 @@ class unit_metabox extends Feature {
 
 add_action( 'load-post.php', array( 'casasoft\complexmanager\unit_metabox', 'init' )  );
 add_action( 'load-post-new.php', array( 'casasoft\complexmanager\unit_metabox', 'init' ) );
-

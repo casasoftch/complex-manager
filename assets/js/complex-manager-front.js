@@ -21,10 +21,12 @@ jQuery( function () {
 			});
 
 			$headerRow.next().find('.detail-row-wrapper').slideDown('slow', function(){
-				$('html, body').animate({
-			        scrollTop: $headerRow.next().find('.detail-row-wrapper').offset().top - 100
-			    }, 500);
+				
 			});	
+
+			$('html, body').animate({
+		        scrollTop: $headerRow.next().find('.detail-row-wrapper').offset().top - 100
+		    }, 500);
 	
 			$headerRow.addClass('active');
 			$headerRow.next().addClass('active');
@@ -37,6 +39,11 @@ jQuery( function () {
 	}
 
 	//$('#complexContactForm').hide();
+
+	//fixes safari 6?
+	$(".complex-project-graphic img").load(function(){
+		$('.complex-project-graphic-interaction').height($('.complex-project-graphic img').height());
+	});
 
 	$('.complex-unit-detail-row .detail-row-wrapper').slideUp(0);
 	$('.complex-unit-header-row').click(function() {
@@ -65,9 +72,9 @@ jQuery( function () {
 		$('#complexContactForm').appendTo($(this).parent());
 		$('#complexContactForm').slideUp(0);
 		$('#complexContactForm').slideDown('slow', function(){
-			$('html, body').animate({
+			/*$('html, body').animate({
 		        scrollTop: $("#complexContactForm").offset().top - 100
-		    }, 500);
+		    }, 500);*/
 		});
 		/*$('html, body').animate({
 	        scrollTop: $("#complexContactForm").offset().top - 100

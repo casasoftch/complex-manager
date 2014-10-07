@@ -158,12 +158,21 @@ class field_manager extends Feature {
 			'status' => 'available',
 			'currency' => 'CHF',
 			'living_space' => '',
+			'usable_space' => '',
+			'terrace_space' => '',
+			'balcony_space' => '',
 			'idx_ref_house' => '',
 			'idx_ref_object' => '',
+			'extra_costs' => '',
 
-			'rendered_purchase_price' => '',
-			'rendered_rent_net' => '',
-			'rendered_living_space' => '',
+			'r_purchase_price' => '',
+			'r_rent_net' => '',
+			'r_living_space' => '',
+			'r_usable_space' => '',
+			'r_terrace_space' => '',
+			'r_balcony_space' => '',
+			'r_extra_costs' => '',
+
 		);
 	}
 
@@ -228,23 +237,54 @@ class field_manager extends Feature {
 				'label' => __('IDX / REMCat Object Ref.', 'complexmanager'),
 				'value' => $metas['idx_ref_object']
 			),
-
 			'living_space' => array(
 				'label' => __('Living space', 'complexmanager'),
 				'value' => $metas['living_space']
 			),
+			'usable_space' => array(
+				'label' => __('Usable space', 'complexmanager'),
+				'value' => $metas['usable_space']
+			),
+			'terrace_space' => array(
+				'label' => __('Terrace space', 'complexmanager'),
+				'value' => $metas['living_space']
+			),
+			'balcony_space' => array(
+				'label' => __('Balcony space', 'complexmanager'),
+				'value' => $metas['living_space']
+			),
+			'extra_costs' => array(
+				'label' => __('Extra Costs', 'complexmanager'),
+				'value' => $metas['living_space']
+			),
 		);
 		if ($specials) {
-			$datas['rendered_purchase_price'] = array(
-					'label' => __('Purchase price', 'complexmanager'),
+			$datas['r_purchase_price'] = array(
+					'label' => sprintf(__('Purchase price%s in %s%s', 'complexmanager'), '<span class="hidden-sm hidden-xs">', $datas['currency']['value'], '</span>'),
 					'value' => ''
 				);
-			$datas['rendered_rent_net'] = array(
-				'label' => __('Rent', 'complexmanager'),
+			$datas['r_rent_net'] = array(
+				'label' => sprintf(__('Rent%s in %s%s', 'complexmanager'), '<span class="hidden-sm hidden-xs">', $datas['currency']['value'], '</span>'),
 				'value' => ''
 			);
-			$datas['rendered_living_space'] = array(
+			$datas['r_living_space'] = array(
 				'label' => __('Living space', 'complexmanager'),
+				'value' => ''
+			);
+			$datas['r_usable_space'] = array(
+				'label' => __('Living space', 'complexmanager'),
+				'value' => ''
+			);
+			$datas['r_terrace_space'] = array(
+				'label' => __('Terrace space', 'complexmanager'),
+				'value' => ''
+			);
+			$datas['r_balcony_space'] = array(
+				'label' => __('Balcony space', 'complexmanager'),
+				'value' => ''
+			);
+			$datas['r_extra_costs'] = array(
+				'label' => sprintf(__('Extra Costs%s in %s%s', 'complexmanager'), '<span class="hidden-sm hidden-xs">', $datas['currency']['value'], '</span>'),
 				'value' => ''
 			);
 
@@ -252,19 +292,38 @@ class field_manager extends Feature {
 				$value = (int) $metas['purchase_price'];
 				if ($value) {
 					$currency = $metas['currency'];
-					$datas['rendered_purchase_price']['value'] = $this->render_money($value, $currency);
+					$datas['r_purchase_price']['value'] = $this->render_money($value, $currency);
 				}
 			}
 			if ((int) $metas['rent_net']) {
 				$value = (int) $metas['rent_net'];
 				if ($value) {
 					$currency = $metas['currency'];
-					$datas['rendered_rent_net']['value'] = $this->render_money($value, $currency);
+					$datas['r_rent_net']['value'] = $this->render_money($value, $currency);
 				}
 			}
 			if ((float) $metas['living_space']) {
 				$value = (float) $metas['living_space'];
-				$datas['rendered_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+			}
+			if ((float) $metas['usable_space']) {
+				$value = (float) $metas['usable_space'];
+				$datas['r_usable_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+			}
+			if ((float) $metas['terrace_space']) {
+				$value = (float) $metas['terrace_space'];
+				$datas['r_terrace_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+			}
+			if ((float) $metas['balcony_space']) {
+				$value = (float) $metas['balcony_space'];
+				$datas['r_balcony_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+			}
+			if ((int) $metas['extra_costs']) {
+				$value = (int) $metas['extra_costs'];
+				if ($value) {
+					$currency = $metas['currency'];
+					$datas['r_extra_costs']['value'] = $this->render_money($value, $currency);
+				}
 			}
 		}
 
