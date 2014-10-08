@@ -334,6 +334,7 @@ class render extends Feature {
 		$unit_args = array(
 			'post_type' => 'complex_unit'
 		);
+		$reasons = array();
 		$buildings = array();
 		$building_terms = get_terms( 'building', array() );
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
@@ -392,11 +393,17 @@ class render extends Feature {
 			
 		}
 
+		$terms = get_terms( 'inquiry_reason', array('hide_empty'        => false ));
+		if ($terms) {
+			$reasons = $terms;
+		}
+
 		$template->set('messages', $messages);
 		$template->set('message', $msg);
 		$template->set('state', $state);
 		$template->set('data', $formData);
 		$template->set('buildings', $buildings);
+		$template->set('reasons', $reasons);
 		$message = $template->apply( 'contact-form.php' );
 		return $message;	
 	}

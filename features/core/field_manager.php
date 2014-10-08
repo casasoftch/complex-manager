@@ -15,10 +15,11 @@ class field_manager extends Feature {
 			'street' => '',
 			'postal_code' => '',
 			'locality' => '',
-			'subject' => 'habe Intresse an: ***',
-			'message' => 'Bitte senden Sie mir Informationsunterlagen und registrieren sie mich als potenzieller käufer/vermierter',
+			//'subject' => '',
+			'message' => '',
 			'unit_id' => '',
-			'gender' => 'male'
+			'gender' => 'male',
+			'reason' => '',
 		);
 	}
 
@@ -63,10 +64,10 @@ class field_manager extends Feature {
 				'label' => __('Email', 'complexmanager'),
 				'value' => $metas['email']
 			),
-			'subject' => array(
+			/*'subject' => array(
 				'label' => __('Subject', 'complexmanager'),
 				'value' => $metas['subject']
-			),
+			),*/
 			'message' => array(
 				'label' => __('Message', 'complexmanager'),
 				'value' => $metas['message']
@@ -78,6 +79,10 @@ class field_manager extends Feature {
 			'unit_id' => array(
 				'label' => __('Unit', 'complexmanager'),
 				'value' => $metas['unit_id']
+			),
+			'reason' => array(
+				'label' => __('Reason', 'complexmanager'),
+				'value' => $metas['reason']
 			),
 		);
 		if ($specials) {
@@ -153,6 +158,7 @@ class field_manager extends Feature {
 			'name' => '',
 			'purchase_price' => '',
 			'rent_net' => '',
+			'rent_gross' => '',
 			'number_of_rooms' => '',
 			'story' => '',
 			'status' => 'available',
@@ -167,6 +173,7 @@ class field_manager extends Feature {
 
 			'r_purchase_price' => '',
 			'r_rent_net' => '',
+			'r_rent_gross' => '',
 			'r_living_space' => '',
 			'r_usable_space' => '',
 			'r_terrace_space' => '',
@@ -267,6 +274,14 @@ class field_manager extends Feature {
 				'label' => sprintf(__('Rent%s in %s%s', 'complexmanager'), '<span class="hidden-sm hidden-xs">', $datas['currency']['value'], '</span>'),
 				'value' => ''
 			);
+			$datas['rent_gross'] = array(
+				'label' => __('Rent gross', 'complexmanager'),
+				'value' => ''
+			);
+			$datas['r_rent_gross'] = array(
+				'label' => __('Rent gross', 'complexmanager'),
+				'value' => ''
+			);
 			$datas['r_living_space'] = array(
 				'label' => __('Living space', 'complexmanager'),
 				'value' => ''
@@ -302,6 +317,18 @@ class field_manager extends Feature {
 					$datas['r_rent_net']['value'] = $this->render_money($value, $currency);
 				}
 			}
+			
+			if ((int) $metas['rent_net'] && (int) $metas['extra_costs']) {
+				$value = $metas['rent_net']+$metas['extra_costs'];
+				$datas['rent_gross']['value'] = $value;
+			}
+
+			if ((int) $datas['rent_gross']['value']) {
+				$value = $datas['rent_gross']['value'];
+				$currency = $metas['currency'];
+				$datas['r_rent_gross']['value'] = $this->render_money($value, $currency);
+			}
+			
 			if ((float) $metas['living_space']) {
 				$value = (float) $metas['living_space'];
 				$datas['r_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';

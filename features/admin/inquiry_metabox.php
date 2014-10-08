@@ -76,8 +76,9 @@ class inquiry_metabox extends Feature {
 				$this->prefix.'street',
 				$this->prefix.'postal_code',
 				$this->prefix.'locality',
-				$this->prefix.'subject',
+				//$this->prefix.'subject',
 				$this->prefix.'message',
+				$this->prefix.'reason',
 			);
 
 			foreach ($texts as $key) {
@@ -210,7 +211,16 @@ class inquiry_metabox extends Feature {
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
-		        $key = $this->prefix.'subject';
+		        $key = $this->prefix.'reason';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'Reason', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="text"  id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		       /* $key = $this->prefix.'subject';
 				$value = get_post_meta( $post->ID, '_'.$key, true );
 				echo '<p><label for="'.$key.'">';
 				_e( 'Subject', 'complexmanager' );
@@ -218,7 +228,7 @@ class inquiry_metabox extends Feature {
 				echo '<input type="text"  id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
-
+*/
 		        $key = $this->prefix.'message';
 				$value = get_post_meta( $post->ID, '_'.$key, true );
 				echo '<p><label for="'.$key.'">';

@@ -9,7 +9,7 @@
 						$color = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_hover_color', true );
 						$poly = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_poly', true );
 						if ($poly) {
-							echo '<a data-target="#unit_'.$unit->ID.'" xlink:href="' . $current_url . '#unit_'.$unit->ID.'"><polygon style="fill:'.$color.'" points="'.$poly.'" /></a>';
+							echo '<a xlink:href="' . $current_url . '#unit_'.$unit->ID.'"><polygon style="fill:'.$color.'" points="'.$poly.'" /></a>';
 						}
 					}
 				}

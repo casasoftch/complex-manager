@@ -152,3 +152,23 @@
   background-color: transparent;
   border-bottom: 1px solid #000;
 }
+#complexContactFormAnchor {
+  position: relative;
+}
+#complexContactFormLoader {
+  font-size: 72px;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  border-radius: 5px;
+}
+#complexContactFormLoader i {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
