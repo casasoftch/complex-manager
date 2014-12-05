@@ -77,7 +77,7 @@ class unit_metabox extends Feature {
 				$this->prefix.'rent_propertysegment',
 				$this->prefix.'currency',
 				$this->prefix.'document',
-				$this->prefix.'graphic_hover_color',
+				//$this->prefix.'graphic_hover_color',
 				$this->prefix.'graphic_poly',
 				$this->prefix.'living_space',
 				$this->prefix.'usable_space',
@@ -131,14 +131,14 @@ class unit_metabox extends Feature {
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'complexmanager_inner_custom_box', 'complexmanager_inner_custom_box_nonce' );
 		
-
+/*
         $value = get_post_meta( $post->ID, '_complexmanager_unit_graphic_hover_color', true );
 		echo '<p><label for="complexmanager_unit_graphic_hover_color">';
 		_e( 'Hover color', 'complexmanager' );
 		echo '</label><br>';
 		echo '<input type="text" id="complexmanager_unit_graphic_hover_color" name="complexmanager_unit_graphic_hover_color"';
                 echo ' value="' . esc_attr( $value ) . '" size="25" />';
-        echo '</p>';
+        echo '</p>';*/
 
        	$value = get_post_meta( $post->ID, '_complexmanager_unit_graphic_poly', true );
         $image_src = PLUGIN_URL.'assets/img/example-project-bg.png';
@@ -171,6 +171,7 @@ class unit_metabox extends Feature {
 					echo '<option value="available" ' . ($value == 'available' ? 'selected' : '') . '>' . __('Available', 'complexmanager') . '</option>';
 					echo '<option value="reserved" '  . ($value == 'reserved' ? 'selected' : '') . '>'  . __('Reserved', 'complexmanager') . '</option>';
 					echo '<option value="sold" '      . ($value == 'sold' ? 'selected' : '') . '>'      . __('Sold', 'complexmanager') . '</option>';
+					echo '<option value="rented" '    . ($value == 'rented' ? 'selected' : '') . '>'      . __('Rented', 'complexmanager') . '</option>';
 		        echo '</select>';
 		        echo '</p>';
 

@@ -6,10 +6,11 @@
 				$current_url = "http" . (($_SERVER['SERVER_PORT']==443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 				foreach ($buildings as $building) {
 					foreach ($building['units'] as $unit) {
-						$color = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_hover_color', true );
+						$status = get_cxm($unit, 'status');
+						//$color = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_hover_color', true );
 						$poly = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_poly', true );
 						if ($poly) {
-							echo '<a xlink:href="' . $current_url . '#unit_'.$unit->ID.'"><polygon style="fill:'.$color.'" points="'.$poly.'" /></a>';
+							echo '<a class="status-'.$status.'" xlink:href="' . $current_url . '#unit_'.$unit->ID.'"><polygon points="'.$poly.'" /></a>';
 						}
 					}
 				}

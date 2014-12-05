@@ -46,7 +46,7 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<?php _e('Name', 'complexmanager') ?>
+					<?php _e('Name', 'complexmanager') ?>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small>
 				</dt>
 				<dd class="editable">
 					<div class="row">
@@ -62,14 +62,16 @@
 						</div>
 					</div>
 				</dd>
-				<dt class="editable"><label><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?></label></dt>
+				<dt class="editable">
+					<label><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small></label>
+				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
 						<input required type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= $data['email'] ?>">									
 					</div>
 				</dd>
 				<dt class="editable">
-					<label><?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?></label>									
+					<label><?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?></label>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small>									
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
@@ -77,7 +79,7 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<?php _e('Address', 'complexmanager') ?>
+					<?php _e('Address', 'complexmanager') ?>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small>
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
@@ -114,7 +116,8 @@
 				<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
 			</div>
 			
-			<button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
+			<small class=""><i class="fa fa-asterisk text-danger"></i> Bitte alle Pflichtfelder ausfüllen</small>
+			<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
 		</div>
 	</div>
 </form> 

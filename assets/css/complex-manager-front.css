@@ -25,6 +25,16 @@
   opacity: 0.5;
   box-shadow: 1px 1px 2px black;
 }
+.complex-project-graphic-interaction a.status-available polygon {
+  fill: #00ff00;
+}
+.complex-project-graphic-interaction a.status-reserved polygon {
+  fill: #FF9933;
+}
+.complex-project-graphic-interaction a.status-sold polygon,
+.complex-project-graphic-interaction a.status-rented polygon {
+  fill: #ff0000;
+}
 .complex-unit-caret-cell {
   text-align: center;
   width: 30px;
@@ -70,6 +80,9 @@
 .complex-list-wrapper {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+.table-responsive > .table > tbody > tr > td .complex-contact-form-wrapper .alert {
+  white-space: normal;
 }
 .complex-contact-form-wrapper {
   padding: 25px 15px 15px 15px;

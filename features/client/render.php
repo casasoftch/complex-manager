@@ -35,6 +35,16 @@ class render extends Feature {
 	    	}
 	    $i++; }
 
+	    $cols = maybe_unserialize((maybe_unserialize($this->get_option("list_cols"))));
+	   	if (!$cols || !is_array($cols)) {
+	   		$cols = array();
+	   	} else {
+	   		//sort
+			uasort($cols, function($a, $b){
+				return $a["order"] - $b["order"];
+			});
+	   	}
+
 	    return $this->renderTable($cols);
 	}
 
@@ -48,14 +58,14 @@ class render extends Feature {
 	}
 
 	public function renderTable($cols){
-		if (!$cols) {
+		/*if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
 				if (in_array($key, array('name', 'status'))) {
 					$cols[] = array('field' => $key, 'label' => $col['label']);
 				}
 			}
-		}
+		}*/
 
 		$unit_args = array(
 			'post_type' => 'complex_unit',

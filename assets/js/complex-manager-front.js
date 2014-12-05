@@ -9,7 +9,10 @@ jQuery( function () {
 
 		function activateProjectUnit($headerRow){
 			$('.complex-project-graphic-interaction a').each(function(index, el) {
-				$(el).attr("class", "");
+				// removeClass
+				$(el).attr('class', function(index, classNames) {
+				    return classNames.replace('active', '');
+				});
 			});
 
 			if ($headerRow.hasClass('active')) {
@@ -36,7 +39,10 @@ jQuery( function () {
 				$('.complex-project-graphic-interaction a').each(function(iindex, iel) {
 
 					if (endsWith($(iel).attr("xlink:href"), id)) {
-						$(iel).attr("class", "active");
+						//addClass
+						$(iel).attr('class', function(index, classNames) {
+						    return classNames + ' active';
+						});
 					}
 				});
 
