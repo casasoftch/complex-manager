@@ -11,7 +11,7 @@
 					<tr class="col-labels">
 						<?php foreach ($cols as $field => $col): ?>
 							<?php if ($col['active']): ?>
-								<th class="<?= ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') ?>"><?=nl2br(str_replace('\n', "\n", ($col['label'] ? $col['label'] : get_cxm_label(false, $field, 'complex_unit') ) ) ) ?></th>	
+								<th <?= ($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') ?>><?=nl2br(str_replace('\n', "\n", ($col['label'] ? $col['label'] : get_cxm_label(false, $field, 'complex_unit') ) ) ) ?></th>	
 							<?php endif ?>
 						<?php endforeach ?>
 						<th></th>
