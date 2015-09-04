@@ -190,7 +190,8 @@ class field_manager extends Feature {
 			case 'EUR': $currency = '€'; $before = false; $space = ''; break;
 			case 'USD': $currency = '$'; break;
 			case 'GBP': $currency = '£'; break;
-			case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
+			//case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
+			case 'CHF': $currency = 'CHF'; $before = true; $space = ' '; break;
 		}
 		return ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
 	}

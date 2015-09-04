@@ -26,9 +26,13 @@
 							case 'rented': $state = 'danger'; break;
 							case 'sold': $state = 'danger'; break;
 						}
+
 						echo '<tr class="complex-unit-header-row '.$state.'" id="unit_'.$unit->ID.'">';
 						$i = 0; foreach ($cols as $field => $col) { 
+
+							
 							if ($col['active']):
+								
 								$i++;
 								switch ($field) {
 									case 'status':
@@ -42,11 +46,14 @@
 										}
 										echo '<td class="hidden-sm hidden-xs"><span class="text-'.$state.'">' . $value . '</span></td>';
 										break;
-									case 'price':
-										$value = '';
+									case 'r_purchase_price':
+									case 'r_rent_net':
+									case 'r_rent_gross':
+
+										$value = get_cxm($unit, $field);	
 										$currency = false;
-										if (isset($cols['currency'])) {
-											$currency = $cols['currency'];
+										if (get_cxm($unit, 'unit_currency')) {
+											$currency = get_cxm($unit, 'unit_currency');
 										}
 										echo '<td '.($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') . '>' . ($currency ? $currency . ' ' : '') . $value . '</td>';
 										break;
