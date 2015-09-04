@@ -42,6 +42,14 @@
 										}
 										echo '<td class="hidden-sm hidden-xs"><span class="text-'.$state.'">' . $value . '</span></td>';
 										break;
+									case 'price':
+										$value = '';
+										$currency = false;
+										if (isset($cols['currency'])) {
+											$currency = $cols['currency'];
+										}
+										echo '<td '.($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') . '>' . ($currency ? $currency . ' ' : '') . $value . '</td>';
+										break;
 									default:
 										if (
 											$col['hidden-reserved'] == 0
