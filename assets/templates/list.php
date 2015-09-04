@@ -53,7 +53,7 @@
 											$value = '';
 										}
 										
-										echo '<td class="'.($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . '"><span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span></td>';
+										echo '<td '.($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') . '><span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span></td>';
 										break;
 								}
 							endif;
