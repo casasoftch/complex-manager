@@ -6,8 +6,8 @@ var uglify = require('gulp-uglify');
 
 
 gulp.task('less', function() {
-  gulp.src('./bower_components/featherlight/release/featherlight.min.css').pipe(gulp.dest('./../js'));
-  gulp.src('./bower_components/featherlight/release/featherlight.gallery.min.css').pipe(gulp.dest('./../js'));
+  gulp.src('less/complex-manager-admin.less').pipe(less({relativeUrls: false})).pipe(autoprefixer()).pipe(minifyCSS({'rebase' : false})).pipe(gulp.dest('./../css'));
+  gulp.src('less/complex-manager-front.less').pipe(less({relativeUrls: false})).pipe(autoprefixer()).pipe(minifyCSS({'rebase' : false})).pipe(gulp.dest('./../css'));
 });
 
 gulp.task('js', function(){

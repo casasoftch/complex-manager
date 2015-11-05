@@ -17,8 +17,8 @@ jQuery( function () {
 					});
 				}
 			});
-			$('.complex-custom-overlays img').hide();
-			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').show();
+			$('.complex-custom-overlays img').fadeOut('fast');
+			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeIn('fast');
 		}
 
 		function unhighlightProjectUnit($headerRow){
@@ -31,7 +31,7 @@ jQuery( function () {
 					});
 				}
 			});
-			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').hide();
+			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut('fast');
 		}
 
 		function activateProjectUnit($headerRow){

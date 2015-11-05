@@ -68,6 +68,7 @@ class render extends Feature {
 		}*/
 
 		$unit_args = array(
+			'posts_per_page' => 99,
 			'post_type' => 'complex_unit',
 			'orderby' => 'menu_order',
 			'order' => 'ASC'
@@ -95,17 +96,14 @@ class render extends Feature {
 
 	public function renderGraphic(){
 		$unit_args = array(
-			'post_type' => 'complex_unit'
+			'post_type' => 'complex_unit',
+			'posts_per_page' => 99
 		);
 
 		$image = PLUGIN_URL.'assets/img/example-project-bg.png';
 		$width = 1152;
 	    $height = 680;
 
-
-	    $unit_args = array(
-			'post_type' => 'complex_unit'
-		);
 		$buildings = array();
 		$building_terms = get_terms( 'building', array() );
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
