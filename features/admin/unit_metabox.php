@@ -79,6 +79,7 @@ class unit_metabox extends Feature {
 				$this->prefix.'document',
 				//$this->prefix.'graphic_hover_color',
 				$this->prefix.'graphic_poly',
+				$this->prefix.'custom_overlay',
 				$this->prefix.'living_space',
 				$this->prefix.'usable_space',
 				$this->prefix.'terrace_space',
@@ -156,6 +157,16 @@ class unit_metabox extends Feature {
         		'.$value.'
         		</textarea>
         	</div>';
+
+        echo "<hr>";
+
+        echo '<p>';
+        $value = get_post_meta( $post->ID, '_complexmanager_unit_custom_overlay', true );
+        echo '<div class="uploader">
+				<input style="width:100%;" id="complexmanager_unit_custom_overlay" name="complexmanager_unit_custom_overlay" value="'.$value.'" type="text" />
+				<input style="width:100%;" id="complexmanager_unit_custom_overlay_button" class="button" name="complexmanager_unit_custom_overlay_button" type="button" value="Spezifisches Overlay auswählen" />
+			</div>';
+		echo "</p>";
 
         echo "<hr>";
 
