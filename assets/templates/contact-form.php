@@ -6,8 +6,8 @@
 <?php endif ?>
 <form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST">
 	<input type="hidden" name="complex-unit-inquiry[post]" value="1">
-	<div class="row">
-		<div class="col-md-2">
+	<div class="complex-form-parts">
+		<div class="complex-form-part">
 			<?php _e('I am interested in the unit', 'complexmanager') ?>
 			<select name="complex-unit-inquiry[unit_id]">
 				<option> – </option>
@@ -22,7 +22,7 @@
 				 ?>
 			</select>
 		</div>
-		<div class="col-md-5">
+		<div class="complex-form-part">
 			<dl>
 				<dt class="editable">
 					<?php _e('Salutation', 'complexmanager') ?>
@@ -101,7 +101,7 @@
 			</dl>
 
 		</div>
-		<div class="col-md-5">
+		<div class="complex-form-part">
 			<?php if ($reasons): ?>
 				<div>
 					<select class="form-control" name="complex-unit-inquiry[reason]">

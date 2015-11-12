@@ -340,7 +340,10 @@ class render extends Feature {
 		$template = $this->get_template();
 		
 		$unit_args = array(
-			'post_type' => 'complex_unit'
+			'post_type' => 'complex_unit',
+			'posts_per_page' => 99,
+			'orderby' => 'menu_order',
+			'order' => 'ASC'
 		);
 		$reasons = array();
 		$buildings = array();

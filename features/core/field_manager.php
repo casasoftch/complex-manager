@@ -170,6 +170,8 @@ class field_manager extends Feature {
 			'idx_ref_house' => '',
 			'idx_ref_object' => '',
 			'extra_costs' => '',
+			'download_file' => '',
+			'download_label' => '',
 
 			'r_purchase_price' => '',
 			'r_rent_net' => '',
@@ -264,6 +266,14 @@ class field_manager extends Feature {
 			'extra_costs' => array(
 				'label' => __('Extra Costs', 'complexmanager'),
 				'value' => $metas['living_space']
+			),
+			'download_file' => array(
+				'label' => __('Download file', 'complexmanager'),
+				'value' => $metas['download_file']
+			),
+			'download_label' => array(
+				'label' => __('Download label', 'complexmanager'),
+				'value' => $metas['download_label']
 			),
 		);
 		if ($specials) {

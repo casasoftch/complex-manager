@@ -29,3 +29,8 @@ function get_default_cxm($type, $specials = true){
 	}
 	return array();
 }
+
+function render_cxm_form(){
+	$render = new \casasoft\complexmanager\render;
+	return $render->renderForm(array());
+}

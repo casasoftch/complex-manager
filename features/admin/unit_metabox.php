@@ -80,6 +80,8 @@ class unit_metabox extends Feature {
 				//$this->prefix.'graphic_hover_color',
 				$this->prefix.'graphic_poly',
 				$this->prefix.'custom_overlay',
+				$this->prefix.'download_file',
+				$this->prefix.'download_label',
 				$this->prefix.'living_space',
 				$this->prefix.'usable_space',
 				$this->prefix.'terrace_space',
@@ -165,6 +167,24 @@ class unit_metabox extends Feature {
         echo '<div class="uploader">
 				<input style="width:100%;" id="complexmanager_unit_custom_overlay" name="complexmanager_unit_custom_overlay" value="'.$value.'" type="text" />
 				<input style="width:100%;" id="complexmanager_unit_custom_overlay_button" class="button" name="complexmanager_unit_custom_overlay_button" type="button" value="Spezifisches Overlay auswählen" />
+			</div>';
+		echo "</p>";
+
+		echo "<hr>";
+
+		echo '<p>';
+
+		
+        echo '<p><label for="complexmanager_unit_download_label">';
+		_e( 'Download file', 'complexmanager' );
+		echo '</label><br>';
+
+		$labelvalue = get_post_meta( $post->ID, '_complexmanager_unit_download_label', true );
+        $value = get_post_meta( $post->ID, '_complexmanager_unit_download_file', true );
+        echo '<div class="uploader">
+        		<input type="text" id="complexmanager_unit_download_label" name="complexmanager_unit_download_label" placeholder="Button name" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_download_file" name="complexmanager_unit_download_file" value="'.$value.'" type="text" placeholder="Datei" />
+				<input id="complexmanager_unit_download_file_button" class="button" name="complexmanager_unit_download_file_button" type="button" value="Download-Datei auswählen" />
 			</div>';
 		echo "</p>";
 

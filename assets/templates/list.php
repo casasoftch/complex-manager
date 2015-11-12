@@ -91,7 +91,10 @@
 											$content = str_replace(']]>', ']]&gt;', $content);
 											echo $content;
 										 ?>
-										<a class="btn btn-primary pull-right complex-call-contact-form" data-unit-id="<?= $unit->ID?>" href="#complexContactForm">Kontakt</a>
+										 <?php if (get_cxm($unit, 'download_file')): ?>
+										 	<a target="_blank" class="btn btn-primary pull-left complex-download-btn" href="<?= get_cxm($unit, 'download_file') ?>"><?= (get_cxm($unit, 'download_label') ? get_cxm($unit, 'download_label') : 'Download') ?></a>
+										 <?php endif ?>
+											<a class="btn btn-primary pull-right complex-call-contact-form" data-unit-id="<?= $unit->ID?>" href="#complexContactForm">Kontakt</a>
 										<div class="clearfix"></div>
 									</div>
 								</td>

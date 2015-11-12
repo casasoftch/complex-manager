@@ -17,21 +17,26 @@ jQuery( function () {
 					});
 				}
 			});
-			$('.complex-custom-overlays img').fadeOut('fast');
-			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeIn('fast');
+			$('.complex-custom-overlays img').not('.active').fadeOut('fast');
+			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').addClass('active').fadeIn('fast');
 		}
 
 		function unhighlightProjectUnit($headerRow){
-			var id = "#"+$headerRow.prop('id');
-			$('.complex-project-graphic-interaction a').each(function(iindex, iel) {
-				if (endsWith($(iel).attr("xlink:href"), id)) {
-					//addClass
-					$(iel).attr('class', function(index, classNames) {
-					    return classNames.replace('active', '');
-					});
-				}
-			});
-			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut('fast');
+			if ($headerRow.hasClass('active')) {
+
+			} else {
+				var id = "#"+$headerRow.prop('id');
+				$('.complex-project-graphic-interaction a').each(function(iindex, iel) {
+					if (endsWith($(iel).attr("xlink:href"), id)) {
+						//addClass
+						$(iel).attr('class', function(index, classNames) {
+						    return classNames.replace('active', '');
+						});
+					}
+				});
+				$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut('fast');
+			}
+			
 		}
 
 		function activateProjectUnit($headerRow){
@@ -72,7 +77,7 @@ jQuery( function () {
 			$form.on('submit', function(event) {
 				event.preventDefault();
 				if (!$('#complexContactFormLoader').length) {
-					$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin">&#9883;</i></div>');
+					$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
 				}
 				$('#complexContactFormLoader').fadeIn('slow');
 				var data = $form.serialize();
@@ -102,6 +107,7 @@ jQuery( function () {
 		
 		//row click
 		$('.complex-unit-header-row').click(function() {
+			$('.complex-custom-overlays img').removeClass('active').hide();
 			activateProjectUnit($(this));
 		});
 
