@@ -66,15 +66,10 @@ jQuery( function () {
 				$headerRow.addClass('active');
 				$headerRow.next().addClass('active');
 
-
-
-
 				/*$('html, body').animate({
 			        scrollTop: $headerRow.next().find('.detail-row-wrapper').offset().top - 100
 			    }, 500);*/
-				
 
-			
 				highlightProjectUnit($headerRow);
 			}
 		}
