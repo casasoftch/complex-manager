@@ -46,7 +46,7 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<?php _e('Name', 'complexmanager') ?>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small>
+					<?php _e('Name', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
 				</dt>
 				<dd class="editable">
 					<div class="row">
@@ -63,7 +63,7 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<label><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small></label>
+					<label><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
@@ -71,7 +71,7 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<label><?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?></label>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small>									
+					<label><?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?></label>&nbsp;<small><span class="text-danger">*</span></small>									
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
@@ -79,7 +79,7 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<?php _e('Address', 'complexmanager') ?>&nbsp;<small><i class="fa fa-asterisk text-danger"></i></small>
+					<?php _e('Address', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
@@ -104,8 +104,8 @@
 		<div class="complex-form-part">
 			<?php if ($reasons): ?>
 				<div>
+					<label>Das Projekt kenne ich über...<small><span class="text-danger">*</span></small></label>
 					<select class="form-control" name="complex-unit-inquiry[reason]">
-						<option>Das Projekt kenne ich über...</option>
 						<?php foreach ($reasons as $reason): ?>
 							<option value="<?= $reason->term_id ?>" <?= ($data['reason'] == $reason->term_id ? 'selected="selected"' : '') ?>><?= $reason->name ?></option>
 						<?php endforeach ?>
@@ -116,7 +116,7 @@
 				<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
 			</div>
 			
-			<small class=""><i class="fa fa-asterisk text-danger"></i> Bitte alle Pflichtfelder ausfüllen</small>
+			<small class=""><span class="text-danger">*</span> Bitte alle Pflichtfelder ausfüllen</small>
 			<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
 		</div>
 	</div>
