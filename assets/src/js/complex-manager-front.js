@@ -52,6 +52,9 @@ jQuery( function () {
 				$headerRow.removeClass('active');
 				$headerRow.next().removeClass('active');
 			} else {
+
+				scrolltoheaderRow($headerRow);
+
 				$('.complex-unit-header-row.active').each(function(index, el) {
 					
 					$(el).next().find('.detail-row-wrapper').slideUp('slow');
@@ -63,11 +66,29 @@ jQuery( function () {
 				$headerRow.addClass('active');
 				$headerRow.next().addClass('active');
 
-				$('html, body').animate({
+
+
+
+				/*$('html, body').animate({
 			        scrollTop: $headerRow.next().find('.detail-row-wrapper').offset().top - 100
-			    }, 500);
+			    }, 500);*/
+				
+
 			
 				highlightProjectUnit($headerRow);
+			}
+		}
+
+		function scrolltoheaderRow($headerRow){
+			var $tr = $headerRow;
+			if ($('.complex-unit-detail-row.active').length && $('.complex-unit-detail-row.active').offset().top < $tr.offset().top) {
+				$('html, body').animate({
+			        scrollTop: $tr.offset().top - $('.complex-unit-detail-row.active').outerHeight()
+			    }, 500);
+			} else {
+				$('html, body').animate({
+			        scrollTop: $tr.offset().top
+			    }, 500);
 			}
 		}
 
@@ -165,6 +186,31 @@ jQuery( function () {
 			$('#complexContactForm').slideUp('slow');
 			$('.complex-call-contact-form').show();
 		});
+
+		/*$('tr.complex-unit-header-row').click(function() {
+			var $tr = $(this);
+			if ($('complex-unit-detail-row.active').length) {
+				alert('complex-unit active exists');
+				if ($('complex-unit-detail-row.active').offset().top < $tr.offset().top) {
+					alert($('complex-unit-detail-row.active').outerHeight());
+					$('html, body').animate({
+				        scrollTop: $tr.offset().top - $('complex-unit-detail-row.active').outerHeight()
+				    }, 500);
+				} else {
+					alert('offset top of active is smaller than clicked element');
+					alert();
+					$('html, body').animate({
+				        scrollTop: $tr.offset().top
+				    }, 500);
+				};
+			} else {
+				alert('complex-unit active does not exist');
+				$('html, body').animate({
+			        scrollTop: $tr.offset().top
+			    }, 500);
+			}
+			
+		});*/
 
 	}(jQuery));
 
