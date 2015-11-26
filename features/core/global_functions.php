@@ -32,6 +32,7 @@ function get_default_cxm($type, $specials = true){
 
 function render_cxm_form(){
 	$render = new \casasoft\complexmanager\render;
-	return $render->renderForm(array());
+	return '<div class="complex-contact-form-wrapper" id="complexContactForm" style="display: block;">' . $render->renderForm(array()) . '</div>';
+
 }
 add_shortcode( 'contactform-complex', 'render_cxm_form' );

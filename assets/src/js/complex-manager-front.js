@@ -108,7 +108,7 @@ jQuery( function () {
 		}
 
 		//hide form
-		$('#complexContactForm').hide();
+		$('.complex-list-wrapper #complexContactForm').hide();
 
 		//fixes safari 6?
 		$(".complex-project-graphic img").load(function(){
