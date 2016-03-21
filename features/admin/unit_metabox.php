@@ -89,6 +89,9 @@ class unit_metabox extends Feature {
 				$this->prefix.'idx_ref_house',
 				$this->prefix.'idx_ref_object',
 				$this->prefix.'extra_costs',
+				$this->prefix.'custom_1',
+				$this->prefix.'custom_2',
+				$this->prefix.'custom_3',
 			);
 
 			foreach ($texts as $key) {
@@ -303,6 +306,7 @@ class unit_metabox extends Feature {
 				echo '</label><br>';
 				echo '<select id="complexmanager_unit_currency" name="complexmanager_unit_currency">';
 					echo '<option value="CHF" ' . ($value == 'CHF' ? 'selected' : '') . '>CHF</option>';
+					echo '<option value="" ' . ($value == 'CHF' ? '' : '') . '>–</option>';
 					echo '<option value="EUR" ' . ($value == 'EUR' ? 'selected' : '') . '>€</option>';
 					echo '<option value="USD" ' . ($value == 'USD' ? 'selected' : '') . '>$</option>';
 					echo '<option value="GBP" ' . ($value == 'GBP' ? 'selected' : '') . '>£</option>';
@@ -375,10 +379,53 @@ class unit_metabox extends Feature {
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
+
+
+
 		 	echo "</div>";
 		    echo '<div style="clear:both"></div>';
         echo "</div>"; 	
 
+        echo "<hr>";
+
+		echo '<div class="complexmanager-meta-row">';
+			echo '<div class="complexmanager-meta-col">';
+				echo "<h3>". __('Custom Fields', 'complexmanager'). "</h3>";
+
+				$key = $this->prefix.'custom_1';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				echo sprintf(__( 'Custom %d', 'complexmanager' ), 1);
+				echo '</label><br>';
+				echo '<input type="text" step="1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		        $key = $this->prefix.'custom_2';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				echo sprintf(__( 'Custom %d', 'complexmanager' ), 2);
+				echo '</label><br>';
+				echo '<input type="text" step="1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		        $key = $this->prefix.'custom_3';
+		        $value = get_post_meta( $post->ID, '_'.$key, true );
+		        echo '<p><label for="'.$key.'">';
+				echo sprintf(__( 'Custom %d', 'complexmanager' ), 3);
+				echo '</label><br>';
+				echo '<input type="text" step="1" min="0" id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		    echo "</div>";
+		   	echo '<div class="complexmanager-meta-col">';
+		   		
+
+		 	echo "</div>";
+		    echo '<div style="clear:both"></div>';
+        echo "</div>"; 	
 
         /* echo "<hr>";
 

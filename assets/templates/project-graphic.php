@@ -22,7 +22,7 @@
 						$status = get_cxm($unit, 'status');
 						//$color = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_hover_color', true );
 						$poly = get_post_meta( $unit->ID, '_complexmanager_unit_graphic_poly', true );
-						if ($poly) {
+						if ($poly && $poly != 'NaN') {
 							echo '<a class="status-'.$status.'" xlink:href="' . $current_url . '#unit_'.$unit->ID.'"><polygon points="'.$poly.'" /></a>';
 						}
 					}

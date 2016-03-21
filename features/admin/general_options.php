@@ -114,6 +114,22 @@ class general_options extends Feature
             array( $this, 'emails_callback' ), 
             'complex-manager-admin', 
             'cxm_1'
+        );  
+
+        add_settings_field(
+            'provider_slug', 
+             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> Provider ID', 'complexmanager' ), 
+            array( $this, 'provider_slug_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
+        );   
+
+        add_settings_field(
+            'publisher_slug', 
+             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> Publisher ID', 'complexmanager' ), 
+            array( $this, 'publisher_slug_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
         );    
 
         add_settings_field(
@@ -162,6 +178,14 @@ class general_options extends Feature
 
         if( isset( $input['emails'] ) ) {
             $new_input['emails'] = sanitize_text_field( $input['emails'] );
+        }
+
+        if( isset( $input['provider_slug'] ) ) {
+            $new_input['provider_slug'] = sanitize_text_field( $input['provider_slug'] );
+        }
+
+        if( isset( $input['publisher_slug'] ) ) {
+            $new_input['publisher_slug'] = sanitize_text_field( $input['publisher_slug'] );
         }
 
         if( isset( $input['remcat'] ) ) {
@@ -215,6 +239,22 @@ class general_options extends Feature
         );
     }
 
+    public function provider_slug_callback()
+    {
+        printf(
+            '<input type="text" id="provider_slug" name="complex_manager[provider_slug]" value="%s" />',
+            isset( $this->options['provider_slug'] ) ? esc_attr( $this->options['provider_slug']) : ''
+        );
+    }
+
+    public function publisher_slug_callback()
+    {
+        printf(
+            '<input type="text" id="publisher_slug" name="complex_manager[publisher_slug]" value="%s" />',
+            isset( $this->options['publisher_slug'] ) ? esc_attr( $this->options['publisher_slug']) : ''
+        );
+    }
+
     public function remcat_callback()
     {
         printf(
@@ -244,9 +284,9 @@ class general_options extends Feature
             }
         }
 
-        if (!$set) {
+        /*if (!$set) {
             echo "<strong>Sehr Wichtig!!!</strong>";
-        }
+        }*/
 
         printf(
             '
@@ -381,6 +421,33 @@ class general_options extends Feature
                 'hidden-reserved' => '',
                 'label' => '',
                 'order' => 13,
+            ),
+
+            'custom_1' => array(
+                'o_label' => sprintf(__( 'Custom %d', 'complexmanager' ), 1),
+                'active' => 0,
+                'hidden-xs' => '',
+                'hidden-reserved' => '',
+                'label' => '',
+                'order' => 14,
+            ),
+
+            'custom_2' => array(
+                'o_label' => sprintf(__( 'Custom %d', 'complexmanager' ), 2),
+                'active' => 0,
+                'hidden-xs' => '',
+                'hidden-reserved' => '',
+                'label' => '',
+                'order' => 15,
+            ),
+
+            'custom_3' => array(
+                'o_label' => sprintf(__( 'Custom %d', 'complexmanager' ), 3),
+                'active' => 0,
+                'hidden-xs' => '',
+                'hidden-reserved' => '',
+                'label' => '',
+                'order' => 16,
             ),
 
 

@@ -5,7 +5,12 @@ function get_cxm($object_id = false, $key = false, $label = false, $type = false
 	$post = false;
 	if ($object_id) {
 		$post = get_post($object_id);
-		$type = $post->post_type;
+		if ($post) {
+			$type = $post->post_type;
+		} else {
+			return '';
+		}
+		
 	}
 	
 	if ($type == 'complex_unit') {

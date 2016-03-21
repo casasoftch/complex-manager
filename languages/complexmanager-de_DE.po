@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-12 14:04+0100\n"
-"PO-Revision-Date: 2015-02-12 14:04+0100\n"
+"POT-Creation-Date: 2016-03-17 09:16+0100\n"
+"PO-Revision-Date: 2016-03-17 09:17+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: en_US\n"
@@ -12,13 +12,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../assets/templates/contact-form.php:11
-msgid "I am interested in the unit"
-msgstr "Ich interessiere mich für die Wohnung"
+msgid "I am interested in"
+msgstr "Ich interessiere mich für"
 
 #: ../assets/templates/contact-form.php:28
 #: ../features/admin/inquiry_metabox.php:141
@@ -55,25 +55,21 @@ msgstr "Beschreiben Sie Ihre Anfrage"
 msgid "Send"
 msgstr "Senden"
 
-#: ../assets/templates/list.php:37 ../features/admin/unit_metabox.php:171
+#: ../assets/templates/list.php:46 ../features/admin/unit_metabox.php:205
 msgid "Available"
 msgstr "Verfügbar"
 
-#: ../assets/templates/list.php:38 ../features/admin/unit_metabox.php:172
+#: ../assets/templates/list.php:47 ../features/admin/unit_metabox.php:206
 msgid "Reserved"
 msgstr "Reserviert"
 
-#: ../assets/templates/list.php:39 ../features/admin/unit_metabox.php:174
+#: ../assets/templates/list.php:48 ../features/admin/unit_metabox.php:208
 msgid "Rented"
 msgstr "Vermietet"
 
-#: ../assets/templates/list.php:40 ../features/admin/unit_metabox.php:173
+#: ../assets/templates/list.php:49 ../features/admin/unit_metabox.php:207
 msgid "Sold"
 msgstr "Verkauft"
-
-#: ../features/silence.php:3
-msgid "Silence is golden... or at least isn't completely annoying."
-msgstr ""
 
 #: ../features/admin/general_options.php:42
 msgid "Complex Manager Settings"
@@ -112,68 +108,81 @@ msgid "Upload Image"
 msgstr "Bild hochladen"
 
 #: ../features/admin/general_options.php:274
-#: ../features/admin/unit_metabox.php:180
+#: ../features/admin/unit_metabox.php:214
 msgid "Number of Rooms"
 msgstr "Zimmer"
 
 #: ../features/admin/general_options.php:282
-#: ../features/admin/unit_metabox.php:189
+#: ../features/admin/unit_metabox.php:223
 msgid "Apartment Story"
 msgstr "Wohnung/Stockwerk"
 
 #: ../features/admin/general_options.php:290
-#: ../features/admin/unit_metabox.php:225
+#: ../features/admin/unit_metabox.php:259
 msgid "Living Space"
 msgstr "Wohnfläche"
 
 #: ../features/admin/general_options.php:299
-#: ../features/admin/unit_metabox.php:234
+#: ../features/admin/unit_metabox.php:268
 msgid "Usable Space"
 msgstr "Nutzfläche"
 
 #: ../features/admin/general_options.php:307
-#: ../features/admin/unit_metabox.php:284
+#: ../features/admin/unit_metabox.php:319
 msgid "Purchase Price"
 msgstr "Kaufpreis"
 
 #: ../features/admin/general_options.php:316
-#: ../features/admin/unit_metabox.php:309
+#: ../features/admin/unit_metabox.php:344
 msgid "Rent Net Price"
 msgstr "Mietkosten Netto"
 
 #: ../features/admin/general_options.php:325
-#: ../features/core/field_manager.php:278
-#: ../features/core/field_manager.php:282
+#: ../features/core/field_manager.php:305
+#: ../features/core/field_manager.php:309
 msgid "Rent gross"
 msgstr "Brutto miete"
 
 #: ../features/admin/general_options.php:336
-#: ../features/admin/unit_metabox.php:341
-#: ../features/core/field_manager.php:264
+#: ../features/admin/unit_metabox.php:376
+#: ../features/core/field_manager.php:270
 msgid "Extra Costs"
 msgstr "Nebenkosten"
 
 #: ../features/admin/general_options.php:345
-#: ../features/admin/unit_metabox.php:244
+#: ../features/admin/unit_metabox.php:278
 msgid "Terrace Space"
 msgstr "Terrassenfläche"
 
 #: ../features/admin/general_options.php:354
-#: ../features/admin/unit_metabox.php:253
+#: ../features/admin/unit_metabox.php:287
 msgid "Balcony Space"
 msgstr "Balkonfläche"
 
 #: ../features/admin/general_options.php:369
-#: ../features/admin/unit_metabox.php:168
-#: ../features/core/field_manager.php:236
+#: ../features/admin/unit_metabox.php:202
+#: ../features/core/field_manager.php:242
 msgid "Status"
 msgstr "Status"
 
 #: ../features/admin/general_options.php:378
-#: ../features/admin/unit_metabox.php:271
-#: ../features/core/field_manager.php:220
+#: ../features/admin/unit_metabox.php:305
+#: ../features/core/field_manager.php:226
 msgid "Currency"
 msgstr "Währung"
+
+#: ../features/admin/general_options.php:387
+#: ../features/admin/general_options.php:396
+#: ../features/admin/general_options.php:405
+#: ../features/admin/unit_metabox.php:398
+#: ../features/admin/unit_metabox.php:407
+#: ../features/admin/unit_metabox.php:416
+#: ../features/core/field_manager.php:282
+#: ../features/core/field_manager.php:286
+#: ../features/core/field_manager.php:290
+#, php-format
+msgid "Custom %d"
+msgstr ""
 
 #: ../features/admin/inquiry_archive_cols.php:15
 msgid "From"
@@ -197,12 +206,12 @@ msgid "Unit Settings"
 msgstr "Objekt Einstellungen"
 
 #: ../features/admin/inquiry_metabox.php:105
-#: ../features/admin/unit_metabox.php:112
+#: ../features/admin/unit_metabox.php:118
 msgid "Choose or Upload a Document"
 msgstr "Wähle oder lade ein Dokument hoch"
 
 #: ../features/admin/inquiry_metabox.php:106
-#: ../features/admin/unit_metabox.php:113
+#: ../features/admin/unit_metabox.php:119
 msgid "Use this document"
 msgstr "Verwende dieses Dokument"
 
@@ -261,107 +270,115 @@ msgstr ""
 
 #: ../features/admin/post_type_icons.php:37
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
-"Sie haben nicht ausreichende Rechte um Zugang zu dieser Seite zu haben."
+msgstr "Sie haben nicht ausreichende Rechte um Zugang zu dieser Seite zu haben."
 
-#: ../features/admin/unit_metabox.php:164
+#: ../features/admin/unit_metabox.php:182
+#: ../features/core/field_manager.php:274
+msgid "Download file"
+msgstr ""
+
+#: ../features/admin/unit_metabox.php:198
 msgid "General"
 msgstr "Generell"
 
-#: ../features/admin/unit_metabox.php:200
-#: ../features/core/field_manager.php:240
+#: ../features/admin/unit_metabox.php:234
+#: ../features/core/field_manager.php:246
 msgid "IDX / REMCat House Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:209
-#: ../features/core/field_manager.php:244
+#: ../features/admin/unit_metabox.php:243
+#: ../features/core/field_manager.php:250
 msgid "IDX / REMCat Object Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:220
+#: ../features/admin/unit_metabox.php:254
 msgid "Spaces"
 msgstr "Flächen"
 
-#: ../features/admin/unit_metabox.php:267
+#: ../features/admin/unit_metabox.php:301
 msgid "Buy"
 msgstr "Kaufen"
 
-#: ../features/admin/unit_metabox.php:288
+#: ../features/admin/unit_metabox.php:323
 msgid "\"\" = not for sale, 0 = upon request"
 msgstr "\"\" = nicht zu verkaufen, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:294
+#: ../features/admin/unit_metabox.php:329
 msgid "Purchase scope"
 msgstr "Verkaufs-Segmentierung"
 
-#: ../features/admin/unit_metabox.php:304
-#: ../features/core/field_manager.php:224
+#: ../features/admin/unit_metabox.php:339
+#: ../features/core/field_manager.php:230
 msgid "Rent"
 msgstr "Miete"
 
-#: ../features/admin/unit_metabox.php:313
+#: ../features/admin/unit_metabox.php:348
 msgid "\"\" = not for rent, 0 = upon request"
 msgstr "\"\" = nicht zu vermieten, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:319
+#: ../features/admin/unit_metabox.php:354
 msgid "Rent Time segment"
 msgstr "Mieten zeitabschnitt"
 
-#: ../features/admin/unit_metabox.php:330
+#: ../features/admin/unit_metabox.php:365
 msgid "Rental scope"
 msgstr "Miet-Segmentierung"
 
-#: ../features/client/render.php:166
+#: ../features/admin/unit_metabox.php:393
+msgid "Custom Fields"
+msgstr ""
+
+#: ../features/client/render.php:216
 msgid "First name is required"
 msgstr "Vorname ist benötigt"
 
-#: ../features/client/render.php:167
+#: ../features/client/render.php:217
 msgid "Last name is required"
 msgstr "Nachname ist benötigt"
 
-#: ../features/client/render.php:168
+#: ../features/client/render.php:218
 msgid "Email is not valid"
 msgstr "E-Mail ist nicht korrekt"
 
-#: ../features/client/render.php:169
+#: ../features/client/render.php:219
 msgid "A phone number is required"
 msgstr "Eine Telefonnummer ist benötigt"
 
-#: ../features/client/render.php:170
+#: ../features/client/render.php:220
 msgid "A street address is required"
 msgstr "Eine Strasse ist benötigt"
 
-#: ../features/client/render.php:171
+#: ../features/client/render.php:221
 msgid "ZIP is required"
 msgstr "PLZ ist benötigt"
 
-#: ../features/client/render.php:172
+#: ../features/client/render.php:222
 msgid "City is required"
 msgstr "Ort ist benötigt"
 
-#: ../features/client/render.php:176
+#: ../features/client/render.php:226
 msgid "Ivalid post"
 msgstr "Falsche Absendung"
 
-#: ../features/client/render.php:267 ../features/client/render.php:330
+#: ../features/client/render.php:317 ../features/client/render.php:380
 msgid "Unit inquiry"
 msgstr "Objektanfrage"
 
-#: ../features/client/render.php:302
+#: ../features/client/render.php:352
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: ../features/client/render.php:318 ../features/core/field_manager.php:80
+#: ../features/client/render.php:368 ../features/core/field_manager.php:80
 #: ../features/core/field_manager.php:102
-#: ../features/core/field_manager.php:212
+#: ../features/core/field_manager.php:218
 msgid "Unit"
 msgstr "Objekt"
 
-#: ../features/client/render.php:366
+#: ../features/client/render.php:419
 msgid "Inquiry has been sent. Thank you!"
 msgstr "Anfrage wurde versendet. Danke!"
 
-#: ../features/client/render.php:394
+#: ../features/client/render.php:447
 msgid "Please check the following and try again:"
 msgstr "Bitte überprüfen Sie folgendes und versuchen Sie es erneut:"
 
@@ -369,49 +386,53 @@ msgstr "Bitte überprüfen Sie folgendes und versuchen Sie es erneut:"
 msgid "Gender"
 msgstr "Geschlecht"
 
-#: ../features/core/field_manager.php:216
+#: ../features/core/field_manager.php:222
 msgid "Purchase price"
 msgstr "Kaufpreis"
 
-#: ../features/core/field_manager.php:228
+#: ../features/core/field_manager.php:234
 msgid "Rooms"
 msgstr "Zimmer"
 
-#: ../features/core/field_manager.php:232
+#: ../features/core/field_manager.php:238
 msgid "Floor"
 msgstr "Etage"
 
-#: ../features/core/field_manager.php:248
-#: ../features/core/field_manager.php:286
-#: ../features/core/field_manager.php:290
+#: ../features/core/field_manager.php:254
+#: ../features/core/field_manager.php:313
+#: ../features/core/field_manager.php:317
 msgid "Living space"
 msgstr "Wohnfläche"
 
-#: ../features/core/field_manager.php:252
+#: ../features/core/field_manager.php:258
 msgid "Usable space"
 msgstr "Nutzfläche"
 
-#: ../features/core/field_manager.php:256
-#: ../features/core/field_manager.php:294
+#: ../features/core/field_manager.php:262
+#: ../features/core/field_manager.php:321
 msgid "Terrace space"
 msgstr "Terrassenfläche"
 
-#: ../features/core/field_manager.php:260
-#: ../features/core/field_manager.php:298
+#: ../features/core/field_manager.php:266
+#: ../features/core/field_manager.php:325
 msgid "Balcony space"
 msgstr "Balkonfläche"
 
-#: ../features/core/field_manager.php:270
+#: ../features/core/field_manager.php:278
+msgid "Download label"
+msgstr ""
+
+#: ../features/core/field_manager.php:297
 #, php-format
 msgid "Purchase price%s in %s%s"
 msgstr "Kaufpreis%s in %s%s"
 
-#: ../features/core/field_manager.php:274
+#: ../features/core/field_manager.php:301
 #, php-format
 msgid "Rent%s in %s%s"
 msgstr "Mietzins%s in %s%s"
 
-#: ../features/core/field_manager.php:302
+#: ../features/core/field_manager.php:329
 #, php-format
 msgid "Extra Costs%s in %s%s"
 msgstr "Nebenkosten%s in %s%s"
@@ -675,6 +696,10 @@ msgstr "Neuer Grund"
 #: ../features/core/post_types.php:143
 msgid "Reasons"
 msgstr "Gründe"
+
+#: ../features/silence.php:3
+msgid "Silence is golden... or at least isn't completely annoying."
+msgstr ""
 
 #~ msgid "Hover color"
 #~ msgstr "Schwebefarbe"

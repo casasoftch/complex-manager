@@ -3,11 +3,162 @@ jQuery( function () {
 
 	(function($){
 
+		//var CXMscrollOffset = 50;
+		var CXMscrollOffset = 124;
+
 		function endsWith(string, search){
 		    return string.substring( string.length - search.length, string.length ) === search;
 		}
 
-		function highlightProjectUnit($headerRow){
+
+		function getQueryStringKey(key) {
+		    return getQueryStringAsObject()[key];
+		}
+
+
+		function getQueryStringAsObject(custom_q) {
+		    var b, cv, e, k, ma, sk, v, r = {},
+		        d = function (v) { return decodeURIComponent(v).replace(/\+/g, " "); }, //# d(ecode) the v(alue)
+		        q = window.location.search.substring(1),
+		        s = /([^&;=]+)=?([^&;]*)/g //# original regex that does not allow for ; as a delimiter:   /([^&=]+)=?([^&]*)/g
+		    ;
+		    if (custom_q) {
+		    	q = custom_q;
+		    }
+
+		    //# ma(make array) out of the v(alue)
+		    ma = function(v) {
+		        //# If the passed v(alue) hasn't been setup as an object
+		        if (typeof v != "object") {
+		            //# Grab the cv(current value) then setup the v(alue) as an object
+		            cv = v;
+		            v = {};
+		            v.length = 0;
+
+		            //# If there was a cv(current value), .push it into the new v(alue)'s array
+		            //#     NOTE: This may or may not be 100% logical to do... but it's better than loosing the original value
+		            if (cv) { Array.prototype.push.call(v, cv); }
+		        }
+		        return v;
+		    };
+
+		    //# While we still have key-value e(ntries) from the q(uerystring) via the s(earch regex)...
+		    while (e = s.exec(q)) { //# while((e = s.exec(q)) !== null) {
+		        //# Collect the open b(racket) location (if any) then set the d(ecoded) v(alue) from the above split key-value e(ntry) 
+		        b = e[1].indexOf("[");
+		        v = d(e[2]);
+
+		        //# As long as this is NOT a hash[]-style key-value e(ntry)
+		        if (b < 0) { //# b == "-1"
+		            //# d(ecode) the simple k(ey)
+		            k = d(e[1]);
+
+		            //# If the k(ey) already exists
+		            if (r[k]) {
+		                //# ma(make array) out of the k(ey) then .push the v(alue) into the k(ey)'s array in the r(eturn value)
+		                r[k] = ma(r[k]);
+		                Array.prototype.push.call(r[k], v);
+		            }
+		            //# Else this is a new k(ey), so just add the k(ey)/v(alue) into the r(eturn value)
+		            else {
+		                r[k] = v;
+		            }
+		        }
+		        //# Else we've got ourselves a hash[]-style key-value e(ntry) 
+		        else {
+		            //# Collect the d(ecoded) k(ey) and the d(ecoded) sk(sub-key) based on the b(racket) locations
+		            k = d(e[1].slice(0, b));
+		            sk = d(e[1].slice(b + 1, e[1].indexOf("]", b)));
+
+		            //# ma(make array) out of the k(ey) 
+		            r[k] = ma(r[k]);
+
+		            //# If we have a sk(sub-key), plug the v(alue) into it
+		            if (sk) { r[k][sk] = v; }
+		            //# Else .push the v(alue) into the k(ey)'s array
+		            else { Array.prototype.push.call(r[k], v); }
+		        }
+		    }
+
+		    //# Return the r(eturn value)
+		    return r;
+		}
+
+
+		function fixQuery(query){
+			var returnQuery = {};
+			if (query.rooms) {
+				if(typeof query.rooms === "string") {
+					returnQuery.rooms = [query.rooms];
+				} else {
+					returnQuery.rooms = query.rooms;
+				}
+			} else {
+				returnQuery.rooms = null;
+			}
+			if (query.status) {
+				if(typeof query.status === "string") {
+					returnQuery.status = [query.status];
+				} else {
+					returnQuery.status = query.status;
+				}
+			} else {
+				returnQuery.status = null;
+			}
+			return returnQuery;
+		}
+
+		function filterList(query, $list){
+			query = fixQuery(query);
+			$list.find('tr.complex-unit-header-row').each(function(index, tr) {
+				var data = $(tr).data('json');
+				
+				var room_pass = true;
+				if (data && data.number_of_rooms && query.rooms) {
+					room_pass = false;
+					console.log(query.rooms);
+					$.each(query.rooms, function(index, value) {
+						if(value == data.number_of_rooms){
+					    	room_pass = true;
+					    }
+					});
+				}
+
+				var status_pass = true;
+				if (data && data.status && query.statuss) {
+					status_pass = false;
+					console.log(query.statuss);
+					$.each(query.statuss, function(index, value) {
+						if(value == data.status){
+					    	status_pass = true;
+					    }
+					});
+				}
+
+				var status_pass = true;
+				if (data.status && query.status) {
+					var init = $.grep(query.status, function(item) {
+					    return (item == data.status);
+					});
+					if (init.length === 0) {
+						status_pass = false;
+					} else {
+						status_pass = true;
+					}
+				}
+
+				if (room_pass && status_pass) {
+					$(tr).removeClass('filtered');
+					$(tr).next().removeClass('filtered');
+				} else {
+					$(tr).addClass('filtered');
+					$(tr).next().addClass('filtered');
+				}
+			});
+		}
+
+		function highlightProjectUnit($headerRow, speed){
+			speed = typeof speed !== 'undefined' ? speed : 0;
 			var id = "#"+$headerRow.prop('id');
 			$('.complex-project-graphic-interaction a').each(function(iindex, iel) {
 				if (endsWith($(iel).attr("xlink:href"), id)) {
@@ -17,11 +168,12 @@ jQuery( function () {
 					});
 				}
 			});
-			$('.complex-custom-overlays img').not('.active').fadeOut('fast');
-			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').addClass('active').fadeIn('fast');
+			$('.complex-custom-overlays img').not('.active').fadeOut(speed);
+			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').addClass('active').fadeIn(speed);
 		}
 
-		function unhighlightProjectUnit($headerRow){
+		function unhighlightProjectUnit($headerRow, speed){
+			speed = typeof speed !== 'undefined' ? speed : 0;
 			if ($headerRow.hasClass('active')) {
 
 			} else {
@@ -34,7 +186,7 @@ jQuery( function () {
 						});
 					}
 				});
-				$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut('fast');
+				$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut(speed);
 			}
 			
 		}
@@ -53,7 +205,7 @@ jQuery( function () {
 				$headerRow.next().removeClass('active');
 			} else {
 
-				scrolltoheaderRow($headerRow);
+				scrolltoheaderRow($headerRow, CXMscrollOffset);
 
 				$('.complex-unit-header-row.active').each(function(index, el) {
 					
@@ -74,15 +226,16 @@ jQuery( function () {
 			}
 		}
 
-		function scrolltoheaderRow($headerRow){
+		function scrolltoheaderRow($headerRow, offset){
+			offset = typeof offset !== 'undefined' ? offset : 0;
 			var $tr = $headerRow;
 			if ($('.complex-unit-detail-row.active').length && $('.complex-unit-detail-row.active').offset().top < $tr.offset().top) {
 				$('html, body').animate({
-			        scrollTop: $tr.offset().top - $('.complex-unit-detail-row.active').outerHeight()
+			        scrollTop: $tr.offset().top - $('.complex-unit-detail-row.active').outerHeight() - offset
 			    }, 500);
 			} else {
 				$('html, body').animate({
-			        scrollTop: $tr.offset().top
+			        scrollTop: $tr.offset().top - offset
 			    }, 500);
 			}
 		}
@@ -92,6 +245,7 @@ jQuery( function () {
 		function ajaxifyContactForm($form){
 			$form.on('submit', function(event) {
 				event.preventDefault();
+				$form.find(':input').prop('disabled', false);
 				if (!$('#complexContactFormLoader').length) {
 					$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
 				}
@@ -122,9 +276,19 @@ jQuery( function () {
 		ajaxifyContactForm($('#complexContactFormAnchor'));
 		
 		//row click
-		$('.complex-unit-header-row').click(function() {
-			$('.complex-custom-overlays img').removeClass('active').hide();
-			activateProjectUnit($(this));
+		var dragging = false;
+		$("body").on("touchmove", function(){
+		      dragging = true;
+		});
+		$("body").on("touchstart", function(){
+		    dragging = false;
+		});
+		$('.complex-unit-header-row').on('click touchend', function(event) {
+			event.preventDefault();
+			if (!dragging) {
+				$('.complex-custom-overlays img').removeClass('active').hide();
+				activateProjectUnit($(this));
+			}
 		});
 
 		//row hover
@@ -142,7 +306,7 @@ jQuery( function () {
 		}
 
 		//graphic svg click
-		$('.complex-project-graphic-interaction a').click(function(event) {
+		$('.complex-project-graphic-interaction a').on('click touchend', function(event) {
 			event.preventDefault();
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
@@ -167,11 +331,15 @@ jQuery( function () {
 		$('.complex-call-contact-form').click(function(event) {
 			event.preventDefault();
 			var unit_id = $(this).data('unit-id');
-			$('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
+			$('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id).prop('disabled','disabled');
 			$('#complexContactForm').appendTo($(this).parent());
 			$('#complexContactForm').slideUp(0);
 			$('#complexContactForm').slideDown('slow');
+			//$("#complexContactForm input:text, #complexContactForm textarea").first().focus();
 			$('.complex-sendback-contact-form').show();
+			$('html, body').animate({
+		        scrollTop: $('#complexContactForm').offset().top - CXMscrollOffset
+		    }, 500);
 			$(this).hide();
 		});
 
@@ -180,6 +348,18 @@ jQuery( function () {
 			event.preventDefault();
 			$('#complexContactForm').slideUp('slow');
 			$('.complex-call-contact-form').show();
+		});
+
+		var query = getQueryStringAsObject();
+		filterList(query, $('.complex-list-wrapper'));
+
+		$('#complexFilterForm').change(function(event) {
+			var querystring = $('#complexFilterForm').serialize();
+			querystring = querystring.replace(/%5B/g, '[');
+			querystring = querystring.replace(/%5D/g, ']');
+			query = getQueryStringAsObject(querystring);
+			console.log(querystring);
+			filterList(query, $('.complex-list-wrapper'));
 		});
 
 		/*$('tr.complex-unit-header-row').click(function() {

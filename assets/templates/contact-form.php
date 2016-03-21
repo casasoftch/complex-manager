@@ -8,7 +8,7 @@
 	<input type="hidden" name="complex-unit-inquiry[post]" value="1">
 	<div class="complex-form-parts">
 		<div class="complex-form-part">
-			<?php _e('I am interested in the unit', 'complexmanager') ?>
+			<?php _e('I am interested in', 'complexmanager') ?>
 			<select name="complex-unit-inquiry[unit_id]">
 				<option> – </option>
 				<?php 
@@ -105,7 +105,7 @@
 			<?php if ($reasons): ?>
 				<div>
 					<label>Das Projekt kenne ich über...<small><span class="text-danger">*</span></small></label>
-					<select class="form-control" name="complex-unit-inquiry[reason]">
+					<select class="form-control-select" name="complex-unit-inquiry[reason]">
 						<?php foreach ($reasons as $reason): ?>
 							<option value="<?= $reason->term_id ?>" <?= ($data['reason'] == $reason->term_id ? 'selected="selected"' : '') ?>><?= $reason->name ?></option>
 						<?php endforeach ?>

@@ -181,6 +181,9 @@ class field_manager extends Feature {
 			'r_terrace_space' => '',
 			'r_balcony_space' => '',
 			'r_extra_costs' => '',
+			'custom_1' => '',
+			'custom_2' => '',
+			'custom_3' => '',
 
 		);
 	}
@@ -275,6 +278,19 @@ class field_manager extends Feature {
 				'label' => __('Download label', 'complexmanager'),
 				'value' => $metas['download_label']
 			),
+			'custom_1' => array(
+				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 1),
+				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_1'])
+			),
+			'custom_2' => array(
+				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 2),
+				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_2'])
+			),
+			'custom_3' => array(
+				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 3),
+				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_3'])
+			),
+
 		);
 		if ($specials) {
 			$datas['r_purchase_price'] = array(

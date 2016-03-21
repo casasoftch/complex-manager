@@ -1,6 +1,6 @@
 <div class="complex-list-wrapper">
 	<?php foreach ( $buildings as $building ) { ?>
-		<div class="table-responsive">
+		<div class="table-responsive complex-building-<?= $building['term']->slug ?>">
 			<table class="table table-condensed">
 				<thead>
 					<tr>
@@ -11,7 +11,7 @@
 					<tr class="col-labels">
 						<?php foreach ($cols as $field => $col): ?>
 							<?php if ($col['active']): ?>
-								<th <?= ($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') ?>><?=nl2br(str_replace('\n', "\n", ($col['label'] ? $col['label'] : get_cxm_label(false, $field, 'complex_unit') ) ) ) ?></th>	
+								<th <?= ($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') ?> class="col-<?= $field ?>"><?=nl2br(str_replace('\n', "\n", ($col['label'] ? $col['label'] : get_cxm_label(false, $field, 'complex_unit') ) ) ) ?></th>	
 							<?php endif ?>
 						<?php endforeach ?>
 						<th></th>
@@ -27,7 +27,12 @@
 							case 'sold': $state = 'danger'; break;
 						}
 
-						echo '<tr class="complex-unit-header-row '.$state.'" id="unit_'.$unit->ID.'">';
+						$data = array();
+						foreach ($cols as $field => $col) {
+							$value = get_cxm($unit, $field);
+							$data[$field] = htmlentities($value);
+						}
+						echo '<tr class="complex-unit-header-row '.$state.'" id="unit_'.$unit->ID.'" data-json="' . htmlspecialchars(json_encode($data), ENT_QUOTES, 'UTF-8') . '">';
 						$i = 0; foreach ($cols as $field => $col) { 
 
 							
@@ -38,24 +43,31 @@
 									case 'status':
 										$value = '';
 										switch ($status) {
-											case 'available': $value = '<span class="text-success">'.__('Available', 'complexmanager').'</span>'; break;
-											case 'reserved': $value = '<span class="text-'.$state.'">'.__('Reserved', 'complexmanager').'</span>'; break;
-											case 'rented': $value = '<span class="text-'.$state.'">'.__('Rented', 'complexmanager').'</span>'; break;
-											case 'sold': $value = '<span class="text-'.$state.'">'.__('Sold', 'complexmanager').'</span>'; break;
+											case 'available': $value = '<span class="text-success">'.strtolower(__('Available', 'complexmanager')).'</span>'; break;
+											case 'reserved': $value = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
+											case 'rented': $value = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
+											case 'sold': $value = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
 											default: $value = $status;
 										}
-										echo '<td class="hidden-sm hidden-xs"><span class="text-'.$state.'">' . $value . '</span></td>';
+										echo '<td class="hidden-sm hidden-xs col-status"><span class="text-'.$state.'">' . $value . '</span></td>';
 										break;
 									case 'r_purchase_price':
 									case 'r_rent_net':
 									case 'r_rent_gross':
-
-										$value = get_cxm($unit, $field);	
-										$currency = false;
-										if (get_cxm($unit, 'unit_currency')) {
-											$currency = get_cxm($unit, 'unit_currency');
+										if (
+											$col['hidden-reserved'] == 0
+											||
+											!in_array($status, array('reserved', 'sold', 'rented'))
+										) {
+											$value = get_cxm($unit, $field);	
+											$currency = false;
+											if (get_cxm($unit, 'unit_currency')) {
+												$currency = get_cxm($unit, 'unit_currency');
+											}
+										} else {
+											$value = '';
 										}
-										echo '<td '.($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') . '>' . ($currency ? $currency . ' ' : '') . $value . '</td>';
+										echo '<td class="'.($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field . '">' . ($currency ? $currency . ' ' : '') . $value . '</td>';
 										break;
 									default:
 										if (
@@ -68,7 +80,7 @@
 											$value = '';
 										}
 										
-										echo '<td '.($col['hidden-xs'] ? 'class="hidden-sm hidden-xs"' : '') . '><span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span></td>';
+										echo '<td class="'.($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field . '"><span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span></td>';
 										break;
 								}
 							endif;
@@ -106,11 +118,12 @@
 		echo "</div>";
 	}
 	?>
+	<div class="complex-contact-form-wrapper" id="complexContactForm">
+		<a style="display:none" class="pull-right complex-sendback-contact-form" href="#complexContactForm"><i class="glyphicon glyphicon-remove"></i><span class="sr-only">Cancel</span></a>
+		<?= $form ?>
+	</div>
 </div>
-<div class="complex-contact-form-wrapper" id="complexContactForm">
-	<a style="display:none" class="pull-right complex-sendback-contact-form" href="#complexContactForm"><i class="glyphicon glyphicon-remove"></i><span class="sr-only">Cancel</span></a>
-	<?= $form ?>
-</div>
+
 
 
 
