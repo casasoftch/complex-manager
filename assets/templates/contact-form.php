@@ -7,21 +7,25 @@
 <form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST">
 	<input type="hidden" name="complex-unit-inquiry[post]" value="1">
 	<div class="complex-form-parts">
-		<div class="complex-form-part">
-			<?php _e('I am interested in', 'complexmanager') ?>
-			<select name="complex-unit-inquiry[unit_id]">
-				<option> – </option>
-				<?php 
-					foreach ($buildings as $building) {
-						echo '<optgroup label="'.$building['term']->name.'">';
-						foreach ($building['units'] as $unit) {
-							echo '<option value="'.$unit->ID.'" '.($unit->ID == $data['unit_id'] ? 'selected="selected"' : '').'>'.$unit->post_title.'</option>';
+		<?php if (count($buildings) == 1 && count($buildings[0]['units']) == 1): ?>
+			<input type="hidden" name="complex-unit-inquiry[unit_id]" value="<?php echo $buildings[0]['units'][0]->ID; ?>" />
+		<?php else: ?>
+			<div class="complex-form-part">
+				<?php _e('I am interested in', 'complexmanager') ?>
+				<select name="complex-unit-inquiry[unit_id]">
+					<option> – </option>
+					<?php 
+						foreach ($buildings as $building) {
+							echo '<optgroup label="'.$building['term']->name.'">';
+							foreach ($building['units'] as $unit) {
+								echo '<option value="'.$unit->ID.'" '.($unit->ID == $data['unit_id'] ? 'selected="selected"' : '').'>'.$unit->post_title.'</option>';
+							}
+							echo "</optgroup>";
 						}
-						echo "</optgroup>";
-					}
-				 ?>
-			</select>
-		</div>
+					 ?>
+				</select>
+			</div>
+		<?php endif; ?>
 		<div class="complex-form-part">
 			<dl>
 				<dt class="editable">
