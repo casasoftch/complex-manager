@@ -79,7 +79,7 @@
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
-						<input required type="tel" name="complex-unit-inquiry[phone]"  pattern="[0-9]*" class="form-control" value="<?= $data['phone'] ?>">									
+						<input required type="tel" name="complex-unit-inquiry[phone]" class="form-control" value="<?= $data['phone'] ?>">									
 					</div>
 				</dd>
 				<dt class="editable">
