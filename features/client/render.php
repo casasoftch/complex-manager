@@ -427,7 +427,12 @@ class render extends Feature {
 			$data                = array();
 			$data['firstname']   = get_cxm($inquiry->ID, 'first_name');
 			$data['lastname']    = get_cxm($inquiry->ID, 'last_name');
-			//$data['gender']      = 1;
+			$gender = get_cxm($inquiry->ID, 'gender');
+			if ($gender == 'female') {
+				$data['gender']      = 2;
+			} elseif ($gender == 'male') {
+				$data['gender']      = 1;
+			}
 			$data['street']      = get_cxm($inquiry->ID, 'street');
 			//$data['legal_name']  = 'Firma';
 			$data['postal_code'] = get_cxm($inquiry->ID, 'postal_code');
