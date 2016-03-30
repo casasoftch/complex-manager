@@ -1,10 +1,18 @@
 <div class="complex-list-wrapper">
 	<?php foreach ( $buildings as $building ) { ?>
 		<div class="table-responsive complex-building-<?= $building['term']->slug ?>">
+			<?php 
+				$colcount = 0;
+				foreach ($cols as $field => $col){
+					if ($col['active']) {
+						$colcount++;
+					}
+				}
+			 ?>
 			<table class="table table-condensed">
 				<thead>
 					<tr>
-						<th colspan="<?= count($cols)+1 ?>"><?= $building['term']->name  ?></th>
+						<th colspan="<?= $colcount+1 ?>"><?= $building['term']->name  ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -89,7 +97,7 @@
 						echo "</tr>";
 						?>
 							<tr class="complex-unit-detail-row">
-								<td colspan="<?= count($cols)+1 ?>">
+								<td colspan="<?= $colcount+1 ?>">
 									<div class="detail-row-wrapper">
 										<?php if (has_post_thumbnail( $unit->ID ) ): ?>
 											<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $unit->ID ), 'large' ); ?>

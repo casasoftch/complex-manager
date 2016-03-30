@@ -542,7 +542,11 @@ class render extends Feature {
 					'comment_status' => 'closed',
 				);  
 
+				do_action('cxm_before_inquirystore', $formData);
+
 				$inquiry = $this->storeInquiry($inq_post, $formData);
+
+				do_action('cxm_before_inquirysend', $formData);
 
 				$this->sendEmail(false, $inquiry);
 				$this->sendRemcat(false, $inquiry);
@@ -551,6 +555,8 @@ class render extends Feature {
 					$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs);
 					$state = 'danger';
 				}
+
+				do_action('cxm_after_inquirysend', $formData);
 
 				//empty form
 				$formData = $this->getFormData(true);
