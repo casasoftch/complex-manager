@@ -71,6 +71,7 @@ class inquiry_metabox extends Feature {
 				$this->prefix.'gender',
 				$this->prefix.'first_name',
 				$this->prefix.'last_name',
+				$this->prefix.'legal_name',
 				$this->prefix.'email',
 				$this->prefix.'phone',
 				$this->prefix.'street',
@@ -154,6 +155,16 @@ class inquiry_metabox extends Feature {
 		        echo '</p>';
 
 		        $key = $this->prefix.'last_name';
+				$value = get_post_meta( $post->ID, '_'.$key, true );
+				echo '<p><label for="'.$key.'">';
+				_e( 'Last name', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="text"  id="'.$key.'" name="'.$key.'"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+
+		        $key = $this->prefix.'legal_name';
 				$value = get_post_meta( $post->ID, '_'.$key, true );
 				echo '<p><label for="'.$key.'">';
 				_e( 'Last name', 'complexmanager' );

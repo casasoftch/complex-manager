@@ -133,6 +133,16 @@ class general_options extends Feature
         );    
 
         add_settings_field(
+            'space_decimal', 
+             __( 'Space/Area Decimal', 'complexmanager' ), 
+            array( $this, 'space_decimal_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
+        );    
+
+        
+
+        add_settings_field(
             'remcat', 
              __( 'Remcat', 'complexmanager' ), 
             array( $this, 'remcat_callback' ), 
@@ -171,6 +181,7 @@ class general_options extends Feature
      */
     public function sanitize( $input )
     {
+
         $new_input = array();
         if( isset( $input['id_number'] ) ) {
             $new_input['id_number'] = absint( $input['id_number'] );
@@ -186,6 +197,10 @@ class general_options extends Feature
 
         if( isset( $input['publisher_slug'] ) ) {
             $new_input['publisher_slug'] = sanitize_text_field( $input['publisher_slug'] );
+        }
+
+        if( isset( $input['space_decimal'] ) ) {
+            $new_input['space_decimal'] = absint( $input['space_decimal'] );
         }
 
         if( isset( $input['remcat'] ) ) {
@@ -252,6 +267,14 @@ class general_options extends Feature
         printf(
             '<input type="text" id="publisher_slug" name="complex_manager[publisher_slug]" value="%s" />',
             isset( $this->options['publisher_slug'] ) ? esc_attr( $this->options['publisher_slug']) : ''
+        );
+    }
+
+    public function space_decimal_callback()
+    {
+        printf(
+            '<input type="number" id="space_decimal" name="complex_manager[space_decimal]" value="%s" />',
+            isset( $this->options['space_decimal'] ) ? esc_attr( $this->options['space_decimal']) : ''
         );
     }
 
@@ -401,9 +424,6 @@ class general_options extends Feature
 
             
 
-            
-
-          
 
             'status' => array(
                 'o_label' => __( 'Status', 'complexmanager' ),
@@ -450,6 +470,15 @@ class general_options extends Feature
                 'order' => 16,
             ),
 
+            'quick-download' => array(
+                'o_label' => __( 'Download', 'complexmanager' ),
+                'active' => 0,
+                'hidden-xs' => 0,
+                'hidden-reserved' => 0,
+                'label' => '',
+                'order' => 17,
+            ),
+
 
             /*'idx_ref_house' => array(
                 'o_label' => __( 'Number of Rooms', 'complexmanager' ),
@@ -470,6 +499,24 @@ class general_options extends Feature
 
             
         );
+
+        
+        //add linguistical attribute defaults?
+        $extra_langs = array();
+        $defaultlang = get_bloginfo('language');
+        if (function_exists('icl_get_languages')) {
+            $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+            foreach ($langs as $iso => $options) {
+                $extra_langs[$iso] = $options;
+            }
+        } else {
+        }
+        foreach ($cols as $key => $data) {
+            foreach ($extra_langs as $iso => $options) {
+                $cols[$key]['label_'.$iso] = '';
+            }            
+        }
+
         
         $cur_array = maybe_unserialize( $this->options['list_cols']);
         if ($cur_array && is_array($cur_array)) {
@@ -489,24 +536,65 @@ class general_options extends Feature
                 print_r($this->options['list_cols']);
             }*/
 
+        $extra_langs = array();
+        $defaultlang = get_bloginfo('language');
+        if (function_exists('icl_get_languages')) {
+            $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+            foreach ($langs as $iso => $options) {
+                $extra_langs[$iso] = $options;
+            }
+        } else {
+            $extra_langs[substr($defaultlang, 0, 2)] = array(
+                'code' => substr($defaultlang, 0, 2),
+                'id' => '',
+                'native_name' => '',
+                'major' => '1',
+                'active' => '',
+                'default_locale' => $defaultlang,
+                'encode_url' => '',
+                'tag' => $defaultlang,
+                'translated_name' => '',
+                'url' => '',
+                'country_flag_url' => '',
+                'language_code' => substr($defaultlang, 0, 2),
+            );
+        }
+        
+        $th_langs = '';
+        foreach ($extra_langs as $iso => $options) {
+             if (substr($defaultlang, 0, 2)== $iso) {
+                $th_langs .= '<th>Anzeigename</th>';
+            } else {
+                $th_langs .= '<th>Anzeigename ' . $options['code'] . '</th>';
+            }
+        }
+
         echo '<table class="table">';
             echo '<thead><tr>
                 <th>Feldname</th>
                 <th>Aktiv</th>
                 <th>Mobil verstecken</th>
                 <th>Bei reserviert verstecken</th>
-                <th>Betitelung</th>
+                '.$th_langs.'
                 <th>Anordnung</th>
             </tr></thead>';
             
             echo "<tbody>";
             foreach ($cols as $col => $col_options) {
+                $td_inputs = '';
+                foreach ($extra_langs as $iso => $options) {
+                    if (substr($defaultlang, 0, 2)== $iso) {
+                        $td_inputs .= '<td><input type="text" style="width:125px" placeholder="'.$col_options['o_label'].'" name="complex_manager[list_cols]['.$col.'][label]" value="'.$col_options['label'].'" /></td>';
+                    } else {
+                        $td_inputs .= '<td><input type="text" style="width:125px" placeholder="'.$iso.'" name="complex_manager[list_cols]['.$col.'][label_'.$iso.']" value="'.$col_options['label_'.$iso.''].'" /></td>';
+                    }
+                }
                 echo '<tr>
                     <th>'.$col_options['o_label'].'</th>
                     <td><input type="hidden" name="complex_manager[list_cols]['.$col.'][active]" value="0"><input type="checkbox" value="1" name="complex_manager[list_cols]['.$col.'][active]" '.($col_options['active'] ? 'checked="checked"' : '').' /></td>
                     <td><input type="hidden" name="complex_manager[list_cols]['.$col.'][hidden-xs]" value="0"><input type="checkbox" value="1" name="complex_manager[list_cols]['.$col.'][hidden-xs]" '.($col_options['hidden-xs'] ? 'checked="checked"' : '').' /></td>
                     <td><input type="hidden" name="complex_manager[list_cols]['.$col.'][hidden-reserved]" value="0"><input type="checkbox" value="1" name="complex_manager[list_cols]['.$col.'][hidden-reserved]" '.($col_options['hidden-reserved'] ? 'checked="checked"' : '').' /></td>
-                    <td><input type="text" style="width:125px" placeholder="'.$col_options['o_label'].'" name="complex_manager[list_cols]['.$col.'][label]" value="'.$col_options['label'].'" /></td>
+                    ' . $td_inputs . '
                     <td><input type="number" style="width:75px" name="complex_manager[list_cols]['.$col.'][order]" value="'.$col_options['order'].'" /></td>
                 </tr>';
             }

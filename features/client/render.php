@@ -20,7 +20,13 @@ class render extends Feature {
 	    $a = shortcode_atts( array(
 	        'cols' => '',
 	        'labels' => '',
+	        'integrate_form' => "1",
+	        'collapsible' => "1"
 	    ), $atts );
+
+	    $a['integrate_form'] = (bool) $a['integrate_form'];
+	    $a['collapsible'] = (bool) $a['collapsible'];
+
 
 	    $cols = array();
 	    $a_cols = explode(',', $a['cols']);
@@ -47,7 +53,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderTable($cols);
+	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible']);
 	}
 
 	// [CXM-list-unit cols="name,price,rent" labels="Name,Preis,Mietpreis" sales="rent" type="3"]
@@ -72,7 +78,7 @@ class render extends Feature {
 	    return $this->renderFilter();
 	}
 
-	public function renderTable($cols){
+	public function renderTable($cols, $integrate_form = true, $collapsible = true){
 		/*if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
@@ -89,7 +95,7 @@ class render extends Feature {
 			'order' => 'ASC'
 		);
 		$a_buildings = array();
-		$building_terms = get_terms( 'building', array() );
+		$building_terms = get_terms( 'building', array('orderby' => 'slug') );
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
 			foreach ( $building_terms as $term ) {
 				$unit_args['building'] = $term->slug;
@@ -118,7 +124,14 @@ class render extends Feature {
 		$template = $this->get_template();
 		$template->set( 'cols', $cols );
 		$template->set( 'buildings', $buildings );
-		$template->set( 'form', $this->renderForm($buildings) );
+		$template->set( 'collapsible', $collapsible );
+
+		if ($integrate_form) {
+			$template->set( 'form', $this->renderForm($buildings) );	
+		} else {
+			$template->set( 'form', false );
+		}
+		
 		
 		$message = $template->apply( 'list.php' );
 		return $message;
@@ -209,6 +222,20 @@ class render extends Feature {
 		$template->set( 'image', $image );
 		$template->set( 'width', $width );
 		$template->set( 'height', $height );
+
+		$roomfilters = array();
+		foreach ($buildings as $building) {
+			foreach ($building['units'] as $unit) {
+				$number_of_rooms = get_cxm($unit, 'number_of_rooms');
+				if (!in_array($number_of_rooms, $roomfilters)) {
+					$roomfilters[] = $number_of_rooms;
+				}
+			}
+		}
+		$roomfilters = array_filter($roomfilters);
+		asort($roomfilters);
+
+		$template->set( 'roomfilters', $roomfilters );
 		
 		$message = $template->apply( 'filter.php' );
 		return $message;
@@ -233,6 +260,7 @@ class render extends Feature {
 			$formData = $defaults;
 		}
 
+
 		return $formData;
 	}
 
@@ -245,11 +273,10 @@ class render extends Feature {
 			'street' => __('A street address is required', 'complexmanager'),
 			'postal_code' => __('ZIP is required', 'complexmanager'),
 			'locality' =>  __('City is required', 'complexmanager'),
-			'subject' => '',
-			'message' => '',
-			'unit_id' => '',
+			'message' => __('Message is required', 'complexmanager'),
 			'post' => __('Ivalid post', 'complexmanager'),
-			'gender' => ''
+			'gender' => 'That should not be possible',
+			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
 		);
 
 		$messages = array();
@@ -257,11 +284,13 @@ class render extends Feature {
 			switch ($col) {
 				case 'first_name':
 				case 'last_name':
+				case 'legal_name':
 				case 'phone':
 				case 'street':
 				case 'postal_code':
 				case 'locality':
-					if (!$value) {
+				case 'unit_id':
+					if (!$value || $value == '–') {
 						$messages[$col] = $defaults[$col];
 					}
 					break;
@@ -317,7 +346,7 @@ class render extends Feature {
 				'Interessent Anredecode ' => '', //
 				'Interessent Vorname' => get_cxm($inquiry->ID, 'first_name'), //*** Fritz
 				'Interessent Name' => get_cxm($inquiry->ID, 'last_name'), //*** Muster
-				'Interessent Firma ' => '', //
+				'Interessent Firma ' => get_cxm($inquiry->ID, 'legal_name'), //
 				'Interessent Strasse' => get_cxm($inquiry->ID, 'street'), //***
 				'Interessent PLZ' => get_cxm($inquiry->ID, 'postal_code'), //***
 				'Interessent Ort' => get_cxm($inquiry->ID, 'locality'), //***
@@ -434,7 +463,7 @@ class render extends Feature {
 				$data['gender']      = 1;
 			}
 			$data['street']      = get_cxm($inquiry->ID, 'street');
-			//$data['legal_name']  = 'Firma';
+			$data['legal_name']  = get_cxm($inquiry->ID, 'legal_name');;
 			$data['postal_code'] = get_cxm($inquiry->ID, 'postal_code');
 			$data['locality']    = get_cxm($inquiry->ID, 'locality');
 			//$data['country']     = 'CH';

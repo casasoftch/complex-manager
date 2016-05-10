@@ -147,7 +147,8 @@ class unit_metabox extends Feature {
         echo '</p>';*/
 
        	$value = get_post_meta( $post->ID, '_complexmanager_unit_graphic_poly', true );
-        $image_src = PLUGIN_URL.'assets/img/example-project-bg.png';
+        //$image_src = PLUGIN_URL.'assets/img/example-project-bg.png';
+        $image_src = false;
         $project_image_id = $this->get_option("project_image");
         if ($project_image_id) {
             $image_attributes = wp_get_attachment_image_src( $project_image_id, 'full' ); // returns an array
@@ -157,11 +158,13 @@ class unit_metabox extends Feature {
             }
         }
         
-        echo '<div class="comlexmanager-polyhelper">
+        if ($image_src) {
+        	echo '<div class="comlexmanager-polyhelper">
         		<textarea id="complexmanager_unit_graphic_poly" name="complexmanager_unit_graphic_poly" data-image-url="'.$image_src.'">
         		'.$value.'
         		</textarea>
         	</div>';
+        }
 
         echo "<hr>";
 

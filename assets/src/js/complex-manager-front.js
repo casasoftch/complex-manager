@@ -135,7 +135,7 @@ jQuery( function () {
 					});
 				}
 
-				var status_pass = true;
+				status_pass = true;
 				if (data.status && query.status) {
 					var init = $.grep(query.status, function(item) {
 					    return (item == data.status);
@@ -284,10 +284,33 @@ jQuery( function () {
 		    dragging = false;
 		});
 		$('.complex-unit-header-row').on('click touchend', function(event) {
-			event.preventDefault();
-			if (!dragging) {
-				$('.complex-custom-overlays img').removeClass('active').hide();
-				activateProjectUnit($(this));
+			var row = this;
+			var anchorclick = $(event.target).is('a');
+
+			if (!anchorclick) {
+				event.preventDefault();
+
+				if (!dragging) {
+					if ($('.complex-list-wrapper').hasClass('complex-list-wrapper-collapsible')) {
+						$('.complex-custom-overlays img').removeClass('active').hide();
+						activateProjectUnit($(this));
+					} else {
+						if ($('.complex-contact-form-wrapper').length) {
+							$('html, body').animate({
+						        scrollTop: $('.complex-contact-form-wrapper').offset().top
+						    }, 500);
+						    $(".complex-contact-form-wrapper input:text, .complex-contact-form-wrapper textarea").first().focus();
+						   	var unit_id = $(row).data('unit-id');
+						    $('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
+						    //.prop('disabled','disabled')
+
+
+
+						} else {
+							alert('form not found add it with [contactform-complex] or enable collapsible="1" property on [CXM-list] and make sure there is only one form available.');
+						}
+					}
+				}
 			}
 		});
 

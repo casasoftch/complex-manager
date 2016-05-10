@@ -10,6 +10,7 @@ class field_manager extends Feature {
 		return array(
 			'first_name' => '',
 			'last_name' => '',
+			'legal_name' => '',
 			'email' => '',
 			'phone' => '',
 			'street' => '',
@@ -43,6 +44,10 @@ class field_manager extends Feature {
 			'last_name' => array(
 				'label' => __('Last name', 'complexmanager'),
 				'value' => $metas['last_name']
+			),
+			'legal_name' => array(
+				'label' => __('Company', 'complexmanager'),
+				'value' => $metas['legal_name']
 			),
 			'phone' => array(
 				'label' => __('Phone', 'complexmanager'),
@@ -184,6 +189,7 @@ class field_manager extends Feature {
 			'custom_1' => '',
 			'custom_2' => '',
 			'custom_3' => '',
+			'quick-download' => ''
 
 		);
 	}
@@ -356,21 +362,23 @@ class field_manager extends Feature {
 				$datas['r_rent_gross']['value'] = $this->render_money($value, $currency);
 			}
 			
+			$decimal_spaces = $this->get_option('space_decimal', 1);
+
 			if ((float) $metas['living_space']) {
 				$value = (float) $metas['living_space'];
-				$datas['r_living_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_living_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
 			}
 			if ((float) $metas['usable_space']) {
 				$value = (float) $metas['usable_space'];
-				$datas['r_usable_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_usable_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
 			}
 			if ((float) $metas['terrace_space']) {
 				$value = (float) $metas['terrace_space'];
-				$datas['r_terrace_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_terrace_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
 			}
 			if ((float) $metas['balcony_space']) {
 				$value = (float) $metas['balcony_space'];
-				$datas['r_balcony_space']['value'] = number_format($value, 1 ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_balcony_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
 			}
 			if ((int) $metas['extra_costs']) {
 				$value = (int) $metas['extra_costs'];

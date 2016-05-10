@@ -14,8 +14,8 @@ jQuery(document).ready(function($){
         $("#"+id+"_src").prop('src', attachment.sizes.medium.url);
       } else {
         return _orig_send_attachment.apply( this, [props, attachment] );
-      };
-    }
+      }
+    };
 
     wp.media.editor.open(button);
     return false;

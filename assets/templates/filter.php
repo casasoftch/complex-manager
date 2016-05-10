@@ -3,9 +3,9 @@
 		<form method="GET" id="complexFilterForm" action="">
 			<div class="filteroption complex-filter-checkboxwrapper filteroption-rooms-checkboxes">
 				<label class="filteroption-label" for="">Zimmer</label>
-				<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_2.5" value="2.5"><label for="cxmFilterRooms_2.5" class="checkbox-inline">&nbsp;2.5</label></span>
-				<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_3.5" value="3.5"><label for="cxmFilterRooms_3.5" class="checkbox-inline">&nbsp;3.5</label></span>
-				<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_4.5" value="4.5"><label for="cxmFilterRooms_4.5" class="checkbox-inline">&nbsp;4.5</label></span>
+				<?php foreach ($roomfilters as $val): ?>
+					<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterRooms_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>	
+				<?php endforeach ?>
 			</div>
 			<div class="filteroption complex-filter-checkboxwrapper filteroption-status-checkboxes">
 				<label class="filteroption-label" for="">Status</label>

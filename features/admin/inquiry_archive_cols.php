@@ -14,8 +14,8 @@ class inquiry_archive_cols extends Feature {
 			'cb' 		=> '<input type="checkbox" />',
 			'title' 	=> __( 'From', 'complexmanager' ),
 			'address' 	=> __( 'Address', 'complexmanager' ),
-			'email' 	=> __( 'E-Mail', 'complexmanager' ),
-			'phone' 	=> __( 'Telefon', 'complexmanager' ),
+			'email' 	=> __( 'Email', 'complexmanager' ),
+			'phone' 	=> __( 'Telephone', 'complexmanager' ),
 			'date' => __( 'Date')
 		);
 
