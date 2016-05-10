@@ -268,6 +268,7 @@ class render extends Feature {
 		$defaults = array(
 			'first_name' => __('First name is required', 'complexmanager'),
 			'last_name' => __('Last name is required', 'complexmanager'),
+			'legal_name' => __('The company is required', 'complexmanager'),
 			'email' => __('Email is not valid', 'complexmanager'),
 			'phone' => __('A phone number is required', 'complexmanager'),
 			'street' => __('A street address is required', 'complexmanager'),
@@ -284,7 +285,7 @@ class render extends Feature {
 			switch ($col) {
 				case 'first_name':
 				case 'last_name':
-				case 'legal_name':
+				//case 'legal_name':
 				case 'phone':
 				case 'street':
 				case 'postal_code':
