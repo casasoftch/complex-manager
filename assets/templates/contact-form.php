@@ -83,7 +83,7 @@
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['legal_name'])  ? 'has-error' : '') ?>">
-						<input required type="text" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= $data['legal_name'] ?>">									
+						<input type="text" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= $data['legal_name'] ?>">									
 					</div>
 				</dd>
 				<dt class="editable">
