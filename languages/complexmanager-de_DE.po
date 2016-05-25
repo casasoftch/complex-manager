@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-25 13:39+0100\n"
-"PO-Revision-Date: 2016-04-29 14:34+0100\n"
+"POT-Creation-Date: 2016-05-18 11:34+0100\n"
+"PO-Revision-Date: 2016-05-18 11:35+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: en_US\n"
@@ -17,76 +17,61 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../assets/src\n"
 
-#: ../assets/templates/contact-form.php:11
+#: ../assets/templates/contact-form.php:26
 msgid "I am interested in"
 msgstr "Ich interessiere mich für"
 
-#: ../assets/templates/contact-form.php:28
+#: ../assets/templates/contact-form.php:56
 #: ../features/admin/inquiry_metabox.php:142
 msgid "Salutation"
 msgstr "Anrede"
 
-#: ../assets/templates/contact-form.php:35
+#: ../assets/templates/contact-form.php:63
 #: ../features/core/field_manager.php:113
 msgid "Mr."
 msgstr "Herr"
 
-#: ../assets/templates/contact-form.php:42
+#: ../assets/templates/contact-form.php:70
 #: ../features/core/field_manager.php:113
 msgid "Mrs."
 msgstr "Frau"
 
-#: ../assets/templates/contact-form.php:49
-#: ../features/admin/general_options.php:306
+#: ../assets/templates/contact-form.php:77
+#: ../features/admin/general_options.php:329
 #: ../features/core/field_manager.php:95
 msgid "Name"
 msgstr "Name"
 
-#: ../assets/templates/contact-form.php:90
+#: ../assets/templates/contact-form.php:118
 #: ../features/admin/inquiry_archive_cols.php:16
 #: ../features/core/field_manager.php:99
 #: ../features/core/field_manager.php:103
 msgid "Address"
 msgstr "Adresse"
 
-#: ../assets/templates/contact-form.php:115
+#: ../assets/templates/contact-form.php:143
 msgid "I've heard of this project through..."
 msgstr "Das Projekt kenne ich über..."
 
-#: ../assets/templates/contact-form.php:124
+#: ../assets/templates/contact-form.php:153
 msgid "Describe your inquiry"
 msgstr "Beschreiben Sie Ihre Anfrage"
 
-#: ../assets/templates/contact-form.php:127
+#: ../assets/templates/contact-form.php:156
 msgid "Please fill in all the required fields"
 msgstr "Bitte alle Pflichtfelder ausfüllen"
 
-#: ../assets/templates/contact-form.php:128
+#: ../assets/templates/contact-form.php:157
 msgid "Send"
 msgstr "Senden"
 
-#: ../assets/templates/list.php:55 ../features/admin/unit_archive_cols.php:71
-#: ../features/admin/unit_metabox.php:205
-msgid "Available"
-msgstr "Verfügbar"
+#: ../assets/templates/list.php:46
+msgid "Contact"
+msgstr "Kontakt"
 
-#: ../assets/templates/list.php:56 ../assets/templates/list.php:102
-#: ../features/admin/unit_archive_cols.php:72
-#: ../features/admin/unit_metabox.php:206
-msgid "Reserved"
-msgstr "Reserviert"
-
-#: ../assets/templates/list.php:57 ../assets/templates/list.php:103
-#: ../features/admin/unit_archive_cols.php:73
-#: ../features/admin/unit_metabox.php:208
-msgid "Rented"
-msgstr "Vermietet"
-
-#: ../assets/templates/list.php:58 ../assets/templates/list.php:104
-#: ../features/admin/unit_archive_cols.php:74
-#: ../features/admin/unit_metabox.php:207
-msgid "Sold"
-msgstr "Verkauft"
+#: ../assets/templates/list.php:61
+msgid "Cancel"
+msgstr "Abbrechen"
 
 #: ../features/admin/general_options.php:42
 msgid "Complex Manager Settings"
@@ -113,95 +98,99 @@ msgid "<strong>CASA</strong><span style=\"font-weight:100\">MAIL</span> Publishe
 msgstr ""
 
 #: ../features/admin/general_options.php:137
+msgid "Space/Area Decimal"
+msgstr ""
+
+#: ../features/admin/general_options.php:147
 msgid "Remcat"
 msgstr ""
 
-#: ../features/admin/general_options.php:145
+#: ../features/admin/general_options.php:155
 msgid "IDX / REMCat Property Ref."
 msgstr ""
 
-#: ../features/admin/general_options.php:154
+#: ../features/admin/general_options.php:164
 msgid "Column values to show in Lists"
 msgstr "Spaltenanzeige in der Liste"
 
-#: ../features/admin/general_options.php:217
+#: ../features/admin/general_options.php:232
 msgid "Enter your settings below:"
 msgstr "Tragen Sie Einstellungen unten ein:"
 
-#: ../features/admin/general_options.php:295
+#: ../features/admin/general_options.php:318
 msgid "Upload Image"
 msgstr "Bild hochladen"
 
-#: ../features/admin/general_options.php:314
-#: ../features/admin/unit_metabox.php:214
+#: ../features/admin/general_options.php:337
+#: ../features/admin/unit_metabox.php:223
 msgid "Number of Rooms"
 msgstr "Zimmer"
 
-#: ../features/admin/general_options.php:322
-#: ../features/admin/unit_metabox.php:223
+#: ../features/admin/general_options.php:345
+#: ../features/admin/unit_metabox.php:232
 msgid "Apartment Story"
 msgstr "Wohnung/Stockwerk"
 
-#: ../features/admin/general_options.php:330
-#: ../features/admin/unit_metabox.php:259
+#: ../features/admin/general_options.php:353
+#: ../features/admin/unit_metabox.php:268
 msgid "Living Space"
 msgstr "Wohnfläche"
 
-#: ../features/admin/general_options.php:339
-#: ../features/admin/unit_metabox.php:268
+#: ../features/admin/general_options.php:362
+#: ../features/admin/unit_metabox.php:277
 msgid "Usable Space"
 msgstr "Nutzfläche"
 
-#: ../features/admin/general_options.php:347
-#: ../features/admin/unit_metabox.php:319
+#: ../features/admin/general_options.php:370
+#: ../features/admin/unit_metabox.php:328
 msgid "Purchase Price"
 msgstr "Kaufpreis"
 
-#: ../features/admin/general_options.php:356
-#: ../features/admin/unit_metabox.php:344
+#: ../features/admin/general_options.php:379
+#: ../features/admin/unit_metabox.php:353
 msgid "Rent Net Price"
 msgstr "Mietkosten Netto"
 
-#: ../features/admin/general_options.php:365
+#: ../features/admin/general_options.php:388
 #: ../features/core/field_manager.php:311
 #: ../features/core/field_manager.php:315
 msgid "Rent gross"
 msgstr "Brutto miete"
 
-#: ../features/admin/general_options.php:376
-#: ../features/admin/unit_metabox.php:376
+#: ../features/admin/general_options.php:399
+#: ../features/admin/unit_metabox.php:385
 #: ../features/core/field_manager.php:276
 msgid "Extra Costs"
 msgstr "Nebenkosten"
 
-#: ../features/admin/general_options.php:385
-#: ../features/admin/unit_metabox.php:278
+#: ../features/admin/general_options.php:408
+#: ../features/admin/unit_metabox.php:287
 msgid "Terrace Space"
 msgstr "Terrassenfläche"
 
-#: ../features/admin/general_options.php:394
-#: ../features/admin/unit_metabox.php:287
+#: ../features/admin/general_options.php:417
+#: ../features/admin/unit_metabox.php:296
 msgid "Balcony Space"
 msgstr "Balkonfläche"
 
-#: ../features/admin/general_options.php:409
-#: ../features/admin/unit_metabox.php:202
+#: ../features/admin/general_options.php:429
+#: ../features/admin/unit_metabox.php:211
 #: ../features/core/field_manager.php:248
 msgid "Status"
 msgstr "Status"
 
-#: ../features/admin/general_options.php:418
-#: ../features/admin/unit_metabox.php:305
+#: ../features/admin/general_options.php:438
+#: ../features/admin/unit_metabox.php:314
 #: ../features/core/field_manager.php:232
 msgid "Currency"
 msgstr "Währung"
 
-#: ../features/admin/general_options.php:427
-#: ../features/admin/general_options.php:436
-#: ../features/admin/general_options.php:445
-#: ../features/admin/unit_metabox.php:398
+#: ../features/admin/general_options.php:447
+#: ../features/admin/general_options.php:456
+#: ../features/admin/general_options.php:465
 #: ../features/admin/unit_metabox.php:407
 #: ../features/admin/unit_metabox.php:416
+#: ../features/admin/unit_metabox.php:425
 #: ../features/core/field_manager.php:288
 #: ../features/core/field_manager.php:292
 #: ../features/core/field_manager.php:296
@@ -209,7 +198,7 @@ msgstr "Währung"
 msgid "Custom %d"
 msgstr ""
 
-#: ../features/admin/general_options.php:454
+#: ../features/admin/general_options.php:474
 msgid "Download"
 msgstr "Datei herunterladen"
 
@@ -299,121 +288,148 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben nicht ausreichende Rechte um Zugang zu dieser Seite zu haben."
 
-#: ../features/admin/unit_metabox.php:182
+#: ../features/admin/unit_archive_cols.php:71
+#: ../features/admin/unit_metabox.php:214 ../features/client/render.php:186
+msgid "Available"
+msgstr "Verfügbar"
+
+#: ../features/admin/unit_archive_cols.php:72
+#: ../features/admin/unit_metabox.php:215 ../features/client/render.php:187
+#: ../features/client/render.php:238
+msgid "Reserved"
+msgstr "Reserviert"
+
+#: ../features/admin/unit_archive_cols.php:73
+#: ../features/admin/unit_metabox.php:217 ../features/client/render.php:188
+#: ../features/client/render.php:239
+msgid "Rented"
+msgstr "Vermietet"
+
+#: ../features/admin/unit_archive_cols.php:74
+#: ../features/admin/unit_metabox.php:216 ../features/client/render.php:189
+#: ../features/client/render.php:240
+msgid "Sold"
+msgstr "Verkauft"
+
+#: ../features/admin/unit_metabox.php:191
 #: ../features/core/field_manager.php:280
 msgid "Download file"
 msgstr "Datei herunterladen"
 
-#: ../features/admin/unit_metabox.php:198
+#: ../features/admin/unit_metabox.php:207
 msgid "General"
 msgstr "Generell"
 
-#: ../features/admin/unit_metabox.php:234
+#: ../features/admin/unit_metabox.php:243
 #: ../features/core/field_manager.php:252
 msgid "IDX / REMCat House Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:243
+#: ../features/admin/unit_metabox.php:252
 #: ../features/core/field_manager.php:256
 msgid "IDX / REMCat Object Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:254
+#: ../features/admin/unit_metabox.php:263
 msgid "Spaces"
 msgstr "Flächen"
 
-#: ../features/admin/unit_metabox.php:301
+#: ../features/admin/unit_metabox.php:310
 msgid "Buy"
 msgstr "Kaufen"
 
-#: ../features/admin/unit_metabox.php:323
+#: ../features/admin/unit_metabox.php:332
 msgid "\"\" = not for sale, 0 = upon request"
 msgstr "\"\" = nicht zu verkaufen, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:329
+#: ../features/admin/unit_metabox.php:338
 msgid "Purchase scope"
 msgstr "Verkaufs-Segmentierung"
 
-#: ../features/admin/unit_metabox.php:339
+#: ../features/admin/unit_metabox.php:348
 #: ../features/core/field_manager.php:236
 msgid "Rent"
 msgstr "Miete"
 
-#: ../features/admin/unit_metabox.php:348
+#: ../features/admin/unit_metabox.php:357
 msgid "\"\" = not for rent, 0 = upon request"
 msgstr "\"\" = nicht zu vermieten, 0 = auf Anfrage"
 
-#: ../features/admin/unit_metabox.php:354
+#: ../features/admin/unit_metabox.php:363
 msgid "Rent Time segment"
 msgstr "Mieten zeitabschnitt"
 
-#: ../features/admin/unit_metabox.php:365
+#: ../features/admin/unit_metabox.php:374
 msgid "Rental scope"
 msgstr "Miet-Segmentierung"
 
-#: ../features/admin/unit_metabox.php:393
+#: ../features/admin/unit_metabox.php:402
 msgid "Custom Fields"
 msgstr "Eigene Felder"
 
-#: ../features/client/render.php:255
+#: ../features/client/render.php:424
 msgid "First name is required"
 msgstr "Vorname ist benötigt"
 
-#: ../features/client/render.php:256
+#: ../features/client/render.php:425
 msgid "Last name is required"
 msgstr "Nachname ist benötigt"
 
-#: ../features/client/render.php:257
+#: ../features/client/render.php:426
+msgid "The company is required"
+msgstr ""
+
+#: ../features/client/render.php:427
 msgid "Email is not valid"
 msgstr "E-Mail ist nicht korrekt"
 
-#: ../features/client/render.php:258
+#: ../features/client/render.php:428
 msgid "A phone number is required"
 msgstr "Eine Telefonnummer ist benötigt"
 
-#: ../features/client/render.php:259
+#: ../features/client/render.php:429
 msgid "A street address is required"
 msgstr "Eine Strasse ist benötigt"
 
-#: ../features/client/render.php:260
+#: ../features/client/render.php:430
 msgid "ZIP is required"
 msgstr "PLZ ist benötigt"
 
-#: ../features/client/render.php:261
+#: ../features/client/render.php:431
 msgid "City is required"
 msgstr "Ort ist benötigt"
 
-#: ../features/client/render.php:262
+#: ../features/client/render.php:432
 msgid "Message is required"
 msgstr "Nachricht wird benötigt"
 
-#: ../features/client/render.php:263
+#: ../features/client/render.php:433
 msgid "Ivalid post"
 msgstr "Falsche Absendung"
 
-#: ../features/client/render.php:265
+#: ../features/client/render.php:435
 msgid "Please choose a unit"
 msgstr "Bitte wählen Sie ein Objekt"
 
-#: ../features/client/render.php:357 ../features/client/render.php:420
+#: ../features/client/render.php:527 ../features/client/render.php:590
 msgid "Unit inquiry"
 msgstr "Objektanfrage"
 
-#: ../features/client/render.php:392
+#: ../features/client/render.php:562
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: ../features/client/render.php:408 ../features/core/field_manager.php:85
+#: ../features/client/render.php:578 ../features/core/field_manager.php:85
 #: ../features/core/field_manager.php:107
 #: ../features/core/field_manager.php:224
 msgid "Unit"
 msgstr "Objekt"
 
-#: ../features/client/render.php:548
+#: ../features/client/render.php:744
 msgid "Inquiry has been sent. Thank you!"
 msgstr "Ihre Anfrage wurde versendet. Besten Dank!"
 
-#: ../features/client/render.php:580
+#: ../features/client/render.php:776
 msgid "Please check the following and try again:"
 msgstr "Bitte überprüfen Sie folgendes und versuchen Sie es erneut:"
 

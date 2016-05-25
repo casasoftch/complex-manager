@@ -29,6 +29,14 @@ class unit_metabox extends Feature {
 				,'normal'
 				,'core'
 			);
+			add_meta_box(
+				'complexmanager_unit_graphic_box'
+				,__( 'Unit Graphic Settings', 'complexmanager' )
+				,array( $this, 'render_meta_graphic_box_content' )
+				,$post_type
+				,'normal'
+				,'core'
+			);
         }
 	}
 
@@ -136,47 +144,6 @@ class unit_metabox extends Feature {
 	
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'complexmanager_inner_custom_box', 'complexmanager_inner_custom_box_nonce' );
-		
-/*
-        $value = get_post_meta( $post->ID, '_complexmanager_unit_graphic_hover_color', true );
-		echo '<p><label for="complexmanager_unit_graphic_hover_color">';
-		_e( 'Hover color', 'complexmanager' );
-		echo '</label><br>';
-		echo '<input type="text" id="complexmanager_unit_graphic_hover_color" name="complexmanager_unit_graphic_hover_color"';
-                echo ' value="' . esc_attr( $value ) . '" size="25" />';
-        echo '</p>';*/
-
-       	$value = get_post_meta( $post->ID, '_complexmanager_unit_graphic_poly', true );
-        //$image_src = PLUGIN_URL.'assets/img/example-project-bg.png';
-        $image_src = false;
-        $project_image_id = $this->get_option("project_image");
-        if ($project_image_id) {
-            $image_attributes = wp_get_attachment_image_src( $project_image_id, 'full' ); // returns an array
-            if ($image_attributes) {
-                $set = true;
-                $image_src = $image_attributes[0];
-            }
-        }
-        
-        if ($image_src) {
-        	echo '<div class="comlexmanager-polyhelper">
-        		<textarea id="complexmanager_unit_graphic_poly" name="complexmanager_unit_graphic_poly" data-image-url="'.$image_src.'">
-        		'.$value.'
-        		</textarea>
-        	</div>';
-        }
-
-        echo "<hr>";
-
-        echo '<p>';
-        $value = get_post_meta( $post->ID, '_complexmanager_unit_custom_overlay', true );
-        echo '<div class="uploader">
-				<input style="width:100%;" id="complexmanager_unit_custom_overlay" name="complexmanager_unit_custom_overlay" value="'.$value.'" type="text" />
-				<input style="width:100%;" id="complexmanager_unit_custom_overlay_button" class="button" name="complexmanager_unit_custom_overlay_button" type="button" value="Spezifisches Overlay auswählen" />
-			</div>';
-		echo "</p>";
-
-		echo "<hr>";
 
 		echo '<p>';
 
@@ -482,6 +449,52 @@ class unit_metabox extends Feature {
 		
 
 		//complexmanager-unit-document-upload.js
+
+
+	}
+
+
+	public function render_meta_graphic_box_content( $post ) {
+	
+		// Add an nonce field so we can check for it later.
+		//wp_nonce_field( 'complexmanager_inner_custom_graphic_box', 'complexmanager_inner_custom_graphic_box_nonce' );
+
+       	$value = get_post_meta( $post->ID, '_complexmanager_unit_graphic_poly', true );
+        $image_src = false;
+
+        $overlay = get_post_meta( $post->ID, '_complexmanager_unit_custom_overlay', true );
+        if ($overlay) {
+        	$image_src = $overlay;
+        } else {
+	        $project_image_id = $this->get_option("project_image");
+	        if ($project_image_id) {
+	            $image_attributes = wp_get_attachment_image_src( $project_image_id, 'full' ); // returns an array
+	            if ($image_attributes) {
+	                $set = true;
+	                $image_src = $image_attributes[0];
+	            }
+	        }
+        }
+        
+        if ($image_src) {
+        	echo '<div class="comlexmanager-polyhelper">
+        		<textarea id="complexmanager_unit_graphic_poly" name="complexmanager_unit_graphic_poly" data-image-url="'.$image_src.'">
+        		'.$value.'
+        		</textarea>
+        	</div>';
+        }
+
+        echo "<hr>";
+
+        echo '<p>';
+        $value = get_post_meta( $post->ID, '_complexmanager_unit_custom_overlay', true );
+        echo '<div class="uploader">
+				<input style="width:100%;" id="complexmanager_unit_custom_overlay" name="complexmanager_unit_custom_overlay" value="'.$value.'" type="text" />
+				<input style="width:100%;" id="complexmanager_unit_custom_overlay_button" class="button" name="complexmanager_unit_custom_overlay_button" type="button" value="Spezifisches Overlay auswählen" />
+			</div>';
+		echo "</p>";
+
+		echo '<div style="clear:both"></div>';
 
 
 	}

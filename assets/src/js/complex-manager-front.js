@@ -116,7 +116,6 @@ jQuery( function () {
 				var room_pass = true;
 				if (data && data.number_of_rooms && query.rooms) {
 					room_pass = false;
-					console.log(query.rooms);
 					$.each(query.rooms, function(index, value) {
 						if(value == data.number_of_rooms){
 					    	room_pass = true;
@@ -127,7 +126,6 @@ jQuery( function () {
 				var status_pass = true;
 				if (data && data.status && query.statuss) {
 					status_pass = false;
-					console.log(query.statuss);
 					$.each(query.statuss, function(index, value) {
 						if(value == data.status){
 					    	status_pass = true;
@@ -170,6 +168,12 @@ jQuery( function () {
 			});
 			$('.complex-custom-overlays img').not('.active').fadeOut(speed);
 			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').addClass('active').fadeIn(speed);
+
+			$('.complex-tooltip-unit-item').hide();
+			if ($('.complex-project-graphic:hover').length !== 0) {
+				$('.complex-tooltip').show();
+			}
+			$('.complex-tooltip-unit-item[data-unit="'+id+'"]').show();
 		}
 
 		function unhighlightProjectUnit($headerRow, speed){
@@ -188,10 +192,14 @@ jQuery( function () {
 				});
 				$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut(speed);
 			}
+
+			$('.complex-tooltip-unit-item').hide();
+			$('.complex-tooltip').hide();
 			
 		}
 
 		function activateProjectUnit($headerRow){
+			$('.complex-tooltip').hide();
 			$('.complex-project-graphic-interaction a').each(function(index, el) {
 				// removeClass
 				$(el).attr('class', function(index, classNames) {
@@ -227,6 +235,7 @@ jQuery( function () {
 		}
 
 		function scrolltoheaderRow($headerRow, offset){
+			$('.complex-tooltip').hide();
 			offset = typeof offset !== 'undefined' ? offset : 0;
 			var $tr = $headerRow;
 			if ($('.complex-unit-detail-row.active').length && $('.complex-unit-detail-row.active').offset().top < $tr.offset().top) {
@@ -305,7 +314,10 @@ jQuery( function () {
 						    //.prop('disabled','disabled')
 
 
-
+						} else if($(row).find('.col-quick-download a').length){
+							$(row).find('.col-quick-download a').first()[0].click();
+						} else if($(row).find('.col-quick-download').length){
+							//silence
 						} else {
 							alert('form not found add it with [contactform-complex] or enable collapsible="1" property on [CXM-list] and make sure there is only one form available.');
 						}
@@ -381,8 +393,19 @@ jQuery( function () {
 			querystring = querystring.replace(/%5B/g, '[');
 			querystring = querystring.replace(/%5D/g, ']');
 			query = getQueryStringAsObject(querystring);
-			console.log(querystring);
 			filterList(query, $('.complex-list-wrapper'));
+		});
+
+
+		$(document).on('mousemove', function(e){
+			if ($('.complex-project-graphic:hover').length !== 0) {
+			    $('.complex-tooltip').css({
+			       left:  e.pageX-15,
+			       top:   e.pageY+25
+			    });
+			} else {
+				$('.complex-tooltip').hide();
+			}
 		});
 
 		/*$('tr.complex-unit-header-row').click(function() {

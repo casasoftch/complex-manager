@@ -136,6 +136,7 @@
 	}
 	.complex-form-part {
 		margin-top: 20px;
+		white-space: normal;
 	}
 	dt {
 		float: none;
@@ -215,5 +216,36 @@ i.fa.fa-circle-o-notch.fa-spin {
 		background-size: 25px 25px;
 		background-repeat: no-repeat;
 		opacity: 1!important;
+	}
+}
+
+
+.complex-tooltip{
+	font-size: smaller;
+	display: none;
+	position: absolute;
+	background-color: black;
+	color: white;
+	padding: 10px;
+	max-width: 220px;
+	table{
+		margin-bottom: 0px;
+	}
+	.table>tbody>tr>td,
+	.table>tbody>tr>th{
+		border-top: 1px solid #333;	
+	}
+	.table>tbody>tr:first-child>td,
+	.table>tbody>tr:first-child>th{
+		border-top: 0px solid #333;	
+	}
+	&:after{
+		content: "";
+		position: absolute;
+		top: -10px;
+		left: 10px;
+		border: 3px solid #000;
+		border-color: transparent  transparent  black  transparent;
+		border-width: 0px 10px 10px 10px
 	}
 }

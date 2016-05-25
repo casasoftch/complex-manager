@@ -93,7 +93,7 @@ jQuery(document).ready(function($){
     var _custom_media = true,
     _orig_send_attachment = wp.media.editor.send.attachment;
 
-    $('#complexmanager_unit_box .button').click(function(e) {
+    $('#complexmanager_unit_box .button, #complexmanager_unit_graphic_box .button').click(function(e) {
         var send_attachment_bkp = wp.media.editor.send.attachment;
         var button = $(this);
         var id = button.attr('id').replace('_button', '');

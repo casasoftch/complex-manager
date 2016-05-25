@@ -31,3 +31,24 @@
 		</svg>
 	</div>
 </div>
+<div class="complex-tooltip" style="display:none" >
+	<?php 
+		foreach ($the_buildings as $building) {
+			foreach ($building['the_units'] as $the_unit) {
+				echo '<div style="display:none" class="complex-tooltip-unit-item" data-unit="#unit_'.$the_unit['post']->ID.'">';
+					echo '<table class="table table-condensed">';
+					echo "<tbody>";
+					foreach ($the_unit['displayItems'] as $displayItem){
+						if ($displayItem['field'] != 'quick-download') {
+							if ($displayItem['value']) {
+								echo '<tr><th>'. $displayItem['label'] . '</th><td class="text-right">' . $displayItem['value'] . '</td></tr>';
+							}
+						}
+					}
+					echo "</tbody>";
+					echo "</table>";
+				echo '</div>';
+			}
+		}
+	?>
+</div>
