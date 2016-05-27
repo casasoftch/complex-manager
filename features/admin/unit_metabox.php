@@ -10,9 +10,9 @@ class unit_metabox extends Feature {
 	 * Hook into the appropriate actions when the class is constructed.
 	 */
 	public function __construct() {
-		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
-		add_action( 'save_post', array( $this, 'save' ) );
-		add_action( 'admin_enqueue_scripts', array($this, 'js_enqueue' ));
+		$this->add_action( 'add_meta_boxes', 'add_meta_box' );
+		$this->add_action( 'save_post', 'save' );
+		$this->add_action( 'admin_enqueue_scripts', 'js_enqueue');
 	}
 
 	/**

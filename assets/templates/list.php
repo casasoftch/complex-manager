@@ -17,7 +17,7 @@
 					<?php 
 					foreach ($building['the_units'] as $the_unit) {
 						$colcount = count($the_unit['displayItems']);
-						echo '<tr class="complex-unit-header-row '.$the_unit['state'].'" id="unit_'.$the_unit['post']->ID.'" data-unit-id="' . $the_unit['post']->ID .'" data-json="' . htmlspecialchars(json_encode($the_unit['data']), ENT_QUOTES, 'UTF-8') . '">';
+						echo '<tr class="complex-unit-header-row state-' . $the_unit['state'] . ' status-' . $the_unit['status'] . '" id="unit_'.$the_unit['post']->ID.'" data-unit-id="' . $the_unit['post']->ID .'" data-json="' . htmlspecialchars(json_encode($the_unit['data']), ENT_QUOTES, 'UTF-8') . '">';
 						foreach ($the_unit['displayItems'] as $displayItem) {
 							echo '<td class="'.$displayItem['td_classes'].'">'.$displayItem['value'].'</td>';
 						}

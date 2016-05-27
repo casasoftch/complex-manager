@@ -4,13 +4,15 @@ namespace casasoft\complexmanager;
 class post_types extends Feature {
 
 	public function __construct() {
-		$this->add_action( 'init', 'set_posttypes' );
+		$this->add_action( 'init', 'set_posttypes', 10 );
+
 		if (is_admin()) {
 			$this->add_filter( 'dashboard_glance_items', 'glance_items', 10, 1 );
 		}
 	}
 
 	public function set_posttypes() {
+
 		$labels = array(
 			'name'               => _x( 'Apartment Units', 'post type general name', 'complexmanager' ),
 			'singular_name'      => _x( 'Unit', 'post type singular name', 'complexmanager' ),
@@ -196,4 +198,7 @@ class post_types extends Feature {
 
 
 // Subscribe to the drop-in to the initialization event
-add_action( 'complexmanager_init', array( 'casasoft\complexmanager\post_types', 'init' ) );
+add_action( 'complexmanager_init', array( 'casasoft\complexmanager\post_types', 'init' ), 10 );
+
+
+

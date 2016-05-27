@@ -134,147 +134,154 @@ class render extends Feature {
 		return $this->buildings;
 	}
 
-	private function prepareBuildings($buildings, $cols){
+	private function prepareUnit($unit, $cols){
+		$the_unit = array('post' => $unit);
+		$status = get_cxm($unit, 'status');
+		$state = 'default';
 		$lang = substr(get_bloginfo('language'), 0, 2);
+		switch ($status) {
+			case 'available': $state = 'default'; break;
+			case 'reserved': $state = 'danger'; break;
+			case 'rented': $state = 'danger'; break;
+			case 'sold': $state = 'danger'; break;
+		}
+		$the_unit['state'] = $state;
+		$the_unit['status'] = $status;
+
+		$data = array();
+		foreach ($cols as $field => $col) {
+			$value = get_cxm($unit, $field);
+			$data[$field] = htmlentities($value);
+		}
+		$the_unit['data'] = $data;
+
+		$the_unit['displayItems'] = array();
+		$i = 0; 
+		foreach ($cols as $field => $col) {
+			$i++;
+			if ($col['active']){
+				$displayItem = array(
+					'field' => $field,
+					'label' => '',
+					'value' => '',
+					'td_classes' => '',
+					'hidden-xs' => $col['hidden-xs']
+				);
+
+				//==label==
+
+				// check for lingustic alternatives
+				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : $col['label']);
+				$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
+
+				//==therest==
+				switch ($field) {
+					case 'status':
+						$value = '';
+						switch ($status) {
+							case 'available': $value = '<span class="text-success">'.strtolower(__('Available', 'complexmanager')).'</span>'; break;
+							case 'reserved': $value = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
+							case 'rented': $value = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
+							case 'sold': $value = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
+							default: $value = $status;
+						}
+						$displayItem['value'] = '<span class="text-'.$state.'">' . $value . '</span>';
+						$displayItem['td_classes'] = 'hidden-sm hidden-xs col-status';
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+						break;
+					case 'r_purchase_price':
+					case 'r_rent_net':
+					case 'r_rent_gross':
+						$currency = false;
+						if (
+							$col['hidden-reserved'] == 0
+							||
+							!in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							$value = get_cxm($unit, $field);	
+							if (get_cxm($unit, 'unit_currency')) {
+								$currency = get_cxm($unit, 'unit_currency');
+							}
+						} else {
+							$value = '';
+						}
+						$displayItem['value'] = ($currency ? $currency . ' ' : '') . $value;
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+
+						break;
+					case 'quick-download':
+						if (
+							$col['hidden-reserved'] == 0
+							||
+							!in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							if (get_cxm($unit, 'download_file')) {
+								$value = '<a target="_blank" class="btn btn-xs btn-default" href="' . get_cxm($unit, 'download_file') . '">' . (get_cxm($unit, 'download_label') ? get_cxm($unit, 'download_label') : 'Download') . '</a>';
+							} else {
+								$value = '';
+							}
+							
+						} elseif(
+							$col['hidden-reserved'] == 1 
+							&& in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							$value = '';
+
+							//show availability instead if deactivated?
+							$statustext = '';
+							switch ($status) {
+								case 'reserved': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
+								case 'rented': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
+								case 'sold': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
+							}
+							if ($statustext) {
+								$value = $statustext;
+							}
+						} else {
+							$value = '';
+						}
+						$displayItem['value'] = $value;
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+
+						break;
+					default:
+						if (
+							$col['hidden-reserved'] == 0
+							||
+							!in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							$value = get_cxm($unit, $field);	
+						} else {
+							$value = '';
+						}
+						if ($value) {
+							$displayItem['value'] = '<span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span>';
+						} else {
+							$displayItem['value'] = '';
+						}
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+						
+						break;
+				}
+
+				$the_unit['displayItems'][] = $displayItem;
+			}
+		}
+
+		return $the_unit;
+	}
+
+	private function prepareBuildings($buildings, $cols){
 
 		$the_buildings = array();
 		foreach ($buildings as $building) {
 			$building['description'] = ($building['term']->description ? '<p class="unit-description">' . $building['term']->description . '</p>' : '');
 			$building['the_units'] = array();
 			foreach ($building['units'] as $unit) {
-				$the_unit = array('post' => $unit);
-				$status = get_cxm($unit, 'status');
-				$state = 'default';
-				switch ($status) {
-					case 'available': $state = 'default'; break;
-					case 'reserved': $state = 'danger'; break;
-					case 'rented': $state = 'danger'; break;
-					case 'sold': $state = 'danger'; break;
-				}
-				$the_unit['state'] = $state;
-
-				$data = array();
-				foreach ($cols as $field => $col) {
-					$value = get_cxm($unit, $field);
-					$data[$field] = htmlentities($value);
-				}
-				$the_unit['data'] = $data;
-
-				$the_unit['displayItems'] = array();
-				$i = 0; 
-				foreach ($cols as $field => $col) {
-					$i++;
-					if ($col['active']){
-						$displayItem = array(
-							'field' => $field,
-							'label' => '',
-							'value' => '',
-							'td_classes' => '',
-							'hidden-xs' => $col['hidden-xs']
-						);
-
-						//==label==
-						// check for lingustic alternatives
-						$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : $col['label']);
-						$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
-
-						//==therest==
-						switch ($field) {
-							case 'status':
-								$value = '';
-								switch ($status) {
-									case 'available': $value = '<span class="text-success">'.strtolower(__('Available', 'complexmanager')).'</span>'; break;
-									case 'reserved': $value = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
-									case 'rented': $value = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
-									case 'sold': $value = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
-									default: $value = $status;
-								}
-								$displayItem['value'] = '<span class="text-'.$state.'">' . $value . '</span>';
-								$displayItem['td_classes'] = 'hidden-sm hidden-xs col-status';
-								$displayItem['hidden-xs'] = $col['hidden-xs'];
-								break;
-							case 'r_purchase_price':
-							case 'r_rent_net':
-							case 'r_rent_gross':
-								$currency = false;
-								if (
-									$col['hidden-reserved'] == 0
-									||
-									!in_array($status, array('reserved', 'sold', 'rented'))
-								) {
-									$value = get_cxm($unit, $field);	
-									if (get_cxm($unit, 'unit_currency')) {
-										$currency = get_cxm($unit, 'unit_currency');
-									}
-								} else {
-									$value = '';
-								}
-								$displayItem['value'] = ($currency ? $currency . ' ' : '') . $value;
-								$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
-								$displayItem['hidden-xs'] = $col['hidden-xs'];
-
-								break;
-							case 'quick-download':
-								if (
-									$col['hidden-reserved'] == 0
-									||
-									!in_array($status, array('reserved', 'sold', 'rented'))
-								) {
-									if (get_cxm($unit, 'download_file')) {
-										$value = '<a target="_blank" class="btn btn-xs btn-default" href="' . get_cxm($unit, 'download_file') . '">' . (get_cxm($unit, 'download_label') ? get_cxm($unit, 'download_label') : 'Download') . '</a>';
-									} else {
-										$value = '';
-									}
-									
-								} elseif(
-									$col['hidden-reserved'] == 1 
-									&& in_array($status, array('reserved', 'sold', 'rented'))
-								) {
-									$value = '';
-
-									//show availability instead if deactivated?
-									$statustext = '';
-									switch ($status) {
-										case 'reserved': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
-										case 'rented': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
-										case 'sold': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
-									}
-									if ($statustext) {
-										$value = $statustext;
-									}
-								} else {
-									$value = '';
-								}
-								$displayItem['value'] = $value;
-								$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
-								$displayItem['hidden-xs'] = $col['hidden-xs'];
-
-								break;
-							default:
-								if (
-									$col['hidden-reserved'] == 0
-									||
-									!in_array($status, array('reserved', 'sold', 'rented'))
-								) {
-									$value = get_cxm($unit, $field);	
-								} else {
-									$value = '';
-								}
-								if ($value) {
-									$displayItem['value'] = '<span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span>';
-								} else {
-									$displayItem['value'] = '';
-								}
-								$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
-								$displayItem['hidden-xs'] = $col['hidden-xs'];
-								
-								break;
-						}
-
-						$the_unit['displayItems'][] = $displayItem;
-					}
-				}
-
+				$the_unit = $this->prepareUnit($unit, $cols);
 				$building['the_units'][] = $the_unit;
 			}
 
@@ -609,7 +616,7 @@ class render extends Feature {
 		}
 		if ($provider && $publisher) {
 			$unit_id = get_cxm($inquiry->ID, 'unit_id');
-
+			$unit = get_post($unit_id);
 
 			//CASAMAIL
 			$data                = array();
@@ -647,9 +654,38 @@ class render extends Feature {
 			//$data['direct_recipient_email'] = 'directemail@domain.ch';
 
 			$term = get_term($formData['reason'], 'inquiry_reason', OBJECT);
+			$extra_data = array();
 			if ($term) {
-				$data['extra_data'] = json_encode(array("acquiredThrough" => $term->name));
+				$extra_data['acquiredThrough'] = $term->name;	
 			}
+
+			//unitdata
+			if ($unit) {
+				$cols = maybe_unserialize((maybe_unserialize($this->get_option("list_cols"))));
+			   	if (!$cols || !is_array($cols)) {
+			   		$cols = array();
+			   	} else {
+			   		//sort
+					uasort($cols, function($a, $b){
+						return $a["order"] - $b["order"];
+					});
+			   	}
+				$the_unit = $this->prepareUnit($unit, $cols);
+				$unit_infos = '';
+				foreach ($the_unit['displayItems'] as $displayItem) {
+					$unit_infos .= $displayItem['label'] . ': ' . $displayItem['value'] . "<br>";
+				}
+				if ($unit_infos) {
+					$extra_data['cmx_unit'] = $unit_infos;
+				}
+
+			}
+
+			$data['extra_data'] = json_encode($extra_data);
+
+			echo "<textarea cols='100' rows='30' style='position:relative; z-index:10000; width:inherit; height:200px;'>";
+			print_r($data['extra_data']);
+			echo "</textarea>";
 
 			$data_string = json_encode($data);                                                                                   
 			                                                                                                                     
