@@ -141,6 +141,7 @@ class render extends Feature {
 		$lang = substr(get_bloginfo('language'), 0, 2);
 		switch ($status) {
 			case 'available': $state = 'default'; break;
+			case 'pre-reserved': $state = 'warning'; break;
 			case 'reserved': $state = 'danger'; break;
 			case 'rented': $state = 'danger'; break;
 			case 'sold': $state = 'danger'; break;
@@ -181,6 +182,7 @@ class render extends Feature {
 						$value = '';
 						switch ($status) {
 							case 'available': $value = '<span class="text-success">'.strtolower(__('Available', 'complexmanager')).'</span>'; break;
+							case 'pre-reserved': $value = '<span class="text-'.$state.'">'.strtolower(__('pre-reserved', 'complexmanager')).'</span>'; break;
 							case 'reserved': $value = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
 							case 'rented': $value = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
 							case 'sold': $value = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
@@ -197,7 +199,7 @@ class render extends Feature {
 						if (
 							$col['hidden-reserved'] == 0
 							||
-							!in_array($status, array('reserved', 'sold', 'rented'))
+							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
 						) {
 							$value = get_cxm($unit, $field);	
 							if (get_cxm($unit, 'unit_currency')) {
@@ -215,7 +217,7 @@ class render extends Feature {
 						if (
 							$col['hidden-reserved'] == 0
 							||
-							!in_array($status, array('reserved', 'sold', 'rented'))
+							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
 						) {
 							if (get_cxm($unit, 'download_file')) {
 								$value = '<a target="_blank" class="btn btn-xs btn-default" href="' . get_cxm($unit, 'download_file') . '">' . (get_cxm($unit, 'download_label') ? get_cxm($unit, 'download_label') : 'Download') . '</a>';
@@ -225,13 +227,14 @@ class render extends Feature {
 							
 						} elseif(
 							$col['hidden-reserved'] == 1 
-							&& in_array($status, array('reserved', 'sold', 'rented'))
+							&& in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
 						) {
 							$value = '';
 
 							//show availability instead if deactivated?
 							$statustext = '';
 							switch ($status) {
+								case 'pre-reserved': $statustext = '<span class="text-'.$state.'">'.strtolower(__('pre-reserved', 'complexmanager')).'</span>'; break;
 								case 'reserved': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Reserved', 'complexmanager')).'</span>'; break;
 								case 'rented': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Rented', 'complexmanager')).'</span>'; break;
 								case 'sold': $statustext = '<span class="text-'.$state.'">'.strtolower(__('Sold', 'complexmanager')).'</span>'; break;
@@ -251,7 +254,7 @@ class render extends Feature {
 						if (
 							$col['hidden-reserved'] == 0
 							||
-							!in_array($status, array('reserved', 'sold', 'rented'))
+							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
 						) {
 							$value = get_cxm($unit, $field);	
 						} else {

@@ -173,6 +173,7 @@ class unit_metabox extends Feature {
 				echo '</label><br>';
 				echo '<select id="complexmanager_unit_status" name="complexmanager_unit_status">';
 					echo '<option value="available" ' . ($value == 'available' ? 'selected' : '') . '>' . __('Available', 'complexmanager') . '</option>';
+					echo '<option value="pre-reserved" '  . ($value == 'pre-reserved' ? 'selected' : '') . '>'  . __('pre-reserved', 'complexmanager') . '</option>';
 					echo '<option value="reserved" '  . ($value == 'reserved' ? 'selected' : '') . '>'  . __('Reserved', 'complexmanager') . '</option>';
 					echo '<option value="sold" '      . ($value == 'sold' ? 'selected' : '') . '>'      . __('Sold', 'complexmanager') . '</option>';
 					echo '<option value="rented" '    . ($value == 'rented' ? 'selected' : '') . '>'      . __('Rented', 'complexmanager') . '</option>';

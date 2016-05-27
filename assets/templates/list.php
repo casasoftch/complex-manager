@@ -6,7 +6,6 @@
 			<table class="table table-condensed">
 				<tbody>
 					<tr class="col-labels">
-
 						<?php foreach ($building['the_units'][0]['displayItems'] as $displayItem): ?>
 							<th class="col-<?= $displayItem['field'] ?> <?= ($displayItem['hidden-xs'] ? 'hidden-sm hidden-xs' : '') ?>"><?= $displayItem['label'] ?></th>		
 						<?php endforeach ?>
