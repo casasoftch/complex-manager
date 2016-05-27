@@ -158,6 +158,7 @@ class render extends Feature {
 		$the_unit['displayItems'] = array();
 		$i = 0; 
 		foreach ($cols as $field => $col) {
+
 			$i++;
 			if ($col['active']){
 				$displayItem = array(
@@ -280,8 +281,25 @@ class render extends Feature {
 		foreach ($buildings as $building) {
 			$building['description'] = ($building['term']->description ? '<p class="unit-description">' . $building['term']->description . '</p>' : '');
 			$building['the_units'] = array();
+			$col_options = get_term_meta( $building['term']->term_id, 'building_col_options', true );
+			$hide_building = get_term_meta( $building['term']->term_id, 'hide_building', true );
+			if ($hide_building) {
+				continue;
+			}
+
+			$building_cols = $cols;
+			foreach ($building_cols as $col => $b_col) {
+				$hidden = (isset($col_options[$col]) && isset($col_options[$col]['hide']) && $col_options[$col]['hide'] ? true : false);
+				$alt_label = (isset($col_options[$col]) && isset($col_options[$col]['alternate_label']) && $col_options[$col]['alternate_label'] ? $col_options[$col]['alternate_label'] : false);
+				if ($hidden) {
+					$building_cols[$col]['active'] = false;
+				} elseif ($alt_label) {
+					$building_cols[$col]['label'] = $alt_label;
+				}
+			}
+
 			foreach ($building['units'] as $unit) {
-				$the_unit = $this->prepareUnit($unit, $cols);
+				$the_unit = $this->prepareUnit($unit, $building_cols);
 				$building['the_units'][] = $the_unit;
 			}
 

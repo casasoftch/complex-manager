@@ -57,17 +57,17 @@
 				</dt>
 				<dd class="editable">
 					<div class="row">
-						<div class="col-xs-6 complex-form-gender-m">
-							<div class="radio">
-								<label>
-									<input type="radio" name="complex-unit-inquiry[gender]" value="male" <?= ($data['gender'] == 'male' ? 'checked="checked"' : '') ?>> <?php _e('Mr.', 'complexmanager') ?>
-								</label>
-							</div>
-						</div>
 						<div class="col-xs-6 complex-form-gender-fm">
 							<div class="radio">
 								<label>
 									<input type="radio" name="complex-unit-inquiry[gender]" value="female" <?= ($data['gender'] == 'female' ? 'checked="checked"' : '') ?>> <?php _e('Mrs.', 'complexmanager') ?>
+								</label>
+							</div>
+						</div>
+						<div class="col-xs-6 complex-form-gender-m">
+							<div class="radio">
+								<label>
+									<input type="radio" name="complex-unit-inquiry[gender]" value="male" <?= ($data['gender'] == 'male' ? 'checked="checked"' : '') ?>> <?php _e('Mr.', 'complexmanager') ?>
 								</label>
 							</div>
 						</div>
