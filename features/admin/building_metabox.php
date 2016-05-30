@@ -21,8 +21,8 @@ class building_metabox extends Feature {
 	}	
 
 	public function add_group_column( $columns ){
-	    $columns['hide_building'] = __( 'Visible', 'complex-manager' );
-	    $columns['has_building_col_options'] = __( 'Options', 'complex-manager' );
+	    $columns['hide_building'] = __( 'Visible', 'complexmanager' );
+	    $columns['has_building_col_options'] = __( 'Options', 'complexmanager' );
 	    return $columns;
 	}
 	
