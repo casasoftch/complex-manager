@@ -35,7 +35,7 @@ function get_default_cxm($type, $specials = true){
 	return array();
 }
 
-function render_cxm_form($atts){
+function render_cxm_form($atts = array()){
 	/*$a = shortcode_atts( array(
         'unit_id' => ''
     ), $atts );*/
