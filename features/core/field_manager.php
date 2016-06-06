@@ -19,7 +19,7 @@ class field_manager extends Feature {
 			//'subject' => '',
 			'message' => '',
 			'unit_id' => '',
-			'gender' => 'male',
+			'gender' => 'female',
 			'reason' => '',
 		);
 	}

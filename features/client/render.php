@@ -3,8 +3,7 @@ namespace casasoft\complexmanager;
 
 class render extends Feature {
 
-	private $buildings = null;
-	private $prepared_buildings = null;
+	private $buildingsStore = null;
 
 	public function __construct() {
 		$this->add_action( 'init', 'set_shortcodes' );
@@ -18,13 +17,14 @@ class render extends Feature {
 		add_shortcode( 'CXM-filter', array($this, 'shortcode_filter'));
 	}
 
-	// [CXM-list cols="name,price,rent" labels="Name,Preis,Mietpreis" sales="rent" type="3"]
+	// [CXM-list cols="name,price,rent" labels="Name,Preis,Mietpreis" unit="13" sales="rent" type="3"]
 	function shortcode_list( $atts ) {
 	    $a = shortcode_atts( array(
 	        'cols' => '',
 	        'labels' => '',
 	        'integrate_form' => "1",
-	        'collapsible' => "1"
+	        'collapsible' => "1",
+	        'building_id' => false
 	    ), $atts );
 
 	    $a['integrate_form'] = (bool) $a['integrate_form'];
@@ -56,7 +56,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible']);
+	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], ($a['building_id'] ? $a['building_id'] : false));
 	}
 
 	// [CXM-list-unit cols="name,price,rent" labels="Name,Preis,Mietpreis" sales="rent" type="3"]
@@ -91,15 +91,25 @@ class render extends Feature {
 	    return $this->renderFilter();
 	}
 
-	private function loadBuildings(){
+	private function loadBuildings($building_id){
 		$unit_args = array(
 			'posts_per_page' => 99,
 			'post_type' => 'complex_unit',
 			'orderby' => 'menu_order',
 			'order' => 'ASC'
 		);
+		$building_args = array('orderby' => 'slug');
+		if ($building_id) {
+			$building_args['include'] = $building_id;
+		}
+
 		$a_buildings = array();
-		$building_terms = get_terms( 'building', array('orderby' => 'slug') );
+		$building_terms = get_terms( 'building', $building_args);
+
+		echo "<textarea cols='100' rows='30' style='position:relative; z-index:10000; width:inherit; height:200px;'>";
+		print_r($building_terms);
+		echo "</textarea>";
+
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
 			foreach ( $building_terms as $term ) {
 				$unit_args['building'] = $term->slug;
@@ -127,11 +137,12 @@ class render extends Feature {
 		return $buildings;
 	}
 
-	private function getBuildings(){
-		if (!$this->buildings) {
-			$this->buildings = $this->loadBuildings();
+	private function getBuildings($building_id = false){
+		$storeKey = ($building_id ? $building_id : 'all');
+		if (!isset($this->buildingsStore[$storeKey])) {
+			$this->buildingsStore[$storeKey] = $this->loadBuildings($building_id);
 		}
-		return $this->buildings;
+		return $this->buildingsStore[$storeKey];
 	}
 
 	private function prepareUnit($unit, $cols){
@@ -311,7 +322,7 @@ class render extends Feature {
 		return $the_buildings;
 	}
 
-	public function renderTable($cols, $integrate_form = true, $collapsible = true){
+	public function renderTable($cols, $integrate_form = true, $collapsible = true, $building_id = false){
 		/*if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
@@ -324,8 +335,8 @@ class render extends Feature {
 		
 		$template = $this->get_template();
 		$template->set( 'cols', $cols );
-		$template->set( 'buildings', $this->getBuildings() );
-		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings(), $cols));
+		$template->set( 'buildings', $this->getBuildings($building_id) );
+		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings($building_id), $cols));
 		$template->set( 'collapsible', $collapsible );
 
 		if ($integrate_form) {

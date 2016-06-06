@@ -150,6 +150,7 @@
 				</div>
 			<?php endif ?>
 			<div class="<?= (isset($messages['message'])  ? 'has-error' : '') ?>">
+				<label>Nachricht</label>
 				<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
 			</div>
 			
