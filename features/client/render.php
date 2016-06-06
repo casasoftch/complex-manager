@@ -106,9 +106,6 @@ class render extends Feature {
 		$a_buildings = array();
 		$building_terms = get_terms( 'building', $building_args);
 
-		echo "<textarea cols='100' rows='30' style='position:relative; z-index:10000; width:inherit; height:200px;'>";
-		print_r($building_terms);
-		echo "</textarea>";
 
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
 			foreach ( $building_terms as $term ) {
@@ -715,9 +712,6 @@ class render extends Feature {
 
 			$data['extra_data'] = json_encode($extra_data);
 
-			echo "<textarea cols='100' rows='30' style='position:relative; z-index:10000; width:inherit; height:200px;'>";
-			print_r($data['extra_data']);
-			echo "</textarea>";
 
 			$data_string = json_encode($data);                                                                                   
 			                                                                                                                     
