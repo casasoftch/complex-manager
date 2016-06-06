@@ -46,6 +46,8 @@ function render_cxm_form($atts = array()){
 }
 add_shortcode( 'contactform-complex', 'render_cxm_form' );
 
+add_shortcode( 'CXM-form', 'render_cxm_form' );
+
 
 function cxm_get_list_col_defaults(){
 	return array(

@@ -25,7 +25,21 @@ Renders a interactive jumpotron graphic. Sadly IE8> will only render the image w
 
 ### [CXM-list] ###
 
-cols="name, number_of_rooms, story, purchase_price, rent_net
+**Args**
+
+* ``integrate_form``: Renders form inside of list (default:1)
+* ``collapsible``: (default:1)
+* ``building_id``: only render specific table (default:false)
+
+
+### [CXM-form] ###
+
+Used to be ``[contactform-complex]``. This will still work.
+
+
+**Args**
+
+* ``unit_id``: Preselected unit. Also hides the unit selector.
 
 
 ## functions ##
