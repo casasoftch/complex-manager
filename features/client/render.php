@@ -356,24 +356,37 @@ class render extends Feature {
 		$image = PLUGIN_URL.'assets/img/example-project-bg.png';
 		$width = 1152;
 	    $height = 680;
+	    $set = false;
 
-	    $project_image_id = $this->get_option("project_image");
-	    if ($project_image_id) {
-	        $image_attributes = wp_get_attachment_image_src( $project_image_id, 'full' ); // returns an array
-	        if ($image_attributes) {
-	            $set = true;
-	            $image = $image_attributes[0];
-	            $width = $image_attributes[1];
-	            $height = $image_attributes[2];
-	        }
-	    }
-
+	    //building specific base image
 	    if ($building_id) {
-	    	$project_image_alt = get_field('alternate-base-image', 'building_'.$building_id);
-	    	echo "<textarea cols='100' rows='30' style='position:relative; z-index:10000; width:inherit; height:200px;'>";
-	    	print_r($project_image_alt);
-	    	echo "</textarea>";
+	    	$project_image_alt_id = get_field('alternate-base-image', 'building_'.$building_id);
+	    	if ($project_image_alt_id) {
+		        $image_attributes = wp_get_attachment_image_src( $project_image_alt_id, 'full' ); // returns an array
+		        if ($image_attributes) {
+		            $set = true;
+		            $image = $image_attributes[0];
+		            $width = $image_attributes[1];
+		            $height = $image_attributes[2];
+		        }
+		    }
 	    }
+
+	    //default base image
+	    if (!$set) {
+		    $project_image_id = $this->get_option("project_image");
+		    if ($project_image_id) {
+		        $image_attributes = wp_get_attachment_image_src( $project_image_id, 'full' ); // returns an array
+		        if ($image_attributes) {
+		            $set = true;
+		            $image = $image_attributes[0];
+		            $width = $image_attributes[1];
+		            $height = $image_attributes[2];
+		        }
+		    }
+	    }
+
+
 
 		$template = $this->get_template();
 		$template->set( 'buildings', $this->getBuildings($building_id) );
