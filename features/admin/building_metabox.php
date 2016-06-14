@@ -7,6 +7,9 @@ class building_metabox extends Feature {
 	public $prefix = 'complexmanager_building_';
 
 	public function __construct() {
+
+		$this->acf_fields();
+
 		//$this->add_action( 'building_add_form_fields', 'add_group_field');
 		$this->add_action( 'building_edit_form_fields', 'add_group_field');
 
@@ -17,6 +20,59 @@ class building_metabox extends Feature {
 		add_filter('manage_edit-building_columns', array($this, 'add_group_column') );
 		add_filter('manage_building_custom_column', array($this, 'add_group_column_content'), 10, 3 );
 
+
+
+	}
+
+	private function acf_fields(){
+
+		acf_add_local_field_group(array (
+			'key' => 'group_5756e44015508',
+			'title' => 'Weitere Einstellungen',
+			'fields' => array (
+				array (
+					'key' => 'field_5756e4e4bcca4',
+					'label' => 'Alternative Ausgangsgrafik',
+					'name' => 'alternate-base-image',
+					'type' => 'image',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'thumbnail',
+					'library' => 'all',
+					'min_width' => '',
+					'min_height' => '',
+					'min_size' => '',
+					'max_width' => '',
+					'max_height' => '',
+					'max_size' => '',
+					'mime_types' => '',
+				),
+			),
+			'location' => array (
+				array (
+					array (
+						'param' => 'taxonomy',
+						'operator' => '==',
+						'value' => 'building',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => 1,
+			'description' => '',
+		));
 
 	}	
 
@@ -29,33 +85,32 @@ class building_metabox extends Feature {
 	public function add_group_column_content( $content, $column_name, $term_id ){
 
 		if( $column_name === 'hide_building' ){
-		    $term_id = absint( $term_id );
-		    $hide_building = get_term_meta( $term_id, 'hide_building', true );
+			$term_id = absint( $term_id );
+			$hide_building = get_term_meta( $term_id, 'hide_building', true );
 
-		    if( !empty( $hide_building ) && $hide_building ){
-		        $content = '⨉';
-		    } else {
-		    	$content = '✓';
-		    }
+			if( !empty( $hide_building ) && $hide_building ){
+				$content = '⨉';
+			} else {
+				$content = '✓';
+			}
 		}
 
 		if( $column_name === 'has_building_col_options' ){
-		    $term_id = absint( $term_id );
-		    $col_options = get_term_meta( $term_id, 'building_col_options', true );
+			$term_id = absint( $term_id );
+			$col_options = get_term_meta( $term_id, 'building_col_options', true );
 
 
-
-		    if( !empty( $col_options )){
-		    	$items = array();
-		    	foreach ($col_options as $key => $col_option) {
-		    		if ($col_option['hide']) {
-		    			$items[] .= '<strike>' . $key . '</strike>';
-		    		} else if ($col_option['alternate_label']) {
-		    			$items[] .= $col_option['alternate_label'];
-		    		}
-		    	}
-		        $content = '<ul><li>'.implode('</li><li>', $items).'</li></ul>';
-		    }
+			if( !empty( $col_options )){
+				$items = array();
+				foreach ($col_options as $key => $col_option) {
+					if ($col_option['hide']) {
+						$items[] .= '<strike>' . $key . '</strike>';
+					} else if ($col_option['alternate_label']) {
+						$items[] .= $col_option['alternate_label'];
+					}
+				}
+			    $content = '<ul><li>'.implode('</li><li>', $items).'</li></ul>';
+			}
 		}
 
 		return $content;
@@ -63,24 +118,24 @@ class building_metabox extends Feature {
 
 	private function getOptionCols(){
 		$cols = maybe_unserialize((maybe_unserialize($this->get_option("list_cols"))));
-	   	if (!$cols || !is_array($cols)) {
-	   		$cols = array();
-	   	} else {
-	   		//sort
+		if (!$cols || !is_array($cols)) {
+			$cols = array();
+		} else {
+			//sort
 			uasort($cols, function($a, $b){
 				return $a["order"] - $b["order"];
 			});
-	   	}
-	   	return $cols;
+		}
+		return $cols;
 	}
 
 	public function add_group_field($term, $taxonomy) {
 		$default_cols = cxm_get_list_col_defaults();
-	    ?>
-	    <table class="form-table">
-	    	<tbody>
-	    		<?php $hide_building = get_term_meta( $term->term_id, 'hide_building', true ); ?>
-		    	<tr class="form-field form-required term-name-wrap">
+		?>
+		<table class="form-table">
+			<tbody>
+				<?php $hide_building = get_term_meta( $term->term_id, 'hide_building', true ); ?>
+				<tr class="form-field form-required term-name-wrap">
 					<th scope="row"><label for="name">Anzeige</label></th>
 					<td>
 						<input type="hidden" name="hide_building" value="0" />
@@ -99,7 +154,7 @@ class building_metabox extends Feature {
 								<tr>
 									<td><strong>Feld</strong></td>
 									<td style="text-align:center"><strong>Ausblenden</strong></td>
-									<td><strong>Anzeigetitel</strong></td>
+									<td><strong>Alternativer Anzeigetitel</strong></td>
 								</tr>
 							</thead>
 							<tbody>
@@ -150,14 +205,14 @@ class building_metabox extends Feature {
 
 	public function save_group_metas( $term_id, $tt_id ){
 		if( isset( $_POST['hide_building'] ) && '' !== $_POST['hide_building'] ){
-	        $val = ($_POST['hide_building'] ? 1 : 0);
-	        update_term_meta( $term_id, 'hide_building', $val );
-	    }
+			$val = ($_POST['hide_building'] ? 1 : 0);
+			update_term_meta( $term_id, 'hide_building', $val );
+		}
 
 		if( isset( $_POST['building_col_options'] ) && '' !== $_POST['building_col_options'] ){
-	        $val = $_POST['building_col_options'];
-	        update_term_meta( $term_id, 'building_col_options', $val );
-	    }
+			$val = $_POST['building_col_options'];
+			update_term_meta( $term_id, 'building_col_options', $val );
+		}
 	}
 
 

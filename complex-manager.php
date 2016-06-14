@@ -41,6 +41,7 @@ class ComplexManager extends Kit {
 	private static $__instance;
 
 	public static function init() {
+
 		if ( !self::$__instance ) {
 			$plugin_dir = basename( dirname( __FILE__ ) );
 			load_plugin_textdomain( 'complexmanager', FALSE, $plugin_dir . '/languages/' );
@@ -89,10 +90,32 @@ class ComplexManager extends Kit {
 
 	}
 
+	public static function cxm_acf_settings_path( $path ) {
+	    $path = plugin_dir_path( __FILE__ ) . '/assets/acf/';
+	    return $path;
+	}
+	public static function cxm_acf_settings_dir( $dir ) {
+	    $dir = plugin_dir_url( __FILE__ ) . '/assets/acf/';
+	    return $dir;
+	}
+
 } // End Class
 
 
+// included ACF
+// 1. customize ACF path
+if( ! class_exists('acf') ) {
+	add_filter('acf/settings/path', array( 'casasoft\complexmanager\ComplexManager', 'cxm_acf_settings_path'));
 
+	// 2. customize ACF dir
+	add_filter('acf/settings/dir', array( 'casasoft\complexmanager\ComplexManager', 'cxm_acf_settings_dir'));
+
+	// 3. Hide ACF field group menu item
+	//add_filter('acf/settings/show_admin', '__return_false');
+
+	// 4. Include ACF
+	include_once(plugin_dir_path( __FILE__ ) . '/assets/acf/acf.php' );
+}
 
 
 

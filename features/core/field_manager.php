@@ -389,7 +389,6 @@ class field_manager extends Feature {
 			}
 		}
 
-		
 
 		return $datas;
 	}

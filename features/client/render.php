@@ -68,6 +68,7 @@ class render extends Feature {
 	// [CXM-graphic]
 	function shortcode_graphic( $atts ) {
 	    $a = shortcode_atts( array(
+	    	'building_id' => false
 	    ), $atts );
 
 	    $cols = maybe_unserialize((maybe_unserialize($this->get_option("list_cols"))));
@@ -80,7 +81,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderGraphic($cols);
+	    return $this->renderGraphic($cols, ($a['building_id'] ? $a['building_id'] : false));
 	}
 
 	// [CXM-filter]
@@ -351,7 +352,7 @@ class render extends Feature {
 		//render single table for a unit
 	}
 
-	public function renderGraphic($cols){
+	public function renderGraphic($cols, $building_id = false){
 		$image = PLUGIN_URL.'assets/img/example-project-bg.png';
 		$width = 1152;
 	    $height = 680;
@@ -367,9 +368,16 @@ class render extends Feature {
 	        }
 	    }
 
+	    if ($building_id) {
+	    	$project_image_alt = get_field('alternate-base-image', 'building_'.$building_id);
+	    	echo "<textarea cols='100' rows='30' style='position:relative; z-index:10000; width:inherit; height:200px;'>";
+	    	print_r($project_image_alt);
+	    	echo "</textarea>";
+	    }
+
 		$template = $this->get_template();
-		$template->set( 'buildings', $this->getBuildings() );
-		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings(), $cols));
+		$template->set( 'buildings', $this->getBuildings($building_id) );
+		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings($building_id), $cols));
 		$template->set( 'image', $image );
 		$template->set( 'width', $width );
 		$template->set( 'height', $height );
