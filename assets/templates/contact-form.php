@@ -135,7 +135,6 @@
 					</div>
 				</dd>
 			</dl>
-
 		</div>
 		<div class="complex-form-part">
 			<?php if ($reasons): ?>
@@ -154,7 +153,7 @@
 				<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
 			</div>
 			
-			<small class=""><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
+			<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
 			<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
 		</div>
 	</div>
