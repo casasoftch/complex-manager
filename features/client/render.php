@@ -475,6 +475,10 @@ class render extends Feature {
 			$formData = $defaults;
 		}
 
+		if (isset($request['extra_data'])) {
+			$formData['extra_data'] = $request['extra_data'];	
+		}
+
 
 		return $formData;
 	}
@@ -522,6 +526,7 @@ class render extends Feature {
 						$messages[$col] = 'Your message has been sent!?';
 					}
 					break;
+
 			}
 		}
 
@@ -882,6 +887,8 @@ class render extends Feature {
 		$template->set('data', $formData);
 		$template->set('buildings', $buildings);
 		$template->set('reasons', $reasons);
+		$template->Set('beforeFormParts', '');
+		$template->Set('afterFormParts', '');
 		$message = $template->apply( 'contact-form.php' );
 		return $message;	
 	}

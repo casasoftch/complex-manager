@@ -433,6 +433,29 @@ jQuery( function () {
 			
 		});*/
 
+
+		//google address picker api
+		function prepAddressPickerForm(){
+			$('.address-picker-group').each(function(index, el) {
+				var $streetInput = $(el).find('input[name="complex-unit-inquiry[street]"]');	
+				var $postalCodeInput = $(el).find('input[name="complex-unit-inquiry[postal_code]"]');	
+				var $localityInput = $(el).find('input[name="complex-unit-inquiry[locality]"]');	
+				if ($streetInput.length && $postalCodeInput.length && $localityInput.length) {
+					$(el).find('.address-picker-realinputs').hide();
+					
+					$streetInput.attr('type', 'hidden');
+					$postalCodeInput.attr('type', 'hidden');
+					$localityInput.attr('type', 'hidden');
+
+					$(el).append('<div class="address-picker-input"><input type="text" class="form-control" value="' + $streetInput.val() + ' ' + $postalCodeInput.val() + ' ' + $localityInput.val() + '" /></div>')
+				}
+				
+			});
+		}
+		//prepAddressPickerForm();
+		
+
+
 	}(jQuery));
 
 } );

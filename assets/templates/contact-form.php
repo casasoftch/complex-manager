@@ -6,6 +6,7 @@
 <?php endif ?>
 <form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST">
 	<input type="hidden" name="complex-unit-inquiry[post]" value="1">
+	<?= do_action('cxm_render_before_form_parts', $data, $buildings); ?>
 	<div class="complex-form-parts">
 		<?php 
 			$unitcount = 0;
@@ -40,9 +41,7 @@
 								default: 
 									echo '<option value="'.$unit->ID.'" '.($unit->ID == $data['unit_id'] ? 'selected="selected"' : '').'>'.$unit->post_title . ($story ? ' (' . $story . ')' : '') . '</option>';
 									break;
-
 							}
-							
 						}
 						echo "</optgroup>";
 					}
@@ -118,18 +117,22 @@
 					<?php _e('Address', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
 				</dt>
 				<dd class="editable">
-					<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
-						<input required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= $data['street'] ?>">										
-					</div>
-					<div class="row">
-						<div class="col-xs-4 complex-form-postal_code">
-							<div class="<?= (isset($messages['postal_code'])  ? 'has-error' : '') ?>">
-								<input required type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= $data['postal_code'] ?>">											
+					<div class="address-picker-group">
+						<div class="address-picker-realinputs">
+							<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
+								<input required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= $data['street'] ?>">										
 							</div>
-						</div>
-						<div class="col-xs-8 complex-form-locality">
-							<div class="<?= (isset($messages['locality'])  ? 'has-error' : '') ?>">
-								<input required type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= $data['locality'] ?>">											
+							<div class="row">
+								<div class="col-xs-4 complex-form-postal_code">
+									<div class="<?= (isset($messages['postal_code'])  ? 'has-error' : '') ?>">
+										<input required type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= $data['postal_code'] ?>">											
+									</div>
+								</div>
+								<div class="col-xs-8 complex-form-locality">
+									<div class="<?= (isset($messages['locality'])  ? 'has-error' : '') ?>">
+										<input required type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= $data['locality'] ?>">											
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -157,4 +160,8 @@
 			<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
 		</div>
 	</div>
+	<?= do_action('cxm_render_after_form_parts', $data, $buildings); ?>
+
+	<?= $message ?>
+	
 </form> 
