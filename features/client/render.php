@@ -269,7 +269,7 @@ class render extends Feature {
 						} else {
 							$value = '';
 						}
-						if ($value) {
+						if ($value !== '') {
 							$displayItem['value'] = '<span class="text-'.$state.'">' . ($i == 1 ? '<strong>' : '') . $value . ($i == 1 ? '</strong>' : '') . '</span>';
 						} else {
 							$displayItem['value'] = '';
