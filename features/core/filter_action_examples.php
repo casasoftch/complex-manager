@@ -79,6 +79,18 @@ class filter_action_examples extends Feature {
 		<?
 	}
 
+	//example of translating differently ^^
+	/*function theme_filter_gettext($translation, $text, $domain) {
+		if ($domain == 'complexmanager' && $text == 'Contact') {
+			$translations = get_translations_for_domain( $domain );
+			return $translations->translate( 'Demande de Dossier' );
+	  	}
+	  return $translation;
+	}
+	add_filter('gettext', 'theme_filter_gettext', 10, 4);*/
+
+	
+
 }
 
 
