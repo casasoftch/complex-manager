@@ -626,6 +626,10 @@ class render extends Feature {
 			if (get_cxm($inquiry->ID, 'phone')) {
 				$html_contact_data .= __('Phone:', 'complexmanager') . ' ' . get_cxm($inquiry->ID, 'phone'). '<br>';
 			}
+
+			if (get_cxm($inquiry->ID, 'mobile')) {
+				$html_contact_data .= __('Mobile:', 'complexmanager') . ' ' . get_cxm($inquiry->ID, 'mobile'). '<br>';
+			}
 			
 			$html_contact_data .= '<br>';
 
@@ -689,6 +693,7 @@ class render extends Feature {
 			$data['locality']    = get_cxm($inquiry->ID, 'locality');
 			//$data['country']     = 'CH';
 			$data['phone']       = get_cxm($inquiry->ID, 'phone');
+			$data['mobile']       = get_cxm($inquiry->ID, 'mobile');
 			//$data['mobile']       = '000 000 00 00';
 			//$data['fax']       = '000 000 00 00';
 			$data['email']       = get_cxm($inquiry->ID, 'email');

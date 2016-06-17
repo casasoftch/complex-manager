@@ -105,14 +105,25 @@
 						<input required type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= $data['email'] ?>">									
 					</div>
 				</dd>
+				
 				<dt class="editable">
-					<label><?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?></label>&nbsp;<small><span class="text-danger">*</span></small>									
+					<?php _e('Phone', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
 				</dt>
 				<dd class="editable">
-					<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
-						<input required type="text" name="complex-unit-inquiry[phone]" class="form-control" value="<?= $data['phone'] ?>">									
+					<div class="row">
+						<div class="col-xs-6 complex-form-phone">
+							<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
+								<input required type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= $data['phone'] ?>">											
+							</div>
+						</div>
+						<div class="col-xs-6 complex-form-mobile">
+							<div class="<?= (isset($messages['mobile'])  ? 'has-error' : '') ?>">
+								<input type="text" name="complex-unit-inquiry[mobile]" placeholder="<?php echo get_cxm_label(false, 'mobile', 'complex_inquiry') ?>" class="form-control" value="<?= $data['mobile'] ?>">											
+							</div>
+						</div>
 					</div>
 				</dd>
+
 				<dt class="editable">
 					<?php _e('Address', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
 				</dt>
@@ -163,5 +174,4 @@
 	<?= do_action('cxm_render_after_form_parts', $data, $buildings); ?>
 
 	<?= $message ?>
-	
 </form> 

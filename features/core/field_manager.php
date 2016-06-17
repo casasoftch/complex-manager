@@ -13,6 +13,7 @@ class field_manager extends Feature {
 			'legal_name' => '',
 			'email' => '',
 			'phone' => '',
+			'mobile' => '',
 			'street' => '',
 			'postal_code' => '',
 			'locality' => '',
@@ -52,6 +53,10 @@ class field_manager extends Feature {
 			'phone' => array(
 				'label' => __('Phone', 'complexmanager'),
 				'value' => $metas['phone']
+			),
+			'mobile' => array(
+				'label' => __('Mobile', 'complexmanager'),
+				'value' => $metas['mobile']
 			),
 			'street' => array(
 				'label' => __('Street', 'complexmanager'),
