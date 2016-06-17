@@ -98,7 +98,7 @@ class field_manager extends Feature {
 		if ($specials) {
 			$datas['name'] = array(
 				'label' => __('Name', 'complexmanager'),
-				'value' => ''
+				'value' => '',
 			);
 			$datas['address_html'] = array(
 				'label' => __('Address', 'complexmanager'),
@@ -291,7 +291,7 @@ class field_manager extends Feature {
 			),
 			'custom_1' => array(
 				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 1),
-				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_1'])
+				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_1']),
 			),
 			'custom_2' => array(
 				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 2),
@@ -346,6 +346,7 @@ class field_manager extends Feature {
 				if ($value) {
 					$currency = $metas['currency'];
 					$datas['r_purchase_price']['value'] = $this->render_money($value, $currency);
+					$datas['r_purchase_price']['pure_value'] = $value;
 				}
 			}
 			if ((int) $metas['rent_net']) {
@@ -353,18 +354,21 @@ class field_manager extends Feature {
 				if ($value) {
 					$currency = $metas['currency'];
 					$datas['r_rent_net']['value'] = $this->render_money($value, $currency);
+					$datas['r_rent_net']['pure_value'] = $value;
 				}
 			}
 			
 			if ((int) $metas['rent_net'] && (int) $metas['extra_costs']) {
 				$value = $metas['rent_net']+$metas['extra_costs'];
 				$datas['rent_gross']['value'] = $value;
+				$datas['rent_gross']['pure_value'] = $value;
 			}
 
 			if ((int) $datas['rent_gross']['value']) {
 				$value = $datas['rent_gross']['value'];
 				$currency = $metas['currency'];
 				$datas['r_rent_gross']['value'] = $this->render_money($value, $currency);
+				$datas['r_rent_gross']['pure_value'] = $value;
 			}
 			
 			$decimal_spaces = $this->get_option('space_decimal', 1);
@@ -372,24 +376,29 @@ class field_manager extends Feature {
 			if ((float) $metas['living_space']) {
 				$value = (float) $metas['living_space'];
 				$datas['r_living_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_living_space']['pure_value'] = $value;
 			}
 			if ((float) $metas['usable_space']) {
 				$value = (float) $metas['usable_space'];
 				$datas['r_usable_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_usable_space']['pure_value'] = $value;
 			}
 			if ((float) $metas['terrace_space']) {
 				$value = (float) $metas['terrace_space'];
 				$datas['r_terrace_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_terrace_space']['pure_value'] = $value;
 			}
 			if ((float) $metas['balcony_space']) {
 				$value = (float) $metas['balcony_space'];
 				$datas['r_balcony_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_balcony_space']['pure_value'] = $value;
 			}
 			if ((int) $metas['extra_costs']) {
 				$value = (int) $metas['extra_costs'];
 				if ($value) {
 					$currency = $metas['currency'];
 					$datas['r_extra_costs']['value'] = $this->render_money($value, $currency);
+					$datas['r_extra_costs']['pure_value'] = $value;
 				}
 			}
 		}

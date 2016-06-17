@@ -135,13 +135,19 @@ class building_metabox extends Feature {
 		<table class="form-table">
 			<tbody>
 				<?php $hide_building = get_term_meta( $term->term_id, 'hide_building', true ); ?>
+				<?php $show_total = get_term_meta( $term->term_id, 'show_total', true ); ?>
 				<tr class="form-field form-required term-name-wrap">
 					<th scope="row"><label for="name">Anzeige</label></th>
 					<td>
 						<input type="hidden" name="hide_building" value="0" />
 						<label><input type="checkbox" name="hide_building" value="1" <?= ($hide_building ? 'CHECKED' : '')?> /> Auf Liste verbergen</label>
+						<br>
+						<input type="hidden" name="show_total" value="0" />
+						<label><input type="checkbox" name="show_total" value="1" <?= ($show_total ? 'CHECKED' : '')?> /> Spalten-Total auf Liste anzeigen</label>
 					</td>
 				</tr>
+
+				
 
 				<?php 
 					$building_col_options = get_term_meta( $term->term_id, 'building_col_options', true ); 
@@ -207,6 +213,11 @@ class building_metabox extends Feature {
 		if( isset( $_POST['hide_building'] ) && '' !== $_POST['hide_building'] ){
 			$val = ($_POST['hide_building'] ? 1 : 0);
 			update_term_meta( $term_id, 'hide_building', $val );
+		}
+
+		if( isset( $_POST['show_total'] ) && '' !== $_POST['show_total'] ){
+			$val = ($_POST['show_total'] ? 1 : 0);
+			update_term_meta( $term_id, 'show_total', $val );
 		}
 
 		if( isset( $_POST['building_col_options'] ) && '' !== $_POST['building_col_options'] ){

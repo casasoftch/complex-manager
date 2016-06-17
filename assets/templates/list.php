@@ -51,6 +51,26 @@
 						}
 					}
 				echo "</tbody>";
+				?>
+				<?php if(isset($building['totals'])) : ?>
+					<tfoot>
+						<tr class="complex-list-footer-row">
+							<?php foreach ($building['the_units'][0]['displayItems'] as $displayItem): ?>
+								<th class="col-<?= $displayItem['field'] ?> <?= ($displayItem['hidden-xs'] ? 'hidden-sm hidden-xs' : '') ?>">
+									<?php if (isset($building['totals'][$displayItem['field']]) && $building['totals'][$displayItem['field']]): ?>
+										<?= $building['totals'][$displayItem['field']] ?>	
+									<?php endif; ?>
+								</th>		
+							<?php endforeach ?>
+							<?php if ($collapsible) : ?>
+								<th></th>
+							<?php endif; ?>
+						</tr>
+					</tfoot>
+				<?php endif; ?>
+
+				<?php
+
 			echo "</table>";
 		echo "</div>";
 	}

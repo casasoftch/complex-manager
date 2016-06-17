@@ -184,6 +184,10 @@ class render extends Feature {
 				// check for lingustic alternatives
 				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : $col['label']);
 				$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
+				
+
+				$Rfield = get_cxm_item($unit, $field);
+				$displayItem['item'] = $Rfield;
 
 				//==therest==
 				switch ($field) {
@@ -210,14 +214,13 @@ class render extends Feature {
 							||
 							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
 						) {
-							$value = get_cxm($unit, $field);	
 							if (get_cxm($unit, 'unit_currency')) {
 								$currency = get_cxm($unit, 'unit_currency');
 							}
 						} else {
 							$value = '';
 						}
-						$displayItem['value'] = ($currency ? $currency . ' ' : '') . $value;
+						$displayItem['value'] = ($currency ? $currency . ' ' : '') . $Rfield['value'];
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 
@@ -265,7 +268,7 @@ class render extends Feature {
 							||
 							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
 						) {
-							$value = get_cxm($unit, $field);	
+							$value = $Rfield['value'];	
 						} else {
 							$value = '';
 						}
@@ -313,6 +316,44 @@ class render extends Feature {
 			foreach ($building['units'] as $unit) {
 				$the_unit = $this->prepareUnit($unit, $building_cols);
 				$building['the_units'][] = $the_unit;
+			}
+
+			//add total row
+
+			$show_total = get_term_meta( $building['term']->term_id, 'show_total', false );
+			if ($show_total) {
+				$decimal_spaces = $this->get_option('space_decimal', 1);
+				$building['totals'] = array();
+				foreach ($building['the_units'] as $unit) {
+					foreach ($unit['displayItems'] as $displayItem) {
+						if (!isset($building['totals'][$displayItem['field']])) {
+							$building['totals'][$displayItem['field']] = 0;
+						}
+						if (isset($displayItem['item']['pure_value']) && $displayItem['item']['pure_value']) {
+
+							//areas
+							if (in_array($displayItem['field'], array(
+								'r_balcony_space',
+								'r_living_space',
+								'r_usable_space',
+								'r_terrace_space',
+								'r_balcony_space',
+							))) {
+								$thevalue = $building['totals'][$displayItem['field']] + $displayItem['item']['pure_value'];
+								$building['totals'][$displayItem['field']] = number_format($thevalue, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+							} else if (
+								in_array($displayItem['field'], array(
+									'custom_1',
+									'custom_2',
+									'custom_3'
+								)) && is_int($displayItem['item']['pure_value'])
+							) {
+								$building['totals'][$displayItem['field']] = $building['totals'][$displayItem['field']] + $displayItem['item']['pure_value'];
+							}
+							
+						}
+					}
+				}
 			}
 
 			$the_buildings[] = $building;

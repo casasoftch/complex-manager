@@ -21,6 +21,27 @@ function get_cxm($object_id = false, $key = false, $label = false, $type = false
 	return '';
 }
 
+function get_cxm_item($object_id = false, $key = false, $type = false){
+    $fm = new \casasoft\complexmanager\field_manager;
+    $post = false;
+    if ($object_id) {
+        $post = get_post($object_id);
+        if ($post) {
+            $type = $post->post_type;
+        } else {
+            return '';
+        }
+        
+    }
+    
+    if ($type == 'complex_unit') {
+        return $fm->getUnitItem($post, $key);
+    } elseif ($type == 'complex_inquiry') {
+        return $fm->getInquiryItem($post, $key);
+    }
+    return '';
+}
+
 function get_cxm_label($object_id, $key, $type = false){
 	return get_cxm($object_id, $key, true, $type);
 }
