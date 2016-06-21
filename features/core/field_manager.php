@@ -227,79 +227,98 @@ class field_manager extends Feature {
 		$datas = array(
 			'name' => array(
 				'label' => __('Unit', 'complexmanager'),
-				'value' => ($unit ? $unit->post_title : '')
+				'value' => ($unit ? $unit->post_title : ''),
+				'pure_value' => ''
 			),
 			'purchase_price' => array(
 				'label' => __('Purchase price', 'complexmanager'),
-				'value' => $metas['purchase_price']
+				'value' => $metas['purchase_price'],
+				'pure_value' => $metas['purchase_price']
 			),
 			'currency' => array(
 				'label' => __('Currency', 'complexmanager'),
-				'value' => $metas['currency']
+				'value' => $metas['currency'],
+				'pure_value' => $metas['currency']
 			),
 			'rent_net' => array(
 				'label' => __('Rent', 'complexmanager'),
-				'value' => $metas['rent_net']
+				'value' => $metas['rent_net'],
+				'pure_value' => $metas['rent_net']
 			),
 			'number_of_rooms' => array(
 				'label' => __('Rooms', 'complexmanager'),
-				'value' => $metas['number_of_rooms']
+				'value' => $metas['number_of_rooms'],
+				'pure_value' => $metas['number_of_rooms']
 			),
 			'story' => array(
 				'label' => __('Floor', 'complexmanager'),
-				'value' => $metas['story']
+				'value' => $metas['story'],
+				'pure_value' => $metas['story'],
 			),
 			'status' => array(
 				'label' => __('Status', 'complexmanager'),
-				'value' => $metas['status']
+				'value' => $metas['status'],
+				'pure_value' => $metas['status'],
 			),
 			'idx_ref_house' => array(
 				'label' => __('IDX / REMCat House Ref.', 'complexmanager'),
-				'value' => $metas['idx_ref_house']
+				'value' => $metas['idx_ref_house'],
+				'pure_value' => $metas['idx_ref_house'],
 			),
 			'idx_ref_object' => array(
 				'label' => __('IDX / REMCat Object Ref.', 'complexmanager'),
-				'value' => $metas['idx_ref_object']
+				'value' => $metas['idx_ref_object'],
+				'pure_value' => $metas['idx_ref_object'],
 			),
 			'living_space' => array(
 				'label' => __('Living space', 'complexmanager'),
-				'value' => $metas['living_space']
+				'value' => $metas['living_space'],
+				'pure_value' => $metas['living_space'],
 			),
 			'usable_space' => array(
 				'label' => __('Usable space', 'complexmanager'),
-				'value' => $metas['usable_space']
+				'value' => $metas['usable_space'],
+				'pure_value' => $metas['usable_space'],
 			),
 			'terrace_space' => array(
 				'label' => __('Terrace space', 'complexmanager'),
-				'value' => $metas['living_space']
+				'value' => $metas['living_space'],
+				'pure_value' => $metas['living_space'],
 			),
 			'balcony_space' => array(
 				'label' => __('Balcony space', 'complexmanager'),
-				'value' => $metas['living_space']
+				'value' => $metas['living_space'],
+				'pure_value' => $metas['living_space'],
 			),
 			'extra_costs' => array(
 				'label' => __('Extra Costs', 'complexmanager'),
-				'value' => $metas['living_space']
+				'value' => $metas['living_space'],
+				'pure_value' => $metas['living_space'],
 			),
 			'download_file' => array(
 				'label' => __('Download file', 'complexmanager'),
-				'value' => $metas['download_file']
+				'value' => $metas['download_file'],
+				'pure_value' => $metas['download_file'],
 			),
 			'download_label' => array(
 				'label' => __('Download label', 'complexmanager'),
-				'value' => $metas['download_label']
+				'value' => $metas['download_label'],
+				'pure_value' => $metas['download_label'],
 			),
 			'custom_1' => array(
 				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 1),
 				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_1']),
+				'pure_value' => $metas['custom_1'],
 			),
 			'custom_2' => array(
 				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 2),
-				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_2'])
+				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_2']),
+				'pure_value' => $metas['custom_2'],
 			),
 			'custom_3' => array(
 				'label' => sprintf(__( 'Custom %d', 'complexmanager' ), 3),
-				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_3'])
+				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_3']),
+				'pure_value' => $metas['custom_3'],
 			),
 
 		);

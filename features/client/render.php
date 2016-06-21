@@ -212,7 +212,7 @@ class render extends Feature {
 						if (
 							$col['hidden-reserved'] == 0
 							||
-							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
+							!in_array($status, array('reserved', 'sold', 'rented'))
 						) {
 							if (get_cxm($unit, 'unit_currency')) {
 								$currency = get_cxm($unit, 'unit_currency');
@@ -229,7 +229,7 @@ class render extends Feature {
 						if (
 							$col['hidden-reserved'] == 0
 							||
-							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
+							!in_array($status, array('reserved', 'sold', 'rented'))
 						) {
 							if (get_cxm($unit, 'download_file')) {
 								$value = '<a target="_blank" class="btn btn-xs btn-default" href="' . get_cxm($unit, 'download_file') . '">' . (get_cxm($unit, 'download_label') ? get_cxm($unit, 'download_label') : 'Download') . '</a>';
@@ -239,7 +239,7 @@ class render extends Feature {
 							
 						} elseif(
 							$col['hidden-reserved'] == 1 
-							&& in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
+							&& in_array($status, array('reserved', 'sold', 'rented'))
 						) {
 							$value = '';
 
@@ -266,7 +266,7 @@ class render extends Feature {
 						if (
 							$col['hidden-reserved'] == 0
 							||
-							!in_array($status, array('pre-reserved', 'reserved', 'sold', 'rented'))
+							!in_array($status, array('reserved', 'sold', 'rented'))
 						) {
 							$value = $Rfield['value'];	
 						} else {
@@ -322,7 +322,7 @@ class render extends Feature {
 
 			$show_total = get_term_meta( $building['term']->term_id, 'show_total', false );
 			if ($show_total) {
-				$decimal_spaces = $this->get_option('space_decimal', 1);
+				
 				$building['totals'] = array();
 				foreach ($building['the_units'] as $unit) {
 					foreach ($unit['displayItems'] as $displayItem) {
@@ -332,26 +332,23 @@ class render extends Feature {
 						if (isset($displayItem['item']['pure_value']) && $displayItem['item']['pure_value']) {
 
 							//areas
-							if (in_array($displayItem['field'], array(
-								'r_balcony_space',
-								'r_living_space',
-								'r_usable_space',
-								'r_terrace_space',
-								'r_balcony_space',
-							))) {
-								$thevalue = $building['totals'][$displayItem['field']] + $displayItem['item']['pure_value'];
-								$building['totals'][$displayItem['field']] = number_format($thevalue, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
-							} else if (
-								in_array($displayItem['field'], array(
-									'custom_1',
-									'custom_2',
-									'custom_3'
-								)) && is_int($displayItem['item']['pure_value'])
-							) {
+							if (is_numeric($displayItem['item']['pure_value'])) {
 								$building['totals'][$displayItem['field']] = $building['totals'][$displayItem['field']] + $displayItem['item']['pure_value'];
 							}
 							
 						}
+					}
+				}
+				$decimal_spaces = $this->get_option('space_decimal', 1);
+				foreach ($building['totals'] as $key => $value) {
+					if (in_array($key, array(
+						'r_balcony_space',
+						'r_living_space',
+						'r_usable_space',
+						'r_terrace_space',
+						'r_balcony_space',
+					))) {
+						$building['totals'][$key] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
 					}
 				}
 			}
