@@ -217,10 +217,11 @@ class render extends Feature {
 							if (get_cxm($unit, 'unit_currency')) {
 								$currency = get_cxm($unit, 'unit_currency');
 							}
+							$displayItem['value'] = ($currency ? $currency . ' ' : '') . $Rfield['value'];
 						} else {
-							$value = '';
+							$displayItem['value'] = '';
 						}
-						$displayItem['value'] = ($currency ? $currency . ' ' : '') . $Rfield['value'];
+						
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 
@@ -320,8 +321,8 @@ class render extends Feature {
 
 			//add total row
 
-			$show_total = get_term_meta( $building['term']->term_id, 'show_total', false );
-			if ($show_total) {
+			$show_total = get_term_meta( $building['term']->term_id, 'show_total', true );
+			if ($show_total == 1) {
 				
 				$building['totals'] = array();
 				foreach ($building['the_units'] as $unit) {
@@ -715,6 +716,8 @@ class render extends Feature {
 			$unit_id = get_cxm($inquiry->ID, 'unit_id');
 			$unit = get_post($unit_id);
 
+			$lang = substr(get_bloginfo('language'), 0, 2);
+
 			//CASAMAIL
 			$data                = array();
 			$data['firstname']   = get_cxm($inquiry->ID, 'first_name');
@@ -739,7 +742,7 @@ class render extends Feature {
 
 			$data['provider']               = $provider; //must be registered at CASAMAIL
 			$data['publisher']              = $publisher; //must be registered at CASAMAIL
-			$data['lang']                   = 'de';
+			$data['lang']                   = $lang;
 			$data['property_reference']     = $this->get_option("idx_ref_property").'.'.get_cxm($unit_id, 'idx_ref_house').'.'.get_cxm($unit_id, 'idx_ref_object');
 			//$data['property_street']        = 'musterstrasse 17';
 			//$data['property_postal_code']   = '3291';
