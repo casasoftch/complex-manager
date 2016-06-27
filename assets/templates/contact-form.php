@@ -172,6 +172,4 @@
 		</div>
 	</div>
 	<?= do_action('cxm_render_after_form_parts', $data, $buildings); ?>
-
-	<?= $message ?>
 </form> 
