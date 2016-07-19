@@ -1,3 +1,5 @@
+<?php $for_bstring = 'complexField'; ?>
+<?php $for_randid = rand(0,100); ?>
 <?php if ($message): ?>
 	<div class="alert alert-<?= $state ?>">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -52,7 +54,7 @@
 		<div class="complex-form-part">
 			<dl>
 				<dt class="editable">
-					<?php _e('Salutation', 'complexmanager') ?>
+					<label><?php _e('Salutation', 'complexmanager') ?></label>
 				</dt>
 				<dd class="editable">
 					<div class="row">
@@ -73,13 +75,13 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<?php _e('Name', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
+					<label for="<?= $for_bstring ?>firstName<?= $for_randid ?>"><?php _e('Name', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
 				</dt>
 				<dd class="editable">
 					<div class="row">
 						<div class="col-xs-6 complex-form-first_name">
 							<div class="<?= (isset($messages['first_name'])  ? 'has-error' : '') ?>">
-								<input required type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= $data['first_name'] ?>">											
+								<input id="<?= $for_bstring ?>firstName<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= $data['first_name'] ?>">											
 							</div>
 						</div>
 						<div class="col-xs-6 complex-form-last_name">
@@ -90,30 +92,30 @@
 					</div>
 				</dd>
 				<dt class="editable">
-					<label><?php echo get_cxm_label(false, 'legal_name', 'complex_inquiry') ?></label>
+					<label for="<?= $for_bstring ?>legalName<?= $for_randid ?>"><?php echo get_cxm_label(false, 'legal_name', 'complex_inquiry') ?></label>
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['legal_name'])  ? 'has-error' : '') ?>">
-						<input type="text" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= $data['legal_name'] ?>">									
+						<input type="text" id="<?= $for_bstring ?>legalName<?= $for_randid ?>" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= $data['legal_name'] ?>">									
 					</div>
 				</dd>
 				<dt class="editable">
-					<label><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
+					<label for="<?= $for_bstring ?>email<?= $for_randid ?>"><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
 				</dt>
 				<dd class="editable">
 					<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
-						<input required type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= $data['email'] ?>">									
+						<input id="<?= $for_bstring ?>email<?= $for_randid ?>" required type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= $data['email'] ?>">									
 					</div>
 				</dd>
 				
 				<dt class="editable">
-					<?php _e('Phone', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
+					<label for="<?= $for_bstring ?>name<?= $for_randid ?>"><?php _e('Phone', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
 				</dt>
 				<dd class="editable">
 					<div class="row">
 						<div class="col-xs-6 complex-form-phone">
 							<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
-								<input required type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= $data['phone'] ?>">											
+								<input id="<?= $for_bstring ?>name<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= $data['phone'] ?>">											
 							</div>
 						</div>
 						<div class="col-xs-6 complex-form-mobile">
@@ -125,13 +127,13 @@
 				</dd>
 
 				<dt class="editable">
-					<?php _e('Address', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small>
+					<label for="<?= $for_bstring ?>street<?= $for_randid ?>"><?php _e('Address', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
 				</dt>
 				<dd class="editable">
 					<div class="address-picker-group">
 						<div class="address-picker-realinputs">
 							<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
-								<input required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= $data['street'] ?>">										
+								<input id="<?= $for_bstring ?>street<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= $data['street'] ?>">										
 							</div>
 							<div class="row">
 								<div class="col-xs-4 complex-form-postal_code">
@@ -163,8 +165,8 @@
 				</div>
 			<?php endif ?>
 			<div class="<?= (isset($messages['message'])  ? 'has-error' : '') ?>">
-				<label><?php _e('Message', 'complexmanager') ?></label>
-				<textarea name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
+				<label for="<?= $for_bstring ?>message<?= $for_randid ?>"><?php _e('Message', 'complexmanager') ?></label>
+				<textarea id="<?= $for_bstring ?>message<?= $for_randid ?>" name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>	
 			</div>
 			
 			<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
