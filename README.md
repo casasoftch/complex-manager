@@ -122,3 +122,23 @@ The following translations are pre-translated
 
 +   Custom Templates
 +   IE 8 interaction support
+
+## Actions and Hooks
+
+
+### Send extra email(s) after inquiry submission.
+
+`cxm_after_inquirysend`
+
+```
+function after_inquirysend($formData) {
+    if (isset($formData['email'])) {
+        $subject = "Neubauprojekt Berghalde in Pfäffikon ZH";
+        $message = "Sehr geehrte Interessentin\nSehr geehrter Interessent\n\nHerzlichen Dank für Ihr Interesse an den Eigentumswohnungen «Berghalde» in Pfäffikon ZH.  \n\nDie Projektunterlagen befinden sich derzeit in der Aufbereitung und werden voraussichtlich im Juni 2016 vorliegen. Gerne nehmen wir Ihre Kontaktdaten auf und werden Ihnen die Dokumentation nach deren Fertigstellung umgehend zukommen lassen.\n\nWenn Sie vorher schon weitere Informationen wünschen, laden wir Sie gerne zu einem unverbindlichen, ersten Beratungsgespräch ein, bei dem wir Ihnen das Projekt näher vorstellen. Kontaktieren Sie uns für eine Terminvereinbarung unter +41 44 905 40 90 oder per E-Mail an uster@walde.ch.\n\nAuch für Rückfragen stehen wir Ihnen selbstverständlich zur Verfügung. Wir freuen uns auf Sie.\n\n\nFreundliche Grüsse\n\nNicole Stöckli\nImmobilienberaterin\n\nWalde & Partner Immobilien AG\nZentralstrasse 25\n8610 Uster\nwww.walde.ch\n\nDirect    +41 44 905 40 94\nPhone    +41 44 905 40 90\nFax        +41 44 905 40 99\n";
+        wp_mail( $formData['email'], $subject, $message);
+    }
+}
+add_action( 'cxm_after_inquirysend', 'after_inquirysend' );
+```
+
+
