@@ -752,7 +752,7 @@ class render extends Feature {
 			//$data['property_rooms']         = '3.2';
 			//$data['property_type']          = 'rent';
 			//$data['property_price']         = '123456';
-			//$data['direct_recipient_email'] = 'directemail@domain.ch';
+			$data['direct_recipient_email'] = $this->get_option("global_direct_recipient_email");
 
 			$term = get_term($formData['reason'], 'inquiry_reason', OBJECT);
 			$extra_data = array();

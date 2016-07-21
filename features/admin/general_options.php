@@ -114,6 +114,14 @@ class general_options extends Feature
             array( $this, 'emails_callback' ), 
             'complex-manager-admin', 
             'cxm_1'
+        );
+
+        add_settings_field(
+            'global_direct_recipient_email', 
+             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> direkte E-Mail', 'complexmanager' ), 
+            array( $this, 'global_direct_recipient_email_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
         );  
 
         add_settings_field(
@@ -191,6 +199,10 @@ class general_options extends Feature
             $new_input['emails'] = sanitize_text_field( $input['emails'] );
         }
 
+        if( isset( $input['global_direct_recipient_email'] ) ) {
+            $new_input['global_direct_recipient_email'] = sanitize_text_field( $input['global_direct_recipient_email'] );
+        }
+
         if( isset( $input['provider_slug'] ) ) {
             $new_input['provider_slug'] = sanitize_text_field( $input['provider_slug'] );
         }
@@ -251,6 +263,15 @@ class general_options extends Feature
         printf(
             '<input type="text" id="emails" name="complex_manager[emails]" value="%s" />',
             isset( $this->options['emails'] ) ? esc_attr( $this->options['emails']) : ''
+        );
+    }
+
+
+    public function global_direct_recipient_email_callback()
+    {
+        printf(
+            '<input type="text" id="global_direct_recipient_email" name="complex_manager[global_direct_recipient_email]" value="%s" />',
+            isset( $this->options['global_direct_recipient_email'] ) ? esc_attr( $this->options['global_direct_recipient_email']) : ''
         );
     }
 
