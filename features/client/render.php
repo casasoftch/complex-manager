@@ -772,16 +772,25 @@ class render extends Feature {
 					});
 			   	}
 				$the_unit = $this->prepareUnit($unit, $cols);
-				$unit_infos = '';
+				$unit_infos = '<br>';
 				foreach ($the_unit['displayItems'] as $displayItem) {
-					$unit_infos .= $displayItem['label'] . ': ' . $displayItem['value'] . "<br>";
+					if ($displayItem['label'] && $displayItem['value']) {
+						$unit_infos .= $displayItem['label'] . ': ' . $displayItem['value'] . "<br>";
+					}
+					
 				}
 				if ($unit_infos) {
-					$extra_data['cmx_unit'] = $unit_infos;
+					$extra_data['infos'] = $unit_infos;
 				}
-
 			}
 
+			//custom extra data
+			if (isset($formData['extra_data'])) {
+				foreach ($formData['extra_data'] as $key => $value) {
+					$extra_data[$key] = $value;
+				}
+			}
+			
 			$data['extra_data'] = json_encode($extra_data);
 
 
