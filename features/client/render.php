@@ -202,8 +202,12 @@ class render extends Feature {
 							default: $value = $status;
 						}
 						$displayItem['value'] = '<span class="text-'.$state.'">' . $value . '</span>';
-						$displayItem['td_classes'] = 'hidden-sm hidden-xs col-status';
+						//$displayItem['td_classes'] = 'hidden-sm hidden-xs col-status';
+						//$displayItem['hidden-xs'] = $col['hidden-xs'];
+
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
+
 						break;
 					case 'r_purchase_price':
 					case 'r_rent_net':
