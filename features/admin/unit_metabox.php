@@ -229,7 +229,7 @@ class unit_metabox extends Feature {
 				echo '<p><label for="'.$key.'">';
 				_e( 'Living Space', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="0.1" min="0"  id="'.$key.'" name="'.$key.'"';
+				echo '<input type="text" step="0.1" min="0"  id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
 		        echo '</p>';
 
@@ -238,7 +238,7 @@ class unit_metabox extends Feature {
 				echo '<p><label for="'.$key.'">';
 				_e( 'Usable Space', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
+				echo '<input type="text" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
 		        echo '</p>';
 
@@ -248,7 +248,7 @@ class unit_metabox extends Feature {
 				echo '<p><label for="'.$key.'">';
 				_e( 'Terrace Space', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
+				echo '<input type="text" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
 		        echo '</p>';
 
@@ -257,7 +257,7 @@ class unit_metabox extends Feature {
 				echo '<p><label for="'.$key.'">';
 				_e( 'Balcony Space', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
+				echo '<input type="text" step="0.1" min="0" id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />&nbsp;m<sup>2</sup>';
 		        echo '</p>';
 
