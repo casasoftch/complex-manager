@@ -1,1 +1,482 @@
-jQuery(function(){"use strict";!function(t){function o(t,o){return t.substring(t.length-o.length,t.length)===o}function e(t){var o,e,a,n,c,i,r,l={},p=function(t){return decodeURIComponent(t).replace(/\+/g," ")},s=window.location.search.substring(1),m=/([^&;=]+)=?([^&;]*)/g;for(t&&(s=t),c=function(t){return"object"!=typeof t&&(e=t,t={},t.length=0,e&&Array.prototype.push.call(t,e)),t};a=m.exec(s);)o=a[1].indexOf("["),r=p(a[2]),0>o?(n=p(a[1]),l[n]?(l[n]=c(l[n]),Array.prototype.push.call(l[n],r)):l[n]=r):(n=p(a[1].slice(0,o)),i=p(a[1].slice(o+1,a[1].indexOf("]",o))),l[n]=c(l[n]),i?l[n][i]=r:Array.prototype.push.call(l[n],r));return l}function a(t){var o={};return t.rooms?"string"==typeof t.rooms?o.rooms=[t.rooms]:o.rooms=t.rooms:o.rooms=null,t.status?"string"==typeof t.status?o.status=[t.status]:o.status=t.status:o.status=null,o}function n(o,e){o=a(o),e.find("tr.complex-unit-header-row").each(function(e,a){var n=t(a).data("json"),c=!0;n&&n.number_of_rooms&&o.rooms&&(c=!1,t.each(o.rooms,function(t,o){o==n.number_of_rooms&&(c=!0)}));var i=!0;if(n&&n.status&&o.statuss&&(i=!1,t.each(o.statuss,function(t,o){o==n.status&&(i=!0)})),i=!0,n.status&&o.status){var r=t.grep(o.status,function(t){return t==n.status});i=0!==r.length}c&&i?(t(a).removeClass("filtered"),t(a).next().removeClass("filtered")):(t(a).addClass("filtered"),t(a).next().addClass("filtered"))})}function c(e,a){a="undefined"!=typeof a?a:0;var n="#"+e.prop("id");t(".complex-project-graphic-interaction a").each(function(e,a){o(t(a).attr("xlink:href"),n)&&t(a).attr("class",function(t,o){return o+" active"})}),t(".complex-custom-overlays img").not(".active").fadeOut(a),t('.complex-custom-overlays img[data-show-on-active-unit="'+n+'"]').addClass("active").fadeIn(a),t(".complex-tooltip-unit-item").hide(),0!==t(".complex-project-graphic:hover").length&&t(".complex-tooltip").show(),t('.complex-tooltip-unit-item[data-unit="'+n+'"]').show()}function i(e,a){if(a="undefined"!=typeof a?a:0,e.hasClass("active"));else{var n="#"+e.prop("id");t(".complex-project-graphic-interaction a").each(function(e,a){o(t(a).attr("xlink:href"),n)&&t(a).attr("class",function(t,o){return o.replace("active","")})}),t('.complex-custom-overlays img[data-show-on-active-unit="'+n+'"]').fadeOut(a)}t(".complex-tooltip-unit-item").hide(),t(".complex-tooltip").hide()}function r(o){t(".complex-tooltip").hide(),t(".complex-project-graphic-interaction a").each(function(o,e){t(e).attr("class",function(t,o){return o.replace("active","")})}),o.hasClass("active")?(o.next().find(".detail-row-wrapper").slideUp("slow"),o.removeClass("active"),o.next().removeClass("active")):(l(o,s),t(".complex-unit-header-row.active").each(function(o,e){t(e).next().find(".detail-row-wrapper").slideUp("slow"),t(e).removeClass("active"),t(e).next().removeClass("active")}),o.next().find(".detail-row-wrapper").slideDown("slow"),o.addClass("active"),o.next().addClass("active"),c(o))}function l(o,e){t(".complex-tooltip").hide(),e="undefined"!=typeof e?e:0;var a=o;t(".complex-unit-detail-row.active").length&&t(".complex-unit-detail-row.active").offset().top<a.offset().top?t("html, body").animate({scrollTop:a.offset().top-t(".complex-unit-detail-row.active").outerHeight()-e},500):t("html, body").animate({scrollTop:a.offset().top-e},500)}function p(o){o.on("submit",function(e){e.preventDefault(),o.find(":input").prop("disabled",!1),t("#complexContactFormLoader").length||o.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>'),t("#complexContactFormLoader").fadeIn("slow");var a=o.serialize();t.post(o.prop("action"),a,function(o){var e=t(o).find(".complex-contact-form-wrapper");t(".complex-contact-form-wrapper").html(e.html()),p(t("#complexContactFormAnchor"))})})}var s=124;t(".complex-list-wrapper #complexContactForm").hide(),t(".complex-project-graphic img").load(function(){t(".complex-project-graphic-interaction").height(t(".complex-project-graphic img").height())}),t(".complex-unit-detail-row .detail-row-wrapper").slideUp(0),p(t("#complexContactFormAnchor"));var m=!1;t("body").on("touchmove",function(){m=!0}),t("body").on("touchstart",function(){m=!1}),t(".complex-unit-header-row").on("click touchend",function(o){var e=this,a=t(o.target).is("a");if(!a&&(o.preventDefault(),!m))if(t(".complex-list-wrapper").hasClass("complex-list-wrapper-collapsible"))t(".complex-custom-overlays img").removeClass("active").hide(),r(t(this));else if(t(".complex-contact-form-wrapper").length){t("html, body").animate({scrollTop:t(".complex-contact-form-wrapper").offset().top},500),t(".complex-contact-form-wrapper input:text, .complex-contact-form-wrapper textarea").first().focus();var n=t(e).data("unit-id");t('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(n)}else t(e).find(".col-quick-download a").length?t(e).find(".col-quick-download a").first()[0].click():t(e).find(".col-quick-download").length||alert('form not found add it with [contactform-complex] or enable collapsible="1" property on [CXM-list] and make sure there is only one form available.')}),t(".complex-unit-header-row").hover(function(){c(t(this))},function(){i(t(this))});var u=t(location).attr("href").replace(/^.*?(#|$)/,"");u&&t("#"+u).length&&t("#"+u).click(),t(".complex-project-graphic-interaction a").on("click touchend",function(o){o.preventDefault();var e=t(this).attr("xlink:href"),a=e.indexOf("#"),n=-1!==a?e.substring(a+1):"";t("#"+n).length&&t("#"+n).click()}).hover(function(){var o=t(this).attr("xlink:href"),e=o.indexOf("#"),a=-1!==e?o.substring(e+1):"";t("#"+a).length&&c(t("#"+a))},function(){var o=t(this).attr("xlink:href"),e=o.indexOf("#"),a=-1!==e?o.substring(e+1):"";t("#"+a).length&&i(t("#"+a))}),t(".complex-call-contact-form").click(function(o){o.preventDefault();var e=t(this).data("unit-id");t('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(e).prop("disabled","disabled"),t("#complexContactForm").appendTo(t(this).parent()),t("#complexContactForm").slideUp(0),t("#complexContactForm").slideDown("slow"),t(".complex-sendback-contact-form").show(),t("html, body").animate({scrollTop:t("#complexContactForm").offset().top-s},500),t(this).hide()}),t(".complex-sendback-contact-form").click(function(o){o.preventDefault(),t("#complexContactForm").slideUp("slow"),t(".complex-call-contact-form").show()});var f=e();n(f,t(".complex-list-wrapper")),t("#complexFilterForm").change(function(o){var a=t("#complexFilterForm").serialize();a=a.replace(/%5B/g,"["),a=a.replace(/%5D/g,"]"),f=e(a),n(f,t(".complex-list-wrapper"))}),t(document).on("mousemove",function(o){0!==t(".complex-project-graphic:hover").length?t(".complex-tooltip").css({left:o.pageX-15,top:o.pageY+25}):t(".complex-tooltip").hide()})}(jQuery)});
+jQuery( function () {
+	"use strict";
+
+	(function($){
+
+		//var CXMscrollOffset = 50;
+		var CXMscrollOffset = 124;
+
+		function endsWith(string, search){
+		    return string.substring( string.length - search.length, string.length ) === search;
+		}
+
+
+		function getQueryStringKey(key) {
+		    return getQueryStringAsObject()[key];
+		}
+
+
+		function getQueryStringAsObject(custom_q) {
+		    var b, cv, e, k, ma, sk, v, r = {},
+		        d = function (v) { return decodeURIComponent(v).replace(/\+/g, " "); }, //# d(ecode) the v(alue)
+		        q = window.location.search.substring(1),
+		        s = /([^&;=]+)=?([^&;]*)/g //# original regex that does not allow for ; as a delimiter:   /([^&=]+)=?([^&]*)/g
+		    ;
+		    if (custom_q) {
+		    	q = custom_q;
+		    }
+
+		    //# ma(make array) out of the v(alue)
+		    ma = function(v) {
+		        //# If the passed v(alue) hasn't been setup as an object
+		        if (typeof v != "object") {
+		            //# Grab the cv(current value) then setup the v(alue) as an object
+		            cv = v;
+		            v = {};
+		            v.length = 0;
+
+		            //# If there was a cv(current value), .push it into the new v(alue)'s array
+		            //#     NOTE: This may or may not be 100% logical to do... but it's better than loosing the original value
+		            if (cv) { Array.prototype.push.call(v, cv); }
+		        }
+		        return v;
+		    };
+
+		    //# While we still have key-value e(ntries) from the q(uerystring) via the s(earch regex)...
+		    while (e = s.exec(q)) { //# while((e = s.exec(q)) !== null) {
+		        //# Collect the open b(racket) location (if any) then set the d(ecoded) v(alue) from the above split key-value e(ntry) 
+		        b = e[1].indexOf("[");
+		        v = d(e[2]);
+
+		        //# As long as this is NOT a hash[]-style key-value e(ntry)
+		        if (b < 0) { //# b == "-1"
+		            //# d(ecode) the simple k(ey)
+		            k = d(e[1]);
+
+		            //# If the k(ey) already exists
+		            if (r[k]) {
+		                //# ma(make array) out of the k(ey) then .push the v(alue) into the k(ey)'s array in the r(eturn value)
+		                r[k] = ma(r[k]);
+		                Array.prototype.push.call(r[k], v);
+		            }
+		            //# Else this is a new k(ey), so just add the k(ey)/v(alue) into the r(eturn value)
+		            else {
+		                r[k] = v;
+		            }
+		        }
+		        //# Else we've got ourselves a hash[]-style key-value e(ntry) 
+		        else {
+		            //# Collect the d(ecoded) k(ey) and the d(ecoded) sk(sub-key) based on the b(racket) locations
+		            k = d(e[1].slice(0, b));
+		            sk = d(e[1].slice(b + 1, e[1].indexOf("]", b)));
+
+		            //# ma(make array) out of the k(ey) 
+		            r[k] = ma(r[k]);
+
+		            //# If we have a sk(sub-key), plug the v(alue) into it
+		            if (sk) { r[k][sk] = v; }
+		            //# Else .push the v(alue) into the k(ey)'s array
+		            else { Array.prototype.push.call(r[k], v); }
+		        }
+		    }
+
+		    //# Return the r(eturn value)
+		    return r;
+		}
+
+
+		function fixQuery(query){
+			var returnQuery = {};
+			if (query.rooms) {
+				if(typeof query.rooms === "string") {
+					returnQuery.rooms = [query.rooms];
+				} else {
+					returnQuery.rooms = query.rooms;
+				}
+			} else {
+				returnQuery.rooms = null;
+			}
+			if (query.status) {
+				if(typeof query.status === "string") {
+					returnQuery.status = [query.status];
+				} else {
+					returnQuery.status = query.status;
+				}
+			} else {
+				returnQuery.status = null;
+			}
+
+
+			returnQuery.livingspace_from = (!query.livingspace_from ? 0 : query.livingspace_from);
+			returnQuery.livingspace_to = (!query.livingspace_to ? 99999999999 : query.livingspace_to);
+
+			return returnQuery;
+		}
+
+		function filterList(query, $list){
+
+
+			query = fixQuery(query);
+
+
+			$list.find('tr.complex-unit-header-row').each(function(index, tr) {
+				var data = $(tr).data('json');
+				
+				var room_pass = true;
+				if (data && data.number_of_rooms && query.rooms) {
+					room_pass = false;
+					$.each(query.rooms, function(index, value) {
+						if(value == data.number_of_rooms){
+					    	room_pass = true;
+					    }
+					});
+				}
+
+				var status_pass = true;
+				if (data && data.status && query.statuss) {
+					status_pass = false;
+					$.each(query.statuss, function(index, value) {
+						if(value == data.status){
+					    	status_pass = true;
+					    }
+					});
+				}
+
+				// why again ?
+				status_pass = true;
+				if (data.status && query.status) {
+					var init = $.grep(query.status, function(item) {
+					    return (item == data.status);
+					});
+					if (init.length === 0) {
+						status_pass = false;
+					} else {
+						status_pass = true;
+					}
+				}
+
+				var livingspace_pass = true;
+				if (data.r_living_space) {
+					if (query.livingspace_from || query.livingspace_to) {
+						var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/\D/g,''));
+						livingspace_pass = false;
+						if (living_space >= query.livingspace_from && living_space <= query.livingspace_to) {
+							livingspace_pass = true;
+						}
+					}
+				}
+
+				if (room_pass && status_pass && livingspace_pass) {
+					$(tr).removeClass('filtered');
+					$(tr).next().removeClass('filtered');
+				} else {
+					$(tr).addClass('filtered');
+					$(tr).next().addClass('filtered');
+				}
+			});
+		}
+
+		function highlightProjectUnit($headerRow, speed){
+			speed = typeof speed !== 'undefined' ? speed : 0;
+			var id = "#"+$headerRow.prop('id');
+			$('.complex-project-graphic-interaction a').each(function(iindex, iel) {
+				if (endsWith($(iel).attr("xlink:href"), id)) {
+					//addClass
+					$(iel).attr('class', function(index, classNames) {
+					    return classNames + ' active';
+					});
+				}
+			});
+			$('.complex-custom-overlays img').not('.active').fadeOut(speed);
+			$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').addClass('active').fadeIn(speed);
+
+			$('.complex-tooltip-unit-item').hide();
+			if ($('.complex-project-graphic:hover').length !== 0) {
+				$('.complex-tooltip').show();
+			}
+			$('.complex-tooltip-unit-item[data-unit="'+id+'"]').show();
+		}
+
+		function unhighlightProjectUnit($headerRow, speed){
+			speed = typeof speed !== 'undefined' ? speed : 0;
+			if ($headerRow.hasClass('active')) {
+
+			} else {
+				var id = "#"+$headerRow.prop('id');
+				$('.complex-project-graphic-interaction a').each(function(iindex, iel) {
+					if (endsWith($(iel).attr("xlink:href"), id)) {
+						//addClass
+						$(iel).attr('class', function(index, classNames) {
+						    return classNames.replace('active', '');
+						});
+					}
+				});
+				$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut(speed);
+			}
+
+			$('.complex-tooltip-unit-item').hide();
+			$('.complex-tooltip').hide();
+			
+		}
+
+		function activateProjectUnit($headerRow){
+			$('.complex-tooltip').hide();
+			$('.complex-project-graphic-interaction a').each(function(index, el) {
+				// removeClass
+				$(el).attr('class', function(index, classNames) {
+				    return classNames.replace('active', '');
+				});
+			});
+
+			if ($headerRow.hasClass('active')) {
+				$headerRow.next().find('.detail-row-wrapper').slideUp('slow');
+				$headerRow.removeClass('active');
+				$headerRow.next().removeClass('active');
+			} else {
+
+				scrolltoheaderRow($headerRow, CXMscrollOffset);
+
+				$('.complex-unit-header-row.active').each(function(index, el) {
+					
+					$(el).next().find('.detail-row-wrapper').slideUp('slow');
+					$(el).removeClass('active');
+					$(el).next().removeClass('active');
+				});
+
+				$headerRow.next().find('.detail-row-wrapper').slideDown('slow');	
+				$headerRow.addClass('active');
+				$headerRow.next().addClass('active');
+
+				/*$('html, body').animate({
+			        scrollTop: $headerRow.next().find('.detail-row-wrapper').offset().top - 100
+			    }, 500);*/
+
+				highlightProjectUnit($headerRow);
+			}
+		}
+
+		function scrolltoheaderRow($headerRow, offset){
+			$('.complex-tooltip').hide();
+			offset = typeof offset !== 'undefined' ? offset : 0;
+			var $tr = $headerRow;
+			if ($('.complex-unit-detail-row.active').length && $('.complex-unit-detail-row.active').offset().top < $tr.offset().top) {
+				$('html, body').animate({
+			        scrollTop: $tr.offset().top - $('.complex-unit-detail-row.active').outerHeight() - offset
+			    }, 500);
+			} else {
+				$('html, body').animate({
+			        scrollTop: $tr.offset().top - offset
+			    }, 500);
+			}
+		}
+
+
+
+		function ajaxifyContactForm($form){
+			$form.on('submit', function(event) {
+				event.preventDefault();
+				$form.find(':input').prop('disabled', false);
+				if (!$('#complexContactFormLoader').length) {
+					$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+				}
+				$('#complexContactFormLoader').fadeIn('slow');
+				var data = $form.serialize();
+				$.post($form.prop('action'), data, function(data) {
+					var $new_form = $(data).find('.complex-contact-form-wrapper');
+					$('.complex-contact-form-wrapper').html($new_form.html());
+
+					ajaxifyContactForm($('#complexContactFormAnchor'));
+				});
+
+			});
+		}
+
+		//hide form
+		$('.complex-list-wrapper #complexContactForm').hide();
+
+		//fixes safari 6?
+		$(".complex-project-graphic img").load(function(){
+			$('.complex-project-graphic-interaction').height($('.complex-project-graphic img').height());
+		});
+
+		//hide row-details
+		$('.complex-unit-detail-row .detail-row-wrapper').slideUp(0);
+
+		//make form ajaxified
+		ajaxifyContactForm($('#complexContactFormAnchor'));
+		
+		//row click
+		var dragging = false;
+		$("body").on("touchmove", function(){
+		      dragging = true;
+		});
+		$("body").on("touchstart", function(){
+		    dragging = false;
+		});
+		$('.complex-unit-header-row').on('click touchend', function(event) {
+			var row = this;
+			var anchorclick = $(event.target).is('a');
+
+			if (!anchorclick) {
+				event.preventDefault();
+
+				if (!dragging) {
+					if ($('.complex-list-wrapper').hasClass('complex-list-wrapper-collapsible')) {
+						$('.complex-custom-overlays img').removeClass('active').hide();
+						activateProjectUnit($(this));
+					} else {
+						if ($('.complex-contact-form-wrapper').length) {
+							$('html, body').animate({
+						        scrollTop: $('.complex-contact-form-wrapper').offset().top
+						    }, 500);
+						    $(".complex-contact-form-wrapper input:text, .complex-contact-form-wrapper textarea").first().focus();
+						   	var unit_id = $(row).data('unit-id');
+						    $('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
+						    //.prop('disabled','disabled')
+
+
+						} else if($(row).find('.col-quick-download a').length){
+							$(row).find('.col-quick-download a').first()[0].click();
+						} else if($(row).find('.col-quick-download').length){
+							//silence
+						} else {
+							alert('form not found add it with [contactform-complex] or enable collapsible="1" property on [CXM-list] and make sure there is only one form available.');
+						}
+					}
+				}
+			}
+		});
+
+		//row hover
+		$('.complex-unit-header-row').hover(function() {
+			highlightProjectUnit($(this));
+		}, function(){
+			unhighlightProjectUnit($(this));
+		});
+
+
+		//hash click
+		var curHash = $(location).attr('href').replace(/^.*?(#|$)/,'');
+		if (curHash && $('#'+curHash).length) {
+			$('#'+curHash).click();
+		}
+
+		//graphic svg click
+		$('.complex-project-graphic-interaction a').on('click touchend', function(event) {
+			event.preventDefault();
+			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
+			var hash = idx !== -1 ? url.substring(idx+1) : "";
+			if ($('#'+hash).length) {
+				$('#'+hash).click();
+			}	
+		}).hover(function(){
+			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
+			var hash = idx !== -1 ? url.substring(idx+1) : "";
+			if ($('#'+hash).length) {
+				highlightProjectUnit($('#'+hash));
+			}
+		}, function(){
+			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
+			var hash = idx !== -1 ? url.substring(idx+1) : "";
+			if ($('#'+hash).length) {
+				unhighlightProjectUnit($('#'+hash));
+			}
+		});
+
+		//open contact click
+		$('.complex-call-contact-form').click(function(event) {
+			event.preventDefault();
+			var unit_id = $(this).data('unit-id');
+			$('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id).prop('disabled','disabled');
+			$('#complexContactForm').appendTo($(this).parent());
+			$('#complexContactForm').slideUp(0);
+			$('#complexContactForm').slideDown('slow');
+			//$("#complexContactForm input:text, #complexContactForm textarea").first().focus();
+			$('.complex-sendback-contact-form').show();
+			$('html, body').animate({
+		        scrollTop: $('#complexContactForm').offset().top - CXMscrollOffset
+		    }, 500);
+			$(this).hide();
+		});
+
+		//close contact click
+		$('.complex-sendback-contact-form').click(function(event) {
+			event.preventDefault();
+			$('#complexContactForm').slideUp('slow');
+			$('.complex-call-contact-form').show();
+		});
+
+		var query = getQueryStringAsObject();
+		filterList(query, $('.complex-list-wrapper'));
+
+		$('#complexFilterForm').change(function(event) {
+			var querystring = $('#complexFilterForm').serialize();
+			querystring = querystring.replace(/%5B/g, '[');
+			querystring = querystring.replace(/%5D/g, ']');
+			query = getQueryStringAsObject(querystring);
+			filterList(query, $('.complex-list-wrapper'));
+		});
+
+
+		$(document).on('mousemove', function(e){
+			if ($('.complex-project-graphic:hover').length !== 0) {
+			    $('.complex-tooltip').css({
+			       left:  e.pageX-15,
+			       top:   e.pageY+25
+			    });
+			} else {
+				$('.complex-tooltip').hide();
+			}
+		});
+
+		/*$('tr.complex-unit-header-row').click(function() {
+			var $tr = $(this);
+			if ($('complex-unit-detail-row.active').length) {
+				alert('complex-unit active exists');
+				if ($('complex-unit-detail-row.active').offset().top < $tr.offset().top) {
+					alert($('complex-unit-detail-row.active').outerHeight());
+					$('html, body').animate({
+				        scrollTop: $tr.offset().top - $('complex-unit-detail-row.active').outerHeight()
+				    }, 500);
+				} else {
+					alert('offset top of active is smaller than clicked element');
+					alert();
+					$('html, body').animate({
+				        scrollTop: $tr.offset().top
+				    }, 500);
+				};
+			} else {
+				alert('complex-unit active does not exist');
+				$('html, body').animate({
+			        scrollTop: $tr.offset().top
+			    }, 500);
+			}
+			
+		});*/
+
+
+		//google address picker api
+		function prepAddressPickerForm(){
+			$('.address-picker-group').each(function(index, el) {
+				var $streetInput = $(el).find('input[name="complex-unit-inquiry[street]"]');	
+				var $postalCodeInput = $(el).find('input[name="complex-unit-inquiry[postal_code]"]');	
+				var $localityInput = $(el).find('input[name="complex-unit-inquiry[locality]"]');	
+				if ($streetInput.length && $postalCodeInput.length && $localityInput.length) {
+					$(el).find('.address-picker-realinputs').hide();
+					
+					$streetInput.attr('type', 'hidden');
+					$postalCodeInput.attr('type', 'hidden');
+					$localityInput.attr('type', 'hidden');
+
+					$(el).append('<div class="address-picker-input"><input type="text" class="form-control" value="' + $streetInput.val() + ' ' + $postalCodeInput.val() + ' ' + $localityInput.val() + '" /></div>')
+				}
+				
+			});
+		}
+		//prepAddressPickerForm();
+		
+
+
+	}(jQuery));
+
+} );

@@ -482,18 +482,61 @@ class render extends Feature {
 		$template->set( 'height', $height );
 
 		$roomfilters = array();
+		$minLivingSpace = false;
+		$maxLivingSpace = false;
+		$minRentNet = false;
+		$maxRentNet = false;
+
 		foreach ($buildings as $building) {
 			foreach ($building['units'] as $unit) {
+				if (get_cxm($unit, 'living_space')) {
+					if ($minLivingSpace && $maxLivingSpace) {
+						if (get_cxm($unit, 'living_space') < $minLivingSpace) {
+							$minLivingSpace = get_cxm($unit, 'living_space');
+						} elseif (get_cxm($unit, 'living_space') > $maxLivingSpace) {
+							$maxLivingSpace = get_cxm($unit, 'living_space');
+						}
+					} else {
+						$minLivingSpace = get_cxm($unit, 'living_space');
+						$maxLivingSpace = get_cxm($unit, 'living_space');
+					}
+				}
+
+				if (get_cxm($unit, 'rent_net')) {
+					if ($minRentNet && $maxRentNet) {
+						if (get_cxm($unit, 'rent_net') < $minRentNet) {
+							$minRentNet = get_cxm($unit, 'rent_net');
+						} elseif (get_cxm($unit, 'rent_net') > $maxRentNet) {
+							$maxRentNet = get_cxm($unit, 'rent_net');
+						}
+					} else {
+						$minRentNet = get_cxm($unit, 'rent_net');
+						$maxRentNet = get_cxm($unit, 'rent_net');
+					}
+				}
+				
+				
+			
+				//complexmanager_unit_
 				$number_of_rooms = get_cxm($unit, 'number_of_rooms');
 				if (!in_array($number_of_rooms, $roomfilters)) {
 					$roomfilters[] = $number_of_rooms;
 				}
 			}
 		}
+
 		$roomfilters = array_filter($roomfilters);
 		asort($roomfilters);
 
 		$template->set( 'roomfilters', $roomfilters );
+
+		$template->set( 'maxlivingspace', $maxLivingSpace );
+
+		$template->set( 'minlivingspace', $minLivingSpace );
+
+		$template->set( 'maxrentnet', $maxRentNet );
+
+		$template->set( 'minrentnet', $minRentNet );
 		
 		$message = $template->apply( 'filter.php' );
 		return $message;
