@@ -20,8 +20,8 @@
 				<div id="range-flaeche">
 				</div>
 
-				<input name="livingspace_from" type="text" />
-				<input name="livingspace_to" type="text" />
+				<input id="livingspace_from" name="livingspace_from" type="text" />
+				<input id="livingspace_to" name="livingspace_to" type="text" />
 			</div>
 
 			<div id="filteroption-miete-netto" class="filteroption filteroption-rentnet-slider" data-minrentnet="<?php echo $minrentnet ?>" data-maxrentnet="<?php echo $maxrentnet ?>">
@@ -33,6 +33,8 @@
 				</div>
 				<div id="range-miete">
 				</div>
+				<input id="rentnet_from" name="rentnet_from" type="text" />
+				<input id="rentnet_to" name="rentnet_to" type="text" />
 			</div>
 			<div class="filteroption complex-filter-checkboxwrapper filteroption-status-checkboxes">
 				<label class="filteroption-label" for="">Status</label>
