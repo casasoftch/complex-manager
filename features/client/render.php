@@ -299,13 +299,14 @@ class render extends Feature {
 
 		$the_buildings = array();
 		foreach ($buildings as $building) {
-			$building['description'] = ($building['term']->description ? '<p class="unit-description">' . $building['term']->description . '</p>' : '');
+			$building['description'] = ($building['term']->description ? $building['term']->description : '');
 			$building['the_units'] = array();
 			$col_options = get_term_meta( $building['term']->term_id, 'building_col_options', true );
 			$hide_building = get_term_meta( $building['term']->term_id, 'hide_building', true );
-			if ($hide_building) {
+			/*if ($hide_building) {
 				continue;
-			}
+			}*/
+			$building['hidden'] = $hide_building;
 
 			$building_cols = $cols;
 			foreach ($building_cols as $col => $b_col) {
@@ -486,7 +487,10 @@ class render extends Feature {
 			foreach ($building['units'] as $unit) {
 				$number_of_rooms = get_cxm($unit, 'number_of_rooms');
 				if (!in_array($number_of_rooms, $roomfilters)) {
-					$roomfilters[] = $number_of_rooms;
+					if ($number_of_rooms) {
+						$roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', '\'') ;
+					}
+					
 				}
 			}
 		}

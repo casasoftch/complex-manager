@@ -1,11 +1,5 @@
 <?php $for_bstring = 'complexField'; ?>
 <?php $for_randid = rand(0,100); ?>
-<?php if ($message): ?>
-	<div class="alert alert-<?= $state ?>">
-		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<?= $message ?>
-	</div>	
-<?php endif ?>
 <form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST">
 	<input type="hidden" name="complex-unit-inquiry[post]" value="1">
 	<?= do_action('cxm_render_before_form_parts', $data, $buildings); ?>
@@ -47,7 +41,7 @@
 						}
 						echo "</optgroup>";
 					}
-				 ?>
+				?>
 			</select>
 		</div>
 		<?php endif ?>
@@ -175,3 +169,9 @@
 	</div>
 	<?= do_action('cxm_render_after_form_parts', $data, $buildings); ?>
 </form> 
+<?php if ($message): ?>
+	<div class="alert alert-<?= $state ?>">
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<?= $message ?>
+	</div>	
+<?php endif ?>
