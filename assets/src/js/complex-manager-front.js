@@ -105,11 +105,21 @@ jQuery( function () {
 			} else {
 				returnQuery.status = null;
 			}
+
+
+			returnQuery.livingspace_from = (!query.livingspace_from ? 0 : query.livingspace_from);
+			returnQuery.livingspace_to = (!query.livingspace_to ? 99999999999 : query.livingspace_to);
+
+			returnQuery.rentnet_from = (!query.rentnet_from ? 0 : query.rentnet_from);
+			returnQuery.rentnet_to = (!query.rentnet_to ? 99999999999 : query.rentnet_to);
+
 			return returnQuery;
 		}
 
 		function filterList(query, $list){
+
 			query = fixQuery(query);
+
 			$list.find('tr.complex-unit-header-row').each(function(index, tr) {
 				var data = $(tr).data('json');
 				
@@ -133,6 +143,7 @@ jQuery( function () {
 					});
 				}
 
+				// why again ?
 				status_pass = true;
 				if (data.status && query.status) {
 					var init = $.grep(query.status, function(item) {
@@ -145,7 +156,29 @@ jQuery( function () {
 					}
 				}
 
-				if (room_pass && status_pass) {
+				var livingspace_pass = true;
+				if (data.r_living_space) {
+					if (query.livingspace_from || query.livingspace_to) {
+						var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/\D/g,''));
+						livingspace_pass = false;
+						if (living_space >= query.livingspace_from && living_space <= query.livingspace_to) {
+							livingspace_pass = true;
+						}
+					}
+				}
+
+				var rentnet_pass = true;
+				if (data.r_rent_net) {
+					if (query.rentnet_from || query.rentnet_to) {
+						var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
+						rentnet_pass = false;
+						if (rent_net >= query.rentnet_from && rent_net <= query.rentnet_to) {
+							rentnet_pass = true;
+						}
+					}
+				}
+
+				if (room_pass && status_pass && livingspace_pass && rentnet_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {
