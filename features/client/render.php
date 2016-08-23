@@ -87,9 +87,16 @@ class render extends Feature {
 	// [CXM-filter]
 	function shortcode_filter( $atts ) {
 	    $a = shortcode_atts( array(
+	    	'filters' => 'rooms, status'
 	    ), $atts );
 
-	    return $this->renderFilter();
+	    $filters = array();
+	    if ($a['filters']) {
+	    	$filters = explode(',', $a['filters']);
+	    	$filters = array_map('trim',$filters);
+	    }
+
+	    return $this->renderFilter($filters);
 	}
 
 	private function loadBuildings($building_id){
@@ -443,7 +450,7 @@ class render extends Feature {
 		return $message;
 	}
 
-	public function renderFilter(){
+	public function renderFilter($filters){
 		$unit_args = array(
 			'post_type' => 'complex_unit',
 			'posts_per_page' => 99
@@ -541,6 +548,9 @@ class render extends Feature {
 		$template->set( 'maxrentnet', $maxRentNet );
 
 		$template->set( 'minrentnet', $minRentNet );
+
+		$template->set( 'filters', $filters );
+		
 		
 		$message = $template->apply( 'filter.php' );
 		return $message;
