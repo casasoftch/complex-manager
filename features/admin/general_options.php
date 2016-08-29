@@ -141,6 +141,14 @@ class general_options extends Feature
         );    
 
         add_settings_field(
+            'thousands_seperator', 
+             __( 'Tausend Separator', 'complexmanager' ), 
+            array( $this, 'thousands_seperator_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
+        ); 
+
+        add_settings_field(
             'space_decimal', 
              __( 'Space/Area Decimal', 'complexmanager' ), 
             array( $this, 'space_decimal_callback' ), 
@@ -209,6 +217,10 @@ class general_options extends Feature
 
         if( isset( $input['publisher_slug'] ) ) {
             $new_input['publisher_slug'] = sanitize_text_field( $input['publisher_slug'] );
+        }
+
+        if( isset( $input['thousands_seperator'] ) ) {
+            $new_input['thousands_seperator'] = $input['thousands_seperator']; //sanitize_text_field(  );
         }
 
         if( isset( $input['space_decimal'] ) ) {
@@ -288,6 +300,14 @@ class general_options extends Feature
         printf(
             '<input type="text" id="publisher_slug" name="complex_manager[publisher_slug]" value="%s" />',
             isset( $this->options['publisher_slug'] ) ? esc_attr( $this->options['publisher_slug']) : ''
+        );
+    }
+
+    public function thousands_seperator_callback()
+    {
+        printf(
+            '<input type="text" id="thousands_seperator" name="complex_manager[thousands_seperator]" value="%s" />',
+            isset( $this->options['thousands_seperator'] ) ? esc_attr( $this->options['thousands_seperator']) : ''
         );
     }
 

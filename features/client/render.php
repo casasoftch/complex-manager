@@ -101,7 +101,7 @@ class render extends Feature {
 
 	private function loadBuildings($building_id){
 		$unit_args = array(
-			'posts_per_page' => 99,
+			'posts_per_page' => 200,
 			'post_type' => 'complex_unit',
 			'orderby' => 'menu_order',
 			'order' => 'ASC'
@@ -361,7 +361,7 @@ class render extends Feature {
 						'r_terrace_space',
 						'r_balcony_space',
 					))) {
-						$building['totals'][$key] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+						$building['totals'][$key] = number_format($value, $decimal_spaces ,".", $this->get_option('thousands_seperator', "'")) . '&nbsp;m<sup>2</sup>';
 					}
 				}
 			}
@@ -453,7 +453,7 @@ class render extends Feature {
 	public function renderFilter($filters){
 		$unit_args = array(
 			'post_type' => 'complex_unit',
-			'posts_per_page' => 99
+			'posts_per_page' => 200
 		);
 
 		$image = PLUGIN_URL.'assets/img/example-project-bg.png';
@@ -529,7 +529,7 @@ class render extends Feature {
 				$number_of_rooms = get_cxm($unit, 'number_of_rooms');
 				if (!in_array($number_of_rooms, $roomfilters)) {
 					if ($number_of_rooms) {
-						$roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', '\'') ;
+						$roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', $this->get_option('thousands_seperator', "'")) ;
 					}
 					
 				}
@@ -901,7 +901,7 @@ class render extends Feature {
 
 		$unit_args = array(
 			'post_type' => 'complex_unit',
-			'posts_per_page' => 99,
+			'posts_per_page' => 200,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'unit_id' => false

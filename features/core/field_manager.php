@@ -209,7 +209,7 @@ class field_manager extends Feature {
 			//case 'CHF': $currency = '.–'; $before = false; $space = ''; break;
 			case 'CHF': $currency = 'CHF'; $before = true; $space = ' '; break;
 		}
-		return ($before ? $currency . $space : '') . number_format($value, 0 ,".", "'")  . (!$before ? $space . $currency : '');
+		return ($before ? $currency . $space : '') . number_format($value, 0 ,".", $this->get_option('thousands_seperator', "'"))  . (!$before ? $space . $currency : '');
 	}
 
 	public function getUnitItems($unit = false, $specials = true){
@@ -394,22 +394,22 @@ class field_manager extends Feature {
 
 			if ((float) $metas['living_space']) {
 				$value = (float) $metas['living_space'];
-				$datas['r_living_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_living_space']['value'] = number_format($value, $decimal_spaces ,".", $this->get_option('thousands_seperator', "'")) . '&nbsp;m<sup>2</sup>';
 				$datas['r_living_space']['pure_value'] = $value;
 			}
 			if ((float) $metas['usable_space']) {
 				$value = (float) $metas['usable_space'];
-				$datas['r_usable_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_usable_space']['value'] = number_format($value, $decimal_spaces ,".", $this->get_option('thousands_seperator', "'")) . '&nbsp;m<sup>2</sup>';
 				$datas['r_usable_space']['pure_value'] = $value;
 			}
 			if ((float) $metas['terrace_space']) {
 				$value = (float) $metas['terrace_space'];
-				$datas['r_terrace_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_terrace_space']['value'] = number_format($value, $decimal_spaces ,".", $this->get_option('thousands_seperator', "'")) . '&nbsp;m<sup>2</sup>';
 				$datas['r_terrace_space']['pure_value'] = $value;
 			}
 			if ((float) $metas['balcony_space']) {
 				$value = (float) $metas['balcony_space'];
-				$datas['r_balcony_space']['value'] = number_format($value, $decimal_spaces ,".", "'") . '&nbsp;m<sup>2</sup>';
+				$datas['r_balcony_space']['value'] = number_format($value, $decimal_spaces ,".", $this->get_option('thousands_seperator', "'")) . '&nbsp;m<sup>2</sup>';
 				$datas['r_balcony_space']['pure_value'] = $value;
 			}
 			if ((int) $metas['extra_costs']) {

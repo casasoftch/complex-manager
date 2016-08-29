@@ -431,10 +431,13 @@ jQuery( function () {
 
 
 		$(document).on('mousemove', function(e){
+			//$('.complex-project-graphic-wrapper').css('position', 'relative');
 			if ($('.complex-project-graphic:hover').length !== 0) {
+				var parentOffset = $('.complex-project-graphic-wrapper').offset(); 
+
 			    $('.complex-tooltip').css({
-			       left:  e.pageX-15,
-			       top:   e.pageY+25
+			       left:  e.pageX-15 - parentOffset.left,
+			       top:   e.pageY+25 - parentOffset.top
 			    });
 			} else {
 				$('.complex-tooltip').hide();
