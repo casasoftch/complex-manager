@@ -419,7 +419,7 @@ jQuery( function () {
 		});
 
 		var query = getQueryStringAsObject();
-		filterList(query, $('.complex-list-wrapper'));
+		//filterList(query, $('.complex-list-wrapper'));
 
 		$('#complexFilterForm').change(function(event) {
 			var querystring = $('#complexFilterForm').serialize();
