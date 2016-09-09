@@ -142,15 +142,52 @@ class render extends Feature {
 		return $buildings;
 	}
 
+	private function store($key, $data){
+		$dir = wp_upload_dir(null, true, false);
+		if (!is_dir($dir['basedir'] . '/cmx_cache')) {
+			mkdir($dir['basedir'] . '/cmx_cache', 0755);
+		} else if (is_file($dir['basedir'] . '/cmx_cache/' . $key . '.php')) {
+			unlink($dir['basedir'] . '/cmx_cache/' . $key . '.php');
+		}
+		$serializedData = serialize($data);
+		$myfile = fopen($dir['basedir'] . '/cmx_cache/' . $key . '.php', "w");
+		fwrite($myfile, $serializedData);
+		fclose($myfile);
+
+		return true;
+	}
+
+	private function getFromStorage($key){
+		$dir = wp_upload_dir(null, true, false);
+		if (is_file($dir['basedir'] . '/cmx_cache/' . $key . '.php')) {
+			$serializedData = file_get_contents($dir['basedir'] . '/cmx_cache/' . $key . '.php');
+			$data = unserialize($serializedData);
+			return $data;
+		}
+		return false;
+	}
+
 	private function getBuildings($building_id = false){
 		$storeKey = ($building_id ? $building_id : 'all');
 		if (!isset($this->buildingsStore[$storeKey])) {
-			$this->buildingsStore[$storeKey] = $this->loadBuildings($building_id);
+			$storedData = $this->getFromStorage('building_' . $storeKey);
+			if ($storedData) {
+				$this->buildingsStore[$storeKey] = $storedData; //$this->loadBuildings($building_id);
+			} else {
+				$this->buildingsStore[$storeKey] = $this->loadBuildings($building_id);
+				$this->store('building_' . $storeKey, $this->buildingsStore[$storeKey]);
+			}
+			
 		}
 		return $this->buildingsStore[$storeKey];
 	}
 
 	private function prepareUnit($unit, $cols){
+		$fromStorage  = $this->getFromStorage('the_unit_' . $unit->ID);
+		if ($fromStorage) {
+			return $fromStorage;
+		}
+
 		$the_unit = array('post' => $unit);
 		$status = get_cxm($unit, 'status');
 		$state = 'default';
@@ -298,14 +335,24 @@ class render extends Feature {
 				$the_unit['displayItems'][] = $displayItem;
 			}
 		}
+		$this->store('the_unit_' . $unit->ID, $the_unit);
 
 		return $the_unit;
 	}
 
 	private function prepareBuildings($buildings, $cols){
 
+		
+
+
 		$the_buildings = array();
 		foreach ($buildings as $building) {
+			$fromStorage  = $this->getFromStorage('the_building_' . $building['term']->term_id);
+			if ($fromStorage) {
+				$the_buildings[] = $fromStorage;
+				continue;
+			}
+
 			$building['description'] = ($building['term']->description ? $building['term']->description : '');
 			$building['the_units'] = array();
 			$col_options = get_term_meta( $building['term']->term_id, 'building_col_options', true );
@@ -366,6 +413,8 @@ class render extends Feature {
 				}
 			}
 
+			$this->store('the_building_' . $building['term']->term_id, $building);
+
 			$the_buildings[] = $building;
 		}
 		return $the_buildings;
@@ -389,7 +438,7 @@ class render extends Feature {
 		$template->set( 'collapsible', $collapsible );
 
 		if ($integrate_form) {
-			$template->set( 'form', $this->renderForm($this->getBuildings()));	
+			$template->set( 'form', $this->renderForm(array('building_id' => $building_id)));	 //
 		} else {
 			$template->set( 'form', false );
 		}
@@ -696,8 +745,6 @@ class render extends Feature {
 				return 'text/plain';
 			});
 		}
-
-		
 	}
 
 	public function sendEmail($to = false, $inquiry){
@@ -875,7 +922,6 @@ class render extends Feature {
 				return null;
 			}
 		}
-
 	}
 
 	private function storeInquiry($args, $formData){
@@ -892,7 +938,6 @@ class render extends Feature {
 
 		return get_post($inq_post_id);
 	}
-
 
 	public function renderForm($args){
 		$template = $this->get_template();
