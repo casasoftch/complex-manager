@@ -265,10 +265,11 @@ jQuery( function () {
 				});
 
 				$headerRow.next().find('.detail-row-wrapper img').each(function(index, el) {
-					
-					$(el).prop('src',$(el).data('src'));
-					$(el).prop('srcset',$(el).data('src'));
-					$(el).data('src', null);
+					if ($(el).data('src')) {
+						$(el).prop('src',$(el).data('src'));
+						$(el).prop('srcset',$(el).data('src'));
+						$(el).data('src', null);
+					}
 				});
 
 				$headerRow.next().find('.detail-row-wrapper').slideDown('slow');	
