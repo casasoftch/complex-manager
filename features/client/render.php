@@ -143,26 +143,31 @@ class render extends Feature {
 	}
 
 	private function store($key, $data){
-		$dir = wp_upload_dir(null, true, false);
-		if (!is_dir($dir['basedir'] . '/cmx_cache')) {
-			mkdir($dir['basedir'] . '/cmx_cache', 0755);
-		} else if (is_file($dir['basedir'] . '/cmx_cache/' . $key . '.php')) {
-			unlink($dir['basedir'] . '/cmx_cache/' . $key . '.php');
-		}
-		$serializedData = serialize($data);
-		$myfile = fopen($dir['basedir'] . '/cmx_cache/' . $key . '.php', "w");
-		fwrite($myfile, $serializedData);
-		fclose($myfile);
+		if($this->get_option('cache_renders', false)){;
+			$dir = wp_upload_dir(null, true, false);
+			if (!is_dir($dir['basedir'] . '/cmx_cache')) {
+				mkdir($dir['basedir'] . '/cmx_cache', 0777);
+			} else if (is_file($dir['basedir'] . '/cmx_cache/' . $key . '.php')) {
+				unlink($dir['basedir'] . '/cmx_cache/' . $key . '.php');
+			}
+			$serializedData = serialize($data);
+			$myfile = fopen($dir['basedir'] . '/cmx_cache/' . $key . '.php', "w");
+			fwrite($myfile, $serializedData);
+			fclose($myfile);
 
-		return true;
+			return true;
+		}
+		return false;
 	}
 
 	private function getFromStorage($key){
-		$dir = wp_upload_dir(null, true, false);
-		if (is_file($dir['basedir'] . '/cmx_cache/' . $key . '.php')) {
-			$serializedData = file_get_contents($dir['basedir'] . '/cmx_cache/' . $key . '.php');
-			$data = unserialize($serializedData);
-			return $data;
+		if($this->get_option('cache_renders', false)){;
+			$dir = wp_upload_dir(null, true, false);
+			if (is_file($dir['basedir'] . '/cmx_cache/' . $key . '.php')) {
+				$serializedData = file_get_contents($dir['basedir'] . '/cmx_cache/' . $key . '.php');
+				$data = unserialize($serializedData);
+				return $data;
+			}
 		}
 		return false;
 	}
@@ -430,6 +435,12 @@ class render extends Feature {
 			}
 		}*/
 
+		$thekey = 'renderTable_' . $integrate_form . '_' . $collapsible . '_' . $building_id;
+		$fromStorage = $this->getFromStorage($thekey);
+		if ($fromStorage) {
+			return $fromStorage;
+		}
+
 		
 		$template = $this->get_template();
 		$template->set( 'cols', $cols );
@@ -445,6 +456,9 @@ class render extends Feature {
 		
 		
 		$message = $template->apply( 'list.php' );
+
+		$this->store($thekey, $message);
+
 		return $message;
 	}
 
@@ -453,6 +467,13 @@ class render extends Feature {
 	}
 
 	public function renderGraphic($cols, $building_id = false){
+
+		$thekey = 'renderGraphic_' . md5( implode(',', $cols) ) . '_' . $building_id;
+		$fromStorage = $this->getFromStorage($thekey);
+		if ($fromStorage) {
+			return $fromStorage;
+		}
+
 		$image = PLUGIN_URL.'assets/img/example-project-bg.png';
 		$width = 1152;
 	    $height = 680;
@@ -496,10 +517,21 @@ class render extends Feature {
 		$template->set( 'height', $height );
 		
 		$message = $template->apply( 'project-graphic.php' );
+
+		$this->store($thekey, $message);
+
 		return $message;
 	}
 
 	public function renderFilter($filters){
+
+		$thekey = 'renderFilters_' . md5( implode(',', $filters) );
+		$fromStorage = $this->getFromStorage($thekey);
+		if ($fromStorage) {
+			return $fromStorage;
+		}
+
+
 		$unit_args = array(
 			'post_type' => 'complex_unit',
 			'posts_per_page' => 200
@@ -602,6 +634,9 @@ class render extends Feature {
 		
 		
 		$message = $template->apply( 'filter.php' );
+
+		$this->store($thekey, $message);
+
 		return $message;
 	}
 

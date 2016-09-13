@@ -52,7 +52,22 @@ class general_options extends Feature
     public function create_admin_page()
     {
 
+        if (isset($_GET['cxm_clear_cache'])) {
+            $removed = 0;
+            $dir = wp_upload_dir(null, true, false);
+            if (is_dir($dir['basedir'] . '/cmx_cache')) {
+                $files = glob($dir['basedir'] . '/cmx_cache/*');
+                foreach($files as $file){ // iterate files
+                  if(is_file($file))
+                    unlink($file); // delete file
+                    $removed++;
+                }
+            }
 
+            echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>Removed ' . $removed . ' files.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Removed ' . $removed . ' files.</span></button></div>';
+
+
+        }
 
         // Set class property
         $this->options = get_option( 'complex_manager' );
@@ -115,6 +130,16 @@ class general_options extends Feature
             'complex-manager-admin', 
             'cxm_1'
         );
+
+        add_settings_field(
+            'cache_renders', 
+             __( 'Use File-Cache for Renders', 'complexmanager' ), 
+            array( $this, 'cache_renders_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
+        );
+
+        
 
         add_settings_field(
             'global_direct_recipient_email', 
@@ -207,6 +232,10 @@ class general_options extends Feature
             $new_input['emails'] = sanitize_text_field( $input['emails'] );
         }
 
+        if( isset( $input['cache_renders'] ) ) {
+            $new_input['cache_renders'] = sanitize_text_field( $input['cache_renders'] );
+        }
+
         if( isset( $input['global_direct_recipient_email'] ) ) {
             $new_input['global_direct_recipient_email'] = sanitize_text_field( $input['global_direct_recipient_email'] );
         }
@@ -285,6 +314,16 @@ class general_options extends Feature
             '<input type="text" id="global_direct_recipient_email" name="complex_manager[global_direct_recipient_email]" value="%s" />',
             isset( $this->options['global_direct_recipient_email'] ) ? esc_attr( $this->options['global_direct_recipient_email']) : ''
         );
+    }
+
+    public function cache_renders_callback()
+    {
+        echo
+            '<input type="hidden" name="complex_manager[cache_renders]" value="0" />
+            <input type="checkbox" ' . (isset( $this->options['cache_renders']) && $this->options['cache_renders'] ? 'CHECKED' : '') . ' id="cache_renders" name="complex_manager[cache_renders]" value="1" />'
+        ;
+
+        echo '&nbsp;&nbsp;<a href="?page=complexmanager-admin&cxm_clear_cache=1" type="button" class="button">Remove cache files</a>';
     }
 
     public function provider_slug_callback()

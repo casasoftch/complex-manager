@@ -8,7 +8,7 @@
 					foreach ($building['units'] as $unit) {
 						$overlay = get_post_meta( $unit->ID, '_complexmanager_unit_custom_overlay', true );
 						if ($overlay) {
-							echo '<img style="display:none" data-show-on-active-unit="#unit_' . $unit->ID . '" src="'.$overlay.'" alt="" />';
+							echo '<img style="display:none" data-show-on-active-unit="#unit_' . $unit->ID . '" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="'.v.'" alt="" />';
 						}
 					}
 				}
