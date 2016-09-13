@@ -38,6 +38,8 @@
 													$content = $the_unit['post']->post_content;
 													$content = apply_filters('the_content', $content);
 													$content = str_replace(']]>', ']]&gt;', $content);
+													$content = str_replace('src=', 'src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src=', $content);
+													$content = preg_replace('/(<*[^>]*srcset=)"[^>]+"([^>]*>)/', '\1"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="\2', $content);
 													echo $content;
 												 ?>
 												 <?php if (get_cxm($the_unit['post'], 'download_file')): ?>

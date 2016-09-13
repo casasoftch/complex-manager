@@ -299,8 +299,6 @@ jQuery( function () {
 			}
 		}
 
-
-
 		function ajaxifyContactForm($form){
 			$form.on('submit', function(event) {
 				event.preventDefault();
@@ -331,11 +329,11 @@ jQuery( function () {
 		//hide row-details
 		$('.complex-unit-detail-row .detail-row-wrapper').slideUp(0);
 
-		$('.complex-unit-detail-row .detail-row-wrapper img').each(function(index, el) {
+		/*$('.complex-unit-detail-row .detail-row-wrapper img').each(function(index, el) {
 			$(el).data('src', $(el).prop('src'));
 			$(el).prop('src','data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=');
 			$(el).prop('srcset','data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=');
-		});
+		});*/
 
 		//make form ajaxified
 		ajaxifyContactForm($('#complexContactFormAnchor'));
