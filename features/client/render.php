@@ -526,10 +526,10 @@ class render extends Feature {
 	public function renderFilter($filters){
 
 		$thekey = 'renderFilters_' . md5( implode(',', $filters) );
-		$fromStorage = $this->getFromStorage($thekey);
+		/*$fromStorage = $this->getFromStorage($thekey);
 		if ($fromStorage) {
 			return $fromStorage;
-		}
+		}*/
 
 
 		$unit_args = array(
@@ -566,11 +566,13 @@ class render extends Feature {
 
 		$template = $this->get_template();
 		$template->set( 'buildings', $buildings );
+		//$template->set( 'the_buildings', $this->prepareBuildings($buildings));
 		$template->set( 'image', $image );
 		$template->set( 'width', $width );
 		$template->set( 'height', $height );
 
 		$roomfilters = array();
+		$custom_3_filters = array();
 		$minLivingSpace = false;
 		$maxLivingSpace = false;
 		$minRentNet = false;
@@ -603,7 +605,8 @@ class render extends Feature {
 						$maxRentNet = get_cxm($unit, 'rent_net');
 					}
 				}
-				
+
+
 				
 			
 				//complexmanager_unit_
@@ -614,6 +617,14 @@ class render extends Feature {
 					}
 					
 				}
+
+				//custom_3
+				$custom_3 = get_cxm($unit, 'custom_3');
+				if (!in_array($custom_3, $custom_3_filters)) {
+					if ($custom_3) {
+						$custom_3_filters[] = $custom_3 ;
+					}
+				}
 			}
 		}
 
@@ -621,6 +632,8 @@ class render extends Feature {
 		asort($roomfilters);
 
 		$template->set( 'roomfilters', $roomfilters );
+
+		$template->set( 'custom_3_filters', $custom_3_filters );
 
 		$template->set( 'maxlivingspace', $maxLivingSpace );
 

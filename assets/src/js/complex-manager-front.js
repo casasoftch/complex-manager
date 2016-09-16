@@ -156,12 +156,17 @@ jQuery( function () {
 					}
 				}
 
+
 				var livingspace_pass = true;
 				if (data.r_living_space) {
-					if (query.livingspace_from || query.livingspace_to) {
-						var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/\D/g,''));
-						livingspace_pass = false;
+					var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/\D/g,''));
+					livingspace_pass = false;
+					if (query.livingspace_from !== 0) {
 						if (living_space >= query.livingspace_from && living_space <= query.livingspace_to) {
+							livingspace_pass = true;
+						}
+					} else {
+						if (living_space <= query.livingspace_to) {
 							livingspace_pass = true;
 						}
 					}
@@ -169,10 +174,14 @@ jQuery( function () {
 
 				var rentnet_pass = true;
 				if (data.r_rent_net) {
-					if (query.rentnet_from || query.rentnet_to) {
-						var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
-						rentnet_pass = false;
+					var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
+					rentnet_pass = false;
+					if (query.rentnet_from !== 0) {
 						if (rent_net >= query.rentnet_from && rent_net <= query.rentnet_to) {
+							rentnet_pass = true;
+						}
+					} else {
+						if (rent_net <= query.rentnet_to) {
 							rentnet_pass = true;
 						}
 					}

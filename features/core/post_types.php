@@ -119,7 +119,7 @@ class post_types extends Feature {
 			'public'             => false,
 			'publicly_queryable' => false,
 			'show_ui'            => true,
-			'show_in_menu'       => false,
+			'show_in_menu'       => true,
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'cm-inquiry' ),
 			'capability_type'    => 'post',

@@ -43,6 +43,16 @@
 						<input id="rentnet_from" name="rentnet_from" type="text" />
 						<input id="rentnet_to" name="rentnet_to" type="text" />
 					</div>
+				<?php elseif ($filtertype == 'custom_3') : ?>
+					<?php if ($custom_3_filters): ?>
+						<div class="filteroption complex-filter-checkboxwrapper filteroption-rooms-checkboxes">
+							<?php  ?>
+							<label class="filteroption-label" for="">Custom 3</label>
+							<?php foreach ($custom_3_filters as $val): ?>
+								<span class="checkboxoption"><input type="checkbox" name="custom_3s[]" id="cxmFilterCustom3_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterCustom3_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>	
+							<?php endforeach ?>
+						</div>
+					<?php endif ?>
 				<?php endif ?>
 			<?php endforeach ?>
 			
