@@ -208,6 +208,16 @@ class general_options extends Feature
             'cxm_1'
         );  
 
+        add_settings_field(
+            'import', 
+             __( 'Import settings', 'complexmanager' ), 
+            array( $this, 'import_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
+        );  
+
+
+
         
 
 
@@ -270,6 +280,13 @@ class general_options extends Feature
 
         if( isset( $input['list_cols'] ) ) {
             $new_input['list_cols'] = maybe_serialize( $input['list_cols'] );
+        }
+
+        if( isset( $input['casagateway_api_key'] ) ) {
+            $new_input['casagateway_api_key'] = $input['casagateway_api_key'];
+        }
+        if( isset( $input['casagateway_private_key'] ) ) {
+            $new_input['casagateway_private_key'] = $input['casagateway_private_key'];
         }
 
         
@@ -513,6 +530,74 @@ class general_options extends Feature
             '<input type="text" id="list_cols" name="complex_manager[list_cols]" value="%s" />',
             isset( $this->options['list_cols'] ) ? esc_attr( $this->options['list_cols']) : ''
         );*/
+    }
+
+    public function import_callback(){
+        ?>
+            <tr valign="top">
+                <th scope="row"><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></th>
+                <td class="front-static-pages">
+                    
+                    <fieldset>
+                        <table>
+                            <tr>
+                                <?php $file = CASASYNC_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.xml'; if (file_exists($file)) : ?>
+                                    <td><code>data.xml</code></td>
+                                <?php else: ?>
+                                    <td><strike><code>data.xml</code></strike></td>
+                                <?php endif ?>
+                                <td><a href="<?php echo $manually  ?>">Import Manuel anstossen</a></td> 
+                            </tr>
+                            <tr>
+                                <?php $file = CASASYNC_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-done.xml'; if (file_exists($file)) : ?>
+                                    <td><code>data-done.xml</code></td>
+                                <?php else: ?>
+                                    <td><strike><code>data-done.xml</code></strike></td>
+                                <?php endif ?>
+                                <td><a href="<?php echo $force_last  ?>">Letzer erfolgreicher Import erneut anstossen</a></td>
+                            </tr>
+                            <tr>
+                                <?php $file = CASASYNC_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-done.xml'; if (file_exists($file)) : ?>
+                                    <td><code>data-done.xml</code></td>
+                                <?php else: ?>
+                                    <td><strike><code>data-done.xml</code></strike></td>
+                                <?php endif ?>
+                                <td><a href="<?php echo $forced  ?>">Letzer erfolgreicher Import erneut anstossen und alle Objekte zwingendermasse durchtesten</a></td>
+                            </tr>
+                            <tr>
+                                <?php if ($this->options['casagateway_api_key'] && $this->options['casagateway_private_key']): ?>
+                                    <td><code><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></code></td>
+                                <?php else: ?>
+                                    <td><strike><code><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></code></strike></td>
+                                <?php endif ?>
+                                <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&gatewayupdate=1'); ?>">Import Ausführen</a></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <hr>
+
+                    <fieldset>
+                        <legend class="screen-reader-text"><span><strong>CASA</strong><span style="font-weight:100">GATEWAY</span> API Schlüssel</span></legend>
+                        <?php $name = 'casagateway_api_key'; ?>
+                        <?php $text = '<strong>CASA</strong><span style="font-weight:100">GATEWAY</span> • API Key'; ?>
+                        <p><?php echo $text; ?></p>
+                        <p>
+                            <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="screen-reader-text"><span><strong>CASA</strong><span style="font-weight:100">GATEWAY</span> Privater Schlüssel</span></legend>
+                        <?php $name = 'casagateway_private_key'; ?>
+                        <?php $text = '<strong>CASA</strong><span style="font-weight:100">GATEWAY</span> • Private Key'; ?>
+                        <p><?php echo $text; ?></p>
+                        <p>
+                            <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                        </p>
+                    </fieldset>
+                </td>
+            </tr>
+
+        <?php
     }
 
 
