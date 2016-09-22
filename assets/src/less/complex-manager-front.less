@@ -85,7 +85,8 @@
 .complex-unit-header-row.active{
 	font-weight: bold;
 }
-.table>tbody>tr.complex-unit-detail-row>td{
+.table>tbody>tr.complex-unit-detail-row>td,
+.table>thead>tr.complex-unit-detail-row>td{
 	border-top: 0px solid #ddd;	
 	padding:0px;
 }
@@ -109,7 +110,8 @@
 }
 
 //alert whitespace fix
-.table-responsive>.table>tbody>tr>td .complex-contact-form-wrapper .alert{
+.table-responsive>.table>tbody>tr>td .complex-contact-form-wrapper .alert
+.table-responsive>.table>thead>tr>td .complex-contact-form-wrapper .alert{
 	white-space:normal;
 }
 
@@ -233,11 +235,15 @@ i.fa.fa-circle-o-notch.fa-spin {
 		margin-bottom: 0px;
 	}
 	.table>tbody>tr>td,
-	.table>tbody>tr>th{
+	.table>tbody>tr>th,
+	.table>thead>tr>td,
+	.table>thead>tr>th{
 		border-top: 1px solid #333;	
 	}
 	.table>tbody>tr:first-child>td,
-	.table>tbody>tr:first-child>th{
+	.table>tbody>tr:first-child>th,
+	.table>thead>tr:first-child>td,
+	.table>thead>tr:first-child>th{
 		border-top: 0px solid #333;	
 	}
 	&:after{

@@ -5,7 +5,7 @@
 			<div class="unit-description"><?= wpautop( $building['description'], false ); ?></div>
 			<div class="table-responsive complex-building-<?= $building['term']->slug ?>">
 				<table class="table table-condensed">
-					<tbody>
+					<thead>
 						<tr class="col-labels">
 							<?php foreach ($building['the_units'][0]['displayItems'] as $displayItem): ?>
 								<th class="col-<?= $displayItem['field'] ?> <?= ($displayItem['hidden-xs'] ? 'hidden-sm hidden-xs' : '') ?>"><?= $displayItem['label'] ?></th>		
@@ -14,6 +14,8 @@
 								<th></th>
 							<?php endif; ?>
 						</tr>
+					</thead>
+					<tbody>
 						<?php 
 						foreach ($building['the_units'] as $the_unit) {
 							$colcount = count($the_unit['displayItems']);
