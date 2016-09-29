@@ -44,7 +44,7 @@ jQuery( function () {
 
 		    //# While we still have key-value e(ntries) from the q(uerystring) via the s(earch regex)...
 		    while (e = s.exec(q)) { //# while((e = s.exec(q)) !== null) {
-		        //# Collect the open b(racket) location (if any) then set the d(ecoded) v(alue) from the above split key-value e(ntry) 
+		        //# Collect the open b(racket) location (if any) then set the d(ecoded) v(alue) from the above split key-value e(ntry)
 		        b = e[1].indexOf("[");
 		        v = d(e[2]);
 
@@ -64,13 +64,13 @@ jQuery( function () {
 		                r[k] = v;
 		            }
 		        }
-		        //# Else we've got ourselves a hash[]-style key-value e(ntry) 
+		        //# Else we've got ourselves a hash[]-style key-value e(ntry)
 		        else {
 		            //# Collect the d(ecoded) k(ey) and the d(ecoded) sk(sub-key) based on the b(racket) locations
 		            k = d(e[1].slice(0, b));
 		            sk = d(e[1].slice(b + 1, e[1].indexOf("]", b)));
 
-		            //# ma(make array) out of the k(ey) 
+		            //# ma(make array) out of the k(ey)
 		            r[k] = ma(r[k]);
 
 		            //# If we have a sk(sub-key), plug the v(alue) into it
@@ -96,6 +96,37 @@ jQuery( function () {
 			} else {
 				returnQuery.rooms = null;
 			}
+
+			if (query.custom_1s) {
+				if(typeof query.custom_1s === "string") {
+					returnQuery.custom_1s = [query.custom_1s];
+				} else {
+					returnQuery.custom_1s = query.custom_1s;
+				}
+			} else {
+				returnQuery.custom_1s = null;
+			}
+
+			if (query.custom_2s) {
+				if(typeof query.custom_2s === "string") {
+					returnQuery.custom_2s = [query.custom_2s];
+				} else {
+					returnQuery.custom_2s = query.custom_2s;
+				}
+			} else {
+				returnQuery.custom_2s = null;
+			}
+
+			if (query.custom_3s) {
+				if(typeof query.custom_3s === "string") {
+					returnQuery.custom_3s = [query.custom_3s];
+				} else {
+					returnQuery.custom_3s = query.custom_3s;
+				}
+			} else {
+				returnQuery.custom_3s = null;
+			}
+
 			if (query.status) {
 				if(typeof query.status === "string") {
 					returnQuery.status = [query.status];
@@ -122,13 +153,43 @@ jQuery( function () {
 
 			$list.find('tr.complex-unit-header-row').each(function(index, tr) {
 				var data = $(tr).data('json');
-				
+
 				var room_pass = true;
 				if (data && data.number_of_rooms && query.rooms) {
 					room_pass = false;
 					$.each(query.rooms, function(index, value) {
 						if(value == data.number_of_rooms){
 					    	room_pass = true;
+					    }
+					});
+				}
+
+				var custom_1_pass = true;
+				if (data && data.custom_1 && query.custom_1s) {
+					custom_1_pass = false;
+					$.each(query.custom_1s, function(index, value) {
+						if(value == data.custom_1){
+					    	custom_1_pass = true;
+					    }
+					});
+				}
+
+				var custom_2_pass = true;
+				if (data && data.custom_2 && query.custom_2s) {
+					custom_2_pass = false;
+					$.each(query.custom_2s, function(index, value) {
+						if(value == data.custom_2){
+					    	custom_2_pass = true;
+					    }
+					});
+				}
+
+				var custom_3_pass = true;
+				if (data && data.custom_3 && query.custom_3s) {
+					custom_3_pass = false;
+					$.each(query.custom_3s, function(index, value) {
+						if(value == data.custom_3){
+					    	custom_3_pass = true;
 					    }
 					});
 				}
@@ -158,7 +219,7 @@ jQuery( function () {
 
 
 				var livingspace_pass = true;
-				if (data.r_living_space) {
+				if (data.r_living_space && query.livingspace_from) {
 					var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/\D/g,''));
 					livingspace_pass = false;
 					if (query.livingspace_from !== 0) {
@@ -173,7 +234,7 @@ jQuery( function () {
 				}
 
 				var rentnet_pass = true;
-				if (data.r_rent_net) {
+				if (data.r_rent_net && query.rentnet_from) {
 					var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
 					rentnet_pass = false;
 					if (query.rentnet_from !== 0) {
@@ -187,7 +248,7 @@ jQuery( function () {
 					}
 				}
 
-				if (room_pass && status_pass && livingspace_pass && rentnet_pass) {
+				if (room_pass && status_pass && livingspace_pass && rentnet_pass && custom_1_pass && custom_2_pass && custom_3_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {
@@ -211,7 +272,7 @@ jQuery( function () {
 			$('.complex-custom-overlays img').not('.active').fadeOut(speed);
 			var $targetOverlay = $('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]');
 			$targetOverlay.addClass('active').fadeIn(speed);
-			
+
 			//lazy load
 			if ($targetOverlay.data('src')) {
 				$targetOverlay.prop('src', $targetOverlay.data('src'));
@@ -244,7 +305,7 @@ jQuery( function () {
 
 			$('.complex-tooltip-unit-item').hide();
 			$('.complex-tooltip').hide();
-			
+
 		}
 
 		function activateProjectUnit($headerRow){
@@ -267,7 +328,7 @@ jQuery( function () {
 				scrolltoheaderRow($headerRow, CXMscrollOffset);
 
 				$('.complex-unit-header-row.active').each(function(index, el) {
-					
+
 					$(el).next().find('.detail-row-wrapper').slideUp('slow');
 					$(el).removeClass('active');
 					$(el).next().removeClass('active');
@@ -281,7 +342,7 @@ jQuery( function () {
 					}
 				});
 
-				$headerRow.next().find('.detail-row-wrapper').slideDown('slow');	
+				$headerRow.next().find('.detail-row-wrapper').slideDown('slow');
 				$headerRow.addClass('active');
 				$headerRow.next().addClass('active');
 
@@ -346,7 +407,7 @@ jQuery( function () {
 
 		//make form ajaxified
 		ajaxifyContactForm($('#complexContactFormAnchor'));
-		
+
 		//row click
 		var dragging = false;
 		$("body").on("touchmove", function(){
@@ -410,7 +471,7 @@ jQuery( function () {
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
 			if ($('#'+hash).length) {
 				$('#'+hash).click();
-			}	
+			}
 		}).hover(function(){
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
@@ -463,7 +524,7 @@ jQuery( function () {
 		$(document).on('mousemove', function(e){
 			//$('.complex-project-graphic-wrapper').css('position', 'relative');
 			if ($('.complex-project-graphic:hover').length !== 0) {
-				var parentOffset = $('.complex-project-graphic-wrapper').offset(); 
+				var parentOffset = $('.complex-project-graphic-wrapper').offset();
 
 			    $('.complex-tooltip').css({
 			       left:  e.pageX-15 - parentOffset.left,
@@ -496,30 +557,30 @@ jQuery( function () {
 			        scrollTop: $tr.offset().top
 			    }, 500);
 			}
-			
+
 		});*/
 
 
 		//google address picker api
 		function prepAddressPickerForm(){
 			$('.address-picker-group').each(function(index, el) {
-				var $streetInput = $(el).find('input[name="complex-unit-inquiry[street]"]');	
-				var $postalCodeInput = $(el).find('input[name="complex-unit-inquiry[postal_code]"]');	
-				var $localityInput = $(el).find('input[name="complex-unit-inquiry[locality]"]');	
+				var $streetInput = $(el).find('input[name="complex-unit-inquiry[street]"]');
+				var $postalCodeInput = $(el).find('input[name="complex-unit-inquiry[postal_code]"]');
+				var $localityInput = $(el).find('input[name="complex-unit-inquiry[locality]"]');
 				if ($streetInput.length && $postalCodeInput.length && $localityInput.length) {
 					$(el).find('.address-picker-realinputs').hide();
-					
+
 					$streetInput.attr('type', 'hidden');
 					$postalCodeInput.attr('type', 'hidden');
 					$localityInput.attr('type', 'hidden');
 
 					$(el).append('<div class="address-picker-input"><input type="text" class="form-control" value="' + $streetInput.val() + ' ' + $postalCodeInput.val() + ' ' + $localityInput.val() + '" /></div>')
 				}
-				
+
 			});
 		}
 		//prepAddressPickerForm();
-		
+
 
 
 	}(jQuery));

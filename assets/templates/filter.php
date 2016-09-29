@@ -7,7 +7,7 @@
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-rooms-checkboxes">
 							<label class="filteroption-label" for=""><?= __('Number of rooms', 'complexmanager') ?></label>
 							<?php foreach ($roomfilters as $val): ?>
-								<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterRooms_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>	
+								<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterRooms_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>
@@ -45,17 +45,17 @@
 					</div>
 				<?php elseif ($filtertype == 'custom_3') : ?>
 					<?php if ($custom_3_filters): ?>
-						<div class="filteroption complex-filter-checkboxwrapper filteroption-rooms-checkboxes">
+						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_3-checkboxes">
 							<?php  ?>
-							<label class="filteroption-label" for="">Custom 3</label>
+							<label class="filteroption-label">Custom 3</label>
 							<?php foreach ($custom_3_filters as $val): ?>
-								<span class="checkboxoption"><input type="checkbox" name="custom_3s[]" id="cxmFilterCustom3_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterCustom3_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>	
+								<span class="checkboxoption"><input type="checkbox" name="custom_3s[]" id="cxmFilterCustom3_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterCustom3_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>
 				<?php endif ?>
 			<?php endforeach ?>
-			
+
 		</form>
 	</div>
 </div>
