@@ -123,7 +123,7 @@ The following translations are pre-translated
 +   Custom Templates
 +   IE 8 interaction support
 
-## Actions and Hooks
+## Actions and Filters
 
 
 ### Send extra email(s) after inquiry submission.
@@ -141,4 +141,28 @@ function after_inquirysend($formData) {
 add_action( 'cxm_after_inquirysend', 'after_inquirysend' );
 ```
 
+### A filter to manipulate data sent to casamail
 
+```
+function cxm_filter_casamail_data($data, $postadata){
+	$recipients = array();
+	if (isset($postdata['extra_data']['Tower/Arbeiten']) || isset($postdata['extra_data']['Tower/Gewerbeflächen']) || isset($postdata['extra_data']['Cube/Arbeiten']) || isset($postdata['extra_data']['Cube/Gewerbeflächen']) ) {
+		$recipients[] = 'recipient_1@example.com';
+	}
+	if (isset($postdata['extra_data']['Tower/Wohnen'])) {
+		$recipients[] = 'recipient_2@example.com';
+	}
+	if (isset($postdata['extra_data']['Plaza/Geschäfte']) || isset($postdata['extra_data']['Plaza/Anderes'])) {
+		$recipients[] = 'recipient_3@example.com';
+	}
+	if (empty($recipients)) {
+		$recipients[] = 'fallback@example.com';
+	}
+	if (isset($data['direct_recipient_email']) && $data['direct_recipient_email']) {
+		$recipients[] = $data['direct_recipient_email'];
+	}
+	$data['direct_recipient_email'] = implode(',', $recipients);
+	return $data;
+}
+add_filter('cxm_filter_casamail_data', 'cxm_filter_casamail_data');
+```

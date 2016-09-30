@@ -7,7 +7,7 @@ class render extends Feature {
 
 	public function __construct() {
 		$this->add_action( 'init', 'set_shortcodes' );
-		
+
 	}
 
 	public function set_shortcodes() {
@@ -121,7 +121,7 @@ class render extends Feature {
 				$a_buildings[] = array(
 					'term' => $term,
 					'units' => get_posts( $unit_args )
-				);	
+				);
 			}
 		}
 
@@ -182,7 +182,7 @@ class render extends Feature {
 				$this->buildingsStore[$storeKey] = $this->loadBuildings($building_id);
 				$this->store('building_' . $storeKey, $this->buildingsStore[$storeKey]);
 			}
-			
+
 		}
 		return $this->buildingsStore[$storeKey];
 	}
@@ -215,7 +215,7 @@ class render extends Feature {
 		$the_unit['data'] = $data;
 
 		$the_unit['displayItems'] = array();
-		$i = 0; 
+		$i = 0;
 		foreach ($cols as $field => $col) {
 
 			$i++;
@@ -233,7 +233,7 @@ class render extends Feature {
 				// check for lingustic alternatives
 				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : $col['label']);
 				$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
-				
+
 
 				$Rfield = get_cxm_item($unit, $field);
 				$displayItem['item'] = $Rfield;
@@ -274,7 +274,7 @@ class render extends Feature {
 						} else {
 							$displayItem['value'] = '';
 						}
-						
+
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 
@@ -290,9 +290,9 @@ class render extends Feature {
 							} else {
 								$value = '';
 							}
-							
+
 						} elseif(
-							$col['hidden-reserved'] == 1 
+							$col['hidden-reserved'] == 1
 							&& in_array($status, array('reserved', 'sold', 'rented'))
 						) {
 							$value = '';
@@ -322,7 +322,7 @@ class render extends Feature {
 							||
 							!in_array($status, array('reserved', 'sold', 'rented'))
 						) {
-							$value = $Rfield['value'];	
+							$value = $Rfield['value'];
 						} else {
 							$value = '';
 						}
@@ -333,7 +333,7 @@ class render extends Feature {
 						}
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
-						
+
 						break;
 				}
 
@@ -347,7 +347,7 @@ class render extends Feature {
 
 	private function prepareBuildings($buildings, $cols){
 
-		
+
 
 
 		$the_buildings = array();
@@ -387,7 +387,7 @@ class render extends Feature {
 
 			$show_total = get_term_meta( $building['term']->term_id, 'show_total', true );
 			if ($show_total == 1) {
-				
+
 				$building['totals'] = array();
 				foreach ($building['the_units'] as $unit) {
 					foreach ($unit['displayItems'] as $displayItem) {
@@ -400,7 +400,7 @@ class render extends Feature {
 							if (is_numeric($displayItem['item']['pure_value'])) {
 								$building['totals'][$displayItem['field']] = $building['totals'][$displayItem['field']] + $displayItem['item']['pure_value'];
 							}
-							
+
 						}
 					}
 				}
@@ -441,7 +441,7 @@ class render extends Feature {
 			return $fromStorage;
 		}
 
-		
+
 		$template = $this->get_template();
 		$template->set( 'cols', $cols );
 		$template->set( 'buildings', $this->getBuildings($building_id) );
@@ -453,8 +453,8 @@ class render extends Feature {
 		} else {
 			$template->set( 'form', false );
 		}
-		
-		
+
+
 		$message = $template->apply( 'list.php' );
 
 		$this->store($thekey, $message);
@@ -515,7 +515,7 @@ class render extends Feature {
 		$template->set( 'image', $image );
 		$template->set( 'width', $width );
 		$template->set( 'height', $height );
-		
+
 		$message = $template->apply( 'project-graphic.php' );
 
 		$this->store($thekey, $message);
@@ -549,7 +549,7 @@ class render extends Feature {
 				$buildings[] = array(
 					'term' => $term,
 					'units' => get_posts( $unit_args )
-				);	
+				);
 			}
 		}
 
@@ -607,15 +607,15 @@ class render extends Feature {
 				}
 
 
-				
-			
+
+
 				//complexmanager_unit_
 				$number_of_rooms = get_cxm($unit, 'number_of_rooms');
 				if (!in_array($number_of_rooms, $roomfilters)) {
 					if ($number_of_rooms) {
 						$roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', $this->get_option('thousands_seperator', "'")) ;
 					}
-					
+
 				}
 
 				//custom_3
@@ -644,8 +644,8 @@ class render extends Feature {
 		$template->set( 'minrentnet', $minRentNet );
 
 		$template->set( 'filters', $filters );
-		
-		
+
+
 		$message = $template->apply( 'filter.php' );
 
 		$this->store($thekey, $message);
@@ -665,15 +665,15 @@ class render extends Feature {
 		if (!$empty) {
 			$request = array_merge($_GET, $_POST);
 		}
-		
+
 		if (isset($request['complex-unit-inquiry'])) {
-			$formData = array_merge($defaults, $request['complex-unit-inquiry']);	
+			$formData = array_merge($defaults, $request['complex-unit-inquiry']);
 		} else {
 			$formData = $defaults;
 		}
 
 		if (isset($request['extra_data'])) {
-			$formData['extra_data'] = $request['extra_data'];	
+			$formData['extra_data'] = $request['extra_data'];
 		}
 
 
@@ -741,7 +741,7 @@ class render extends Feature {
 		if ($to) {
 			$remcat = $to;
 		} else {
-			$remcat = $this->get_option("remcat");	
+			$remcat = $this->get_option("remcat");
 		}
 		if ($remcat) {
 			$unit_id = get_cxm($inquiry->ID, 'unit_id');
@@ -753,9 +753,9 @@ class render extends Feature {
 				'Immobilienverwaltung Adresse' => '', //Baslerstrasse 44
 				'Immobilienverwaltung PLZ' => '', //4600
 				'Immobilienverwaltung Ort' => '', //Olten
-				'Immobilienverwaltung Sachbearbeiter' => '', //Urben Michael 
+				'Immobilienverwaltung Sachbearbeiter' => '', //Urben Michael
 				'Immobilienverwaltung Sachbearbeiter Emailadresse' => '', //remcat@psp.info
-				'Objektreferenz' => $this->get_option("idx_ref_property").'.'.get_cxm($unit_id, 'idx_ref_house').'.'.get_cxm($unit_id, 'idx_ref_object'), //*** 6045.01.0202 
+				'Objektreferenz' => $this->get_option("idx_ref_property").'.'.get_cxm($unit_id, 'idx_ref_house').'.'.get_cxm($unit_id, 'idx_ref_object'), //*** 6045.01.0202
 				'Advertisement ID' => $inquiry->ID, //*** 101688233
 				'Objekt Adresse' => '', //Stalden 35
 				'Objekt PLZ Ort' => '', //4500 Solothurn
@@ -777,7 +777,7 @@ class render extends Feature {
 			$remcat_arr = str_replace('#', 'Nr.', $remcat_arr);
 			$remhash = implode('#',$remcat_arr);
 			$remhash = strip_tags($remhash);
-			
+
 			$multiple_to_recipients = array(
 			    $remcat,
 			);
@@ -799,9 +799,9 @@ class render extends Feature {
 		if ($to) {
 			$emails = $to;
 		} else {
-			$emails = $this->get_option("emails");	
+			$emails = $this->get_option("emails");
 		}
-		
+
 
 		if ($emails) {
 			$html_contact_data = '';
@@ -825,7 +825,7 @@ class render extends Feature {
 			if (get_cxm($inquiry->ID, 'mobile')) {
 				$html_contact_data .= __('Mobile:', 'complexmanager') . ' ' . get_cxm($inquiry->ID, 'mobile'). '<br>';
 			}
-			
+
 			$html_contact_data .= '<br>';
 
 			if (get_cxm($inquiry->ID, 'subject')) {
@@ -858,15 +858,15 @@ class render extends Feature {
 				return 'text/html';
 			});
 		}
-		
+
 	}
 
 	public function sendCasamail($provider = false, $publisher = false, $inquiry, $formData){
 		if (!$provider) {
-			$provider = $this->get_option("provider_slug");	
+			$provider = $this->get_option("provider_slug");
 		}
 		if (!$publisher) {
-			$publisher = $this->get_option("publisher_slug");	
+			$publisher = $this->get_option("publisher_slug");
 		}
 		if ($provider && $publisher) {
 			$unit_id = get_cxm($inquiry->ID, 'unit_id');
@@ -913,7 +913,7 @@ class render extends Feature {
 			$term = get_term($formData['reason'], 'inquiry_reason', OBJECT);
 			$extra_data = array();
 			if ($term) {
-				$extra_data['acquiredThrough'] = $term->name;	
+				$extra_data['acquiredThrough'] = $term->name;
 			}
 
 			//unitdata
@@ -933,7 +933,7 @@ class render extends Feature {
 					if ($displayItem['label'] && $displayItem['value']) {
 						$unit_infos .= $displayItem['label'] . ': ' . $displayItem['value'] . "<br>";
 					}
-					
+
 				}
 				if ($unit_infos) {
 					$extra_data['infos'] = $unit_infos;
@@ -946,22 +946,26 @@ class render extends Feature {
 					$extra_data[$key] = $value;
 				}
 			}
-			
+
 			$data['extra_data'] = json_encode($extra_data);
 
+			$returndata = apply_filters('cxm_filter_casamail_data', $data, $formData);
+			if ($returndata) {
+				$data = $returndata;
+			}
 
-			$data_string = json_encode($data);                                                                                   
-			                                                                                                                     
+			$data_string = json_encode($data);
+
 			$ch = curl_init('http://onemail.ch/api/msg');
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-			    'Content-Type: application/json',                                                                                
-			    'Content-Length: ' . strlen($data_string))                                                                       
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			    'Content-Type: application/json',
+			    'Content-Length: ' . strlen($data_string))
 			);
 			curl_setopt($ch, CURLOPT_USERPWD,  "matchcom:bbYzzYEBmZJ9BDumrqPKBHM");
-			                                                                                                                     
+
 			$result = curl_exec($ch);
 			$json = json_decode($result, true);
 			if (isset($json['validation_messages'])) {
@@ -1003,9 +1007,9 @@ class render extends Feature {
 		if (isset($args['unit_id']) && $args['unit_id']) {
 			$unit_args['include'] = $args['unit_id'];
 		}
-		
-		
-		
+
+
+
 		$a_buildings = array();
 		$building_terms = get_terms( 'building', array() );
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
@@ -1014,7 +1018,7 @@ class render extends Feature {
 				$a_buildings[] = array(
 					'term' => $term,
 					'units' => get_posts( $unit_args )
-				);	
+				);
 			}
 		}
 
@@ -1051,7 +1055,7 @@ class render extends Feature {
 					'post_type'      => 'complex_inquiry',
 					'ping_status'    => 'closed',
 					'comment_status' => 'closed',
-				);  
+				);
 
 				do_action('cxm_before_inquirystore', $formData);
 
@@ -1071,7 +1075,7 @@ class render extends Feature {
 
 				//empty form
 				$formData = $this->getFormData(true);
-				
+
 			} else {
 				$msg = __('Please check the following and try again:', 'complexmanager');
 				$msg .= '<ul>';
@@ -1082,7 +1086,7 @@ class render extends Feature {
 				$state = 'danger';
 				$messages = $this->getFormMessages();
 			}
-			
+
 		}
 
 		$terms = get_terms( 'inquiry_reason', array('hide_empty'        => false ));
@@ -1099,7 +1103,7 @@ class render extends Feature {
 		$template->Set('beforeFormParts', '');
 		$template->Set('afterFormParts', '');
 		$message = $template->apply( 'contact-form.php' );
-		return $message;	
+		return $message;
 	}
 
 }
