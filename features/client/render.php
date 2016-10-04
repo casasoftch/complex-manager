@@ -526,10 +526,10 @@ class render extends Feature {
 	public function renderFilter($filters){
 
 		$thekey = 'renderFilters_' . md5( implode(',', $filters) );
-		/*$fromStorage = $this->getFromStorage($thekey);
+		$fromStorage = $this->getFromStorage($thekey);
 		if ($fromStorage) {
 			return $fromStorage;
-		}*/
+		}
 
 
 		$unit_args = array(
