@@ -46,7 +46,7 @@ class unit_metabox extends Feature {
 	 * @param int $post_id The ID of the post being saved.
 	 */
 	public function save( $post_id ) {
-	
+
 		/*
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
@@ -64,7 +64,7 @@ class unit_metabox extends Feature {
 
 		// If this is an autosave, our form has not been submitted,
                 //     so we don't want to do anything.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 			return $post_id;
 
 		// Check the user's permissions.
@@ -72,6 +72,21 @@ class unit_metabox extends Feature {
 			return $post_id;
 
 		/* OK, its safe for us to save the data now. */
+
+		/* clear the CXM cache */
+		$removed = 0;
+		$dir = wp_upload_dir(null, true, false);
+		if (is_dir($dir['basedir'] . '/cmx_cache')) {
+				$files = glob($dir['basedir'] . '/cmx_cache/*');
+				foreach($files as $file){ // iterate files
+					if(is_file($file))
+						unlink($file); // delete file
+						$removed++;
+				}
+		}
+
+		//echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>Removed ' . $removed . ' files.</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Removed ' . $removed . ' files.</span></button></div>';
+
 
 		if ('complex_unit' == $_POST['post_type']) {
 			$texts = array(
@@ -116,7 +131,7 @@ class unit_metabox extends Feature {
 	    global $typenow;
 	    if( $typenow == 'complex_unit' ) {
 	        wp_enqueue_media();
-	 		
+
 	 		wp_register_script( 'jquery-canvasareadraw', PLUGIN_URL . 'assets/js/jquery.canvasAreaDraw.min.js', array('jquery'));
 
 	        // Registers and enqueues the required javascript.
@@ -130,7 +145,7 @@ class unit_metabox extends Feature {
 	        wp_enqueue_script( 'jquery-canvasareadraw' );
 	        wp_enqueue_script( 'complexmanager-meta-box' );
 
-	        wp_enqueue_style( 'wp-color-picker' ); 
+	        wp_enqueue_style( 'wp-color-picker' );
 
 	    }
 	}
@@ -141,13 +156,13 @@ class unit_metabox extends Feature {
 	 * @param WP_Post $post The post object.
 	 */
 	public function render_meta_box_content( $post ) {
-	
+
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'complexmanager_inner_custom_box', 'complexmanager_inner_custom_box_nonce' );
 
 		echo '<p>';
 
-		
+
         echo '<p><label for="complexmanager_unit_download_label">';
 		_e( 'Download file', 'complexmanager' );
 		echo '</label><br>';
@@ -218,12 +233,12 @@ class unit_metabox extends Feature {
 		        echo '</p>';
 
 
-		        
+
 
 		    echo "</div>";
 		    echo '<div class="complexmanager-meta-col">';
 		    	echo "<h3>". __('Spaces', 'complexmanager'). " m<sup>2</sup></h3>";
-		       
+
 		        $key = $this->prefix.'living_space';
 				$value = get_post_meta( $post->ID, '_'.$key, true );
 				echo '<p><label for="'.$key.'">';
@@ -263,7 +278,7 @@ class unit_metabox extends Feature {
 
 		    echo "</div>";
 		    echo '<div style="clear:both"></div>';
-        echo "</div>"; 	
+        echo "</div>";
 
         echo "<hr>";
 
@@ -355,7 +370,7 @@ class unit_metabox extends Feature {
 
 		 	echo "</div>";
 		    echo '<div style="clear:both"></div>';
-        echo "</div>"; 	
+        echo "</div>";
 
         echo "<hr>";
 
@@ -392,11 +407,11 @@ class unit_metabox extends Feature {
 
 		    echo "</div>";
 		   	echo '<div class="complexmanager-meta-col">';
-		   		
+
 
 		 	echo "</div>";
 		    echo '<div style="clear:both"></div>';
-        echo "</div>"; 	
+        echo "</div>";
 
         /* echo "<hr>";
 
@@ -432,7 +447,7 @@ class unit_metabox extends Feature {
 								<strong>Size:</strong>
 								<span class="cxm-file-size">4 MB</span>
 							</p>
-							
+
 						</li>
 					</ul>
 				</div>
@@ -445,9 +460,9 @@ class unit_metabox extends Feature {
 
 
 
-	
 
-		
+
+
 
 		//complexmanager-unit-document-upload.js
 
@@ -456,7 +471,7 @@ class unit_metabox extends Feature {
 
 
 	public function render_meta_graphic_box_content( $post ) {
-	
+
 		// Add an nonce field so we can check for it later.
 		//wp_nonce_field( 'complexmanager_inner_custom_graphic_box', 'complexmanager_inner_custom_graphic_box_nonce' );
 
@@ -476,7 +491,7 @@ class unit_metabox extends Feature {
 	            }
 	        }
         }
-        
+
         if ($image_src) {
         	echo '<div class="comlexmanager-polyhelper">
         		<textarea id="complexmanager_unit_graphic_poly" name="complexmanager_unit_graphic_poly" data-image-url="'.$image_src.'">
