@@ -74,14 +74,14 @@ class building_metabox extends Feature {
 			'description' => '',
 		));
 
-	}	
+	}
 
 	public function add_group_column( $columns ){
 	    $columns['hide_building'] = __( 'Visible', 'complexmanager' );
 	    $columns['has_building_col_options'] = __( 'Options', 'complexmanager' );
 	    return $columns;
 	}
-	
+
 	public function add_group_column_content( $content, $column_name, $term_id ){
 
 		if( $column_name === 'hide_building' ){
@@ -147,10 +147,10 @@ class building_metabox extends Feature {
 					</td>
 				</tr>
 
-				
 
-				<?php 
-					$building_col_options = get_term_meta( $term->term_id, 'building_col_options', true ); 
+
+				<?php
+					$building_col_options = get_term_meta( $term->term_id, 'building_col_options', true );
 				?>
 				<tr class="form-field form-required term-name-wrap">
 					<th scope="row"><label for="name">Feld/Spalte</label></th>
@@ -166,7 +166,7 @@ class building_metabox extends Feature {
 							<tbody>
 								<?php foreach ($this->getOptionCols() as $key => $value) : ?>
 									<?php if ($value['active']) : ?>
-										<?php 
+										<?php
 											$label = $value['label'];
 											if (!$label && array_key_exists($key, $default_cols)) {
 												$label = $default_cols[$key]['o_label'];
@@ -181,7 +181,7 @@ class building_metabox extends Feature {
 
 										?>
 										<tr>
-											<td><?php 
+											<td><?php
 												$fieldlabel = false;
 												if (array_key_exists($key, $default_cols)) {
 													$fieldlabel = $default_cols[$key]['o_label'];
@@ -202,7 +202,7 @@ class building_metabox extends Feature {
 										<?php endif; ?>
 								<?php endforeach ?>
 							</tbody>
-						</table>				
+						</table>
 					</td>
 				</tr>
 			</tbody>
@@ -224,12 +224,22 @@ class building_metabox extends Feature {
 			$val = $_POST['building_col_options'];
 			update_term_meta( $term_id, 'building_col_options', $val );
 		}
+
+		/* clear the CXM cache */
+		$removed = 0;
+		$dir = wp_upload_dir(null, true, false);
+		if (is_dir($dir['basedir'] . '/cmx_cache')) {
+				$files = glob($dir['basedir'] . '/cmx_cache/*');
+				foreach($files as $file){ // iterate files
+					if(is_file($file))
+						unlink($file); // delete file
+						$removed++;
+				}
+		}
+		
 	}
 
 
 }
 
 add_action( 'complexmanager_init', array( 'casasoft\complexmanager\building_metabox', 'init' ), 90  );
-
-
-
