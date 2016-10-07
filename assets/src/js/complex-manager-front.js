@@ -235,15 +235,18 @@ jQuery( function () {
 
 				var rentnet_pass = true;
 				if (data.r_rent_net && query.rentnet_from) {
-					var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
-					rentnet_pass = false;
-					if (query.rentnet_from !== 0) {
-						if (rent_net >= query.rentnet_from && rent_net <= query.rentnet_to) {
-							rentnet_pass = true;
-						}
-					} else {
-						if (rent_net <= query.rentnet_to) {
-							rentnet_pass = true;
+					//only care to filter if it differs from the original value
+					if (query.rentnet_from != parseInt($('#filteroption-miete-netto').data('minrentnet')) || query.rentnet_to !=  parseInt($('#filteroption-miete-netto').data('maxrentnet'))) {
+						var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
+						rentnet_pass = false;
+						if (query.rentnet_from !== 0) {
+							if (rent_net >= query.rentnet_from && rent_net <= query.rentnet_to) {
+								rentnet_pass = true;
+							}
+						} else {
+							if (rent_net <= query.rentnet_to) {
+								rentnet_pass = true;
+							}
 						}
 					}
 				}

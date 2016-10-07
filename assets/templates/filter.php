@@ -27,8 +27,8 @@
 						<div id="range-flaeche">
 						</div>
 
-						<input id="livingspace_from" name="livingspace_from" type="text" />
-						<input id="livingspace_to" name="livingspace_to" type="text" />
+						<input id="livingspace_from" name="livingspace_from" type="text" value="<?php echo $minlivingspace ?>" />
+						<input id="livingspace_to" name="livingspace_to" type="text" value="<?php echo $maxlivingspace ?>" />
 					</div>
 				<?php elseif ($filtertype == 'rentnet') : ?>
 					<div id="filteroption-miete-netto" class="filteroption filteroption-rentnet-slider" data-minrentnet="<?php echo $minrentnet ?>" data-maxrentnet="<?php echo $maxrentnet ?>">
@@ -40,8 +40,8 @@
 						</div>
 						<div id="range-miete">
 						</div>
-						<input id="rentnet_from" name="rentnet_from" type="text" />
-						<input id="rentnet_to" name="rentnet_to" type="text" />
+						<input id="rentnet_from" name="rentnet_from" type="text" value="<?php echo $minrentnet ?>" />
+						<input id="rentnet_to" name="rentnet_to" type="text" value="<?php echo $maxrentnet ?>" />
 					</div>
 				<?php elseif ($filtertype == 'custom_3') : ?>
 					<?php if ($custom_3_filters): ?>
