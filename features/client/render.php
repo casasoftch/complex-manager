@@ -467,8 +467,7 @@ class render extends Feature {
 	}
 
 	public function renderGraphic($cols, $building_id = false){
-
-		$thekey = 'renderGraphic_' . md5( implode(',', $cols) ) . '_' . $building_id;
+		$thekey = 'renderGraphic_' . md5(implode(',', array_keys($cols) ) ) . '_' . $building_id;
 		$fromStorage = $this->getFromStorage($thekey);
 		if ($fromStorage) {
 			return $fromStorage;

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-29 17:05+0100\n"
-"PO-Revision-Date: 2016-09-29 17:06+0100\n"
+"PO-Revision-Date: 2016-10-07 11:52+0200\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -508,13 +508,13 @@ msgstr ""
 #: ../assets/acf/fields/page_link.php:539
 #: ../assets/acf/fields/page_link.php:553
 #: ../assets/acf/fields/post_object.php:403
-#: ../assets/acf/fields/post_object.php:417
-#: ../assets/acf/fields/select.php:377 ../assets/acf/fields/select.php:391
-#: ../assets/acf/fields/select.php:405 ../assets/acf/fields/select.php:419
-#: ../assets/acf/fields/tab.php:130 ../assets/acf/fields/taxonomy.php:784
-#: ../assets/acf/fields/taxonomy.php:798 ../assets/acf/fields/taxonomy.php:812
-#: ../assets/acf/fields/taxonomy.php:826 ../assets/acf/fields/user.php:416
-#: ../assets/acf/fields/user.php:430 ../assets/acf/fields/wysiwyg.php:415
+#: ../assets/acf/fields/post_object.php:417 ../assets/acf/fields/select.php:377
+#: ../assets/acf/fields/select.php:391 ../assets/acf/fields/select.php:405
+#: ../assets/acf/fields/select.php:419 ../assets/acf/fields/tab.php:130
+#: ../assets/acf/fields/taxonomy.php:784 ../assets/acf/fields/taxonomy.php:798
+#: ../assets/acf/fields/taxonomy.php:812 ../assets/acf/fields/taxonomy.php:826
+#: ../assets/acf/fields/user.php:416 ../assets/acf/fields/user.php:430
+#: ../assets/acf/fields/wysiwyg.php:415
 #: ../assets/acf/pro/admin/views/settings-updates.php:93
 msgid "Yes"
 msgstr ""
@@ -525,14 +525,13 @@ msgstr ""
 #: ../assets/acf/fields/page_link.php:540
 #: ../assets/acf/fields/page_link.php:554
 #: ../assets/acf/fields/post_object.php:404
-#: ../assets/acf/fields/post_object.php:418
-#: ../assets/acf/fields/select.php:378 ../assets/acf/fields/select.php:392
-#: ../assets/acf/fields/select.php:406 ../assets/acf/fields/select.php:420
-#: ../assets/acf/fields/tab.php:131 ../assets/acf/fields/taxonomy.php:699
-#: ../assets/acf/fields/taxonomy.php:785 ../assets/acf/fields/taxonomy.php:799
-#: ../assets/acf/fields/taxonomy.php:813 ../assets/acf/fields/taxonomy.php:827
-#: ../assets/acf/fields/user.php:417 ../assets/acf/fields/user.php:431
-#: ../assets/acf/fields/wysiwyg.php:416
+#: ../assets/acf/fields/post_object.php:418 ../assets/acf/fields/select.php:378
+#: ../assets/acf/fields/select.php:392 ../assets/acf/fields/select.php:406
+#: ../assets/acf/fields/select.php:420 ../assets/acf/fields/tab.php:131
+#: ../assets/acf/fields/taxonomy.php:699 ../assets/acf/fields/taxonomy.php:785
+#: ../assets/acf/fields/taxonomy.php:799 ../assets/acf/fields/taxonomy.php:813
+#: ../assets/acf/fields/taxonomy.php:827 ../assets/acf/fields/user.php:417
+#: ../assets/acf/fields/user.php:431 ../assets/acf/fields/wysiwyg.php:416
 #: ../assets/acf/pro/admin/views/settings-updates.php:103
 msgid "No"
 msgstr ""
@@ -1465,10 +1464,10 @@ msgid "red : Red"
 msgstr ""
 
 #: ../assets/acf/fields/checkbox.php:217
-#: ../assets/acf/fields/color_picker.php:147
-#: ../assets/acf/fields/email.php:124 ../assets/acf/fields/number.php:150
-#: ../assets/acf/fields/radio.php:222 ../assets/acf/fields/select.php:363
-#: ../assets/acf/fields/text.php:148 ../assets/acf/fields/textarea.php:145
+#: ../assets/acf/fields/color_picker.php:147 ../assets/acf/fields/email.php:124
+#: ../assets/acf/fields/number.php:150 ../assets/acf/fields/radio.php:222
+#: ../assets/acf/fields/select.php:363 ../assets/acf/fields/text.php:148
+#: ../assets/acf/fields/textarea.php:145
 #: ../assets/acf/fields/true_false.php:115 ../assets/acf/fields/url.php:117
 #: ../assets/acf/fields/wysiwyg.php:376
 msgid "Default Value"
@@ -1812,8 +1811,7 @@ msgid "Restrict which images can be uploaded"
 msgstr ""
 
 #: ../assets/acf/fields/image.php:243 ../assets/acf/fields/image.php:276
-#: ../assets/acf/fields/oembed.php:264
-#: ../assets/acf/pro/fields/gallery.php:673
+#: ../assets/acf/fields/oembed.php:264 ../assets/acf/pro/fields/gallery.php:673
 #: ../assets/acf/pro/fields/gallery.php:706
 msgid "Width"
 msgstr ""
@@ -1929,15 +1927,14 @@ msgid "All taxonomies"
 msgstr ""
 
 #: ../assets/acf/fields/page_link.php:534
-#: ../assets/acf/fields/post_object.php:398
-#: ../assets/acf/fields/select.php:372 ../assets/acf/fields/taxonomy.php:779
-#: ../assets/acf/fields/user.php:411
+#: ../assets/acf/fields/post_object.php:398 ../assets/acf/fields/select.php:372
+#: ../assets/acf/fields/taxonomy.php:779 ../assets/acf/fields/user.php:411
 msgid "Allow Null?"
 msgstr ""
 
 #: ../assets/acf/fields/page_link.php:548
-#: ../assets/acf/fields/post_object.php:412
-#: ../assets/acf/fields/select.php:386 ../assets/acf/fields/user.php:425
+#: ../assets/acf/fields/post_object.php:412 ../assets/acf/fields/select.php:386
+#: ../assets/acf/fields/user.php:425
 msgid "Select multiple values?"
 msgstr ""
 
@@ -2633,7 +2630,7 @@ msgstr "Adresse"
 
 #: ../assets/templates/contact-form.php:152
 msgid "I've heard of this project through..."
-msgstr ""
+msgstr "J’ai entendu parler du projet par ..."
 
 #: ../assets/templates/contact-form.php:163
 msgid "Describe your inquiry"
