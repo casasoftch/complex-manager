@@ -18,6 +18,12 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 To make things easy to fill your page with custom content, the plugin utilizes shortcodes to render the offers.
 
+
+
+### [CXM-filter] ###
+
+[CXM-filter filters="rooms, livingspace, rentnet, status"]
+
 ### [CXM-graphic] ###
 
 Renders a interactive jumpotron graphic. Sadly IE8> will only render the image without the interactivity.
