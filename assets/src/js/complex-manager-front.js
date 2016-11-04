@@ -1,10 +1,20 @@
+
+var CXMscrollOffset = 124;
+if (typeof getCXMscrollOffset === "undefined") { 
+	function getCXMscrollOffset(){
+		return 124;
+	}
+}
+
+
+
 jQuery( function () {
 	"use strict";
 
 	(function($){
 
 		//var CXMscrollOffset = 50;
-		var CXMscrollOffset = 124;
+		
 
 		function endsWith(string, search){
 		    return string.substring( string.length - search.length, string.length ) === search;
@@ -328,7 +338,7 @@ jQuery( function () {
 				$headerRow.next().removeClass('active');
 			} else {
 
-				scrolltoheaderRow($headerRow, CXMscrollOffset);
+				scrolltoheaderRow($headerRow, getCXMscrollOffset());
 
 				$('.complex-unit-header-row.active').each(function(index, el) {
 
@@ -500,7 +510,7 @@ jQuery( function () {
 			//$("#complexContactForm input:text, #complexContactForm textarea").first().focus();
 			$('.complex-sendback-contact-form').show();
 			$('html, body').animate({
-		        scrollTop: $('#complexContactForm').offset().top - CXMscrollOffset
+		        scrollTop: $('#complexContactForm').offset().top - getCXMscrollOffset()
 		    }, 500);
 			$(this).hide();
 		});
