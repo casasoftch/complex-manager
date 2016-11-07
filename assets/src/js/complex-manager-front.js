@@ -144,6 +144,9 @@ jQuery( function () {
 			returnQuery.rentnet_from = (!query.rentnet_from ? 0 : query.rentnet_from);
 			returnQuery.rentnet_to = (!query.rentnet_to ? 99999999999 : query.rentnet_to);
 
+			returnQuery.rentgross_from = (!query.rentgross_from ? 0 : query.rentgross_from);
+			returnQuery.rentgross_to = (!query.rentgross_to ? 99999999999 : query.rentgross_to);
+
 			return returnQuery;
 		}
 
@@ -251,7 +254,25 @@ jQuery( function () {
 					}
 				}
 
-				if (room_pass && status_pass && livingspace_pass && rentnet_pass && custom_1_pass && custom_2_pass && custom_3_pass) {
+				var rentgross_pass = true;
+				if (data.r_rent_gross && query.rentgross_from) {
+					//only care to filter if it differs from the original value
+					if (query.rentgross_from != parseInt($('#filteroption-miete-grossto').data('minrentgross')) || query.rentgross_to !=  parseInt($('#filteroption-miete-grossto').data('maxrentgross'))) {
+						var rent_gross = parseFloat(data.r_rent_gross.replace(/\D/g,''));
+						rentgross_pass = false;
+						if (query.rentgross_from !== 0) {
+							if (rent_gross >= query.rentgross_from && rent_gross <= query.rentgross_to) {
+								rentgross_pass = true;
+							}
+						} else {
+							if (rent_gross <= query.rentgross_to) {
+								rentgross_pass = true;
+							}
+						}
+					}
+				}
+
+				if (room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {

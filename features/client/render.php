@@ -576,6 +576,8 @@ class render extends Feature {
 		$maxLivingSpace = false;
 		$minRentNet = false;
 		$maxRentNet = false;
+		$minRentGross = false;
+		$maxRentGross = false;
 
 		foreach ($buildings as $building) {
 			foreach ($building['units'] as $unit) {
@@ -602,6 +604,19 @@ class render extends Feature {
 					} else {
 						$minRentNet = get_cxm($unit, 'rent_net');
 						$maxRentNet = get_cxm($unit, 'rent_net');
+					}
+				}
+
+				if (get_cxm($unit, 'rent_gross') && ( get_cxm($unit, 'status') == "available" )) {
+					if ($minRentGross && $maxRentGross) {
+						if (get_cxm($unit, 'rent_gross') < $minRentGross) {
+							$minRentGross = get_cxm($unit, 'rent_gross');
+						} elseif (get_cxm($unit, 'rent_gross') > $maxRentGross) {
+							$maxRentGross = get_cxm($unit, 'rent_gross');
+						}
+					} else {
+						$minRentGross = get_cxm($unit, 'rent_gross');
+						$maxRentGross = get_cxm($unit, 'rent_gross');
 					}
 				}
 
@@ -641,6 +656,10 @@ class render extends Feature {
 		$template->set( 'maxrentnet', $maxRentNet );
 
 		$template->set( 'minrentnet', $minRentNet );
+
+		$template->set( 'maxrentgross', $maxRentGross );
+
+		$template->set( 'minrentgross', $minRentGross );
 
 		$template->set( 'filters', $filters );
 

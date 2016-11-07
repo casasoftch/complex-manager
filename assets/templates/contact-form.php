@@ -146,7 +146,7 @@
 				</dd>
 			</dl>
 		</div>
-		<div class="complex-form-part">
+		<div class="complex-form-part complex-form-part-footer">
 			<?php if ($reasons): ?>
 				<div>
 					<label><?php _e('I\'ve heard of this project through...', 'complexmanager') ?></label>

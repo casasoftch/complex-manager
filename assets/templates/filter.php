@@ -43,6 +43,19 @@
 						<input id="rentnet_from" name="rentnet_from" type="text" value="<?php echo $minrentnet ?>" />
 						<input id="rentnet_to" name="rentnet_to" type="text" value="<?php echo $maxrentnet ?>" />
 					</div>
+				<?php elseif ($filtertype == 'rentgross') : ?>
+					<div id="filteroption-miete-grossto" class="filteroption filteroption-rentgross-slider" data-minrentgross="<?php echo $minrentgross ?>" data-maxrentgross="<?php echo $maxrentgross ?>">
+						<div class="slider-range-values">
+							<label class="filteroption-label"><?= __('Rent price', 'complexmanager') ?></label>
+							<span id="miete-slider-lower-value"></span>
+							<span class="slider-format-middle"><?= __('to', 'complexmanager') ?></span>
+							<span id="miete-slider-upper-value"></span>
+						</div>
+						<div id="range-miete">
+						</div>
+						<input id="rentgross_from" name="rentgross_from" type="text" value="<?php echo $minrentgross ?>" />
+						<input id="rentgross_to" name="rentgross_to" type="text" value="<?php echo $maxrentgross ?>" />
+					</div>
 				<?php elseif ($filtertype == 'custom_3') : ?>
 					<?php if ($custom_3_filters): ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_3-checkboxes">
