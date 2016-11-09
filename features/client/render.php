@@ -572,6 +572,7 @@ class render extends Feature {
 
 		$roomfilters = array();
 		$custom_3_filters = array();
+		$story_filters = array();
 		$minLivingSpace = false;
 		$maxLivingSpace = false;
 		$minRentNet = false;
@@ -639,6 +640,15 @@ class render extends Feature {
 						$custom_3_filters[] = $custom_3 ;
 					}
 				}
+
+
+				//story
+				$story = get_cxm($unit, 'story');
+				if (!in_array($story, $story_filters)) {
+					if ($story) {
+						$story_filters[] = $story ;
+					}
+				}
 			}
 		}
 
@@ -648,6 +658,8 @@ class render extends Feature {
 		$template->set( 'roomfilters', $roomfilters );
 
 		$template->set( 'custom_3_filters', $custom_3_filters );
+
+		$template->set( 'story_filters', $story_filters );
 
 		$template->set( 'maxlivingspace', $maxLivingSpace );
 

@@ -1,6 +1,6 @@
 
 var CXMscrollOffset = 124;
-if (typeof getCXMscrollOffset === "undefined") { 
+if (typeof getCXMscrollOffset === "undefined") {
 	function getCXMscrollOffset(){
 		return 124;
 	}
@@ -14,7 +14,7 @@ jQuery( function () {
 	(function($){
 
 		//var CXMscrollOffset = 50;
-		
+
 
 		function endsWith(string, search){
 		    return string.substring( string.length - search.length, string.length ) === search;
@@ -137,6 +137,16 @@ jQuery( function () {
 				returnQuery.custom_3s = null;
 			}
 
+			if (query.stories) {
+				if(typeof query.stories === "string") {
+					returnQuery.stories = [query.stories];
+				} else {
+					returnQuery.stories = query.stories;
+				}
+			} else {
+				returnQuery.stories = null;
+			}
+
 			if (query.status) {
 				if(typeof query.status === "string") {
 					returnQuery.status = [query.status];
@@ -203,6 +213,16 @@ jQuery( function () {
 					$.each(query.custom_3s, function(index, value) {
 						if(value == data.custom_3){
 					    	custom_3_pass = true;
+					    }
+					});
+				}
+
+				var story_pass = true;
+				if (data && data.story && query.stories) {
+					story_pass = false;
+					$.each(query.stories, function(index, value) {
+						if(value == data.story){
+					    	story_pass = true;
 					    }
 					});
 				}
@@ -282,7 +302,7 @@ jQuery( function () {
 					}
 				}
 
-				if (room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass) {
+				if (room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && story_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {

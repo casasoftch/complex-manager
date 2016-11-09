@@ -56,6 +56,16 @@
 						<input id="rentgross_from" name="rentgross_from" type="text" value="<?php echo $minrentgross ?>" />
 						<input id="rentgross_to" name="rentgross_to" type="text" value="<?php echo $maxrentgross ?>" />
 					</div>
+				<?php elseif ($filtertype == 'story') : ?>
+					<?php if ($story_filters): ?>
+						<div class="filteroption complex-filter-checkboxwrapper filteroption-story-checkboxes">
+							<?php  ?>
+							<label class="filteroption-label">Etage</label>
+							<?php foreach ($story_filters as $val): ?>
+								<span class="checkboxoption"><input type="checkbox" name="stories[]" id="cxmFilterStory_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterStory_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
+							<?php endforeach ?>
+						</div>
+					<?php endif ?>
 				<?php elseif ($filtertype == 'custom_3') : ?>
 					<?php if ($custom_3_filters): ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_3-checkboxes">
