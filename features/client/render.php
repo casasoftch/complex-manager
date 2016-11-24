@@ -17,6 +17,14 @@ class render extends Feature {
 		add_shortcode( 'CXM-filter', array($this, 'shortcode_filter'));
 	}
 
+	private $formLoaded = false;
+	public function isFormLoaded(){
+		return $this->formLoaded;
+	}
+	public function setFormLoaded(){
+		$this->formLoaded = true;
+	}
+
 	// [CXM-list cols="name,price,rent" labels="Name,Preis,Mietpreis" unit="13" sales="rent" type="3"]
 	function shortcode_list( $atts ) {
 	    $a = shortcode_atts( array(
@@ -449,7 +457,12 @@ class render extends Feature {
 		$template->set( 'collapsible', $collapsible );
 
 		if ($integrate_form) {
-			$template->set( 'form', $this->renderForm(array('building_id' => $building_id)));	 //
+			if (!$this->isFormLoaded()) {
+				$template->set( 'form', $this->renderForm(array('building_id' => $building_id)));
+				$this->setFormLoaded();
+			} else {
+				$template->set( 'form', false );
+			}
 		} else {
 			$template->set( 'form', false );
 		}
@@ -1102,7 +1115,7 @@ class render extends Feature {
 				$this->sendRemcat(false, $inquiry);
 				$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
 				if ($casamail_msgs) {
-					$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs);
+					$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
 					$state = 'danger';
 				}
 
