@@ -176,9 +176,11 @@ add_filter('cxm_filter_casamail_data', 'cxm_filter_casamail_data');
 ### Adjust validation messages on form posts (messages are always blocking)
 
 ```
-function cxm_filter_form_messages($messages, $postadata){
-	if (!isset($postadata['a_required_field'])) {
-		$messages['a_required_field'] = 'This is a required field. Fill it out!!!';
+function cxm_filter_form_messages($args = array()){
+	$messages = $args["messages"];
+	$data = $args["formData"];
+	if ($data['extra_data']['AUX BUREAUX'] == 'Non' && $data['extra_data']['AUX COMMERCES'] == 'Non') {
+		$messages['AUX BUREAUX'] = __('Champs obligatoires', 'theme');
 	}
 	return $messages;
 }
