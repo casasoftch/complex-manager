@@ -788,7 +788,11 @@ class render extends Feature {
 			}
 		}
 		$returndata = apply_filters('cxm_filter_form_messages', array("messages" => $messages, "formData" => $this->getFormData()));
-		if ($returndata) {
+
+		if (is_array($returndata)) {
+			if (isset($returndata['messages'])) {
+				$returndata = $returndata['messages'];
+			}
 			$messages = $returndata;
 		}
 
