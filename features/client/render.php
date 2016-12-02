@@ -7,7 +7,20 @@ class render extends Feature {
 
 	public function __construct() {
 		$this->add_action( 'init', 'set_shortcodes' );
-
+		$this->fieldMessages = array(
+			'first_name' => __('First name is required', 'complexmanager'),
+			'last_name' => __('Last name is required', 'complexmanager'),
+			'legal_name' => __('The company is required', 'complexmanager'),
+			'email' => __('Email is not valid', 'complexmanager'),
+			'phone' => __('A phone number is required', 'complexmanager'),
+			'street' => __('A street address is required', 'complexmanager'),
+			'postal_code' => __('ZIP is required', 'complexmanager'),
+			'locality' =>  __('City is required', 'complexmanager'),
+			'message' => __('Message is required', 'complexmanager'),
+			'post' => __('Ivalid post', 'complexmanager'),
+			'gender' => 'That should not be possible',
+			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
+		);
 	}
 
 	public function set_shortcodes() {
@@ -723,50 +736,55 @@ class render extends Feature {
 		return $formData;
 	}
 
+	public $fieldMessages = array();
+	public function addFieldValidationMessage($col, $message){
+		$this->fieldMessages = $fieldMessages;
+		$this->fieldMessages[$col] = $message;
+	}
+	public $requiredFields = array(
+		'first_name',
+		'last_name',
+		'phone',
+		'street',
+		'postal_code',
+		'locality',
+		'unit_id'
+	);
+	public function setFieldRequired($col){
+		$this->requiredFields[] = $col;
+	}
+
 	public function getFormMessages(){
-		$defaults = array(
-			'first_name' => __('First name is required', 'complexmanager'),
-			'last_name' => __('Last name is required', 'complexmanager'),
-			'legal_name' => __('The company is required', 'complexmanager'),
-			'email' => __('Email is not valid', 'complexmanager'),
-			'phone' => __('A phone number is required', 'complexmanager'),
-			'street' => __('A street address is required', 'complexmanager'),
-			'postal_code' => __('ZIP is required', 'complexmanager'),
-			'locality' =>  __('City is required', 'complexmanager'),
-			'message' => __('Message is required', 'complexmanager'),
-			'post' => __('Ivalid post', 'complexmanager'),
-			'gender' => 'That should not be possible',
-			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
-		);
+		$defaults = $this->fieldMessages;
+		$required = $this->requiredFields;
 
 		$messages = array();
 		foreach ($this->getFormData() as $col => $value) {
-			switch ($col) {
-				case 'first_name':
-				case 'last_name':
-				//case 'legal_name':
-				case 'phone':
-				case 'street':
-				case 'postal_code':
-				case 'locality':
-				case 'unit_id':
-					if (!$value || $value == '–') {
+			if (in_array($col, $required)) {
+				if (!$value || $value == '–') {
+					if (isset($defaults[$col])) {
 						$messages[$col] = $defaults[$col];
+					} else {
+						$messages[$col] = $col . ' required';
 					}
-					break;
-				case 'email':
-					$valid = filter_var( $value, FILTER_VALIDATE_EMAIL );
-					if (!$valid) {
-						$messages[$col] = $defaults[$col];
-					}
-					break;
-				case 'post':
-					if (!$value) {
-						//silent but deadly
-						$messages[$col] = 'Your message has been sent!?';
-					}
-					break;
 
+				}
+			} else {
+				switch ($col) {
+					case 'email':
+						$valid = filter_var( $value, FILTER_VALIDATE_EMAIL );
+						if (!$valid) {
+							$messages[$col] = $defaults[$col];
+						}
+						break;
+					case 'post':
+						if (!$value) {
+							//silent but deadly
+							$messages[$col] = 'Your message has been sent!?';
+						}
+						break;
+
+				}
 			}
 		}
 
