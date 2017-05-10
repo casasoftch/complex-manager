@@ -484,12 +484,12 @@ jQuery( function () {
 					} else {
 						if ($('.complex-contact-form-wrapper').length) {
 							$('html, body').animate({
-						        scrollTop: $('.complex-contact-form-wrapper').offset().top
-						    }, 500);
-						    $(".complex-contact-form-wrapper input:text, .complex-contact-form-wrapper textarea").first().focus();
-						   	var unit_id = $(row).data('unit-id');
-						    $('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
-						    //.prop('disabled','disabled')
+					        scrollTop: $('.complex-contact-form-wrapper').offset().top
+					    }, 500);
+					    $(".complex-contact-form-wrapper input:text, .complex-contact-form-wrapper textarea").first().focus();
+					   	var unit_id = $(row).data('unit-id');
+					    $('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
+					    //.prop('disabled','disabled')
 
 
 						} else if($(row).find('.col-quick-download a').length){
