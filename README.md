@@ -147,6 +147,16 @@ function after_inquirysend($formData) {
 add_action( 'cxm_after_inquirysend', 'after_inquirysend' );
 ```
 
+Here an example how you could send a ga event to google after a form submission occured.
+
+```
+function after_inquirysend_gaevent($formData) {
+   wp_add_inline_script( 'ga-count-inquiry-send', "ga('send', 'event', 'inquiry', 'sent', $formData['email']);", 'after' );
+}
+add_action( 'cxm_after_inquirysend', 'after_inquirysend_gaevent' );
+```
+
+
 ### A filter to manipulate data sent to casamail
 
 ```
