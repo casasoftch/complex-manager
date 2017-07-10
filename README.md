@@ -190,6 +190,8 @@ add_filter('cxm_filter_form_messages', 'cxm_filter_form_messages');
 
 ### send custom google analytics events (performed serverside through PHP)
 
+You will need to add the GA code to the backend for it to work.
+
 ```
 cxm_send_ga_event($action = 'somthing-happend', $label = 'This happended just now', $value = 1)
 ```
