@@ -1074,11 +1074,8 @@ class render extends Feature {
 		);
 	}
 
-	private function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 'none'){
-		$gap_id = $data['direct_recipient_email'] = $this->get_option("gap_id");
-		echo "<pre>";
-		var_dump($gap_id);
-		echo "</pre>";
+	private function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
+		$gap_id = $this->get_option("gap_id");
 		if ($gap_id) {
 			$data = array(
 			'v' => 1,
@@ -1095,7 +1092,7 @@ class render extends Feature {
 
 			//json_encode($formData)
 
-			$url = 'http://www.google-analytics.com/debug/collect';
+			$url = 'https://www.google-analytics.com/collect';
 			$content = http_build_query($data);
 			$content = utf8_encode($content);
 			//$user_agent = 'Example/1.0 (http://example.com/)';
@@ -1103,13 +1100,6 @@ class render extends Feature {
 
 			//die('sending to:' . $url . '; with data: ' . print_r($data, true));
 
-			echo "<pre>";
-			var_dump($url);
-			echo "</pre>";
-
-			echo "<pre>";
-			var_dump($content);
-			echo "</pre>";
 
 
 			$ch = curl_init();
@@ -1121,9 +1111,6 @@ class render extends Feature {
 			curl_setopt($ch,CURLOPT_POSTFIELDS, $content);
 			$response = curl_exec($ch);
 			curl_close($ch);
-			echo "<pre>";
-			var_dump($response);
-			echo "</pre>";
 		}
 	}
 
@@ -1176,9 +1163,6 @@ class render extends Feature {
 
 		$formData =  $this->getFormData();
 
-		//test
-		//$this->sendGaEvent('inquiry-sent', 'Anfrage Versand', 'daten');
-
 		$msg = '';
 		$state = '';
 		$messages = array();
@@ -1211,8 +1195,7 @@ class render extends Feature {
 					$state = 'danger';
 				}
 
-				//$this->sendGaEvent('inquiry-sent', 'Anfrage Versand', 'daten');
-
+				$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
 
 				do_action('cxm_after_inquirysend', $formData);
 
