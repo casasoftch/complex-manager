@@ -1064,15 +1064,7 @@ class render extends Feature {
 		return get_post($inq_post_id);
 	}
 
-	private function gen_uuid() {
-		return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
-		mt_rand( 0, 0xffff ),
-		mt_rand( 0, 0x0fff ) | 0x4000,
-		mt_rand( 0, 0x3fff ) | 0x8000,
-		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
-		);
-	}
+	
 
 	public function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
 		cxm_send_ga_event($action, $label, $value);
