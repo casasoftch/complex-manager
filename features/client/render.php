@@ -252,7 +252,7 @@ class render extends Feature {
 				//==label==
 
 				// check for lingustic alternatives
-				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : $col['label']);
+				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : (isset($col['label']) ? $col['label'] : ''));
 				$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
 
 
@@ -982,7 +982,11 @@ class render extends Feature {
 			$term = get_term($formData['reason'], 'inquiry_reason', OBJECT);
 			$extra_data = array();
 			if ($term) {
-				$extra_data['acquiredThrough'] = $term->name;
+				if (get_class( $term) == 'WP_Error') {
+					echo '<pre>'.$term->get_error_message().'</pre>';
+				} else{
+						$extra_data['acquiredThrough'] = $term->name;
+				}
 			}
 
 			//unitdata
