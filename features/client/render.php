@@ -1076,6 +1076,9 @@ class render extends Feature {
 
 	private function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 'none'){
 		$gap_id = $data['direct_recipient_email'] = $this->get_option("gap_id");
+		echo "<pre>";
+		var_dump($gap_id);
+		echo "</pre>";
 		if ($gap_id) {
 			$data = array(
 			'v' => 1,
@@ -1088,17 +1091,25 @@ class render extends Feature {
 			$data['ec'] = "complex-manager";
 			$data['ea'] = $action;
 			$data['el'] = $label;
-			$data['ev'] =  $value;
+			$data['ev'] = $value;
 
 			//json_encode($formData)
 
-			$url = 'http://www.google-analytics.com/collect';
+			$url = 'http://www.google-analytics.com/debug/collect';
 			$content = http_build_query($data);
 			$content = utf8_encode($content);
 			//$user_agent = 'Example/1.0 (http://example.com/)';
 
 
 			//die('sending to:' . $url . '; with data: ' . print_r($data, true));
+
+			echo "<pre>";
+			var_dump($url);
+			echo "</pre>";
+
+			echo "<pre>";
+			var_dump($content);
+			echo "</pre>";
 
 
 			$ch = curl_init();
@@ -1108,8 +1119,11 @@ class render extends Feature {
 			curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
 			curl_setopt($ch,CURLOPT_POST, TRUE);
 			curl_setopt($ch,CURLOPT_POSTFIELDS, $content);
-			curl_exec($ch);
+			$response = curl_exec($ch);
 			curl_close($ch);
+			echo "<pre>";
+			var_dump($response);
+			echo "</pre>";
 		}
 	}
 
@@ -1162,6 +1176,9 @@ class render extends Feature {
 
 		$formData =  $this->getFormData();
 
+		//test
+		//$this->sendGaEvent('inquiry-sent', 'Anfrage Versand', 'daten');
+
 		$msg = '';
 		$state = '';
 		$messages = array();
@@ -1185,6 +1202,7 @@ class render extends Feature {
 
 				do_action('cxm_before_inquirysend', $formData);
 
+
 				$this->sendEmail(false, $inquiry);
 				$this->sendRemcat(false, $inquiry);
 				$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
@@ -1193,7 +1211,8 @@ class render extends Feature {
 					$state = 'danger';
 				}
 
-				$this->sendGaEvent();
+				//$this->sendGaEvent('inquiry-sent', 'Anfrage Versand', 'daten');
+
 
 				do_action('cxm_after_inquirysend', $formData);
 

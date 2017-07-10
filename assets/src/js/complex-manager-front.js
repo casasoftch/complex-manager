@@ -436,7 +436,7 @@ jQuery( function () {
 					$('.complex-contact-form-wrapper').html($new_form.html());
 					if ($('.complex-contact-form-wrapper .alert').length) {
 						$('html, body').animate({
-				        scrollTop: $('.complex-contact-form-wrapper .alert').offset().top
+				        scrollTop: ($('.complex-contact-form-wrapper .alert').offset().top - 200)
 				    }, 500);
 					}
 					ajaxifyContactForm($('#complexContactFormAnchor'));
