@@ -3,6 +3,7 @@
 function cxm_send_ga_event($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
 	//$gap_id = $this->get_option("gap_id");
 	$gap_id = get_option('gap_id', false );
+	die($gap_id);
 	if ($gap_id && is_string($gap_id)) {
 		$data = array(
 		'v' => 1,
