@@ -1060,6 +1060,16 @@ class render extends Feature {
 		return get_post($inq_post_id);
 	}
 
+	private function gen_uuid() {
+		return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+		mt_rand( 0, 0xffff ),
+		mt_rand( 0, 0x0fff ) | 0x4000,
+		mt_rand( 0, 0x3fff ) | 0x8000,
+		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+		);
+	}
+
 	public function renderForm($args){
 		$template = $this->get_template();
 
@@ -1138,6 +1148,42 @@ class render extends Feature {
 				if ($casamail_msgs) {
 					$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
 					$state = 'danger';
+				}
+
+				$gap_id = $data['direct_recipient_email'] = $this->get_option("gap_id");
+				if ($gap_id) {
+					$data = array(
+					'v' => 1,
+					'tid' => $gap_id,
+					'cid' => $this->gen_uuid(),
+					't' => 'event'
+					);
+
+
+					$data['ec'] = "complex-manager";
+					$data['ea'] = "inqiury";
+					$data['el'] = "send";
+					$data['ev'] = json_encode($formData);
+
+
+					$url = 'http://www.google-analytics.com/collect';
+					$content = http_build_query($data);
+					$content = utf8_encode($content);
+					//$user_agent = 'Example/1.0 (http://example.com/)';
+
+
+					//die('sending to:' . $url . '; with data: ' . print_r($data, true));
+
+
+					$ch = curl_init();
+					//curl_setopt($ch,CURLOPT_USERAGENT, $user_agent);
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch,CURLOPT_HTTPHEADER,array('Content-type: application/x-www-form-urlencoded'));
+					curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
+					curl_setopt($ch,CURLOPT_POST, TRUE);
+					curl_setopt($ch,CURLOPT_POSTFIELDS, $content);
+					curl_exec($ch);
+					curl_close($ch);
 				}
 
 				do_action('cxm_after_inquirysend', $formData);

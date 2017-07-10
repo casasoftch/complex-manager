@@ -19,16 +19,16 @@ class general_options extends Feature
         add_action( 'admin_menu', array( $this, 'set_standard_terms' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'load_external_scripts' ) );
 
-        
+
     }
 
-    public function load_external_scripts(){   
+    public function load_external_scripts(){
          wp_register_script('complex-manager-options', PLUGIN_URL . 'assets/js/complex-manager-options.js',  array('jquery') );
- 
+
         wp_enqueue_media();
         //wp_enqueue_script('media-upload');
         wp_enqueue_script('complex-manager-options');
- 
+
     }
 
     /**
@@ -38,10 +38,10 @@ class general_options extends Feature
     {
         // This page will be under "Settings"
         add_options_page(
-            'Settings Admin', 
-            __( 'Complex Manager Settings', 'complexmanager' ), 
-            'manage_options', 
-            'complexmanager-admin', 
+            'Settings Admin',
+            __( 'Complex Manager Settings', 'complexmanager' ),
+            'manage_options',
+            'complexmanager-admin',
             array( $this, 'create_admin_page' )
         );
     }
@@ -74,13 +74,13 @@ class general_options extends Feature
         ?>
         <div class="wrap">
             <?php screen_icon(); ?>
-            <h2>Complex Manager</h2>           
+            <h2>Complex Manager</h2>
             <form method="post" action="options.php">
                 <?php
                     // This prints out all hidden setting fields
-                    settings_fields( 'cxm_general_options' );   
+                    settings_fields( 'cxm_general_options' );
                     do_settings_sections( 'complex-manager-admin' );
-                    submit_button(); 
+                    submit_button();
                 ?>
 
                 <button class="button button-default" type="submit" name="generate_defaults" value="true">Regenerate Default Terms</button>
@@ -93,7 +93,7 @@ class general_options extends Feature
      * Register and add settings
      */
     public function page_init()
-    {        
+    {
         register_setting(
             'cxm_general_options', // Option group
             'complex_manager', // Option name
@@ -105,128 +105,128 @@ class general_options extends Feature
             __( 'Main Settings', 'complexmanager' ), // Title
             array( $this, 'print_section_info' ), // Callback
             'complex-manager-admin' // Page
-        );  
+        );
 
         /*add_settings_field(
             'id_number', // ID
-            'ID Number', // Title 
+            'ID Number', // Title
             array( $this, 'id_number_callback' ), // Callback
             'complex-manager-admin', // Page
-            'cxm_1' // Section           
-        );    */  
+            'cxm_1' // Section
+        );    */
 
         add_settings_field(
-            'project_image', 
-             __( 'Project Image', 'complexmanager' ), 
+            'project_image',
+             __( 'Project Image', 'complexmanager' ),
              array( $this, 'project_image_callback' ),
-             'complex-manager-admin', 
+             'complex-manager-admin',
              'cxm_1'
         );
 
         add_settings_field(
-            'emails', 
-             __( 'Emails', 'complexmanager' ), 
-            array( $this, 'emails_callback' ), 
-            'complex-manager-admin', 
+            'emails',
+             __( 'Emails', 'complexmanager' ),
+            array( $this, 'emails_callback' ),
+            'complex-manager-admin',
             'cxm_1'
         );
 
         add_settings_field(
-            'cache_renders', 
-             __( 'Use File-Cache for Renders', 'complexmanager' ), 
-            array( $this, 'cache_renders_callback' ), 
-            'complex-manager-admin', 
+            'cache_renders',
+             __( 'Use File-Cache for Renders', 'complexmanager' ),
+            array( $this, 'cache_renders_callback' ),
+            'complex-manager-admin',
             'cxm_1'
         );
 
-        
-
-        add_settings_field(
-            'global_direct_recipient_email', 
-             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> direkte E-Mail', 'complexmanager' ), 
-            array( $this, 'global_direct_recipient_email_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        );  
-
-        add_settings_field(
-            'provider_slug', 
-             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> Provider ID', 'complexmanager' ), 
-            array( $this, 'provider_slug_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        );   
-
-        add_settings_field(
-            'publisher_slug', 
-             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> Publisher ID', 'complexmanager' ), 
-            array( $this, 'publisher_slug_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        );    
-
-        add_settings_field(
-            'thousands_seperator', 
-             __( 'Tausend Separator', 'complexmanager' ), 
-            array( $this, 'thousands_seperator_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        ); 
-
-        add_settings_field(
-            'space_decimal', 
-             __( 'Space/Area Decimal', 'complexmanager' ), 
-            array( $this, 'space_decimal_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        );    
-
-        
-
-        add_settings_field(
-            'remcat', 
-             __( 'Remcat', 'complexmanager' ), 
-            array( $this, 'remcat_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        );  
-
-        add_settings_field(
-            'idx_ref_property', 
-             __( 'IDX / REMCat Property Ref.', 'complexmanager' ), 
-            array( $this, 'idx_ref_property_callback' ), 
-            'complex-manager-admin', 
-            'cxm_1'
-        );  
 
 
         add_settings_field(
-            'list_cols', 
-             __( 'Column values to show in Lists', 'complexmanager' ), 
-            array( $this, 'list_cols_callback' ), 
-            'complex-manager-admin', 
+            'global_direct_recipient_email',
+             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> direkte E-Mail', 'complexmanager' ),
+            array( $this, 'global_direct_recipient_email_callback' ),
+            'complex-manager-admin',
             'cxm_1'
-        );  
+        );
 
         add_settings_field(
-            'import', 
-             __( 'Import settings', 'complexmanager' ), 
-            array( $this, 'import_callback' ), 
-            'complex-manager-admin', 
+            'provider_slug',
+             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> Provider ID', 'complexmanager' ),
+            array( $this, 'provider_slug_callback' ),
+            'complex-manager-admin',
             'cxm_1'
-        );  
+        );
 
         add_settings_field(
-            'gap_id', 
-             __( 'Google Analytics Send Code', 'complexmanager' ), 
-            array( $this, 'google_analytics_callback' ), 
-            'complex-manager-admin', 
+            'publisher_slug',
+             __( '<strong>CASA</strong><span style="font-weight:100">MAIL</span> Publisher ID', 'complexmanager' ),
+            array( $this, 'publisher_slug_callback' ),
+            'complex-manager-admin',
             'cxm_1'
-        );  
+        );
+
+        add_settings_field(
+            'thousands_seperator',
+             __( 'Tausend Separator', 'complexmanager' ),
+            array( $this, 'thousands_seperator_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'space_decimal',
+             __( 'Space/Area Decimal', 'complexmanager' ),
+            array( $this, 'space_decimal_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
 
 
 
-        
+        add_settings_field(
+            'remcat',
+             __( 'Remcat', 'complexmanager' ),
+            array( $this, 'remcat_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'idx_ref_property',
+             __( 'IDX / REMCat Property Ref.', 'complexmanager' ),
+            array( $this, 'idx_ref_property_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+
+        add_settings_field(
+            'list_cols',
+             __( 'Column values to show in Lists', 'complexmanager' ),
+            array( $this, 'list_cols_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'import',
+             __( 'Import settings', 'complexmanager' ),
+            array( $this, 'import_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'gap_id',
+             __( 'Google Analytics Code', 'complexmanager' ),
+            array( $this, 'google_analytics_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+
+
+
 
 
 
@@ -297,12 +297,16 @@ class general_options extends Feature
             $new_input['casagateway_private_key'] = $input['casagateway_private_key'];
         }
 
-        
+        if( isset( $input['gap_id'] ) ) {
+            $new_input['gap_id'] = sanitize_text_field( $input['gap_id'] );
+        }
+
+
 
         return $new_input;
     }
 
-    /** 
+    /**
      * Print the Section text
      */
     public function print_section_info()
@@ -310,7 +314,7 @@ class general_options extends Feature
         print __( 'Enter your settings below:', 'complexmanager' ); // Title;
     }
 
-    /** 
+    /**
      * Get the settings option array and print one of its values
      */
     public function id_number_callback()
@@ -321,7 +325,7 @@ class general_options extends Feature
         );
     }
 
-    /** 
+    /**
      * Get the settings option array and print one of its values
      */
     public function emails_callback()
@@ -392,7 +396,7 @@ class general_options extends Feature
     }
 
     public function idx_ref_property_callback()
-    {   
+    {
         printf(
             '<input type="text" id="idx_ref_property" name="complex_manager[idx_ref_property]" value="%s" />',
             isset( $this->options['idx_ref_property'] ) ? esc_attr( $this->options['idx_ref_property']) : ''
@@ -400,9 +404,9 @@ class general_options extends Feature
     }
 
     public function google_analytics_callback()
-    {   
+    {
         printf(
-            '<input type="text" id="gap_id" name="complex_manager[gap_id]" value="%s" />',
+            '<input type="text" id="gap_id" name="complex_manager[gap_id]" placeholder="UA-######-#" value="%s" /> Wird für send-events genutzt',
             isset( $this->options['gap_id'] ) ? esc_attr( $this->options['gap_id']) : ''
         );
     }
@@ -436,11 +440,11 @@ class general_options extends Feature
     }
 
     public function list_cols_callback()
-    {   
+    {
         //$cols = $this->get_list_col_defaults();
         $cols = cxm_get_list_col_defaults();
 
-        
+
         //add linguistical attribute defaults?
         $extra_langs = array();
         $defaultlang = get_bloginfo('language');
@@ -454,10 +458,10 @@ class general_options extends Feature
         foreach ($cols as $key => $data) {
             foreach ($extra_langs as $iso => $options) {
                 $cols[$key]['label_'.$iso] = '';
-            }            
+            }
         }
 
-        
+
         $cur_array = maybe_unserialize( $this->options['list_cols']);
         if ($cur_array && is_array($cur_array)) {
             foreach ($cur_array as $col => $options) {
@@ -467,7 +471,7 @@ class general_options extends Feature
                             $cols[$col][$option_key] = $option_value;
                         }
                     }
-                    
+
                 }
             }
         }
@@ -499,7 +503,7 @@ class general_options extends Feature
                 'language_code' => substr($defaultlang, 0, 2),
             );
         }
-        
+
         $th_langs = '';
         foreach ($extra_langs as $iso => $options) {
              if (substr($defaultlang, 0, 2)== $iso) {
@@ -518,7 +522,7 @@ class general_options extends Feature
                 '.$th_langs.'
                 <th>Anordnung</th>
             </tr></thead>';
-            
+
             echo "<tbody>";
             foreach ($cols as $col => $col_options) {
                 $td_inputs = '';
@@ -553,7 +557,7 @@ class general_options extends Feature
             <tr valign="top">
                 <th scope="row"><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></th>
                 <td class="front-static-pages">
-                    
+
                     <fieldset>
                         <table>
                             <tr>
@@ -562,7 +566,7 @@ class general_options extends Feature
                                 <?php else: ?>
                                     <td><strike><code>data.xml</code></strike></td>
                                 <?php endif ?>
-                                <td><a href="<?php echo $manually  ?>">Import Manuel anstossen</a></td> 
+                                <td><a href="<?php echo $manually  ?>">Import Manuel anstossen</a></td>
                             </tr>
                             <tr>
                                 <?php $file = CASASYNC_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-done.xml'; if (file_exists($file)) : ?>
