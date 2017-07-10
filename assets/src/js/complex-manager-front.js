@@ -434,7 +434,11 @@ jQuery( function () {
 				$.post($form.prop('action'), data, function(data) {
 					var $new_form = $(data).find('.complex-contact-form-wrapper');
 					$('.complex-contact-form-wrapper').html($new_form.html());
-
+					if ($('.complex-contact-form-wrapper .alert').length) {
+						$('html, body').animate({
+				        scrollTop: $('.complex-contact-form-wrapper .alert').offset().top
+				    }, 500);
+					}
 					ajaxifyContactForm($('#complexContactFormAnchor'));
 				});
 
