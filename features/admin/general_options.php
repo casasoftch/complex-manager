@@ -217,7 +217,7 @@ class general_options extends Feature
         );  
 
         add_settings_field(
-            'google-analytics', 
+            'gap_id', 
              __( 'Google Analytics Send Code', 'complexmanager' ), 
             array( $this, 'google_analytics_callback' ), 
             'complex-manager-admin', 
@@ -402,8 +402,8 @@ class general_options extends Feature
     public function google_analytics_callback()
     {   
         printf(
-            '<input type="text" id="google-analytics" name="complex_manager[google-analytics]" value="%s" />',
-            isset( $this->options['google-analytics'] ) ? esc_attr( $this->options['google-analytics']) : ''
+            '<input type="text" id="gap_id" name="complex_manager[gap_id]" value="%s" />',
+            isset( $this->options['gap_id'] ) ? esc_attr( $this->options['gap_id']) : ''
         );
     }
 
