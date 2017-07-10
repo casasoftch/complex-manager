@@ -1074,44 +1074,8 @@ class render extends Feature {
 		);
 	}
 
-	private function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
-		$gap_id = $this->get_option("gap_id");
-		if ($gap_id) {
-			$data = array(
-			'v' => 1,
-			'tid' => $gap_id,
-			'cid' => $this->gen_uuid(),
-			't' => 'event'
-			);
-
-
-			$data['ec'] = "complex-manager";
-			$data['ea'] = $action;
-			$data['el'] = $label;
-			$data['ev'] = $value;
-
-			//json_encode($formData)
-
-			$url = 'https://www.google-analytics.com/collect';
-			$content = http_build_query($data);
-			$content = utf8_encode($content);
-			//$user_agent = 'Example/1.0 (http://example.com/)';
-
-
-			//die('sending to:' . $url . '; with data: ' . print_r($data, true));
-
-
-
-			$ch = curl_init();
-			//curl_setopt($ch,CURLOPT_USERAGENT, $user_agent);
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch,CURLOPT_HTTPHEADER,array('Content-type: application/x-www-form-urlencoded'));
-			curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
-			curl_setopt($ch,CURLOPT_POST, TRUE);
-			curl_setopt($ch,CURLOPT_POSTFIELDS, $content);
-			$response = curl_exec($ch);
-			curl_close($ch);
-		}
+	public function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
+		cxm_send_ga_event($action, $label, $value);
 	}
 
 	public function renderForm($args){

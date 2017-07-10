@@ -1,5 +1,46 @@
 <?php
 
+
+function cxm_send_ga_event($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
+	$gap_id = $this->get_option("gap_id");
+	if ($gap_id) {
+		$data = array(
+		'v' => 1,
+		'tid' => $gap_id,
+		'cid' => $this->gen_uuid(),
+		't' => 'event'
+		);
+
+
+		$data['ec'] = "complex-manager";
+		$data['ea'] = $action;
+		$data['el'] = $label;
+		$data['ev'] = $value;
+
+		//json_encode($formData)
+
+		$url = 'https://www.google-analytics.com/collect';
+		$content = http_build_query($data);
+		$content = utf8_encode($content);
+		//$user_agent = 'Example/1.0 (http://example.com/)';
+
+
+		//die('sending to:' . $url . '; with data: ' . print_r($data, true));
+
+
+
+		$ch = curl_init();
+		//curl_setopt($ch,CURLOPT_USERAGENT, $user_agent);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch,CURLOPT_HTTPHEADER,array('Content-type: application/x-www-form-urlencoded'));
+		curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
+		curl_setopt($ch,CURLOPT_POST, TRUE);
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $content);
+		$response = curl_exec($ch);
+		curl_close($ch);
+	}
+}
+
 function get_cxm($object_id = false, $key = false, $label = false, $type = false){
 	$fm = new \casasoft\complexmanager\field_manager;
 	$post = false;
@@ -10,9 +51,9 @@ function get_cxm($object_id = false, $key = false, $label = false, $type = false
 		} else {
 			return '';
 		}
-		
+
 	}
-	
+
 	if ($type == 'complex_unit') {
 		return $fm->getUnitField($post, $key, $label);
 	} elseif ($type == 'complex_inquiry') {
@@ -31,9 +72,9 @@ function get_cxm_item($object_id = false, $key = false, $type = false){
         } else {
             return '';
         }
-        
+
     }
-    
+
     if ($type == 'complex_unit') {
         return $fm->getUnitItem($post, $key);
     } elseif ($type == 'complex_inquiry') {
@@ -140,7 +181,7 @@ function cxm_get_list_col_defaults(){
             'order' => 8,
         ),
 
-       
+
 
         'r_extra_costs' => array(
             'o_label' => __( 'Extra Costs', 'complexmanager' ),
@@ -169,7 +210,7 @@ function cxm_get_list_col_defaults(){
             'order' => 11,
         ),
 
-        
+
 
 
         'status' => array(
@@ -244,6 +285,6 @@ function cxm_get_list_col_defaults(){
             'order' => 1,
         ),*/
 
-        
+
     );
 }
