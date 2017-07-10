@@ -216,6 +216,14 @@ class general_options extends Feature
             'cxm_1'
         );  
 
+        add_settings_field(
+            'google-analytics', 
+             __( 'Google Analytics Send Code', 'complexmanager' ), 
+            array( $this, 'google_analytics_callback' ), 
+            'complex-manager-admin', 
+            'cxm_1'
+        );  
+
 
 
         
@@ -388,6 +396,14 @@ class general_options extends Feature
         printf(
             '<input type="text" id="idx_ref_property" name="complex_manager[idx_ref_property]" value="%s" />',
             isset( $this->options['idx_ref_property'] ) ? esc_attr( $this->options['idx_ref_property']) : ''
+        );
+    }
+
+    public function google_analytics_callback()
+    {   
+        printf(
+            '<input type="text" id="google-analytics" name="complex_manager[google-analytics]" value="%s" />',
+            isset( $this->options['google-analytics'] ) ? esc_attr( $this->options['google-analytics']) : ''
         );
     }
 
