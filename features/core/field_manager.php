@@ -360,13 +360,14 @@ class field_manager extends Feature {
 				'value' => ''
 			);
 
-			if ((int) $metas['purchase_price']) {
-				$value = (int) $metas['purchase_price'];
-				if ($value) {
-					$currency = $metas['currency'];
-					$datas['r_purchase_price']['value'] = $this->render_money($value, $currency);
-					$datas['r_purchase_price']['pure_value'] = $value;
-				}
+			$value = $metas['purchase_price'];
+			if (is_numeric($value) && $value !== '0') {
+				$currency = $metas['currency'];
+				$datas['r_purchase_price']['value'] = $this->render_money($value, $currency);
+				$datas['r_purchase_price']['pure_value'] = $value;
+			} elseif ($value === '0') {
+				$datas['r_purchase_price']['value'] = __('upon request', 'complexmanager');
+				$datas['r_purchase_price']['pure_value'] = $value;
 			}
 			if ((int) $metas['rent_net']) {
 				$value = (int) $metas['rent_net'];
