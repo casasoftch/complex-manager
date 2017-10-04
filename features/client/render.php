@@ -252,7 +252,7 @@ class render extends Feature {
 				//==label==
 
 				// check for lingustic alternatives
-				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : $col['label']);
+				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : (isset($col['label']) ? $col['label'] : ''));
 				$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
 
 
@@ -982,7 +982,11 @@ class render extends Feature {
 			$term = get_term($formData['reason'], 'inquiry_reason', OBJECT);
 			$extra_data = array();
 			if ($term) {
-				$extra_data['acquiredThrough'] = $term->name;
+				if (get_class( $term) == 'WP_Error') {
+					echo '<pre>'.$term->get_error_message().'</pre>';
+				} else{
+						$extra_data['acquiredThrough'] = $term->name;
+				}
 			}
 
 			//unitdata
@@ -1060,6 +1064,12 @@ class render extends Feature {
 		return get_post($inq_post_id);
 	}
 
+	
+
+	public function sendGaEvent($action = 'inquiry-sent', $label = 'Anfrage Versand', $value = 1){
+		cxm_send_ga_event($action, $label, $value);
+	}
+
 	public function renderForm($args){
 		$template = $this->get_template();
 
@@ -1132,6 +1142,7 @@ class render extends Feature {
 
 				do_action('cxm_before_inquirysend', $formData);
 
+
 				$this->sendEmail(false, $inquiry);
 				$this->sendRemcat(false, $inquiry);
 				$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
@@ -1139,6 +1150,8 @@ class render extends Feature {
 					$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
 					$state = 'danger';
 				}
+
+				$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
 
 				do_action('cxm_after_inquirysend', $formData);
 
