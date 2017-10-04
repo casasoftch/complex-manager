@@ -422,7 +422,6 @@ jQuery( function () {
 			    }, 500);
 			}
 		}
-
 		function ajaxifyContactForm($form){
 			$form.on('submit', function(event) {
 				event.preventDefault();
@@ -460,7 +459,13 @@ jQuery( function () {
 		});*/
 
 		//make form ajaxified
-		ajaxifyContactForm($('#complexContactFormAnchor'));
+		var form_events = $('#complexContactFormAnchor').data('events');
+		if (form_events && form_events.submit) {
+			console.log('theme has already set a submit event on #complexContactFormAnchor. The plugin yields.');
+		} else {
+			ajaxifyContactForm($('#complexContactFormAnchor'));
+		}
+
 
 		//row click
 		var dragging = false;
