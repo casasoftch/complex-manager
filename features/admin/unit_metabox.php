@@ -91,6 +91,9 @@ class unit_metabox extends Feature {
 		if ('complex_unit' == $_POST['post_type']) {
 			$texts = array(
 				$this->prefix.'number_of_rooms',
+				$this->prefix.'min_persons',
+				$this->prefix.'max_persons',
+				$this->prefix.'min_income',
 				$this->prefix.'story',
 				$this->prefix.'status',
 				$this->prefix.'purchase_price',
@@ -203,6 +206,8 @@ class unit_metabox extends Feature {
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
+		        
+
 
 		        $value = get_post_meta( $post->ID, '_complexmanager_unit_story', true );
 		        echo '<p><label for="complexmanager_unit_story">';
@@ -232,6 +237,29 @@ class unit_metabox extends Feature {
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
+		        $value = get_post_meta( $post->ID, '_complexmanager_unit_min_persons', true );
+				echo '<p><label for="complexmanager_unit_min_persons">';
+				_e( 'Number of people (min)', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="1" min="1" id="complexmanager_unit_min_persons" name="complexmanager_unit_min_persons"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		        $value = get_post_meta( $post->ID, '_complexmanager_unit_max_persons', true );
+				echo '<p><label for="complexmanager_unit_max_persons">';
+				_e( 'Number of people (max)', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="1" min="1" id="complexmanager_unit_max_persons" name="complexmanager_unit_max_persons"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
+
+		        $value = get_post_meta( $post->ID, '_complexmanager_unit_min_income', true );
+				echo '<p><label for="complexmanager_unit_min_income">';
+				_e( 'Income (min)', 'complexmanager' );
+				echo '</label><br>';
+				echo '<input type="number" step="1" min="0" id="complexmanager_unit_min_income" name="complexmanager_unit_min_income"';
+		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
+		        echo '</p>';
 
 
 

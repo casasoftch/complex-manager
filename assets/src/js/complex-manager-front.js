@@ -167,6 +167,8 @@ jQuery( function () {
 			returnQuery.rentgross_from = (!query.rentgross_from ? 0 : query.rentgross_from);
 			returnQuery.rentgross_to = (!query.rentgross_to ? 99999999999 : query.rentgross_to);
 
+			returnQuery.income = (parseFloat(query.income) > 0 ? query.income : null);
+			returnQuery.persons = (parseFloat(query.persons) > 0 ? query.persons : null);
 			return returnQuery;
 		}
 
@@ -185,6 +187,33 @@ jQuery( function () {
 					    	room_pass = true;
 					    }
 					});
+				}
+
+				var income_pass = true;
+				if (data && data.min_income && query.income) {
+					income_pass = false;
+					if(parseFloat(query.income) <= parseFloat(data.min_income)){
+				    	income_pass = true;
+				    }
+				}
+
+				//persons
+				var persons_pass = true;
+				if (data && data.min_persons && !data.max_persons && query.persons) {
+					persons_pass = false;
+					if(parseFloat(query.persons) >= parseFloat(data.min_persons)){
+				    	persons_pass = true;
+				    }
+				} else if (data && !data.min_persons && data.max_persons && query.persons) {
+					persons_pass = false;
+					if(parseFloat(query.persons) <= parseFloat(data.max_persons)){
+				    	persons_pass = true;
+				    }
+				} else if (data && data.min_persons && data.max_persons && query.persons) {
+					persons_pass = false;
+					if(parseFloat(query.persons) >= parseFloat(data.min_persons) && parseFloat(query.persons) <= parseFloat(data.max_persons)){
+				    	persons_pass = true;
+				    }
 				}
 
 				var custom_1_pass = true;
@@ -302,7 +331,7 @@ jQuery( function () {
 					}
 				}
 
-				if (room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && story_pass) {
+				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && story_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {

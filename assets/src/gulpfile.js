@@ -17,4 +17,9 @@ gulp.task('js', function(){
 	gulp.src('js/jquery.canvasAreaDraw.min.js').pipe(uglify()).pipe(gulp.dest('./../js'));
 });
 
-gulp.task('default', ['less', 'js']);
+gulp.task('watch', function(){
+	gulp.watch(['less/complex-manager-admin.less'], ['less']);
+	gulp.watch(['js/*.js'], ['js']);
+});
+
+gulp.task('default', ['less', 'js', 'watch']);

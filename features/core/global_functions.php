@@ -275,6 +275,31 @@ function cxm_get_list_col_defaults(){
             'order' => 17,
         ),
 
+        'min_persons' => array(
+            'o_label' => __( 'Number of people (min)', 'complexmanager' ),
+            'active' => 0,
+            'hidden-xs' => 0,
+            'hidden-reserved' => 0,
+            'label' => '',
+            'order' => 18,
+        ),
+        'max_persons' => array(
+            'o_label' => __( 'Number of people (max)', 'complexmanager' ),
+            'active' => 0,
+            'hidden-xs' => 0,
+            'hidden-reserved' => 0,
+            'label' => '',
+            'order' => 19,
+        ),
+        'min_income' => array(
+            'o_label' => __( 'Income (min)', 'complexmanager' ),
+            'active' => 0,
+            'hidden-xs' => 0,
+            'hidden-reserved' => 0,
+            'label' => '',
+            'order' => 20,
+        ),
+
 
         /*'idx_ref_house' => array(
             'o_label' => __( 'Number of Rooms', 'complexmanager' ),
