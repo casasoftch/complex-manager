@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-04 14:56+0200\n"
-"PO-Revision-Date: 2017-10-04 14:56+0200\n"
+"POT-Creation-Date: 2017-11-09 13:18+0100\n"
+"PO-Revision-Date: 2017-11-09 13:19+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: ../assets/acf/admin/admin.php:113
 #: ../assets/acf/admin/views/field-group-options.php:114
-#: ../features/admin/unit_metabox.php:379
+#: ../features/admin/unit_metabox.php:407
 msgid "Custom Fields"
 msgstr ""
 
@@ -510,8 +510,8 @@ msgid "Description"
 msgstr ""
 
 #: ../assets/acf/admin/field-groups.php:509 ../assets/templates/filter.php:16
-#: ../features/admin/unit_metabox.php:187
-#: ../features/core/field_manager.php:259
+#: ../features/admin/unit_metabox.php:190
+#: ../features/core/field_manager.php:280
 #: ../features/core/global_functions.php:225
 msgid "Status"
 msgstr ""
@@ -3213,6 +3213,14 @@ msgstr "à"
 msgid "Rent price"
 msgstr "Prix de location:"
 
+#: ../assets/templates/filter.php:81
+msgid "Your yearly income"
+msgstr "Revenu annuel total des locataires CHF"
+
+#: ../assets/templates/filter.php:87
+msgid "Number of people"
+msgstr "Nombre de personne dans le logement"
+
 #: ../assets/templates/list.php:50
 msgid "Contact"
 msgstr ""
@@ -3315,12 +3323,12 @@ msgid "Unit Settings"
 msgstr ""
 
 #: ../features/admin/inquiry_metabox.php:106
-#: ../features/admin/unit_metabox.php:141
+#: ../features/admin/unit_metabox.php:144
 msgid "Choose or Upload a Document"
 msgstr ""
 
 #: ../features/admin/inquiry_metabox.php:107
-#: ../features/admin/unit_metabox.php:142
+#: ../features/admin/unit_metabox.php:145
 msgid "Use this document"
 msgstr ""
 
@@ -3368,24 +3376,24 @@ msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
 #: ../features/admin/unit_archive_cols.php:71
-#: ../features/admin/unit_metabox.php:190 ../features/client/render.php:267
+#: ../features/admin/unit_metabox.php:193 ../features/client/render.php:267
 msgid "Available"
 msgstr "Disponible"
 
 #: ../features/admin/unit_archive_cols.php:72
-#: ../features/admin/unit_metabox.php:192 ../features/client/render.php:269
+#: ../features/admin/unit_metabox.php:195 ../features/client/render.php:269
 #: ../features/client/render.php:325
 msgid "Reserved"
 msgstr "Réservé"
 
 #: ../features/admin/unit_archive_cols.php:73
-#: ../features/admin/unit_metabox.php:194 ../features/client/render.php:270
+#: ../features/admin/unit_metabox.php:197 ../features/client/render.php:270
 #: ../features/client/render.php:326
 msgid "Rented"
 msgstr "Loué"
 
 #: ../features/admin/unit_archive_cols.php:74
-#: ../features/admin/unit_metabox.php:193 ../features/client/render.php:271
+#: ../features/admin/unit_metabox.php:196 ../features/client/render.php:271
 #: ../features/client/render.php:327
 msgid "Sold"
 msgstr "Vendu"
@@ -3394,121 +3402,139 @@ msgstr "Vendu"
 msgid "Unit Graphic Settings"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:167
-#: ../features/core/field_manager.php:299
+#: ../features/admin/unit_metabox.php:170
+#: ../features/core/field_manager.php:320
 msgid "Download file"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:183
+#: ../features/admin/unit_metabox.php:186
 msgid "General"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:191 ../features/client/render.php:268
+#: ../features/admin/unit_metabox.php:194 ../features/client/render.php:268
 #: ../features/client/render.php:324
 msgid "pre-reserved"
 msgstr "Pré-réservé"
 
-#: ../features/admin/unit_metabox.php:200
+#: ../features/admin/unit_metabox.php:203
 #: ../features/core/global_functions.php:133
 msgid "Number of Rooms"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:209
+#: ../features/admin/unit_metabox.php:214
 #: ../features/core/global_functions.php:141
 msgid "Apartment Story"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:220
-#: ../features/core/field_manager.php:264
+#: ../features/admin/unit_metabox.php:225
+#: ../features/core/field_manager.php:285
 msgid "IDX / REMCat House Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:229
-#: ../features/core/field_manager.php:269
+#: ../features/admin/unit_metabox.php:234
+#: ../features/core/field_manager.php:290
 msgid "IDX / REMCat Object Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:240
+#: ../features/admin/unit_metabox.php:242
+#: ../features/core/field_manager.php:264
+#: ../features/core/global_functions.php:279
+msgid "Number of people (min)"
+msgstr ""
+
+#: ../features/admin/unit_metabox.php:250
+#: ../features/core/field_manager.php:269
+#: ../features/core/global_functions.php:287
+msgid "Number of people (max)"
+msgstr ""
+
+#: ../features/admin/unit_metabox.php:258
+#: ../features/core/field_manager.php:259
+#: ../features/core/global_functions.php:295
+msgid "Income (min)"
+msgstr ""
+
+#: ../features/admin/unit_metabox.php:268
 msgid "Spaces"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:245
+#: ../features/admin/unit_metabox.php:273
 #: ../features/core/global_functions.php:149
 msgid "Living Space"
 msgstr "Surface nette"
 
-#: ../features/admin/unit_metabox.php:254
+#: ../features/admin/unit_metabox.php:282
 #: ../features/core/global_functions.php:158
 msgid "Usable Space"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:264
+#: ../features/admin/unit_metabox.php:292
 #: ../features/core/global_functions.php:204
 msgid "Terrace Space"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:273
+#: ../features/admin/unit_metabox.php:301
 #: ../features/core/global_functions.php:213
 msgid "Balcony Space"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:287
+#: ../features/admin/unit_metabox.php:315
 msgid "Buy"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:291
-#: ../features/core/field_manager.php:239
+#: ../features/admin/unit_metabox.php:319
+#: ../features/core/field_manager.php:242
 #: ../features/core/global_functions.php:234
 msgid "Currency"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:305
+#: ../features/admin/unit_metabox.php:333
 #: ../features/core/global_functions.php:166
 msgid "Purchase Price"
 msgstr "Prix de vente"
 
-#: ../features/admin/unit_metabox.php:309
+#: ../features/admin/unit_metabox.php:337
 msgid "\"\" = not for sale, 0 = upon request"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:315
+#: ../features/admin/unit_metabox.php:343
 msgid "Purchase scope"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:325
-#: ../features/core/field_manager.php:244
+#: ../features/admin/unit_metabox.php:353
+#: ../features/core/field_manager.php:247
 msgid "Rent"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:330
+#: ../features/admin/unit_metabox.php:358
 #: ../features/core/global_functions.php:175
 msgid "Rent Net Price"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:334
+#: ../features/admin/unit_metabox.php:362
 msgid "\"\" = not for rent, 0 = upon request"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:340
+#: ../features/admin/unit_metabox.php:368
 msgid "Rent Time segment"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:351
+#: ../features/admin/unit_metabox.php:379
 msgid "Rental scope"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:362
-#: ../features/core/field_manager.php:294
+#: ../features/admin/unit_metabox.php:390
+#: ../features/core/field_manager.php:315
 #: ../features/core/global_functions.php:195
 msgid "Extra Costs"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:384
-#: ../features/admin/unit_metabox.php:393
-#: ../features/admin/unit_metabox.php:402
-#: ../features/core/field_manager.php:309
-#: ../features/core/field_manager.php:314
-#: ../features/core/field_manager.php:319
+#: ../features/admin/unit_metabox.php:412
+#: ../features/admin/unit_metabox.php:421
+#: ../features/admin/unit_metabox.php:430
+#: ../features/core/field_manager.php:330
+#: ../features/core/field_manager.php:335
+#: ../features/core/field_manager.php:340
 #: ../features/core/global_functions.php:243
 #: ../features/core/global_functions.php:252
 #: ../features/core/global_functions.php:261
@@ -3574,7 +3600,7 @@ msgstr ""
 
 #: ../features/client/render.php:911 ../features/core/field_manager.php:90
 #: ../features/core/field_manager.php:112
-#: ../features/core/field_manager.php:229
+#: ../features/core/field_manager.php:232
 msgid "Unit"
 msgstr "Objet"
 
@@ -3598,64 +3624,64 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
-#: ../features/core/field_manager.php:234
+#: ../features/core/field_manager.php:237
 msgid "Purchase price"
 msgstr "Prix de vente"
 
-#: ../features/core/field_manager.php:249
+#: ../features/core/field_manager.php:252
 msgid "Rooms"
 msgstr "Pièces"
 
-#: ../features/core/field_manager.php:254
+#: ../features/core/field_manager.php:275
 msgid "Floor"
 msgstr "Étage"
 
-#: ../features/core/field_manager.php:274
-#: ../features/core/field_manager.php:343
-#: ../features/core/field_manager.php:347
+#: ../features/core/field_manager.php:295
+#: ../features/core/field_manager.php:364
+#: ../features/core/field_manager.php:368
 msgid "Living space"
 msgstr "Surface nette"
 
-#: ../features/core/field_manager.php:279
+#: ../features/core/field_manager.php:300
 msgid "Usable space"
 msgstr ""
 
-#: ../features/core/field_manager.php:284
-#: ../features/core/field_manager.php:351
+#: ../features/core/field_manager.php:305
+#: ../features/core/field_manager.php:372
 msgid "Terrace space"
 msgstr "Terrasse"
 
-#: ../features/core/field_manager.php:289
-#: ../features/core/field_manager.php:355
+#: ../features/core/field_manager.php:310
+#: ../features/core/field_manager.php:376
 msgid "Balcony space"
 msgstr "Balcon"
 
-#: ../features/core/field_manager.php:304
+#: ../features/core/field_manager.php:325
 msgid "Download label"
 msgstr ""
 
-#: ../features/core/field_manager.php:327
+#: ../features/core/field_manager.php:348
 #, php-format
 msgid "Purchase price%s in %s%s"
 msgstr "Prix%s de vente %s%s"
 
-#: ../features/core/field_manager.php:331
+#: ../features/core/field_manager.php:352
 #, php-format
 msgid "Rent%s in %s%s"
 msgstr ""
 
-#: ../features/core/field_manager.php:335
-#: ../features/core/field_manager.php:339
+#: ../features/core/field_manager.php:356
+#: ../features/core/field_manager.php:360
 #: ../features/core/global_functions.php:184
 msgid "Rent gross"
 msgstr ""
 
-#: ../features/core/field_manager.php:359
+#: ../features/core/field_manager.php:380
 #, php-format
 msgid "Extra Costs%s in %s%s"
 msgstr ""
 
-#: ../features/core/field_manager.php:369
+#: ../features/core/field_manager.php:390
 msgid "upon request"
 msgstr "Prix sur demande"
 
