@@ -299,6 +299,14 @@ function cxm_get_list_col_defaults(){
             'label' => '',
             'order' => 20,
         ),
+        'max_income' => array(
+            'o_label' => __( 'Income (max)', 'complexmanager' ),
+            'active' => 0,
+            'hidden-xs' => 0,
+            'hidden-reserved' => 0,
+            'label' => '',
+            'order' => 21,
+        ),
 
 
         /*'idx_ref_house' => array(

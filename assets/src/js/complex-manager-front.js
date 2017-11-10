@@ -189,10 +189,21 @@ jQuery( function () {
 					});
 				}
 
+				//income
 				var income_pass = true;
-				if (data && data.min_income && query.income) {
+				if (data && data.min_income && !data.max_income && query.income) {
 					income_pass = false;
-					if(parseFloat(query.income) <= parseFloat(data.min_income)){
+					if(parseFloat(query.income) >= parseFloat(data.min_income)){
+				    	income_pass = true;
+				    }
+				} else if (data && !data.min_income && data.max_income && query.income) {
+					income_pass = false;
+					if(parseFloat(query.income) <= parseFloat(data.max_income)){
+				    	income_pass = true;
+				    }
+				} else if (data && data.min_income && data.max_income && query.income) {
+					income_pass = false;
+					if(parseFloat(query.income) >= parseFloat(data.min_income) && parseFloat(query.income) <= parseFloat(data.max_income)){
 				    	income_pass = true;
 				    }
 				}

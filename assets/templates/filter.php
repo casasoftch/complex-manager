@@ -80,13 +80,13 @@
 					<div id="filteroption-income" class="filteroption filteroption-income-field" data-min="1" data-max="10">
 						<label class="filteroption-label" for=""><?= __('Your yearly income', 'complexmanager') ?></label>
 						<input id="income" value="0" name="income" type="range" min="0" max="100000" step="1000" value="" onchange="document.getElementById('filteroption-income-preview').innerHTML = parseFloat(this.value).toLocaleString(['de-CH', 'fr-CH']);" />
-						<div id="filteroption-income-preview">0</div>
+						<div id="filteroption-income-preview"><?= __('Please choose', 'complexmanager') ?></div>
 					</div>
 				<?php elseif ($filtertype == 'persons') : ?>
 					<div id="filteroption-persons" class="filteroption filteroption-persons-field" data-min="1" data-max="10">
 						<label class="filteroption-label" for=""><?= __('Number of people', 'complexmanager') ?></label>
 						<input id="persons" value="0" name="persons" type="range" min="0" max="10" value="" onchange="document.getElementById('filteroption-persons-preview').innerHTML = parseFloat(this.value).toLocaleString(['de-CH', 'fr-CH']);" />
-						<div id="filteroption-persons-preview">0</div>
+						<div id="filteroption-persons-preview"><?= __('Please choose', 'complexmanager') ?></div>
 					</div>
 				<?php endif ?>
 			<?php endforeach ?>

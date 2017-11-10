@@ -171,6 +171,7 @@ class field_manager extends Feature {
 			'rent_gross' => '',
 			'number_of_rooms' => '',
 			'min_income' => '',
+			'max_income' => '',
 			'min_persons' => '',
 			'max_persons' => '',
 			'story' => '',
@@ -259,6 +260,11 @@ class field_manager extends Feature {
 				'label' => __('Income (min)', 'complexmanager'),
 				'value' => $metas['min_income'],
 				'pure_value' => $metas['min_income']
+			),
+			'max_income' => array(
+				'label' => __('Income (max)', 'complexmanager'),
+				'value' => $metas['max_income'],
+				'pure_value' => $metas['max_income']
 			),
 			'min_persons' => array(
 				'label' => __('Number of people (min)', 'complexmanager'),
