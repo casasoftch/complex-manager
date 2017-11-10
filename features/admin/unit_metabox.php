@@ -266,7 +266,7 @@ class unit_metabox extends Feature {
 				echo '<p><label for="complexmanager_unit_max_income">';
 				_e( 'Income (max)', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="1" max="0" id="complexmanager_unit_max_income" name="complexmanager_unit_max_income"';
+				echo '<input type="number" step="1" min="0" id="complexmanager_unit_max_income" name="complexmanager_unit_max_income"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
