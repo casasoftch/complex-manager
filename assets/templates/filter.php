@@ -79,7 +79,7 @@
 				<?php elseif ($filtertype == 'income') : ?>
 					<div id="filteroption-income" class="filteroption filteroption-income-field" data-min="1" data-max="10">
 						<label class="filteroption-label" for=""><?= __('Your yearly income', 'complexmanager') ?></label>
-						<input id="income" value="0" name="income" type="range" min="0" max="250000" step="1000" value="" onchange="document.getElementById('filteroption-income-preview').innerHTML = parseFloat(this.value).toLocaleString(['de-CH', 'fr-CH']);" />
+						<input id="income" value="0" name="income" type="range" min="0" max="<?= $filter_income_max ?>" step="1000" value="" onchange="document.getElementById('filteroption-income-preview').innerHTML = parseFloat(this.value).toLocaleString(['de-CH', 'fr-CH']);" />
 						<div id="filteroption-income-preview"><?= __('Please choose', 'complexmanager') ?></div>
 					</div>
 				<?php elseif ($filtertype == 'persons') : ?>

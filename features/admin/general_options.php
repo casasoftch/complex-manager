@@ -225,7 +225,14 @@ class general_options extends Feature
         );
 
 
-
+        //filter settings
+        add_settings_field(
+            'filter_income_max',
+             __( 'Income max', 'complexmanager' ),
+            array( $this, 'filter_income_max_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
 
 
 
@@ -301,6 +308,10 @@ class general_options extends Feature
             $new_input['gap_id'] = sanitize_text_field( $input['gap_id'] );
         }
 
+        //filter
+        if( isset( $input['filter_income_max'] ) ) {
+            $new_input['filter_income_max'] = $input['filter_income_max']; //sanitize_text_field(  );
+        }
 
 
         return $new_input;
@@ -619,6 +630,18 @@ class general_options extends Feature
 
         <?php
     }
+
+
+    //filter
+    public function filter_income_max_callback()
+    {
+        printf(
+            '<input type="text" id="filter_income_max" name="complex_manager[filter_income_max]" value="%s" />',
+            isset( $this->options['filter_income_max'] ) ? esc_attr( $this->options['filter_income_max']) : ''
+        );
+    }
+
+    
 
 
     public function set_standard_terms(){

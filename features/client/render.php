@@ -701,6 +701,10 @@ class render extends Feature {
 
 		$template->set( 'filters', $filters );
 
+		$template->set( 'filter_income_max', $this->get_option('filter_income_max', "250000") );
+
+		
+
 
 		$message = $template->apply( 'filter.php' );
 
