@@ -1,7 +1,7 @@
 <?php if (!$state || ($state &&  $state != "success")): ?>
 	<?php $for_bstring = 'complexField'; ?>
 	<?php $for_randid = rand(0,100); ?>
-	<form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST">
+	<form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="complex-unit-inquiry[post]" value="1">
 		<?= do_action('cxm_render_before_form_parts', $data, $buildings); ?>
 		<div class="complex-form-parts">
@@ -147,6 +147,7 @@
 					</dd>
 				</dl>
 			</div>
+			<?= do_action('cxm_render_before_form_footer', $data, $buildings); ?>
 			<div class="complex-form-part complex-form-part-footer">
 				<?php if ($reasons): ?>
 					<div>
@@ -163,7 +164,7 @@
 					<label for="<?= $for_bstring ?>message<?= $for_randid ?>"><?php _e('Message', 'complexmanager') ?></label>
 					<textarea id="<?= $for_bstring ?>message<?= $for_randid ?>" name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>
 				</div>
-
+				<?= do_action('cxm_render_before_form_submission', $data, $buildings); ?>
 				<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
 				<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
 			</div>

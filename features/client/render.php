@@ -736,6 +736,20 @@ class render extends Feature {
 			$formData['extra_data'] = $request['extra_data'];
 		}
 
+		if (isset($_FILES) && $_FILES  && isset($_FILES['files'])) {
+			$formData['files'] = $_FILES['files'];
+		}
+
+		if (isset($request['files'])) {
+			foreach ($request['files'] as $fileprop => $files) {
+				foreach ($files as $filekey => $propvalue) {
+					$formData['files'][$fileprop][$filekey] = $propvalue;
+				}
+			}
+		}
+
+
+
 
 		return $formData;
 	}
