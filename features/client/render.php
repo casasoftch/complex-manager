@@ -764,7 +764,7 @@ class render extends Feature {
 				$filekeys[] = $filekey;
 			}
 			foreach ($filekeys as $filekey) {
-				if (!isset($formData['files'][$filekey]['file']) || !$formData['files'][$filekey]['file']) {
+				if (!isset($formData['files']['file'][$filekey]) || !$formData['files']['file'][$filekey]) {
 					
 					/*
 					//upload it now
