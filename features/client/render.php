@@ -1,6 +1,7 @@
 <?php
 namespace casasoft\complexmanager;
 
+
 class render extends Feature {
 
 	private $buildingsStore = null;
@@ -735,21 +736,57 @@ class render extends Feature {
 		if (isset($request['extra_data'])) {
 			$formData['extra_data'] = $request['extra_data'];
 		}
+
+		$formData['files'] = [
+			'name' => []
+		];
+
+		//get files from files (should only happen on non javascript posts)
 		if ($_POST) {
-			echo "<pre>";
-			print_r($_FILES);
-			echo "</pre>";
-		}
-		
-
-		if (isset($_FILES) && $_FILES  && isset($_FILES['files'])) {
-			$formData['files'] = $_FILES['files'];
+			if (isset($_FILES) && $_FILES  && isset($_FILES['files'])) {
+				$formData['files'] = $_FILES['files'];
+			}
 		}
 
+		//pupulate already existing files
 		if (isset($request['files'])) {
 			foreach ($request['files'] as $fileprop => $files) {
 				foreach ($files as $filekey => $propvalue) {
 					$formData['files'][$fileprop][$filekey] = $propvalue;
+				}
+			}
+		}
+
+		//upload if not already (through javascript)
+		if ($_POST) {
+			$filekeys = [];
+			foreach ($formData['files']['name'] as $filekey => $ignore) {
+				$filekeys[] = $filekey;
+			}
+			foreach ($filekeys as $filekey) {
+				if (!isset($formData['files'][$filekey]['file']) || !$formData['files'][$filekey]['file']) {
+					
+					/*
+					//upload it now
+					$uploadedfile = [];
+					foreach ($formData['files'] as $prop => $value) {
+						$uploadedfile[$prop] = $value[$filekey];
+					}
+
+					$upload_overrides = array( 'test_form' => false );
+
+					$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+
+					if ( $movefile && ! isset( $movefile['error'] ) ) {
+					    //echo "File is valid, and was successfully uploaded.\n";
+					    //var_dump( $movefile );
+					    $formData['files']['file'][$filekey] = $movefile['file'];
+					    $formData['files']['url'][$filekey] = $movefile['url'];
+					} else {
+					    //echo $movefile['error'];
+					    //$output = array("success" => false, "error" => $movefile['error'], 'file' => $uploadedfile);
+					}
+					*/
 				}
 			}
 		}

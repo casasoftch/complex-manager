@@ -480,6 +480,8 @@ jQuery( function () {
 				    }, 500);
 					}
 					ajaxifyContactForm($('#complexContactFormAnchor'));
+					$form.trigger( "cxm-form-ajax-replaced", [ "Custom", "Event" ] );
+
 				});
 
 			});
