@@ -735,6 +735,12 @@ class render extends Feature {
 		if (isset($request['extra_data'])) {
 			$formData['extra_data'] = $request['extra_data'];
 		}
+		if ($_POST) {
+			echo "<pre>";
+			print_r($_FILES);
+			echo "</pre>";
+		}
+		
 
 		if (isset($_FILES) && $_FILES  && isset($_FILES['files'])) {
 			$formData['files'] = $_FILES['files'];
