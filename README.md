@@ -160,7 +160,7 @@ add_action( 'cxm_after_inquirysend', 'after_inquirysend_gaevent' );
 ### A filter to manipulate data sent to casamail
 
 ```
-function cxm_filter_casamail_data($data, $postadata){
+function cxm_filter_casamail_data($data, $postadata = array()){
 	$recipients = array();
 	if (isset($postdata['extra_data']['Tower/Arbeiten']) || isset($postdata['extra_data']['Tower/Gewerbeflächen']) || isset($postdata['extra_data']['Cube/Arbeiten']) || isset($postdata['extra_data']['Cube/Gewerbeflächen']) ) {
 		$recipients[] = 'recipient_1@example.com';
@@ -181,6 +181,25 @@ function cxm_filter_casamail_data($data, $postadata){
 	return $data;
 }
 add_filter('cxm_filter_casamail_data', 'cxm_filter_casamail_data');
+
+```
+
+#### Manipulate Object Reference:
+
+```
+function cxm_filter_casamail_data($data, $postdata = array()){
+	if ($data['extra_data']) {
+		$extra_data = json_decode($data['extra_data'], true);
+		if (isset($extra_data['Wohnungen']) && $extra_data['Wohnungen'] == "Oui") {
+			$data['property_reference'] = '..9258';
+		} elseif(isset($extra_data['Büroräume']) && $extra_data['Büroräume'] == "Oui") {
+			$data['property_reference'] = '..9802';
+		}
+	}
+	return $data;
+}
+add_filter('cxm_filter_casamail_data', 'cxm_filter_casamail_data');
+
 ```
 
 ### Adjust validation messages on form posts (messages are always blocking)
