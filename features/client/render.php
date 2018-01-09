@@ -1081,6 +1081,13 @@ class render extends Feature {
 				}
 			}
 
+			//files as extra_data
+			// if (isset($formData['files']['url']) && $formData['files']['url']) {
+			// 	foreach ($formData['files']['url'] as $filekey => $url) {
+			// 		$extra_data[$filekey] = $url;
+			// 	}
+			// }
+
 			$data['extra_data'] = json_encode($extra_data);
 
 			$returndata = apply_filters('cxm_filter_casamail_data', $data, $formData);
