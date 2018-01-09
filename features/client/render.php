@@ -1082,11 +1082,11 @@ class render extends Feature {
 			}
 
 			//files as extra_data
-			// if (isset($formData['files']['url']) && $formData['files']['url']) {
-			// 	foreach ($formData['files']['url'] as $filekey => $url) {
-			// 		$extra_data[$filekey] = $url;
-			// 	}
-			// }
+			if (isset($formData['files']['url']) && $formData['files']['url']) {
+				foreach ($formData['files']['url'] as $filekey => $url) {
+					$extra_data[$filekey] = $url;
+				}
+			}
 
 			$data['extra_data'] = json_encode($extra_data);
 
