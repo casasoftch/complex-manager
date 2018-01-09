@@ -32,9 +32,9 @@
 											<div class="detail-row-wrapper">
 												<?php if (has_post_thumbnail( $the_unit['post']->ID ) ): ?>
 													<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $the_unit['post']->ID ), 'large' ); ?>
-													<a href="#" class="complex-unit-featuredimage">
+													<div class="complex-unit-featuredimage">
 														<img class="img-responsive" src="<?php echo $image[0]; ?>" alt="" />
-													</a>
+													</div>
 												<?php endif; ?>
 												<?php 
 													$content = $the_unit['post']->post_content;
