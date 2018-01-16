@@ -7,19 +7,19 @@ if (typeof getCXMscrollOffset === "undefined") {
 }
 if (typeof cxmCallContactFormClickHandler === "undefined") {
 	function cxmCallContactFormClickHandler(){
-		$('.complex-call-contact-form').click(function(event) {
+		jQuery('.complex-call-contact-form').click(function(event) {
 			event.preventDefault();
-			var unit_id = $(this).data('unit-id');
-			$('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id).prop('disabled','disabled');
-			$('#complexContactForm').appendTo($(this).parent());
-			$('#complexContactForm').slideUp(0);
-			$('#complexContactForm').slideDown('slow');
-			//$("#complexContactForm input:text, #complexContactForm textarea").first().focus();
-			$('.complex-sendback-contact-form').show();
-			$('html, body').animate({
-		        scrollTop: $('#complexContactForm').offset().top - getCXMscrollOffset()
+			var unit_id = jQuery(this).data('unit-id');
+			jQuery('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id).prop('disabled','disabled');
+			jQuery('#complexContactForm').appendTo(jQuery(this).parent());
+			jQuery('#complexContactForm').slideUp(0);
+			jQuery('#complexContactForm').slideDown('slow');
+			//jQuery("#complexContactForm input:text, #complexContactForm textarea").first().focus();
+			jQuery('.complex-sendback-contact-form').show();
+			jQuery('html, body').animate({
+		        scrollTop: jQuery('#complexContactForm').offset().top - getCXMscrollOffset()
 		    }, 500);
-			$(this).hide();
+			jQuery(this).hide();
 		});
 	}
 }
