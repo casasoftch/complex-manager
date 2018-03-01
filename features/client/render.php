@@ -109,7 +109,8 @@ class render extends Feature {
 	// [CXM-filter]
 	function shortcode_filter( $atts ) {
 	    $a = shortcode_atts( array(
-	    	'filters' => 'rooms, status'
+	    	'filters' => 'rooms, status',
+	    	'building_id' => '',
 	    ), $atts );
 
 	    $filters = array();
@@ -118,7 +119,7 @@ class render extends Feature {
 	    	$filters = array_map('trim',$filters);
 	    }
 
-	    return $this->renderFilter($filters);
+	    return $this->renderFilter($filters, $a['building_id']);
 	}
 
 	private function loadBuildings($building_id){
@@ -549,7 +550,7 @@ class render extends Feature {
 		return $message;
 	}
 
-	public function renderFilter($filters){
+	public function renderFilter($filters, $building_ids = false){
 
 		$thekey = 'renderFilters_' . md5( implode(',', $filters) );
 		$fromStorage = $this->getFromStorage($thekey);
@@ -568,7 +569,12 @@ class render extends Feature {
 	    $height = 680;
 
 		$buildings = array();
-		$building_terms = get_terms( 'building', array() );
+		if ($building_ids) {
+			$building_terms = get_terms( 'building', array('include' => $building_ids) );
+		} else {
+			$building_terms = get_terms( 'building', array() );	
+		}
+		
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
 			foreach ( $building_terms as $term ) {
 				$unit_args['building'] = $term->slug;
