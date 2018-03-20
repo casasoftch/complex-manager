@@ -1060,7 +1060,7 @@ class render extends Feature {
 			$extra_data = array();
 			if ($term) {
 				if (get_class( $term) == 'WP_Error') {
-					echo '<pre>'.$term->get_error_message().'</pre>';
+					#echo '<pre>'.$term->get_error_message().'</pre>';
 				} else{
 						$extra_data['acquiredThrough'] = $term->name;
 				}
