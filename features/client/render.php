@@ -574,7 +574,7 @@ class render extends Feature {
 		} else {
 			$building_terms = get_terms( 'building', array() );	
 		}
-		
+
 		if ( !empty( $building_terms ) && !is_wp_error( $building_terms ) ){
 			foreach ( $building_terms as $term ) {
 				$unit_args['building'] = $term->slug;
@@ -710,7 +710,7 @@ class render extends Feature {
 
 		$template->set( 'filter_income_max', $this->get_option('filter_income_max', "250000") );
 
-		
+
 
 
 		$message = $template->apply( 'filter.php' );
@@ -822,8 +822,18 @@ class render extends Feature {
 	}
 
 	public function getFormMessages(){
+		
 		$defaults = $this->fieldMessages;
-		$required = $this->requiredFields;
+		$messagesReturn = apply_filters('cxm_filter_form_required_messages', array("messages" => $this->fieldMessages, "formData" => $this->getFormData()));
+		if ($messagesReturn && is_array($messagesReturn)) {
+			$defaults = $messagesReturn["messages"];
+		}
+
+		$required = $this->requiredFields;	
+		$requiredReturn = apply_filters('cxm_filter_form_required', array("fields" => $this->requiredFields, "formData" => $this->getFormData()));
+		if ($requiredReturn && is_array($requiredReturn)) {
+			$required = $requiredReturn["fields"];
+		}
 
 		$messages = array();
 		foreach ($this->getFormData() as $col => $value) {
