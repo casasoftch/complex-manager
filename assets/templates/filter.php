@@ -14,7 +14,7 @@
 				<?php elseif ($filtertype == 'status') : ?>
 					<div class="filteroption complex-filter-checkboxwrapper filteroption-status-checkboxes">
 						<label class="filteroption-label" for=""><?= __('Status', 'complexmanager') ?></label>
-						<span class="checkboxoption"><input type="checkbox" name="status[]" id="cxmFilterStatus_available" value="available"><label for="cxmFilterStatus_available" class="checkbox-inline">Verfügbar</label></span>
+						<span class="checkboxoption"><input type="checkbox" name="status[]" id="cxmFilterStatus_available" value="available"><label for="cxmFilterStatus_available" class="checkbox-inline"><?= __('Available', 'complexmanager') ?></label></span>
 					</div>
 				<?php elseif ($filtertype == 'livingspace') : ?>
 					<div id="filteroption-flaeche" class="filteroption filteroption-livingspace-slider" data-minlivingspace="<?php echo $minlivingspace ?>" data-maxlivingspace="<?php echo $maxlivingspace ?>">
