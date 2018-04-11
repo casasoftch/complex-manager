@@ -116,6 +116,9 @@ class unit_metabox extends Feature {
 				$this->prefix.'idx_ref_house',
 				$this->prefix.'idx_ref_object',
 				$this->prefix.'extra_costs',
+				$this->prefix.'link_label',
+				$this->prefix.'link_target',
+				$this->prefix.'link_url',
 				$this->prefix.'custom_1',
 				$this->prefix.'custom_2',
 				$this->prefix.'custom_3',
@@ -165,6 +168,23 @@ class unit_metabox extends Feature {
 		wp_nonce_field( 'complexmanager_inner_custom_box', 'complexmanager_inner_custom_box_nonce' );
 
 		echo '<p>';
+
+
+		echo '<p><label for="complexmanager_unit_link_label">';
+		_e( 'Link', 'complexmanager' );
+		echo '</label><br>';
+
+		$labelvalue = get_post_meta( $post->ID, '_complexmanager_unit_link_label', true );
+        $value = get_post_meta( $post->ID, '_complexmanager_unit_link_url', true );
+        $target = get_post_meta( $post->ID, '_complexmanager_unit_link_target', true );
+        echo '<div class="uploader">
+        		<input type="text" id="complexmanager_unit_link_label" name="complexmanager_unit_link_label" placeholder="Link name" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_link_url" name="complexmanager_unit_link_url" value="'.$value.'" type="text" placeholder="Url" />
+				<input id="complexmanager_unit_link_target" name="complexmanager_unit_link_target" value="'.$target.'" type="text" placeholder="Target" />
+			</div>';
+		echo "</p>";
+
+        echo "<hr>";
 
 
         echo '<p><label for="complexmanager_unit_download_label">';

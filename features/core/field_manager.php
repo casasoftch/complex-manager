@@ -198,7 +198,12 @@ class field_manager extends Feature {
 			'custom_1' => '',
 			'custom_2' => '',
 			'custom_3' => '',
-			'quick-download' => ''
+			'quick-download' => '',
+			'r_link' => '',
+			'link' => '',
+			'link_target' => '',
+			'link_url' => '',
+			'link_label' => '',
 
 		);
 	}
@@ -347,6 +352,21 @@ class field_manager extends Feature {
 				'value' => str_replace(' m2', ' m<sup>2</sup>', $metas['custom_3']),
 				'pure_value' => $metas['custom_3'],
 			),
+			'link_target' => array(
+				'label' => __('Link target', 'complexmanager'),
+				'value' => $metas['link_target'],
+				'pure_value' => $metas['link_target'],
+			),
+			'link_url' => array(
+				'label' => __('Link url', 'complexmanager'),
+				'value' => $metas['link_url'],
+				'pure_value' => $metas['link_url'],
+			),
+			'link_label' => array(
+				'label' => __('Link label', 'complexmanager'),
+				'value' => $metas['link_label'],
+				'pure_value' => $metas['link_label'],
+			),
 
 		);
 		if ($specials) {
@@ -384,6 +404,10 @@ class field_manager extends Feature {
 			);
 			$datas['r_extra_costs'] = array(
 				'label' => sprintf(__('Extra Costs%s in %s%s', 'complexmanager'), '<span class="hidden-sm hidden-xs">', $datas['currency']['value'], '</span>'),
+				'value' => ''
+			);
+			$datas['r_link'] = array(
+				'label' => __('Link', 'complexmanager'),
 				'value' => ''
 			);
 

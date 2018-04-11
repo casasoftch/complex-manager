@@ -275,6 +275,8 @@ function cxm_get_list_col_defaults(){
             'order' => 17,
         ),
 
+       
+
         'min_persons' => array(
             'o_label' => __( 'Number of people (min)', 'complexmanager' ),
             'active' => 0,
@@ -306,6 +308,15 @@ function cxm_get_list_col_defaults(){
             'hidden-reserved' => 0,
             'label' => '',
             'order' => 21,
+        ),
+
+         'r_link' => array(
+            'o_label' => __( 'Link', 'complexmanager' ),
+            'active' => 0,
+            'hidden-xs' => 0,
+            'hidden-reserved' => 0,
+            'label' => '',
+            'order' => 22,
         ),
 
 

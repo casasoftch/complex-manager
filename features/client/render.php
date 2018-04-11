@@ -302,6 +302,25 @@ class render extends Feature {
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 
 						break;
+					case 'r_link':
+						if (
+							$col['hidden-reserved'] == 0
+							||
+							!in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							if (get_cxm($unit, 'link_url')) {
+								$value = '<a target="'. (get_cxm($unit, 'link_target') ? get_cxm($unit, 'link_target') : '_self') . '" href="' . get_cxm($unit, 'link_url') . '">' . (get_cxm($unit, 'link_label') ? get_cxm($unit, 'link_label') : 'Link') . '</a>';
+							} else {
+								$value = '';
+							}
+
+						} else {
+							$value = '';
+						}
+						$displayItem['value'] = $value;
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+						break;
 					case 'quick-download':
 						if (
 							$col['hidden-reserved'] == 0
