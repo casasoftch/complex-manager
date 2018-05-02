@@ -1,4 +1,4 @@
-<div class="complex-list-wrapper <?php echo ($collapsible ? 'complex-list-wrapper-collapsible' : '') ?>">
+<div class="complex-list-wrapper <?php echo ($collapsible ? 'complex-list-wrapper-collapsible' : '') ?> <?php echo $class ?>">
 	<?php foreach ( $the_buildings as $building ) { ?>
 		<div class="complex-unit-wrapper" <?= ($building['hidden'] ? ' style="display:none"' : '') ?>>
 			<h2 class="unit-title"><?= $building['term']->name; ?></h2>

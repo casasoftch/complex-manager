@@ -46,7 +46,8 @@ class render extends Feature {
 	        'labels' => '',
 	        'integrate_form' => "1",
 	        'collapsible' => "1",
-	        'building_id' => false
+	        'building_id' => false,
+	        'class' => '',
 	    ), $atts );
 
 	    $a['integrate_form'] = (bool) $a['integrate_form'];
@@ -78,7 +79,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], ($a['building_id'] ? $a['building_id'] : false));
+	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], ($a['building_id'] ? $a['building_id'] : false), $a['class']);
 	}
 
 	// [CXM-list-unit cols="name,price,rent" labels="Name,Preis,Mietpreis" sales="rent" type="3"]
@@ -467,7 +468,7 @@ class render extends Feature {
 		return $the_buildings;
 	}
 
-	public function renderTable($cols, $integrate_form = true, $collapsible = true, $building_id = false){
+	public function renderTable($cols, $integrate_form = true, $collapsible = true, $building_id = false, $className = ''){
 		/*if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
@@ -489,6 +490,7 @@ class render extends Feature {
 		$template->set( 'buildings', $this->getBuildings($building_id) );
 		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings($building_id), $cols));
 		$template->set( 'collapsible', $collapsible );
+		$template->set( 'class', $className );
 
 		if ($integrate_form) {
 			if (!$this->isFormLoaded()) {
