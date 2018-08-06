@@ -314,7 +314,7 @@ jQuery( function () {
 
 				var livingspace_pass = true;
 				if (data.r_living_space && query.livingspace_from) {
-					var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/\D/g,''));
+					var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/[^\d\.]/g,''));
 					livingspace_pass = false;
 					if (query.livingspace_from !== 0) {
 						if (living_space >= query.livingspace_from && living_space <= query.livingspace_to) {
@@ -331,7 +331,7 @@ jQuery( function () {
 				if (data.r_rent_net && query.rentnet_from) {
 					//only care to filter if it differs from the original value
 					if (query.rentnet_from != parseInt($('#filteroption-miete-netto').data('minrentnet')) || query.rentnet_to !=  parseInt($('#filteroption-miete-netto').data('maxrentnet'))) {
-						var rent_net = parseFloat(data.r_rent_net.replace(/\D/g,''));
+                        var rent_net = parseFloat(data.r_rent_net.replace(/[^\d\.]/g, ''));
 						rentnet_pass = false;
 						if (query.rentnet_from !== 0) {
 							if (rent_net >= query.rentnet_from && rent_net <= query.rentnet_to) {
@@ -349,7 +349,7 @@ jQuery( function () {
 				if (data.r_rent_gross && query.rentgross_from) {
 					//only care to filter if it differs from the original value
 					if (query.rentgross_from != parseInt($('#filteroption-miete-grossto').data('minrentgross')) || query.rentgross_to !=  parseInt($('#filteroption-miete-grossto').data('maxrentgross'))) {
-						var rent_gross = parseFloat(data.r_rent_gross.replace(/\D/g,''));
+                        var rent_gross = parseFloat(data.r_rent_gross.replace(/[^\d\.]/g, ''));
 						rentgross_pass = false;
 						if (query.rentgross_from !== 0) {
 							if (rent_gross >= query.rentgross_from && rent_gross <= query.rentgross_to) {
