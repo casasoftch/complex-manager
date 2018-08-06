@@ -25,13 +25,9 @@ if (typeof cxmCallContactFormClickHandler === "undefined") {
 }
 if (typeof getCXMFadeSpeed === "undefined") {
 	function getCXMFadeSpeed(){
-		return 1000;
+		return 0;
 	}
 }
-
-console.log(getCXMFadeSpeed());
-
-
 
 jQuery( function () {
 	"use strict";

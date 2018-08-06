@@ -6,9 +6,32 @@ class post_types extends Feature {
 	public function __construct() {
 		$this->add_action( 'init', 'set_posttypes', 10 );
 
+
+		/**
+		 * Add the scheduling if it doesnt already exist
+		 */
+		$this->add_action('wp', 'setup_complex_inquiry_schedule');
+		
+		/**
+		 * Add the function that takes care of removing all rows with post_type=complex_inquiry that are older than 6 Months
+		 */
+		$this->add_action('cxm_posttype_daily_pruning', 'remove_old_posts');		
+
 		if (is_admin()) {
 			$this->add_filter( 'dashboard_glance_items', 'glance_items', 10, 1 );
 		}
+	}
+
+	public function setup_complex_inquiry_schedule() {
+	  if (!wp_next_scheduled('cxm_posttype_daily_pruning') ) {
+	    wp_schedule_event( time(), 'daily', 'cxm_posttype_daily_pruning');
+	  }
+	}
+	public function remove_old_posts() {
+	  global $wpdb;
+	  $wpdb->query($wpdb->prepare("DELETE FROM `{$wpdb->prefix}posts` WHERE post_type=%s AND post_date < DATE_SUB(NOW(), INTERVAL 182 DAY);",
+	  	'complex_inquiry'
+	  ));
 	}
 
 	public function set_posttypes() {
