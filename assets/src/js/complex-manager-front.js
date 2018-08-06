@@ -23,8 +23,13 @@ if (typeof cxmCallContactFormClickHandler === "undefined") {
 		});
 	}
 }
+if (typeof getCXMFadeSpeed === "undefined") {
+	function getCXMFadeSpeed(){
+		return 1000;
+	}
+}
 
-
+console.log(getCXMFadeSpeed());
 
 
 
@@ -414,7 +419,8 @@ jQuery( function () {
 						});
 					}
 				});
-				$('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]').fadeOut(speed);
+				var $targetOverlay = $('.complex-custom-overlays img[data-show-on-active-unit="'+id+'"]');
+				$targetOverlay.addClass('active').fadeOut(speed);
 			}
 
 			$('.complex-tooltip-unit-item').hide();
@@ -577,9 +583,9 @@ jQuery( function () {
 
 		//row hover
 		$('.complex-unit-header-row').hover(function() {
-			highlightProjectUnit($(this));
+			highlightProjectUnit($(this), getCXMFadeSpeed());
 		}, function(){
-			unhighlightProjectUnit($(this));
+			unhighlightProjectUnit($(this), getCXMFadeSpeed());
 		});
 
 
@@ -601,13 +607,13 @@ jQuery( function () {
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
 			if ($('#'+hash).length) {
-				highlightProjectUnit($('#'+hash));
+				highlightProjectUnit($('#'+hash), getCXMFadeSpeed());
 			}
 		}, function(){
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
 			if ($('#'+hash).length) {
-				unhighlightProjectUnit($('#'+hash));
+				unhighlightProjectUnit($('#'+hash), getCXMFadeSpeed());
 			}
 		});
 
