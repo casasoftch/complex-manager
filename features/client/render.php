@@ -478,17 +478,29 @@ class render extends Feature {
 			}
 		}*/
 
-		$thekey = 'renderTable_' . $integrate_form . '_' . $collapsible . '_' . $building_id;
-		$fromStorage = $this->getFromStorage($thekey);
-		if ($fromStorage) {
-			return $fromStorage;
-		}
-
-
 		$template = $this->get_template();
 		$template->set( 'cols', $cols );
-		$template->set( 'buildings', $this->getBuildings($building_id) );
-		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings($building_id), $cols));
+		
+		$theBuildingsKey = 'renderTableTheBuildings_' . $integrate_form . '_' . $collapsible . '_' . $building_id;
+		$fromtheBuildingsStorage = $this->getFromStorage($theBuildingsKey);
+		if ($fromtheBuildingsStorage) {
+			$theBuildings = $fromtheBuildingsStorage;
+			$this->store($theBuildingsKey, $fromtheBuildingsStorage);	
+		} else {
+			$theBuildings = $this->prepareBuildings($this->getBuildings($building_id), $cols);
+		}
+		$template->set( 'the_buildings', $theBuildings, $cols);
+
+		$buildingsKey = 'renderTablebuildings_' . $integrate_form . '_' . $collapsible . '_' . $building_id;
+		$frombuildingsStorage = $this->getFromStorage($buildingsKey);
+		if ($frombuildingsStorage) {
+			$buildings = $frombuildingsStorage;
+			$this->store($buildingsKey, $frombuildingsStorage);	
+		} else {
+			$buildings = $this->getBuildings($building_id);
+		}
+		$template->set( 'buildings', $buildings, $cols);
+
 		$template->set( 'collapsible', $collapsible );
 		$template->set( 'class', $className );
 
@@ -506,7 +518,7 @@ class render extends Feature {
 
 		$message = $template->apply( 'list.php' );
 
-		$this->store($thekey, $message);
+		
 
 		return $message;
 	}
