@@ -72,7 +72,7 @@
 							<?php  ?>
 							<label class="filteroption-label">Custom 3</label>
 							<?php foreach ($custom_3_filters as $val): ?>
-								<span class="checkboxoption"><input type="checkbox" name="custom_3s[]" id="cxmFilterCustom3_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterCustom3_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
+								<span class="checkboxoption"><input type="checkbox" name="custom_3s[]" id="cxmFilterCustom3_<?php echo htmlentities(htmlentities($val)) ?>" value="<?php echo htmlentities(htmlentities($val)) ?>"><label for="cxmFilterCustom3_<?php echo htmlentities(htmlentities($val)) ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>
@@ -82,7 +82,7 @@
 							<?php  ?>
 							<label class="filteroption-label">Custom 2</label>
 							<?php foreach ($custom_2_filters as $val): ?>
-								<span class="checkboxoption"><input type="checkbox" name="custom_2s[]" id="cxmFilterCustom2_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterCustom2_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
+								<span class="checkboxoption"><input type="checkbox" name="custom_2s[]" id="cxmFilterCustom2_<?php echo htmlentities(htmlentities($val)) ?>" value="<?php echo htmlentities(htmlentities($val)) ?>"><label for="cxmFilterCustom2_<?php echo htmlentities(htmlentities($val)) ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>
