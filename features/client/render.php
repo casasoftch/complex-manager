@@ -125,7 +125,7 @@ class render extends Feature {
 
 	private function loadBuildings($building_id){
 		$unit_args = array(
-			'posts_per_page' => 200,
+			'posts_per_page' => 250,
 			'post_type' => 'complex_unit',
 			'orderby' => 'menu_order',
 			'order' => 'ASC'
@@ -594,7 +594,7 @@ class render extends Feature {
 
 		$unit_args = array(
 			'post_type' => 'complex_unit',
-			'posts_per_page' => 200
+			'posts_per_page' => 250
 		);
 
 		$image = PLUGIN_URL.'assets/img/example-project-bg.png';
@@ -1205,7 +1205,7 @@ class render extends Feature {
 
 		$unit_args = array(
 			'post_type' => 'complex_unit',
-			'posts_per_page' => 200,
+			'posts_per_page' => 250,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'unit_id' => false
