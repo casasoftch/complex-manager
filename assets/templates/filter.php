@@ -86,6 +86,16 @@
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>
+				<?php elseif ($filtertype == 'custom_1') : ?>
+					<?php if ($custom_1_filters): ?>
+						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_1-checkboxes">
+							<?php  ?>
+							<label class="filteroption-label">Custom 1</label>
+							<?php foreach ($custom_1_filters as $val): ?>
+								<span class="checkboxoption"><input type="checkbox" name="custom_1s[]" id="cxmFilterCustom1_<?php echo htmlentities(htmlentities($val)) ?>" value="<?php echo htmlentities(htmlentities($val)) ?>"><label for="cxmFilterCustom1_<?php echo htmlentities(htmlentities($val)) ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
+							<?php endforeach ?>
+						</div>
+					<?php endif ?>
 				<?php elseif ($filtertype == 'income') : ?>
 					<div id="filteroption-income" class="filteroption filteroption-income-field" data-min="1" data-max="10">
 						<label class="filteroption-label" for=""><?= __('Your yearly income', 'complexmanager') ?></label>
