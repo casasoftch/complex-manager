@@ -696,7 +696,13 @@ class render extends Feature {
 				$number_of_rooms = get_cxm($unit, 'number_of_rooms');
 				if (!in_array($number_of_rooms, $roomfilters)) {
 					if ($number_of_rooms) {
-						$roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', $this->get_option('thousands_seperator', "'")) ;
+						
+
+						if(fmod($val, 1) !== 0.0){
+						    $roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', $this->get_option('thousands_seperator', "'")) ;
+						} else {
+						    $roomfilters[] = $number_of_rooms;
+						}
 					}
 
 				}
