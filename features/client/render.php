@@ -650,7 +650,7 @@ class render extends Feature {
 
 		foreach ($buildings as $building) {
 			foreach ($building['units'] as $unit) {
-				if (get_cxm($unit, 'living_space') && ( get_cxm($unit, 'status') == "available" )) {
+				if (get_cxm($unit, 'living_space')) {
 					if ($minLivingSpace && $maxLivingSpace) {
 						if (get_cxm($unit, 'living_space') < $minLivingSpace) {
 							$minLivingSpace = get_cxm($unit, 'living_space');
@@ -663,7 +663,7 @@ class render extends Feature {
 					}
 				}
 
-				if (get_cxm($unit, 'rent_net') && ( get_cxm($unit, 'status') == "available" )) {
+				if (get_cxm($unit, 'rent_net')) {
 					if ($minRentNet && $maxRentNet) {
 						if (get_cxm($unit, 'rent_net') < $minRentNet) {
 							$minRentNet = get_cxm($unit, 'rent_net');
@@ -676,7 +676,7 @@ class render extends Feature {
 					}
 				}
 
-				if (get_cxm($unit, 'rent_gross') && ( get_cxm($unit, 'status') == "available" )) {
+				if (get_cxm($unit, 'rent_gross')) {
 					if ($minRentGross && $maxRentGross) {
 						if (get_cxm($unit, 'rent_gross') < $minRentGross) {
 							$minRentGross = get_cxm($unit, 'rent_gross');
