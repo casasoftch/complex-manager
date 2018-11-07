@@ -398,6 +398,8 @@ jQuery( function () {
 				if (endsWith($(iel).attr("xlink:href"), id)) {
 					//addClass
 					$(iel).attr('class', function(index, classNames) {
+						var re = /active/gi;
+						classNames = classNames.replace(re, '');
 					    return classNames + ' active';
 					});
 				}
@@ -420,6 +422,7 @@ jQuery( function () {
 		}
 
 		function unhighlightProjectUnit($headerRow, speed){
+			// console.log("unhighlight");
 			speed = typeof speed !== 'undefined' ? speed : 0;
 			if ($headerRow.hasClass('active')) {
 
@@ -429,7 +432,9 @@ jQuery( function () {
 					if (endsWith($(iel).attr("xlink:href"), id)) {
 						//addClass
 						$(iel).attr('class', function(index, classNames) {
-						    return classNames.replace('active', '');
+							var re = /active/gi;
+							classNames = classNames.replace(re, '');
+						    return classNames;
 						});
 					}
 				});
@@ -447,7 +452,9 @@ jQuery( function () {
 			$('.complex-project-graphic-interaction a').each(function(index, el) {
 				// removeClass
 				$(el).attr('class', function(index, classNames) {
-				    return classNames.replace('active', '');
+					var re = /active/gi;
+					classNames = classNames.replace(re, '');
+				    return classNames;
 				});
 			});
 
