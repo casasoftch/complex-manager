@@ -2,6 +2,7 @@
 	<?php $for_bstring = 'complexField'; ?>
 	<?php $for_randid = rand(0,100); ?>
 	<form id="complexContactFormAnchor" class="complex-contact-form" action="#complexContactFormAnchor" method="POST" enctype="multipart/form-data">
+		<?php wp_nonce_field( 'send-inquiry' ); ?>
 		<input type="hidden" name="complex-unit-inquiry[post]" value="1">
 		<?= do_action('cxm_render_before_form_parts', $data, $buildings); ?>
 		<div class="complex-form-parts">
