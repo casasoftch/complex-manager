@@ -1,4 +1,9 @@
 
+function verifyCaptcha() {
+	console.log('what');
+	jQuery('#verifyTheCaptcha').attr('Value', 'Verified');
+}
+
 var CXMscrollOffset = 124;
 if (typeof getCXMscrollOffset === "undefined") {
 	function getCXMscrollOffset(){

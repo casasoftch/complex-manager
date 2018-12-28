@@ -235,6 +235,23 @@ class general_options extends Feature
         );
 
 
+        add_settings_field(
+            'recaptcha',
+             __( 'reCaptcha Key', 'complexmanager' ),
+            array( $this, 'recaptcha_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'recaptcha_secret',
+             __( 'reCaptcha Secret', 'complexmanager' ),
+            array( $this, 'recaptcha_secret_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+
 
 
 
@@ -311,6 +328,14 @@ class general_options extends Feature
         //filter
         if( isset( $input['filter_income_max'] ) ) {
             $new_input['filter_income_max'] = $input['filter_income_max']; //sanitize_text_field(  );
+        }
+
+        if( isset( $input['recaptcha'] ) ) {
+            $new_input['recaptcha'] = $input['recaptcha']; //sanitize_text_field(  );
+        }
+
+        if( isset( $input['recaptcha_secret'] ) ) {
+            $new_input['recaptcha_secret'] = $input['recaptcha_secret']; //sanitize_text_field(  );
         }
 
 
@@ -642,7 +667,23 @@ class general_options extends Feature
     }
 
     
+    public function recaptcha_callback()
+    {
+        printf(
+            '<input type="text" id="recaptcha" name="complex_manager[recaptcha]" value="%s" />',
+            isset( $this->options['recaptcha'] ) ? esc_attr( $this->options['recaptcha']) : ''
+        );
 
+    }
+
+    public function recaptcha_secret_callback()
+    {
+        printf(
+            '<input type="text" id="recaptcha_secret" name="complex_manager[recaptcha_secret]" value="%s" />',
+            isset( $this->options['recaptcha_secret'] ) ? esc_attr( $this->options['recaptcha_secret']) : ''
+        );
+
+    }
 
     public function set_standard_terms(){
         if (isset($_GET['generate_defaults']) || isset($_POST['generate_defaults'])) {

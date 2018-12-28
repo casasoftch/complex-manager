@@ -22,6 +22,8 @@ class render extends Feature {
 			'gender' => 'That should not be possible',
 			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
 		);
+
+		wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?hl='.$lang, array(), false, true );
 	}
 
 	public function set_shortcodes() {
@@ -798,6 +800,14 @@ class render extends Feature {
 			$formData['extra_data'] = $request['extra_data'];
 		}
 
+		if (isset($request['g-recaptcha-response'])) {
+		    $formData['captcha_response'] = $request['g-recaptcha-response'];
+		}
+
+		if (isset($request['auth'])) {
+		    $this->auth = $request['auth'];
+		}
+
 		$formData['files'] = [
 			'name' => []
 		];
@@ -1282,21 +1292,44 @@ class render extends Feature {
 
 					do_action('cxm_before_inquirysend', $formData);
 
+					$validCaptcha = null;
 
-					$this->sendEmail(false, $inquiry);
-					$this->sendRemcat(false, $inquiry);
-					$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
-					if ($casamail_msgs) {
-						$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
-						$state = 'danger';
-					}
+					if ($this->get_option('recaptcha')) {
+						if (isset($formData['captcha_response'])) {
+						    $validCaptcha = $this->verifyCaptcha($formData['captcha_response']);
+						}
+						if ($validCaptcha &&  $validCaptcha === 'success') {
+							$this->sendEmail(false, $inquiry);
+							$this->sendRemcat(false, $inquiry);
+							$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+							if ($casamail_msgs) {
+								$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
+								$state = 'danger';
+							}
 
-					$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
+							$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
 
-					do_action('cxm_after_inquirysend', $formData);
+							do_action('cxm_after_inquirysend', $formData);
 
-					//empty form
-					$formData = $this->getFormData(true);
+							//empty form
+							$formData = $this->getFormData(true);
+						}
+					} else {
+						$this->sendEmail(false, $inquiry);
+						$this->sendRemcat(false, $inquiry);
+						$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+						if ($casamail_msgs) {
+							$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
+							$state = 'danger';
+						}
+
+						$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
+
+						do_action('cxm_after_inquirysend', $formData);
+
+						//empty form
+						$formData = $this->getFormData(true);
+					}					
 				}
 				
 
@@ -1330,6 +1363,30 @@ class render extends Feature {
 		return $message;
 	}
 
+	private function verifyCaptcha($captchaResponse) {
+	   $post_data = http_build_query(
+	       array(
+	           'secret' => $this->get_option('recaptcha_secret'),
+	           'response' => $_POST['g-recaptcha-response'],
+	           'remoteip' => $_SERVER['REMOTE_ADDR']
+	       )
+	   );
+	   $opts = array('http' =>
+	       array(
+	           'method'  => 'POST',
+	           'header'  => 'Content-type: application/x-www-form-urlencoded',
+	           'content' => $post_data
+	       )
+	   );
+	   $context  = stream_context_create($opts);
+	   $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+	   $result = json_decode($response);
+	   if (!$result->success) {
+	       throw new Exception('Gah! CAPTCHA verification failed. Please email me directly at: jstark at jonathanstark dot com', 1);
+	   } else {
+	   		return 'success';
+	   }
+	}
 }
 
 

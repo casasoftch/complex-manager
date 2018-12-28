@@ -167,6 +167,10 @@
 				</div>
 				<?= do_action('cxm_render_before_form_submission', $data, $buildings); ?>
 				<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
+				<?php if (get_option('complex_manager')['recaptcha']): ?>
+					<div class="g-recaptcha" data-callback="verifyCaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
+					<input id="verifyTheCaptcha" type="text" value="" required>
+				<?php endif ?>
 				<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
 			</div>
 		</div>
