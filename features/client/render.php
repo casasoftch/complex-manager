@@ -6,6 +6,8 @@ class render extends Feature {
 
 	private $buildingsStore = null;
 
+	public $formSendHasAlreadyOccuredDuringThisRequest = false;
+
 	public function __construct() {
 		$this->add_action( 'init', 'set_shortcodes' );
 		$this->fieldMessages = array(
@@ -1267,38 +1269,76 @@ class render extends Feature {
 
 
 		$formData =  $this->getFormData();
-
 		$msg = '';
 		$state = '';
 		$messages = array();
 		if ($formData['post']) {
+			print_r('rendered_form');
 			if ($this->formValid()) {
-				if (wp_verify_nonce( $_REQUEST['_wpnonce'], 'send-inquiry')) {
-					$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
-					$state = 'success';
+				if (!$this->formSendHasAlreadyOccuredDuringThisRequest) {
+				 	$this->formSendHasAlreadyOccuredDuringThisRequest = true;
+					if (wp_verify_nonce( $_REQUEST['_wpnonce'], 'send-inquiry')) {
 
-					$inq_post = array(
-						'post_content'   => '',
-						'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
-						'post_status'    => 'publish',
-						'post_type'      => 'complex_inquiry',
-						'ping_status'    => 'closed',
-						'comment_status' => 'closed',
-					);
+						$validCaptcha = null;
 
-					do_action('cxm_before_inquirystore', $formData);
+						if ($this->get_option('recaptcha')) {
 
-					$inquiry = $this->storeInquiry($inq_post, $formData);
+							if (isset($formData['captcha_response'])) {
+							    $validCaptcha = $this->verifyCaptcha($formData['captcha_response']);
+							}
+							if ($validCaptcha &&  $validCaptcha === 'success') {
+								$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
+								$state = 'success';
 
-					do_action('cxm_before_inquirysend', $formData);
+								$inq_post = array(
+									'post_content'   => '',
+									'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
+									'post_status'    => 'publish',
+									'post_type'      => 'complex_inquiry',
+									'ping_status'    => 'closed',
+									'comment_status' => 'closed',
+								);
 
-					$validCaptcha = null;
+								do_action('cxm_before_inquirystore', $formData);
 
-					if ($this->get_option('recaptcha')) {
-						if (isset($formData['captcha_response'])) {
-						    $validCaptcha = $this->verifyCaptcha($formData['captcha_response']);
-						}
-						if ($validCaptcha &&  $validCaptcha === 'success') {
+								$inquiry = $this->storeInquiry($inq_post, $formData);
+
+								do_action('cxm_before_inquirysend', $formData);
+
+								$this->sendEmail(false, $inquiry);
+								$this->sendRemcat(false, $inquiry);
+								$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+								if ($casamail_msgs) {
+									$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
+									$state = 'danger';
+								}
+
+								$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
+
+								do_action('cxm_after_inquirysend', $formData);
+
+								//empty form
+								$formData = $this->getFormData(true);
+							}
+						} else {
+							$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
+							$state = 'success';
+
+							$inq_post = array(
+								'post_content'   => '',
+								'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
+								'post_status'    => 'publish',
+								'post_type'      => 'complex_inquiry',
+								'ping_status'    => 'closed',
+								'comment_status' => 'closed',
+							);
+
+							do_action('cxm_before_inquirystore', $formData);
+
+							$inquiry = $this->storeInquiry($inq_post, $formData);
+
+							do_action('cxm_before_inquirysend', $formData);
+
 							$this->sendEmail(false, $inquiry);
 							$this->sendRemcat(false, $inquiry);
 							$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
@@ -1313,25 +1353,9 @@ class render extends Feature {
 
 							//empty form
 							$formData = $this->getFormData(true);
-						}
-					} else {
-						$this->sendEmail(false, $inquiry);
-						$this->sendRemcat(false, $inquiry);
-						$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
-						if ($casamail_msgs) {
-							$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
-							$state = 'danger';
-						}
-
-						$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
-
-						do_action('cxm_after_inquirysend', $formData);
-
-						//empty form
-						$formData = $this->getFormData(true);
-					}					
-				}
-				
+						}					
+					}
+				} 		
 
 			} else {
 				$msg = __('Please check the following and try again:', 'complexmanager');
@@ -1379,10 +1403,13 @@ class render extends Feature {
 	       )
 	   );
 	   $context  = stream_context_create($opts);
+	  // print_r($opts);
 	   $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
-	   $result = json_decode($response);
-	   if (!$result->success) {
-	       throw new Exception('Gah! CAPTCHA verification failed. Please email me directly at: jstark at jonathanstark dot com', 1);
+	   $result = json_decode($response, true);
+	 //  print_r($result);
+	   
+	   if (!$result['success']) {
+	       throw new \Exception('Gah! CAPTCHA verification failed. Please email me directly at: jstark at jonathanstark dot com', 1);
 	   } else {
 	   		return 'success';
 	   }
