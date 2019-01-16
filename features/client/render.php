@@ -24,7 +24,7 @@ class render extends Feature {
 			'gender' => 'That should not be possible',
 			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
 		);
-
+		$lang = substr(get_bloginfo('language'), 0, 2);
 		wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?hl='.$lang, array(), false, true );
 	}
 
