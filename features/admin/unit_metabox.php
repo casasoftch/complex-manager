@@ -254,7 +254,7 @@ class unit_metabox extends Feature {
 				echo '<p><label for="'.$key.'">';
 				_e( 'IDX / REMCat Object Ref.', 'complexmanager' );
 				echo '</label><br>';
-				echo '<input type="number" step="1" min="0"  id="'.$key.'" name="'.$key.'"';
+				echo '<input type="text"  id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
 		        echo '</p>';
 
