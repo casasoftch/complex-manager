@@ -171,7 +171,7 @@
 					<div class="g-recaptcha" data-callback="verifyCaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
 					<input id="verifyTheCaptcha" type="text" value="" required>
 				<?php endif ?>
-				<br><button type="submit" class="btn btn-primary pull-right"><?php _e('Send', 'complexmanager') ?></button>
+				<br><button type="submit" class="btn btn-primary pull-right" id="complexManagerSendButton"><?php _e('Send', 'complexmanager') ?></button>
 			</div>
 		</div>
 		<?= do_action('cxm_render_after_form_parts', $data, $buildings); ?>
