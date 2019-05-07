@@ -470,6 +470,15 @@ jQuery( function () {
 				$headerRow.removeClass('active');
 				$headerRow.next().removeClass('active');
 			} else {
+	
+				
+				$headerRow.next().find('.detail-row-wrapper img').each(function(index, el) {
+					if ($(el).data('src')) {
+						$(el).prop('src',$(el).data('src'));
+						$(el).prop('srcset',$(el).data('src'));
+						$(el).data('src', null);
+					}
+				});
 
 				scrolltoheaderRow($headerRow, getCXMscrollOffset());
 
@@ -480,13 +489,6 @@ jQuery( function () {
 					$(el).next().removeClass('active');
 				});
 
-				$headerRow.next().find('.detail-row-wrapper img').each(function(index, el) {
-					if ($(el).data('src')) {
-						$(el).prop('src',$(el).data('src'));
-						$(el).prop('srcset',$(el).data('src'));
-						$(el).data('src', null);
-					}
-				});
 
 				$headerRow.next().find('.detail-row-wrapper').slideDown('slow');
 				$headerRow.addClass('active');
@@ -563,7 +565,6 @@ jQuery( function () {
 		$('.complex-unit-header-row').on('click touchend', function(event) {
 			var row = this;
 			var anchorclick = $(event.target).is('a');
-
 			if (!anchorclick) {
 				event.preventDefault();
 
@@ -572,6 +573,7 @@ jQuery( function () {
 						$('.complex-custom-overlays img').removeClass('active').hide();
 						activateProjectUnit($(this));
 					} else {
+
 						if ($('.complex-contact-form-wrapper').length) {
 							$('html, body').animate({
 					        scrollTop: $('.complex-contact-form-wrapper').offset().top
@@ -580,13 +582,7 @@ jQuery( function () {
 					   	var unit_id = $(row).data('unit-id');
 					    $('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
 					    //.prop('disabled','disabled')
-					    var $targetImg = $(this).next().find('.complex-unit-featuredimage img');
-					    
-					    //lazy load
-					    if ($targetImg.data('src')) {
-					    	$targetImg.prop('src', $targetImg.data('src'));
-					    	$targetImg.data('src', null);
-					    }
+
 
 						} else if($(row).find('.col-quick-download a').length){
 							$(row).find('.col-quick-download a').first()[0].click();
