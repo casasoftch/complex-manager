@@ -471,7 +471,7 @@ jQuery( function () {
 				$headerRow.next().removeClass('active');
 			} else {
 	
-				
+
 				$headerRow.next().find('.detail-row-wrapper img').each(function(index, el) {
 					if ($(el).data('src')) {
 						$(el).prop('src',$(el).data('src'));
@@ -490,7 +490,7 @@ jQuery( function () {
 				});
 
 
-				$headerRow.next().find('.detail-row-wrapper').slideDown('slow');
+				$headerRow.next().find('.detail-row-wrapper').delay(300).slideDown('slow');
 				$headerRow.addClass('active');
 				$headerRow.next().addClass('active');
 
