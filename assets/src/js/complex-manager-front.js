@@ -580,7 +580,13 @@ jQuery( function () {
 					   	var unit_id = $(row).data('unit-id');
 					    $('.complex-contact-form-wrapper form [name="complex-unit-inquiry[unit_id]"]').val(unit_id);
 					    //.prop('disabled','disabled')
-
+					    var $targetImg = $(this).next().find('.complex-unit-featuredimage img');
+					    
+					    //lazy load
+					    if ($targetImg.data('src')) {
+					    	$targetImg.prop('src', $targetImg.data('src'));
+					    	$targetImg.data('src', null);
+					    }
 
 						} else if($(row).find('.col-quick-download a').length){
 							$(row).find('.col-quick-download a').first()[0].click();
