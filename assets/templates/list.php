@@ -31,7 +31,7 @@
 										<td colspan="<?= $colcount+1 ?>">
 											<div class="detail-row-wrapper">
 												<?php if (has_post_thumbnail( $the_unit['post']->ID ) ): ?>
-													<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $the_unit['post']->ID ), 'large' ); ?>
+													<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $the_unit['post']->ID ), 'hd' ); ?>
 													<div class="complex-unit-featuredimage">
 														<img class="img-responsive" data-src="<?php echo $image[0]; ?>" alt="" />
 													</div>
