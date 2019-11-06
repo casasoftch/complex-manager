@@ -79,7 +79,9 @@ class render extends Feature {
 	   	} else {
 	   		//sort
 			uasort($cols, function($a, $b){
-				return $a["order"] - $b["order"];
+				if (is_numeric($a["order"]) && is_numeric($b["order"])) {
+					return $a["order"] - $b["order"];
+				}
 			});
 	   	}
 
@@ -104,7 +106,9 @@ class render extends Feature {
 	   	} else {
 	   		//sort
 			uasort($cols, function($a, $b){
-				return $a["order"] - $b["order"];
+				if (is_numeric($a["order"]) && is_numeric($b["order"])) {
+					return $a["order"] - $b["order"];
+				}
 			});
 	   	}
 
@@ -641,6 +645,7 @@ class render extends Feature {
 		$template->set( 'height', $height );
 
 		$roomfilters = array();
+		$type_filters = array();
 		$custom_3_filters = array();
 		$custom_2_filters = array();
 		$custom_1_filters = array();
@@ -702,7 +707,14 @@ class render extends Feature {
 					if ($number_of_rooms) {
 						$roomfilters[] = number_format(round($number_of_rooms, 1), 1, '.', $this->get_option('thousands_seperator', "'")) ;
 					}
+				}
 
+				//types
+				$types = wp_get_post_terms($unit->ID, 'unit_type', array('fields' => 'all'));
+				if (!in_array($types, $type_filters)) {
+					if ($types) {
+						$type_filters[] = $types ;
+					}
 				}
 
 				//custom_3
@@ -744,6 +756,8 @@ class render extends Feature {
 		asort($roomfilters);
 
 		$template->set( 'roomfilters', $roomfilters );
+
+		$template->set( 'type_filters', $type_filters );
 
 		$template->set( 'custom_3_filters', $custom_3_filters );
 

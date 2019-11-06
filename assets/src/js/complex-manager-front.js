@@ -191,6 +191,16 @@ jQuery( function () {
 				returnQuery.stories = null;
 			}
 
+			if (query.types) {
+				if(typeof query.types === "string") {
+					returnQuery.types = [query.types];
+				} else {
+					returnQuery.types = query.types;
+				}
+			} else {
+				returnQuery.types = null;
+			}
+
 			if (query.status) {
 				if(typeof query.status === "string") {
 					returnQuery.status = [query.status];
@@ -219,9 +229,11 @@ jQuery( function () {
 		function filterList(query, $list){
 
 			query = fixQuery(query);
-
+			
 			$list.find('tr.complex-unit-header-row').each(function(index, tr) {
 				var data = $(tr).data('json');
+
+				var type_data = $(tr).data('types');
 
 				var room_pass = true;
 				if (data && data.number_of_rooms && query.rooms) {
@@ -297,6 +309,16 @@ jQuery( function () {
 					$.each(query.custom_3s, function(index, value) {
 						if(value == data.custom_3){
 					    	custom_3_pass = true;
+					    }
+					});
+				}
+
+				var types_pass = true;
+				if (type_data !== 'undefined' && query.types) {
+					var types_pass = false;
+					$.each(query.types, function(index, value) {
+						if(value == type_data){
+					    	types_pass = true;
 					    }
 					});
 				}
@@ -386,7 +408,7 @@ jQuery( function () {
 					}
 				}
 
-				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && story_pass) {
+				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && types_pass && story_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {
@@ -658,6 +680,8 @@ jQuery( function () {
 
 		var query = getQueryStringAsObject();
 		//filterList(query, $('.complex-list-wrapper'));
+
+
 
 		$('#complexFilterForm').change(function(event) {
 			var querystring = $('#complexFilterForm').serialize();

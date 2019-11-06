@@ -60,9 +60,18 @@
 					<?php if ($story_filters): ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-story-checkboxes">
 							<?php  ?>
-							<label class="filteroption-label">Etage</label>
+							<label class="filteroption-label"><?= __('Floor', 'complexmanager') ?></label>
 							<?php foreach ($story_filters as $val): ?>
 								<span class="checkboxoption"><input type="checkbox" name="stories[]" id="cxmFilterStory_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterStory_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
+							<?php endforeach ?>
+						</div>
+					<?php endif ?>
+				<?php elseif ($filtertype == 'types') : ?>
+					<?php if ($type_filters): ?>
+						<div class="filteroption complex-filter-checkboxwrapper filteroption-type-checkboxes">
+							<label class="filteroption-label">Typ</label>
+							<?php foreach ($type_filters as $val): ?>
+								<span class="checkboxoption"><input type="checkbox" name="types[]" id="cxmFilterTypes_<?php echo htmlentities(htmlentities($val[0]->slug)) ?>" value="<?php echo htmlentities(htmlentities($val[0]->slug)) ?>"><label for="cxmFilterTypes_<?php echo htmlentities(htmlentities($val[0]->slug)) ?>" class="checkbox-inline">&nbsp;<?php echo $val[0]->name ?></label></span>
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>

@@ -77,12 +77,12 @@
 						<div class="row">
 							<div class="col-xs-6 complex-form-first_name">
 								<div class="<?= (isset($messages['first_name'])  ? 'has-error' : '') ?>">
-									<input id="<?= $for_bstring ?>firstName<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= $data['first_name'] ?>">
+									<input id="<?= $for_bstring ?>firstName<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['first_name']); ?>">
 								</div>
 							</div>
 							<div class="col-xs-6 complex-form-last_name">
 								<div class="<?= (isset($messages['last_name'])  ? 'has-error' : '') ?>">
-									<input required type="text" name="complex-unit-inquiry[last_name]" placeholder="<?php echo get_cxm_label(false, 'last_name', 'complex_inquiry') ?>" class="form-control" value="<?= $data['last_name'] ?>">
+									<input required type="text" name="complex-unit-inquiry[last_name]" placeholder="<?php echo get_cxm_label(false, 'last_name', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['last_name']); ?>">
 								</div>
 							</div>
 						</div>
