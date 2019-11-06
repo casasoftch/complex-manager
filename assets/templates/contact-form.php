@@ -92,7 +92,7 @@
 					</dt>
 					<dd class="editable">
 						<div class="<?= (isset($messages['legal_name'])  ? 'has-error' : '') ?>">
-							<input type="text" id="<?= $for_bstring ?>legalName<?= $for_randid ?>" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= $data['legal_name'] ?>">
+							<input type="text" id="<?= $for_bstring ?>legalName<?= $for_randid ?>" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= esc_attr($data['legal_name']) ?>">
 						</div>
 					</dd>
 					<dt class="editable">
@@ -100,7 +100,7 @@
 					</dt>
 					<dd class="editable">
 						<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
-							<input id="<?= $for_bstring ?>email<?= $for_randid ?>" required type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= $data['email'] ?>">
+							<input id="<?= $for_bstring ?>email<?= $for_randid ?>" required type="email" name="complex-unit-inquiry[email]"  class="form-control" value="<?= esc_attr($data['email']) ?>">
 						</div>
 					</dd>
 
@@ -111,12 +111,12 @@
 						<div class="row">
 							<div class="col-xs-6 complex-form-phone">
 								<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
-									<input id="<?= $for_bstring ?>name<?= $for_randid ?>" type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= $data['phone'] ?>">											
+									<input id="<?= $for_bstring ?>name<?= $for_randid ?>" type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['phone']) ?>">											
 								</div>
 							</div>
 							<div class="col-xs-6 complex-form-mobile">
 								<div class="<?= (isset($messages['mobile'])  ? 'has-error' : '') ?>">
-									<input type="text" name="complex-unit-inquiry[mobile]" placeholder="<?php echo get_cxm_label(false, 'mobile', 'complex_inquiry') ?>" class="form-control" value="<?= $data['mobile'] ?>">
+									<input type="text" name="complex-unit-inquiry[mobile]" placeholder="<?php echo get_cxm_label(false, 'mobile', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['mobile']) ?>">
 								</div>
 							</div>
 						</div>
@@ -129,17 +129,17 @@
 						<div class="address-picker-group">
 							<div class="address-picker-realinputs">
 								<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
-									<input id="<?= $for_bstring ?>street<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= $data['street'] ?>">
+									<input id="<?= $for_bstring ?>street<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['street']) ?>">
 								</div>
 								<div class="row">
 									<div class="col-xs-4 complex-form-postal_code">
 										<div class="<?= (isset($messages['postal_code'])  ? 'has-error' : '') ?>">
-											<input required type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= $data['postal_code'] ?>">
+											<input required type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= esc_attr($data['postal_code']) ?>">
 										</div>
 									</div>
 									<div class="col-xs-8 complex-form-locality">
 										<div class="<?= (isset($messages['locality'])  ? 'has-error' : '') ?>">
-											<input required type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= $data['locality'] ?>">
+											<input required type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['locality']) ?>">
 										</div>
 									</div>
 								</div>
