@@ -18,8 +18,18 @@
 					<tbody>
 						<?php 
 						foreach ($building['the_units'] as $the_unit) {
+							$type_array = wp_get_post_terms($the_unit['post']->ID, 'unit_type', array( 'field' => 'slugs' ));
+							$types = '';
+							$new_types = array();
+							if ($type_array) {
+								foreach ($type_array as $type) {
+									$new_types[] = $type->slug;
+								}
+								$types = 'data-types="' . implode(', ', $new_types) . '"';
+							}
+							
 							$colcount = count($the_unit['displayItems']);
-							echo '<tr class="complex-unit-header-row state-' . $the_unit['state'] . ' status-' . $the_unit['status'] . '" id="unit_'.$the_unit['post']->ID.'" data-unit-id="' . $the_unit['post']->ID .'" data-json="' . htmlspecialchars(json_encode($the_unit['data']), ENT_QUOTES, 'UTF-8') . '">';
+							echo '<tr class="complex-unit-header-row state-' . $the_unit['state'] . ' status-' . $the_unit['status'] . '" id="unit_'.$the_unit['post']->ID.'" data-unit-id="' . $the_unit['post']->ID .'"' . $types .' data-json="' . htmlspecialchars(json_encode($the_unit['data']), ENT_QUOTES, 'UTF-8') . '">';
 							foreach ($the_unit['displayItems'] as $displayItem) {
 								echo '<td class="'.$displayItem['td_classes'].'">'.$displayItem['value'].'</td>';
 							}
