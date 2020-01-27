@@ -128,6 +128,7 @@ class render extends Feature {
 	    	$filters = array_map('trim',$filters);
 	    }
 
+
 	    return $this->renderFilter($filters, $a['building_id']);
 	}
 
@@ -593,7 +594,59 @@ class render extends Feature {
 
 	public function renderFilter($filters, $building_ids = false){
 
-		$thekey = 'renderFilters_' . md5( implode(',', $filters) );
+		$defaultLabels = cxm_get_filter_label_defaults();
+
+	    $labels = maybe_unserialize((maybe_unserialize($this->get_option("list_filters"))));
+	   	if (!$labels || !is_array($labels)) {
+	   		$labels = array();
+	   	}
+
+	   	//print_r($defaultLabels);
+
+	   	//print_r($labels);
+	   	$labelArray = array();
+	   	$defaultLabelArray = array();
+
+	   	foreach ($defaultLabels as $key => $label) {
+	   		$defaultLabelArray[$key] = $label['o_label'];
+	   	}
+
+	   	//print_r($defaultLabelArray);
+
+	   	foreach ($labels as $key => $label) {
+	   		if ($key == 'r_living_space') {
+	   			$key = 'livingspace';
+	   		}
+	   		if ($key == 'r_usable_space') {
+	   			$key = 'usablespace';
+	   		}
+	   		if ($key == 'r_rent_net') {
+	   			$key = 'rentnet';
+	   		}
+	   		if ($key == 'r_rent_gross') {
+	   			$key = 'rentgross';
+	   		}
+	   		if ($label['label']) {
+	   			$labelArray[$key] = $label['label'];
+	   		}
+	   	}
+
+	   	$filterLabelArray = array_merge($defaultLabelArray, $labelArray);
+
+	   	//print_r($filterLabelArray);
+	   	$filterArray = array();
+
+	   	foreach ($filters as $filter => $keyFilter) {
+	   		foreach ($filterLabelArray as $keyLabel => $value) {
+	   			if ($keyFilter == $keyLabel) {
+	   				$filterArray[$keyFilter] = $value;
+	   			}
+	   		}
+	   	}
+
+	   	$filters = $filterArray;
+
+		$thekey = 'renderFilters_' . md5( implode(',', array_keys($filters)) );
 		$fromStorage = $this->getFromStorage($thekey);
 		if ($fromStorage) {
 			return $fromStorage;
@@ -652,6 +705,8 @@ class render extends Feature {
 		$story_filters = array();
 		$minLivingSpace = false;
 		$maxLivingSpace = false;
+		$minUsableSpace = false;
+		$maxUsableSpace = false;
 		$minRentNet = false;
 		$maxRentNet = false;
 		$minRentGross = false;
@@ -669,6 +724,19 @@ class render extends Feature {
 					} else {
 						$minLivingSpace = get_cxm($unit, 'living_space');
 						$maxLivingSpace = get_cxm($unit, 'living_space');
+					}
+				}
+
+				if (get_cxm($unit, 'usable_space')) {
+					if ($minUsableSpace && $maxUsableSpace) {
+						if (get_cxm($unit, 'usable_space') < $minUsableSpace) {
+							$minUsableSpace = get_cxm($unit, 'usable_space');
+						} elseif (get_cxm($unit, 'usable_space') > $maxUsableSpace) {
+							$maxUsableSpace = get_cxm($unit, 'usable_space');
+						}
+					} else {
+						$minUsableSpace = get_cxm($unit, 'usable_space');
+						$maxUsableSpace = get_cxm($unit, 'usable_space');
 					}
 				}
 
@@ -774,6 +842,10 @@ class render extends Feature {
 
 		$template->set( 'minlivingspace', $minLivingSpace );
 
+		$template->set( 'maxusablespace', $maxUsableSpace );
+
+		$template->set( 'minusablespace', $minUsableSpace );
+
 		$template->set( 'maxrentnet', $maxRentNet );
 
 		$template->set( 'minrentnet', $minRentNet );
@@ -785,8 +857,6 @@ class render extends Feature {
 		$template->set( 'filters', $filters );
 
 		$template->set( 'filter_income_max', $this->get_option('filter_income_max', "250000") );
-
-
 
 
 		$message = $template->apply( 'filter.php' );

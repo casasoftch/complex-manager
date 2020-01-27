@@ -340,3 +340,74 @@ function cxm_get_list_col_defaults(){
 
     );
 }
+
+function cxm_get_filter_label_defaults(){
+    return array(
+        'number_of_rooms' => array(
+            'o_label' => __( 'Number of Rooms', 'complexmanager' ),
+            'label' => '',
+            'order' => 1,
+        ),
+        'status' => array(
+            'o_label' => __( 'Status', 'complexmanager' ),
+            'label' => '',
+            'order' => 2,
+        ),
+        'livingspace' => array(
+            'o_label' => __( 'Living Space', 'complexmanager' ),
+            'label' => '',
+            'order' => 3,
+        ),
+        'usablespace' => array(
+            'o_label' => __( 'Usable Space', 'complexmanager' ),
+            'label' => '',
+            'order' => 4,
+        ),
+        'rentnet' => array(
+            'o_label' => __( 'Rent Net Price', 'complexmanager' ),
+            'label' => '',
+            'order' => 5,
+        ),
+        'rentgross' => array(
+            'o_label' => __( 'Rent gross', 'complexmanager' ),
+            'label' => '',
+            'order' => 6,
+        ),
+        'story' => array(
+            'o_label' => __( 'Floor', 'complexmanager' ),
+            'label' => '',
+            'order' => 7,
+        ),
+        'types' => array(
+            'o_label' => __( 'Type', 'complexmanager' ),
+            'label' => '',
+            'order' => 8,
+        ),
+       'custom_1' => array(
+           'o_label' => __( 'Custom 1', 'complexmanager' ),
+           'label' => '',
+           'order' => 9,
+       ),
+       'custom_2' => array(
+           'o_label' => __( 'Custom 2', 'complexmanager' ),
+           'label' => '',
+           'order' => 10,
+       ),
+       'custom_3' => array(
+           'o_label' => __( 'Custom 3', 'complexmanager' ),
+           'label' => '',
+           'order' => 11,
+       ),
+       'income' => array(
+           'o_label' => __( 'Your yearly income', 'complexmanager' ),
+           'label' => '',
+           'order' => 12,
+       ),
+       'persons' => array(
+           'o_label' => __( 'Number of people', 'complexmanager' ),
+           'label' => '',
+           'order' => 13,
+       ),
+
+    );
+}

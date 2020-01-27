@@ -209,6 +209,14 @@ class general_options extends Feature
         );
 
         add_settings_field(
+            'list_filters',
+             __( 'Filter translations', 'complexmanager' ),
+            array( $this, 'list_filters_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
             'import',
              __( 'Import settings', 'complexmanager' ),
             array( $this, 'import_callback' ),
@@ -312,6 +320,10 @@ class general_options extends Feature
 
         if( isset( $input['list_cols'] ) ) {
             $new_input['list_cols'] = maybe_serialize( $input['list_cols'] );
+        }
+
+        if( isset( $input['list_filters'] ) ) {
+            $new_input['list_filters'] = maybe_serialize( $input['list_filters'] );
         }
 
         if( isset( $input['casagateway_api_key'] ) ) {
@@ -586,6 +598,97 @@ class general_options extends Feature
             '<input type="text" id="list_cols" name="complex_manager[list_cols]" value="%s" />',
             isset( $this->options['list_cols'] ) ? esc_attr( $this->options['list_cols']) : ''
         );*/
+    }
+
+    public function list_filters_callback(){
+        $filters = cxm_get_filter_label_defaults();
+
+        //add linguistical attribute defaults?
+        $extra_langs = array();
+        $defaultlang = get_bloginfo('language');
+        if (function_exists('icl_get_languages')) {
+            $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+            foreach ($langs as $iso => $options) {
+                $extra_langs[$iso] = $options;
+            }
+        } else {
+        }
+        foreach ($filters as $key => $data) {
+            foreach ($extra_langs as $iso => $options) {
+                $filters[$key]['label_'.$iso] = '';
+            }
+        }
+
+        $cur_array = maybe_unserialize( $this->options['list_filters']);
+        if ($cur_array && is_array($cur_array)) {
+            foreach ($cur_array as $col => $options) {
+                if (isset($filters[$col])) {
+                    foreach ($options as $option_key => $option_value) {
+                        if (isset($filters[$col][$option_key])) {
+                            $filters[$col][$option_key] = $option_value;
+                        }
+                    }
+                }
+            }
+        }
+
+        $extra_langs = array();
+        $defaultlang = get_bloginfo('language');
+        if (function_exists('icl_get_languages')) {
+            $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+            foreach ($langs as $iso => $options) {
+                $extra_langs[$iso] = $options;
+            }
+        } else {
+            $extra_langs[substr($defaultlang, 0, 2)] = array(
+                'code' => substr($defaultlang, 0, 2),
+                'id' => '',
+                'native_name' => '',
+                'major' => '1',
+                'active' => '',
+                'default_locale' => $defaultlang,
+                'encode_url' => '',
+                'tag' => $defaultlang,
+                'translated_name' => '',
+                'url' => '',
+                'country_flag_url' => '',
+                'language_code' => substr($defaultlang, 0, 2),
+            );
+        }
+
+        $th_langs = '';
+        foreach ($extra_langs as $iso => $options) {
+             if (substr($defaultlang, 0, 2)== $iso) {
+                $th_langs .= '<th>Filtername</th>';
+            } else {
+                $th_langs .= '<th>Filtername ' . $options['code'] . '</th>';
+            }
+        }
+
+        echo '<table class="table">';
+            echo '<thead><tr>
+                <th>Filter</th>
+                '.$th_langs.'
+            </tr></thead>';
+
+            echo "<tbody>";
+            foreach ($filters as $col => $col_options) {
+                $td_inputs = '';
+                foreach ($extra_langs as $iso => $options) {
+                    if (substr($defaultlang, 0, 2)== $iso) {
+                        $td_inputs .= '<td><input type="text" style="width:200px" placeholder="'.$col_options['o_label'].'" name="complex_manager[list_filters]['.$col.'][label]" value="'.$col_options['label'].'" /></td>';
+                    } else {
+                        $td_inputs .= '<td><input type="text" style="width:200px" placeholder="'.$iso.'" name="complex_manager[list_filters]['.$col.'][label_'.$iso.']" value="'.$col_options['label_'.$iso.''].'" /></td>';
+                    }
+                }
+                echo '<tr>
+                    <th>'.$col_options['o_label'].'</th>
+                    ' . $td_inputs . '
+                </tr>';
+            }
+            echo "</tbody>";
+
+        echo "</table>";
     }
 
     public function import_callback(){

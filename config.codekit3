@@ -7,11 +7,12 @@
 		"uuidString": "A57DA562-071C-495E-88C1-72C22EDEEDE5"
 		}
 	],
-"creatorBuild": "28905",
+"creatorBuild": "31934",
 "files": {
 	"/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/.gitignore",
 		"oF": 0
@@ -19,6 +20,7 @@
 	"/assets/acf/acf.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/acf.php",
 		"oF": 0
@@ -26,6 +28,7 @@
 	"/assets/acf/admin/admin.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/admin.php",
 		"oF": 0
@@ -33,6 +36,7 @@
 	"/assets/acf/admin/field-group.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/field-group.php",
 		"oF": 0
@@ -40,6 +44,7 @@
 	"/assets/acf/admin/field-groups.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/field-groups.php",
 		"oF": 0
@@ -47,6 +52,7 @@
 	"/assets/acf/admin/install-network.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/install-network.php",
 		"oF": 0
@@ -54,6 +60,7 @@
 	"/assets/acf/admin/install-updates.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/install-updates.php",
 		"oF": 0
@@ -61,6 +68,7 @@
 	"/assets/acf/admin/install.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/install.php",
 		"oF": 0
@@ -68,6 +76,7 @@
 	"/assets/acf/admin/settings-addons.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/settings-addons.php",
 		"oF": 0
@@ -75,6 +84,7 @@
 	"/assets/acf/admin/settings-info.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/settings-info.php",
 		"oF": 0
@@ -82,6 +92,7 @@
 	"/assets/acf/admin/settings-tools.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/settings-tools.php",
 		"oF": 0
@@ -89,6 +100,7 @@
 	"/assets/acf/admin/update.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/update.php",
 		"oF": 0
@@ -96,6 +108,7 @@
 	"/assets/acf/admin/updates/5.0.0.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/updates/5.0.0.php",
 		"oF": 0
@@ -103,6 +116,7 @@
 	"/assets/acf/admin/views/field-group-field-conditional-logic.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/field-group-field-conditional-logic.php",
 		"oF": 0
@@ -110,6 +124,7 @@
 	"/assets/acf/admin/views/field-group-field.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/field-group-field.php",
 		"oF": 0
@@ -117,6 +132,7 @@
 	"/assets/acf/admin/views/field-group-fields.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/field-group-fields.php",
 		"oF": 0
@@ -124,6 +140,7 @@
 	"/assets/acf/admin/views/field-group-locations.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/field-group-locations.php",
 		"oF": 0
@@ -131,6 +148,7 @@
 	"/assets/acf/admin/views/field-group-options.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/field-group-options.php",
 		"oF": 0
@@ -138,6 +156,7 @@
 	"/assets/acf/admin/views/install-network.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/install-network.php",
 		"oF": 0
@@ -145,6 +164,7 @@
 	"/assets/acf/admin/views/install-notice.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/install-notice.php",
 		"oF": 0
@@ -152,6 +172,7 @@
 	"/assets/acf/admin/views/install.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/install.php",
 		"oF": 0
@@ -159,6 +180,7 @@
 	"/assets/acf/admin/views/settings-addons.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/settings-addons.php",
 		"oF": 0
@@ -166,6 +188,7 @@
 	"/assets/acf/admin/views/settings-info.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/settings-info.php",
 		"oF": 0
@@ -173,6 +196,7 @@
 	"/assets/acf/admin/views/settings-tools-export.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/settings-tools-export.php",
 		"oF": 0
@@ -180,6 +204,7 @@
 	"/assets/acf/admin/views/settings-tools.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/settings-tools.php",
 		"oF": 0
@@ -187,6 +212,7 @@
 	"/assets/acf/admin/views/update-network.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/update-network.php",
 		"oF": 0
@@ -194,6 +220,7 @@
 	"/assets/acf/admin/views/update-notice.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/update-notice.php",
 		"oF": 0
@@ -201,6 +228,7 @@
 	"/assets/acf/admin/views/update.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/admin/views/update.php",
 		"oF": 0
@@ -208,6 +236,7 @@
 	"/assets/acf/api/api-field-group.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/api/api-field-group.php",
 		"oF": 0
@@ -215,6 +244,7 @@
 	"/assets/acf/api/api-field.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/api/api-field.php",
 		"oF": 0
@@ -222,6 +252,7 @@
 	"/assets/acf/api/api-helpers.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/api/api-helpers.php",
 		"oF": 0
@@ -229,6 +260,7 @@
 	"/assets/acf/api/api-template.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/api/api-template.php",
 		"oF": 0
@@ -236,6 +268,7 @@
 	"/assets/acf/api/api-value.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/api/api-value.php",
 		"oF": 0
@@ -273,6 +306,7 @@
 	"/assets/acf/assets/font/acf.eot": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/font/acf.eot",
 		"oF": 0
@@ -290,6 +324,7 @@
 	"/assets/acf/assets/font/acf.ttf": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/font/acf.ttf",
 		"oF": 0
@@ -297,6 +332,7 @@
 	"/assets/acf/assets/font/acf.woff": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/font/acf.woff",
 		"oF": 0
@@ -312,6 +348,7 @@
 	"/assets/acf/assets/font/LICENSE.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/font/LICENSE.txt",
 		"oF": 0
@@ -319,6 +356,7 @@
 	"/assets/acf/assets/font/README.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/font/README.txt",
 		"oF": 0
@@ -582,6 +620,7 @@
 		"oS": 3
 		},
 	"/assets/acf/assets/inc/select2/3/select2.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -592,6 +631,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/3/select2.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -634,6 +674,7 @@
 		"oS": 3
 		},
 	"/assets/acf/assets/inc/select2/4/select2.full.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -644,6 +685,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/4/select2.full.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -654,6 +696,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/4/select2.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -674,6 +717,7 @@
 		"oS": 3
 		},
 	"/assets/acf/assets/inc/select2/4/select2.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -715,6 +759,7 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/inc/select2/CONTRIBUTING.html",
 		"oF": 0,
@@ -728,6 +773,7 @@
 	"/assets/acf/assets/inc/select2/LICENSE": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/inc/select2/LICENSE",
 		"oF": 0
@@ -748,6 +794,7 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/inc/select2/README.html",
 		"oF": 0,
@@ -761,6 +808,7 @@
 	"/assets/acf/assets/inc/select2/release.sh": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/inc/select2/release.sh",
 		"oF": 0
@@ -802,6 +850,7 @@
 		"oS": 1
 		},
 	"/assets/acf/assets/inc/select2/select2.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -812,6 +861,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -833,6 +883,7 @@
 		"q": 100
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ar.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -843,6 +894,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_az.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -853,6 +905,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_bg.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -863,6 +916,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ca.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -873,6 +927,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_cs.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -883,6 +938,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_da.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -893,6 +949,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_de.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -903,6 +960,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_el.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -915,11 +973,13 @@
 	"/assets/acf/assets/inc/select2/select2_locale_en.js.template": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/inc/select2/select2_locale_en.js.template",
 		"oF": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_es.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -930,6 +990,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_et.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -940,6 +1001,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_eu.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -950,6 +1012,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_fa.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -960,6 +1023,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_fi.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -970,6 +1034,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_fr.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -980,6 +1045,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_gl.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -990,6 +1056,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_he.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1000,6 +1067,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_hr.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1010,6 +1078,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_hu.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1020,6 +1089,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_id.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1030,6 +1100,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_is.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1040,6 +1111,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_it.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1050,6 +1122,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ja.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1060,6 +1133,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ka.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1070,6 +1144,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ko.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1080,6 +1155,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_lt.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1090,6 +1166,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_lv.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1100,6 +1177,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_mk.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1110,6 +1188,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ms.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1120,6 +1199,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_nb.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1130,6 +1210,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_nl.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1140,6 +1221,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_pl.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1150,6 +1232,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_pt-BR.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1160,6 +1243,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_pt-PT.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1170,6 +1254,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ro.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1180,6 +1265,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_rs.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1190,6 +1276,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ru.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1200,6 +1287,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_sk.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1210,6 +1298,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_sv.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1220,6 +1309,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_th.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1230,6 +1320,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_tr.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1240,6 +1331,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_ug-CN.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1250,6 +1342,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_uk.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1260,6 +1353,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_vi.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1270,6 +1364,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_zh-CN.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1280,6 +1375,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_zh-TW.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1311,6 +1407,7 @@
 		"oS": 3
 		},
 	"/assets/acf/assets/inc/timepicker/jquery-ui-timepicker-addon.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1331,6 +1428,7 @@
 		"oS": 3
 		},
 	"/assets/acf/assets/inc/timepicker/jquery-ui-timepicker-addon.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1341,6 +1439,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/js/acf-field-group.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1351,6 +1450,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/js/acf-field-group.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1361,6 +1461,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/js/acf-input.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1371,6 +1472,7 @@
 		"tS": 0
 		},
 	"/assets/acf/assets/js/acf-input.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -1383,6 +1485,7 @@
 	"/assets/acf/core/ajax.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/ajax.php",
 		"oF": 0
@@ -1390,6 +1493,7 @@
 	"/assets/acf/core/cache.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/cache.php",
 		"oF": 0
@@ -1397,6 +1501,7 @@
 	"/assets/acf/core/compatibility.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/compatibility.php",
 		"oF": 0
@@ -1404,6 +1509,7 @@
 	"/assets/acf/core/deprecated.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/deprecated.php",
 		"oF": 0
@@ -1411,6 +1517,7 @@
 	"/assets/acf/core/field.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/field.php",
 		"oF": 0
@@ -1418,6 +1525,7 @@
 	"/assets/acf/core/fields.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/fields.php",
 		"oF": 0
@@ -1425,6 +1533,7 @@
 	"/assets/acf/core/form.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/form.php",
 		"oF": 0
@@ -1432,6 +1541,7 @@
 	"/assets/acf/core/input.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/input.php",
 		"oF": 0
@@ -1439,6 +1549,7 @@
 	"/assets/acf/core/json.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/json.php",
 		"oF": 0
@@ -1446,6 +1557,7 @@
 	"/assets/acf/core/local.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/local.php",
 		"oF": 0
@@ -1453,6 +1565,7 @@
 	"/assets/acf/core/location.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/location.php",
 		"oF": 0
@@ -1460,6 +1573,7 @@
 	"/assets/acf/core/loop.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/loop.php",
 		"oF": 0
@@ -1467,6 +1581,7 @@
 	"/assets/acf/core/media.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/media.php",
 		"oF": 0
@@ -1474,6 +1589,7 @@
 	"/assets/acf/core/revisions.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/revisions.php",
 		"oF": 0
@@ -1481,6 +1597,7 @@
 	"/assets/acf/core/third_party.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/third_party.php",
 		"oF": 0
@@ -1488,6 +1605,7 @@
 	"/assets/acf/core/updates.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/updates.php",
 		"oF": 0
@@ -1495,6 +1613,7 @@
 	"/assets/acf/core/validation.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/validation.php",
 		"oF": 0
@@ -1502,6 +1621,7 @@
 	"/assets/acf/core/wpml.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/core/wpml.php",
 		"oF": 0
@@ -1509,6 +1629,7 @@
 	"/assets/acf/fields/checkbox.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/checkbox.php",
 		"oF": 0
@@ -1516,6 +1637,7 @@
 	"/assets/acf/fields/color_picker.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/color_picker.php",
 		"oF": 0
@@ -1523,6 +1645,7 @@
 	"/assets/acf/fields/date_picker.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/date_picker.php",
 		"oF": 0
@@ -1530,6 +1653,7 @@
 	"/assets/acf/fields/date_time_picker.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/date_time_picker.php",
 		"oF": 0
@@ -1537,6 +1661,7 @@
 	"/assets/acf/fields/email.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/email.php",
 		"oF": 0
@@ -1544,6 +1669,7 @@
 	"/assets/acf/fields/file.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/file.php",
 		"oF": 0
@@ -1551,6 +1677,7 @@
 	"/assets/acf/fields/google-map.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/google-map.php",
 		"oF": 0
@@ -1558,6 +1685,7 @@
 	"/assets/acf/fields/image.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/image.php",
 		"oF": 0
@@ -1565,6 +1693,7 @@
 	"/assets/acf/fields/message.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/message.php",
 		"oF": 0
@@ -1572,6 +1701,7 @@
 	"/assets/acf/fields/number.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/number.php",
 		"oF": 0
@@ -1579,6 +1709,7 @@
 	"/assets/acf/fields/oembed.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/oembed.php",
 		"oF": 0
@@ -1586,6 +1717,7 @@
 	"/assets/acf/fields/output.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/output.php",
 		"oF": 0
@@ -1593,6 +1725,7 @@
 	"/assets/acf/fields/page_link.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/page_link.php",
 		"oF": 0
@@ -1600,6 +1733,7 @@
 	"/assets/acf/fields/password.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/password.php",
 		"oF": 0
@@ -1607,6 +1741,7 @@
 	"/assets/acf/fields/post_object.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/post_object.php",
 		"oF": 0
@@ -1614,6 +1749,7 @@
 	"/assets/acf/fields/radio.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/radio.php",
 		"oF": 0
@@ -1621,6 +1757,7 @@
 	"/assets/acf/fields/relationship.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/relationship.php",
 		"oF": 0
@@ -1628,6 +1765,7 @@
 	"/assets/acf/fields/select.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/select.php",
 		"oF": 0
@@ -1635,6 +1773,7 @@
 	"/assets/acf/fields/tab.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/tab.php",
 		"oF": 0
@@ -1642,6 +1781,7 @@
 	"/assets/acf/fields/taxonomy.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/taxonomy.php",
 		"oF": 0
@@ -1649,6 +1789,7 @@
 	"/assets/acf/fields/text.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/text.php",
 		"oF": 0
@@ -1656,6 +1797,7 @@
 	"/assets/acf/fields/textarea.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/textarea.php",
 		"oF": 0
@@ -1663,6 +1805,7 @@
 	"/assets/acf/fields/time_picker.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/time_picker.php",
 		"oF": 0
@@ -1670,6 +1813,7 @@
 	"/assets/acf/fields/true_false.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/true_false.php",
 		"oF": 0
@@ -1677,6 +1821,7 @@
 	"/assets/acf/fields/url.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/url.php",
 		"oF": 0
@@ -1684,6 +1829,7 @@
 	"/assets/acf/fields/user.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/user.php",
 		"oF": 0
@@ -1691,6 +1837,7 @@
 	"/assets/acf/fields/wysiwyg.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/fields/wysiwyg.php",
 		"oF": 0
@@ -1698,6 +1845,7 @@
 	"/assets/acf/forms/attachment.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/forms/attachment.php",
 		"oF": 0
@@ -1705,6 +1853,7 @@
 	"/assets/acf/forms/comment.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/forms/comment.php",
 		"oF": 0
@@ -1712,6 +1861,7 @@
 	"/assets/acf/forms/post.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/forms/post.php",
 		"oF": 0
@@ -1719,6 +1869,7 @@
 	"/assets/acf/forms/taxonomy.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/forms/taxonomy.php",
 		"oF": 0
@@ -1726,6 +1877,7 @@
 	"/assets/acf/forms/user.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/forms/user.php",
 		"oF": 0
@@ -1733,6 +1885,7 @@
 	"/assets/acf/forms/widget.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/forms/widget.php",
 		"oF": 0
@@ -1740,6 +1893,7 @@
 	"/assets/acf/lang/acf-ar.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ar.mo",
 		"oF": 0
@@ -1747,6 +1901,7 @@
 	"/assets/acf/lang/acf-ar.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ar.po",
 		"oF": 0
@@ -1754,6 +1909,7 @@
 	"/assets/acf/lang/acf-bg_BG.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-bg_BG.mo",
 		"oF": 0
@@ -1761,6 +1917,7 @@
 	"/assets/acf/lang/acf-bg_BG.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-bg_BG.po",
 		"oF": 0
@@ -1768,6 +1925,7 @@
 	"/assets/acf/lang/acf-cs_CZ.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-cs_CZ.mo",
 		"oF": 0
@@ -1775,6 +1933,7 @@
 	"/assets/acf/lang/acf-cs_CZ.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-cs_CZ.po",
 		"oF": 0
@@ -1782,6 +1941,7 @@
 	"/assets/acf/lang/acf-de_CH.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-de_CH.mo",
 		"oF": 0
@@ -1789,6 +1949,7 @@
 	"/assets/acf/lang/acf-de_CH.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-de_CH.po",
 		"oF": 0
@@ -1796,6 +1957,7 @@
 	"/assets/acf/lang/acf-de_DE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-de_DE.mo",
 		"oF": 0
@@ -1803,6 +1965,7 @@
 	"/assets/acf/lang/acf-de_DE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-de_DE.po",
 		"oF": 0
@@ -1810,6 +1973,7 @@
 	"/assets/acf/lang/acf-de_DE_formal.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-de_DE_formal.mo",
 		"oF": 0
@@ -1817,6 +1981,7 @@
 	"/assets/acf/lang/acf-de_DE_formal.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-de_DE_formal.po",
 		"oF": 0
@@ -1824,6 +1989,7 @@
 	"/assets/acf/lang/acf-es_ES.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-es_ES.mo",
 		"oF": 0
@@ -1831,6 +1997,7 @@
 	"/assets/acf/lang/acf-es_ES.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-es_ES.po",
 		"oF": 0
@@ -1838,6 +2005,7 @@
 	"/assets/acf/lang/acf-fa_IR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-fa_IR.mo",
 		"oF": 0
@@ -1845,6 +2013,7 @@
 	"/assets/acf/lang/acf-fa_IR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-fa_IR.po",
 		"oF": 0
@@ -1852,6 +2021,7 @@
 	"/assets/acf/lang/acf-fi.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-fi.mo",
 		"oF": 0
@@ -1859,6 +2029,7 @@
 	"/assets/acf/lang/acf-fi.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-fi.po",
 		"oF": 0
@@ -1866,6 +2037,7 @@
 	"/assets/acf/lang/acf-fr_FR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-fr_FR.mo",
 		"oF": 0
@@ -1873,6 +2045,7 @@
 	"/assets/acf/lang/acf-fr_FR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-fr_FR.po",
 		"oF": 0
@@ -1880,6 +2053,7 @@
 	"/assets/acf/lang/acf-he_IL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-he_IL.mo",
 		"oF": 0
@@ -1887,6 +2061,7 @@
 	"/assets/acf/lang/acf-he_IL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-he_IL.po",
 		"oF": 0
@@ -1894,6 +2069,7 @@
 	"/assets/acf/lang/acf-hu_HU.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-hu_HU.mo",
 		"oF": 0
@@ -1901,6 +2077,7 @@
 	"/assets/acf/lang/acf-hu_HU.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-hu_HU.po",
 		"oF": 0
@@ -1908,6 +2085,7 @@
 	"/assets/acf/lang/acf-id_ID.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-id_ID.mo",
 		"oF": 0
@@ -1915,6 +2093,7 @@
 	"/assets/acf/lang/acf-id_ID.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-id_ID.po",
 		"oF": 0
@@ -1922,6 +2101,7 @@
 	"/assets/acf/lang/acf-it_IT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-it_IT.mo",
 		"oF": 0
@@ -1929,6 +2109,7 @@
 	"/assets/acf/lang/acf-it_IT.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-it_IT.po",
 		"oF": 0
@@ -1936,6 +2117,7 @@
 	"/assets/acf/lang/acf-ja.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ja.mo",
 		"oF": 0
@@ -1943,6 +2125,7 @@
 	"/assets/acf/lang/acf-ja.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ja.po",
 		"oF": 0
@@ -1950,6 +2133,7 @@
 	"/assets/acf/lang/acf-nb_NO.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-nb_NO.mo",
 		"oF": 0
@@ -1957,6 +2141,7 @@
 	"/assets/acf/lang/acf-nb_NO.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-nb_NO.po",
 		"oF": 0
@@ -1964,6 +2149,7 @@
 	"/assets/acf/lang/acf-nl_NL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-nl_NL.mo",
 		"oF": 0
@@ -1971,6 +2157,7 @@
 	"/assets/acf/lang/acf-nl_NL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-nl_NL.po",
 		"oF": 0
@@ -1978,6 +2165,7 @@
 	"/assets/acf/lang/acf-pl_PL.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-pl_PL.mo",
 		"oF": 0
@@ -1985,6 +2173,7 @@
 	"/assets/acf/lang/acf-pl_PL.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-pl_PL.po",
 		"oF": 0
@@ -1992,6 +2181,7 @@
 	"/assets/acf/lang/acf-pt_BR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-pt_BR.mo",
 		"oF": 0
@@ -1999,6 +2189,7 @@
 	"/assets/acf/lang/acf-pt_BR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-pt_BR.po",
 		"oF": 0
@@ -2006,6 +2197,7 @@
 	"/assets/acf/lang/acf-pt_PT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-pt_PT.mo",
 		"oF": 0
@@ -2013,6 +2205,7 @@
 	"/assets/acf/lang/acf-pt_PT.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-pt_PT.po",
 		"oF": 0
@@ -2020,6 +2213,7 @@
 	"/assets/acf/lang/acf-ro_RO.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ro_RO.mo",
 		"oF": 0
@@ -2027,6 +2221,7 @@
 	"/assets/acf/lang/acf-ro_RO.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ro_RO.po",
 		"oF": 0
@@ -2034,6 +2229,7 @@
 	"/assets/acf/lang/acf-ru_RU.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ru_RU.mo",
 		"oF": 0
@@ -2041,6 +2237,7 @@
 	"/assets/acf/lang/acf-ru_RU.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-ru_RU.po",
 		"oF": 0
@@ -2048,6 +2245,7 @@
 	"/assets/acf/lang/acf-sk_SK.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-sk_SK.mo",
 		"oF": 0
@@ -2055,6 +2253,7 @@
 	"/assets/acf/lang/acf-sk_SK.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-sk_SK.po",
 		"oF": 0
@@ -2062,6 +2261,7 @@
 	"/assets/acf/lang/acf-sv_SE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-sv_SE.mo",
 		"oF": 0
@@ -2069,6 +2269,7 @@
 	"/assets/acf/lang/acf-sv_SE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-sv_SE.po",
 		"oF": 0
@@ -2076,6 +2277,7 @@
 	"/assets/acf/lang/acf-tr_TR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-tr_TR.mo",
 		"oF": 0
@@ -2083,6 +2285,7 @@
 	"/assets/acf/lang/acf-tr_TR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-tr_TR.po",
 		"oF": 0
@@ -2090,6 +2293,7 @@
 	"/assets/acf/lang/acf-uk.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-uk.mo",
 		"oF": 0
@@ -2097,6 +2301,7 @@
 	"/assets/acf/lang/acf-uk.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-uk.po",
 		"oF": 0
@@ -2104,6 +2309,7 @@
 	"/assets/acf/lang/acf-zh_CN.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-zh_CN.mo",
 		"oF": 0
@@ -2111,6 +2317,7 @@
 	"/assets/acf/lang/acf-zh_CN.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf-zh_CN.po",
 		"oF": 0
@@ -2118,6 +2325,7 @@
 	"/assets/acf/lang/acf.pot": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/lang/acf.pot",
 		"oF": 0
@@ -2125,6 +2333,7 @@
 	"/assets/acf/pro/acf-pro.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/acf-pro.php",
 		"oF": 0
@@ -2132,6 +2341,7 @@
 	"/assets/acf/pro/admin/options-page.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/admin/options-page.php",
 		"oF": 0
@@ -2139,6 +2349,7 @@
 	"/assets/acf/pro/admin/settings-updates.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/admin/settings-updates.php",
 		"oF": 0
@@ -2146,6 +2357,7 @@
 	"/assets/acf/pro/admin/views/options-page.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/admin/views/options-page.php",
 		"oF": 0
@@ -2153,6 +2365,7 @@
 	"/assets/acf/pro/admin/views/settings-updates.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/admin/views/settings-updates.php",
 		"oF": 0
@@ -2160,6 +2373,7 @@
 	"/assets/acf/pro/api/api-options-page.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/api/api-options-page.php",
 		"oF": 0
@@ -2167,6 +2381,7 @@
 	"/assets/acf/pro/api/api-pro.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/api/api-pro.php",
 		"oF": 0
@@ -2192,6 +2407,7 @@
 		"oS": 3
 		},
 	"/assets/acf/pro/assets/js/acf-pro-field-group.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2202,6 +2418,7 @@
 		"tS": 0
 		},
 	"/assets/acf/pro/assets/js/acf-pro-field-group.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2212,6 +2429,7 @@
 		"tS": 0
 		},
 	"/assets/acf/pro/assets/js/acf-pro-input.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2222,6 +2440,7 @@
 		"tS": 0
 		},
 	"/assets/acf/pro/assets/js/acf-pro-input.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2234,6 +2453,7 @@
 	"/assets/acf/pro/core/updates.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/core/updates.php",
 		"oF": 0
@@ -2241,6 +2461,7 @@
 	"/assets/acf/pro/fields/clone.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/fields/clone.php",
 		"oF": 0
@@ -2248,6 +2469,7 @@
 	"/assets/acf/pro/fields/flexible-content.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/fields/flexible-content.php",
 		"oF": 0
@@ -2255,6 +2477,7 @@
 	"/assets/acf/pro/fields/gallery.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/fields/gallery.php",
 		"oF": 0
@@ -2262,6 +2485,7 @@
 	"/assets/acf/pro/fields/repeater.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/pro/fields/repeater.php",
 		"oF": 0
@@ -2269,6 +2493,7 @@
 	"/assets/acf/readme.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/readme.txt",
 		"oF": 0
@@ -2318,6 +2543,7 @@
 	"/assets/img/example-project-bg.psd": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/img/example-project-bg.psd",
 		"oF": 0
@@ -2345,6 +2571,7 @@
 		"q": 100
 		},
 	"/assets/js/complex-manager-front.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2355,6 +2582,7 @@
 		"tS": 0
 		},
 	"/assets/js/complex-manager-options.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2365,6 +2593,7 @@
 		"tS": 0
 		},
 	"/assets/js/complexmanager-meta-box.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2375,6 +2604,7 @@
 		"tS": 0
 		},
 	"/assets/js/jquery.canvasAreaDraw.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2387,11 +2617,13 @@
 	"/assets/src/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/src/.gitignore",
 		"oF": 0
 		},
 	"/assets/src/gulpfile.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2402,6 +2634,7 @@
 		"tS": 0
 		},
 	"/assets/src/js/complex-manager-front.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2412,6 +2645,7 @@
 		"tS": 0
 		},
 	"/assets/src/js/complex-manager-options.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2422,6 +2656,7 @@
 		"tS": 0
 		},
 	"/assets/src/js/complexmanager-meta-box.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2432,6 +2667,7 @@
 		"tS": 0
 		},
 	"/assets/src/js/jquery.canvasAreaDraw.min.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -2446,7 +2682,6 @@
 		"bl": 0,
 		"eJ": 0,
 		"ft": 1,
-		"ie": 1,
 		"iI": 0,
 		"ma": 0,
 		"mS": 0,
@@ -2463,7 +2698,6 @@
 		"bl": 0,
 		"eJ": 0,
 		"ft": 1,
-		"ie": 1,
 		"iI": 0,
 		"ma": 0,
 		"mS": 0,
@@ -2492,6 +2726,7 @@
 	"/assets/templates/contact-form.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/templates/contact-form.php",
 		"oF": 0
@@ -2499,6 +2734,7 @@
 	"/assets/templates/filter.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/templates/filter.php",
 		"oF": 0
@@ -2506,6 +2742,7 @@
 	"/assets/templates/list.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/templates/list.php",
 		"oF": 0
@@ -2513,6 +2750,7 @@
 	"/assets/templates/project-graphic.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/templates/project-graphic.php",
 		"oF": 0
@@ -2528,6 +2766,7 @@
 	"/complex-manager.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/complex-manager.php",
 		"oF": 0
@@ -2535,6 +2774,7 @@
 	"/features/admin/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/.gitignore",
 		"oF": 0
@@ -2542,6 +2782,7 @@
 	"/features/admin/building_metabox.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/building_metabox.php",
 		"oF": 0
@@ -2549,6 +2790,7 @@
 	"/features/admin/font-awesome/class-pti-font-awesome.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/font-awesome/class-pti-font-awesome.php",
 		"oF": 0
@@ -2556,6 +2798,7 @@
 	"/features/admin/font-awesome/font/fontawesome-webfont.eot": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/font-awesome/font/fontawesome-webfont.eot",
 		"oF": 0
@@ -2573,6 +2816,7 @@
 	"/features/admin/font-awesome/font/fontawesome-webfont.ttf": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/font-awesome/font/fontawesome-webfont.ttf",
 		"oF": 0
@@ -2580,6 +2824,7 @@
 	"/features/admin/font-awesome/font/fontawesome-webfont.woff": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/font-awesome/font/fontawesome-webfont.woff",
 		"oF": 0
@@ -2587,6 +2832,7 @@
 	"/features/admin/font-awesome/font/FontAwesome.otf": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/font-awesome/font/FontAwesome.otf",
 		"oF": 0
@@ -2594,6 +2840,7 @@
 	"/features/admin/general_options.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/general_options.php",
 		"oF": 0
@@ -2601,6 +2848,7 @@
 	"/features/admin/inquiry_archive_cols.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/inquiry_archive_cols.php",
 		"oF": 0
@@ -2608,6 +2856,7 @@
 	"/features/admin/inquiry_metabox.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/inquiry_metabox.php",
 		"oF": 0
@@ -2615,6 +2864,7 @@
 	"/features/admin/inquiry_options_page.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/inquiry_options_page.php",
 		"oF": 0
@@ -2622,6 +2872,7 @@
 	"/features/admin/post_type_icons.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/post_type_icons.php",
 		"oF": 0
@@ -2629,6 +2880,7 @@
 	"/features/admin/styles_and_scripts.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/styles_and_scripts.php",
 		"oF": 0
@@ -2636,6 +2888,7 @@
 	"/features/admin/unit_archive_cols.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/unit_archive_cols.php",
 		"oF": 0
@@ -2643,6 +2896,7 @@
 	"/features/admin/unit_metabox.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/admin/unit_metabox.php",
 		"oF": 0
@@ -2650,6 +2904,7 @@
 	"/features/class-loader.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/class-loader.php",
 		"oF": 0
@@ -2657,6 +2912,7 @@
 	"/features/client/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/client/.gitignore",
 		"oF": 0
@@ -2664,6 +2920,7 @@
 	"/features/client/render.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/client/render.php",
 		"oF": 0
@@ -2671,6 +2928,7 @@
 	"/features/client/styles_and_scripts_front.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/client/styles_and_scripts_front.php",
 		"oF": 0
@@ -2678,6 +2936,7 @@
 	"/features/core/field_manager.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/core/field_manager.php",
 		"oF": 0
@@ -2685,6 +2944,7 @@
 	"/features/core/filter_action_examples.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/core/filter_action_examples.php",
 		"oF": 0
@@ -2692,6 +2952,7 @@
 	"/features/core/global_functions.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/core/global_functions.php",
 		"oF": 0
@@ -2699,6 +2960,7 @@
 	"/features/core/import.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/core/import.php",
 		"oF": 0
@@ -2706,6 +2968,7 @@
 	"/features/core/post_types.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/core/post_types.php",
 		"oF": 0
@@ -2713,6 +2976,7 @@
 	"/features/feature.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/feature.php",
 		"oF": 0
@@ -2720,6 +2984,7 @@
 	"/features/kit.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/kit.php",
 		"oF": 0
@@ -2727,6 +2992,7 @@
 	"/features/options.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/options.php",
 		"oF": 0
@@ -2734,6 +3000,7 @@
 	"/features/silence.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/silence.php",
 		"oF": 0
@@ -2741,6 +3008,7 @@
 	"/features/template.php": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/template.php",
 		"oF": 0
@@ -2748,6 +3016,7 @@
 	"/languages/complexmanager-de_CH.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-de_CH.mo",
 		"oF": 0
@@ -2755,6 +3024,7 @@
 	"/languages/complexmanager-de_DE.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-de_DE.mo",
 		"oF": 0
@@ -2762,6 +3032,7 @@
 	"/languages/complexmanager-de_DE.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-de_DE.po",
 		"oF": 0
@@ -2769,6 +3040,7 @@
 	"/languages/complexmanager-fr_CH.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-fr_CH.mo",
 		"oF": 0
@@ -2776,6 +3048,7 @@
 	"/languages/complexmanager-fr_FR.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-fr_FR.mo",
 		"oF": 0
@@ -2783,6 +3056,7 @@
 	"/languages/complexmanager-fr_FR.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-fr_FR.po",
 		"oF": 0
@@ -2790,6 +3064,7 @@
 	"/languages/complexmanager-it_CH.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-it_CH.mo",
 		"oF": 0
@@ -2797,6 +3072,7 @@
 	"/languages/complexmanager-it_CH.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-it_CH.po",
 		"oF": 0
@@ -2804,6 +3080,7 @@
 	"/languages/complexmanager-it_IT.mo": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/complexmanager-it_IT.mo",
 		"oF": 0
@@ -2811,6 +3088,7 @@
 	"/languages/master.po": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/master.po",
 		"oF": 0
@@ -2818,6 +3096,7 @@
 	"/README.html": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/README.html",
 		"oF": 0
@@ -2830,6 +3109,7 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/README.html",
 		"oF": 0,
@@ -2854,6 +3134,7 @@
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
+	"allowInjectionReloads": 1,
 	"alwaysUseExternalServer": 0,
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
@@ -2865,6 +3146,7 @@
 	"babelConfigType": 0,
 	"babelCustomPluginsList": "",
 	"babelCustomPresetsList": "",
+	"babelExcludeString": "/\\/node_modules\\//, /\\/core-js\\//, /\\/bower_components\\//",
 	"babelInsertModuleIDs": 0,
 	"babelModuleID": "",
 	"babelNoComments": 0,
@@ -2935,6 +3217,12 @@
 		"function-sent": {
 			"active": 0
 			},
+		"inline-consecutive-adds": {
+			"active": 0
+			},
+		"inline-environment-variables": {
+			"active": 0
+			},
 		"instanceof": {
 			"active": 0
 			},
@@ -2956,6 +3244,36 @@
 		"minify-booleans": {
 			"active": 0
 			},
+		"minify-builtins": {
+			"active": 0
+			},
+		"minify-constant-folding": {
+			"active": 0
+			},
+		"minify-dead-code-elimination": {
+			"active": 0
+			},
+		"minify-flip-comparisons": {
+			"active": 0
+			},
+		"minify-guarded-expressions": {
+			"active": 0
+			},
+		"minify-infinity": {
+			"active": 0
+			},
+		"minify-mangle-names": {
+			"active": 0
+			},
+		"minify-numeric-literals": {
+			"active": 0
+			},
+		"minify-simplify": {
+			"active": 0
+			},
+		"minify-type-constructors": {
+			"active": 0
+			},
 		"modules-amd": {
 			"active": 0
 			},
@@ -2966,6 +3284,9 @@
 			"active": 0
 			},
 		"modules-umd": {
+			"active": 0
+			},
+		"named-capturing-groups-regex": {
 			"active": 0
 			},
 		"new-target": {
@@ -3001,7 +3322,13 @@
 		"parameters": {
 			"active": 0
 			},
+		"partial-application": {
+			"active": 0
+			},
 		"pipeline-operator": {
+			"active": 0
+			},
+		"private-methods": {
 			"active": 0
 			},
 		"property-literals": {
@@ -3037,10 +3364,16 @@
 		"regenerator": {
 			"active": 0
 			},
+		"regexp-constructors": {
+			"active": 0
+			},
 		"remove-console": {
 			"active": 0
 			},
 		"remove-debugger": {
+			"active": 0
+			},
+		"remove-undefined": {
 			"active": 0
 			},
 		"reserved-words": {
@@ -3084,11 +3417,10 @@
 			}
 		},
 	"babelRetainLines": 0,
+	"babelUseBuiltInsType": 0,
 	"bowerAbbreviatedPath": "bower_components",
-	"bowerAutoCreateInfoFile": 1,
-	"bowerInstallDevDependencies": 0,
-	"bowerSaveDependencies": 1,
-	"bowerSaveDevDependencies": 0,
+	"bowerForceLatestOnConflict": 1,
+	"bowerTargetDependencyListType": 1,
 	"bowerUseExactVersion": 0,
 	"browserRefreshDelay": 0,
 	"browserslistString": ">0.2%, last 2 versions, Firefox ESR, not dead",
@@ -3233,6 +3565,7 @@
 			"flagValue": -1
 			}
 		},
+	"environmentVariablesString": "NODE_ENV:::production",
 	"esLintConfigFileHandlingType": 0,
 	"esLintECMAVersion": 7,
 	"esLintEnvironmentsMask": 1,
@@ -3334,6 +3667,10 @@
 			"optionString": "'all'"
 			},
 		"default-case": {
+			"active": 0,
+			"optionString": ""
+			},
+		"default-param-last": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -3685,6 +4022,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-import-assign": {
+			"active": 1,
+			"optionString": ""
+			},
 		"no-inline-comments": {
 			"active": 0,
 			"optionString": ""
@@ -3989,6 +4330,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-useless-catch": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-useless-computed-key": {
 			"active": 0,
 			"optionString": ""
@@ -4089,6 +4434,10 @@
 			"active": 0,
 			"optionString": "{'array': true, 'object': true}, {'enforceForRenamedProperties': false}"
 			},
+		"prefer-named-capture-group": {
+			"active": 0,
+			"optionString": ""
+			},
 		"prefer-numeric-literals": {
 			"active": 0,
 			"optionString": ""
@@ -4100,6 +4449,10 @@
 		"prefer-promise-reject-errors": {
 			"active": 0,
 			"optionString": "{'allowEmptyReject': false}"
+			},
+		"prefer-regex-literals": {
+			"active": 0,
+			"optionString": ""
 			},
 		"prefer-rest-params": {
 			"active": 0,
@@ -4651,6 +5004,7 @@
 		"noEscapeInAttributes": 0,
 		"outputFormat": 2,
 		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0,
 		"useCDATA": 0,
 		"useDoubleQuotes": 0,
 		"useUnixNewlines": 0
@@ -4672,6 +5026,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"bundleFormat": 0,
 		"createSourceMap": 0,
 		"minifyOutput": 1,
 		"syntaxCheckerStyle": 3,
@@ -4694,7 +5049,8 @@
 		"autoOutputPathReplace1": "kit",
 		"autoOutputPathReplace2": "html",
 		"autoOutputPathStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsLESS": {
 		"allowInsecureImports": 0,
@@ -4706,7 +5062,6 @@
 		"autoOutputPathStyle": 0,
 		"createSourceMap": 1,
 		"enableJavascript": 0,
-		"ieCompatibility": 0,
 		"mathStyle": 0,
 		"outputStyle": 0,
 		"rewriteURLStyle": 0,
@@ -4733,6 +5088,7 @@
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
 		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0,
 		"useCompatibilityMode": 0
 		},
 	"languageDefaultsOTHER": {
@@ -4742,7 +5098,8 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsPNG": {
 		"autoOutputAction": 0,
@@ -4763,7 +5120,8 @@
 		"autoOutputPathStyle": 0,
 		"compileDebug": 1,
 		"outputStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsSASS": {
 		"autoOutputAction": 0,
@@ -4792,7 +5150,8 @@
 		"outputFormat": 0,
 		"outputStyle": 1,
 		"railsCompatible": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsSTYLUS": {
 		"autoOutputAction": 0,
@@ -4835,8 +5194,16 @@
 		},
 	"languageDefaultsUserDefined": [
 		],
+	"npmAbbreviatedPath": "",
+	"npmCreatePackageLock": 1,
+	"npmInstallOptionalDependencies": 0,
+	"npmSaveExactVersion": 0,
+	"npmTargetDependencyListType": 1,
 	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
+	"rollupExternals": "",
+	"rollupReplacements": "process.env.NODE_ENV:::$NODE_ENV,,,ENVIRONMENT:::$NODE_ENV",
+	"rollupTreeshakingEnabled": 1,
 	"skippedFoldersString": "log, _logs, logs, _cache, cache, .idea, /storage/framework/sessions, node_modules",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
@@ -4880,16 +5247,20 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"ascii_only": {
-			"active": 0,
+		"arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
-		"bare_returns": {
+		"ascii_only": {
 			"active": 0,
 			"flagValue": -1
 			},
 		"booleans": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"booleans_as_integers": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"braces": {
@@ -4908,7 +5279,7 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"compress": {
+		"computed_props": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -4931,6 +5302,10 @@
 		"drop_debugger": {
 			"active": 1,
 			"flagValue": -1
+			},
+		"ecma": {
+			"active": 1,
+			"flagValue": 5
 			},
 		"eval": {
 			"active": 0,
@@ -4956,10 +5331,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"html5_comments": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"ie8": {
 			"active": 0,
 			"flagValue": -1
@@ -4968,13 +5339,13 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"indent-start": {
-			"active": 0,
-			"flagValue": 0
-			},
 		"indent_level": {
 			"active": 0,
 			"flagValue": 4
+			},
+		"indent_start": {
+			"active": 0,
+			"flagValue": 0
 			},
 		"inline": {
 			"active": 1,
@@ -4986,6 +5357,10 @@
 			},
 		"join_vars": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"keep_classnames": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"keep_fargs": {
@@ -5008,13 +5383,13 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"mangle": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"max_line_len": {
 			"active": 1,
 			"flagValue": 32000
+			},
+		"module": {
+			"active": 0,
+			"flagValue": -1
 			},
 		"negate_iife": {
 			"active": 1,
@@ -5023,10 +5398,6 @@
 		"passes": {
 			"active": 1,
 			"flagValue": 1
-			},
-		"preserve_line": {
-			"active": 0,
-			"flagValue": -1
 			},
 		"properties": {
 			"active": 1,
@@ -5050,6 +5421,10 @@
 			},
 		"reduce_vars": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"safari10": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"semicolons": {
@@ -5084,6 +5459,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"unsafe_arrows": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"unsafe_comps": {
 			"active": 0,
 			"flagValue": -1
@@ -5093,6 +5472,10 @@
 			"flagValue": -1
 			},
 		"unsafe_math": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_methods": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -5120,15 +5503,12 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"width": {
-			"active": 1,
-			"flagValue": 80
-			},
 		"wrap_iife": {
 			"active": 0,
 			"flagValue": -1
 			}
 		},
+	"uglifyMangleNames": 1,
 	"uglifyReservedNamesString": "$,exports,require",
 	"websiteRelativeRoot": ""
 	},

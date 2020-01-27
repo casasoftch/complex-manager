@@ -215,6 +215,9 @@ jQuery( function () {
 			returnQuery.livingspace_from = (!query.livingspace_from ? 0 : query.livingspace_from);
 			returnQuery.livingspace_to = (!query.livingspace_to ? 99999999999 : query.livingspace_to);
 
+			returnQuery.usablespace_from = (!query.usablespace_from ? 0 : query.usablespace_from);
+			returnQuery.usablespace_to = (!query.usablespace_to ? 99999999999 : query.usablespace_to);
+
 			returnQuery.rentnet_from = (!query.rentnet_from ? 0 : query.rentnet_from);
 			returnQuery.rentnet_to = (!query.rentnet_to ? 99999999999 : query.rentnet_to);
 
@@ -376,6 +379,21 @@ jQuery( function () {
 					}
 				}
 
+				var usablespace_pass = true;
+				if (data.r_usable_space && query.usablespace_from) {
+					var usable_space = parseFloat(data.r_usable_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/[^\d\.]/g,''));
+					usablespace_pass = false;
+					if (query.usablespace_from !== 0) {
+						if (usable_space >= query.usablespace_from && usable_space <= query.usablespace_to) {
+							usablespace_pass = true;
+						}
+					} else {
+						if (usable_space <= query.usablespace_to) {
+							usablespace_pass = true;
+						}
+					}
+				}
+
 				var rentnet_pass = true;
 				if (data.r_rent_net && query.rentnet_from) {
 					//only care to filter if it differs from the original value
@@ -412,7 +430,7 @@ jQuery( function () {
 					}
 				}
 
-				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && types_pass && story_pass) {
+				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && usablespace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && types_pass && story_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {
@@ -699,9 +717,10 @@ jQuery( function () {
 		$(document).on('mousemove', function(e){
 			//$('.complex-project-graphic-wrapper').css('position', 'relative');
 			if ($('.complex-project-graphic:hover').length !== 0) {
-				var parentOffset = $('.complex-project-graphic-wrapper').offset();
+				// var parentOffset = $('.complex-project-graphic-wrapper').offset();
+				var parentOffset = $('.complex-project-graphic:hover').closest('.complex-project-graphic-wrapper').offset();
 
-			    $('.complex-tooltip').css({
+			    $('.complex-project-graphic:hover').siblings('.complex-tooltip').css({
 			       left:  e.pageX-15 - parentOffset.left,
 			       top:   e.pageY+25 - parentOffset.top
 			    });
