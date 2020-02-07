@@ -37,6 +37,7 @@
 								echo '<td class="complex-unit-caret-cell text-'.$the_unit['state'].'"><span class="complex-unit-caret"></span></td>';
 								echo "</tr>";
 								?>
+									
 									<tr class="complex-unit-detail-row">
 										<td colspan="<?= $colcount+1 ?>">
 											<div class="detail-row-wrapper">
@@ -55,9 +56,35 @@
 													echo $content;
 												 ?>
 												 <?php if (get_cxm($the_unit['post'], 'download_file')): ?>
-												 	<a target="_blank" class="btn btn-primary pull-left complex-download-btn" href="<?= get_cxm($the_unit['post'], 'download_file') ?>"><?= (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?></a>
+												 	<a target="_blank" class="
+												 		<?php 
+															$html = 'btn btn-primary pull-left complex-download-btn';
+															echo apply_filters('cxm_render_download_button_classes', $html);
+														?>" 
+													href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
+														<span>
+															<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
+														</span>
+												 		<?php 
+															$html = '';
+															echo apply_filters('cxm_render_download_button_additional_content', $html);
+														?>	
+													</a>
 												 <?php endif ?>
-													<a class="btn btn-primary pull-right complex-call-contact-form" data-unit-id="<?= $the_unit['post']->ID ?>" href="#complexContactForm"><?= __('Contact', 'complexmanager') ?></a>
+													<a class="
+													 		<?php 
+																$html = 'btn btn-primary pull-right complex-call-contact-form';
+																echo apply_filters('cxm_render_contact_button_classes', $html);
+															?>"
+														data-unit-id="<?= $the_unit['post']->ID ?>" href="#complexContactForm">
+														<span>
+															<?php echo __('Contact', 'complexmanager'); ?>
+														</span>
+												 		<?php 
+															$html = '';
+															echo apply_filters('cxm_render_contact_button_additional_content', $html);
+														?>	
+													</a>
 												<div class="clearfix"></div>
 											</div>
 										</td>

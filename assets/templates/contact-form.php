@@ -171,7 +171,18 @@
 					<div class="g-recaptcha" data-callback="verifyCaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
 					<input id="verifyTheCaptcha" type="text" value="" required>
 				<?php endif ?>
-				<br><button type="submit" class="btn btn-primary pull-right" id="complexManagerSendButton"><?php _e('Send', 'complexmanager') ?></button>
+				<br><button type="submit" class="<?php 
+													$html = 'btn btn-primary pull-right';
+													echo apply_filters('cxm_render_send_button_classes', $html);
+												?>" id="complexManagerSendButton">
+					<span>
+						<?php _e('Send', 'complexmanager') ?>	
+					</span>
+			 		<?php 
+						$html = '';
+						echo apply_filters('cxm_render_send_button_additional_content', $html);
+					?>
+				</button>
 			</div>
 		</div>
 		<?= do_action('cxm_render_after_form_parts', $data, $buildings); ?>
