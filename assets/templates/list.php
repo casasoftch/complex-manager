@@ -82,20 +82,23 @@
 														?>	
 													</a>
 												 <?php endif ?>
-													<a class="
+												 	<?php if ($the_unit['status'] != 'sold' && $the_unit['status'] != 'rented'): ?>
+												 		<a class="
+														 		<?php 
+																	$html = 'btn btn-primary pull-right complex-call-contact-form';
+																	echo apply_filters('cxm_render_contact_button_classes', $html);
+																?>"
+															data-unit-id="<?= $the_unit['post']->ID ?>" href="#complexContactForm">
+															<span>
+																<?php echo __('Contact', 'complexmanager'); ?>
+															</span>
 													 		<?php 
-																$html = 'btn btn-primary pull-right complex-call-contact-form';
-																echo apply_filters('cxm_render_contact_button_classes', $html);
-															?>"
-														data-unit-id="<?= $the_unit['post']->ID ?>" href="#complexContactForm">
-														<span>
-															<?php echo __('Contact', 'complexmanager'); ?>
-														</span>
-												 		<?php 
-															$html = '';
-															echo apply_filters('cxm_render_contact_button_additional_content', $html);
-														?>	
-													</a>
+																$html = '';
+																echo apply_filters('cxm_render_contact_button_additional_content', $html);
+															?>	
+														</a>
+												 	<?php endif ?>
+													
 												<div class="clearfix"></div>
 											</div>
 										</td>
