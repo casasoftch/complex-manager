@@ -71,32 +71,66 @@
 						</div>
 					</dd>
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>firstName<?= $for_randid ?>"><?php _e('Name', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
+						<label for="<?= $for_bstring ?>firstName<?= $for_randid ?>"><?php _e('Name', 'complexmanager') ?>&nbsp;
+							<?php if (get_option('complex_manager')['contactform_mandatory_firstname'] || get_option('complex_manager')['contactform_mandatory_lastname']): ?>
+								<?php 
+									$html = '<small><span class="text-danger">*</span></small>';
+									echo apply_filters('cxm_render_form_label_additional_required', $html);
+								?>
+							<?php else: ?>
+								<?php 
+									$html = '';
+									echo apply_filters('cxm_render_form_label_additional_optional', $html);
+								?>
+							<?php endif ?>
+						</label>
 					</dt>
 					<dd class="editable">
 						<div class="row">
 							<div class="col-xs-6 complex-form-first_name">
 								<div class="<?= (isset($messages['first_name'])  ? 'has-error' : '') ?>">
-									<input id="<?= $for_bstring ?>firstName<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['first_name']); ?>">
+									<input id="<?= $for_bstring ?>firstName<?= $for_randid ?>" <?php if (get_option('complex_manager')['contactform_mandatory_firstname']): ?>
+										required
+									<?php endif ?> type="text" name="complex-unit-inquiry[first_name]" placeholder="<?php echo get_cxm_label(false, 'first_name', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['first_name']); ?>">
 								</div>
 							</div>
 							<div class="col-xs-6 complex-form-last_name">
 								<div class="<?= (isset($messages['last_name'])  ? 'has-error' : '') ?>">
-									<input required type="text" name="complex-unit-inquiry[last_name]" placeholder="<?php echo get_cxm_label(false, 'last_name', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['last_name']); ?>">
+									<input <?php if (get_option('complex_manager')['contactform_mandatory_lastname']): ?>
+										required
+									<?php endif ?> type="text" name="complex-unit-inquiry[last_name]" placeholder="<?php echo get_cxm_label(false, 'last_name', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['last_name']); ?>">
 								</div>
 							</div>
 						</div>
 					</dd>
 					<dt class="editable">
 						<label for="<?= $for_bstring ?>legalName<?= $for_randid ?>"><?php echo get_cxm_label(false, 'legal_name', 'complex_inquiry') ?></label>
+						<?php if (get_option('complex_manager')['contactform_mandatory_legalname']): ?>
+							<?php 
+								$html = '<small><span class="text-danger">*</span></small>';
+								echo apply_filters('cxm_render_form_label_additional_required', $html);
+							?>
+						<?php else: ?>
+							<?php 
+								$html = '';
+								echo apply_filters('cxm_render_form_label_additional_optional', $html);
+							?>
+						<?php endif ?>
 					</dt>
 					<dd class="editable">
 						<div class="<?= (isset($messages['legal_name'])  ? 'has-error' : '') ?>">
-							<input type="text" id="<?= $for_bstring ?>legalName<?= $for_randid ?>" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= esc_attr($data['legal_name']) ?>">
+							<input <?php if (get_option('complex_manager')['contactform_mandatory_legalname']): ?>
+										required
+									<?php endif ?> type="text" id="<?= $for_bstring ?>legalName<?= $for_randid ?>" name="complex-unit-inquiry[legal_name]"  class="form-control" value="<?= esc_attr($data['legal_name']) ?>">
 						</div>
 					</dd>
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>email<?= $for_randid ?>"><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
+						<label for="<?= $for_bstring ?>email<?= $for_randid ?>"><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;
+							<?php 
+								$html = '<small><span class="text-danger">*</span></small>';
+								echo apply_filters('cxm_render_form_label_additional_required', $html);
+							?>
+						</label>
 					</dt>
 					<dd class="editable">
 						<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
@@ -105,41 +139,75 @@
 					</dd>
 
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>name<?= $for_randid ?>"><?php _e('Phone', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
+						<label for="<?= $for_bstring ?>name<?= $for_randid ?>"><?php _e('Phone', 'complexmanager') ?>&nbsp;
+							<?php if (get_option('complex_manager')['contactform_mandatory_phone'] || get_option('complex_manager')['contactform_mandatory_mobile']): ?>
+								<?php 
+									$html = '<small><span class="text-danger">*</span></small>';
+									echo apply_filters('cxm_render_form_label_additional_required', $html);
+								?>
+							<?php else: ?>
+								<?php 
+									$html = '';
+									echo apply_filters('cxm_render_form_label_additional_optional', $html);
+								?>
+							<?php endif ?>
+						</label>
 					</dt>
 					<dd class="editable">
 						<div class="row">
 							<div class="col-xs-6 complex-form-phone">
 								<div class="<?= (isset($messages['phone'])  ? 'has-error' : '') ?>">
-									<input id="<?= $for_bstring ?>name<?= $for_randid ?>" type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['phone']) ?>">											
+									<input <?php if (get_option('complex_manager')['contactform_mandatory_phone']): ?>
+										required
+									<?php endif ?> id="<?= $for_bstring ?>name<?= $for_randid ?>" type="text" name="complex-unit-inquiry[phone]" placeholder="<?php echo get_cxm_label(false, 'phone', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['phone']) ?>">											
 								</div>
 							</div>
 							<div class="col-xs-6 complex-form-mobile">
 								<div class="<?= (isset($messages['mobile'])  ? 'has-error' : '') ?>">
-									<input type="text" name="complex-unit-inquiry[mobile]" placeholder="<?php echo get_cxm_label(false, 'mobile', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['mobile']) ?>">
+									<input <?php if (get_option('complex_manager')['contactform_mandatory_mobile']): ?>
+										required
+									<?php endif ?> type="text" name="complex-unit-inquiry[mobile]" placeholder="<?php echo get_cxm_label(false, 'mobile', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['mobile']) ?>">
 								</div>
 							</div>
 						</div>
 					</dd>
 
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>street<?= $for_randid ?>"><?php _e('Address', 'complexmanager') ?>&nbsp;<small><span class="text-danger">*</span></small></label>
+						<label for="<?= $for_bstring ?>street<?= $for_randid ?>"><?php _e('Address', 'complexmanager') ?>&nbsp;
+							<?php if (get_option('complex_manager')['contactform_mandatory_street'] || get_option('complex_manager')['contactform_mandatory_zip'] || get_option('complex_manager')['contactform_mandatory_locality']): ?>
+								<?php 
+									$html = '<small><span class="text-danger">*</span></small>';
+									echo apply_filters('cxm_render_form_label_additional_required', $html);
+								?>
+							<?php else: ?>
+								<?php 
+									$html = '';
+									echo apply_filters('cxm_render_form_label_additional_optional', $html);
+								?>
+							<?php endif ?>
+						</label>
 					</dt>
 					<dd class="editable">
 						<div class="address-picker-group">
 							<div class="address-picker-realinputs">
 								<div class="<?= (isset($messages['street'])  ? 'has-error' : '') ?>">
-									<input id="<?= $for_bstring ?>street<?= $for_randid ?>" required type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['street']) ?>">
+									<input id="<?= $for_bstring ?>street<?= $for_randid ?>" <?php if (get_option('complex_manager')['contactform_mandatory_street']): ?>
+										required
+									<?php endif ?> type="text" name="complex-unit-inquiry[street]" placeholder="<?php echo get_cxm_label(false, 'street', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['street']) ?>">
 								</div>
 								<div class="row">
 									<div class="col-xs-4 complex-form-postal_code">
 										<div class="<?= (isset($messages['postal_code'])  ? 'has-error' : '') ?>">
-											<input required type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= esc_attr($data['postal_code']) ?>">
+											<input <?php if (get_option('complex_manager')['contactform_mandatory_zip']): ?>
+										required
+									<?php endif ?> type="text" name="complex-unit-inquiry[postal_code]" placeholder="<?php echo get_cxm_label(false, 'postal_code', 'complex_inquiry') ?>" pattern="\d*" class="form-control" value="<?= esc_attr($data['postal_code']) ?>">
 										</div>
 									</div>
 									<div class="col-xs-8 complex-form-locality">
 										<div class="<?= (isset($messages['locality'])  ? 'has-error' : '') ?>">
-											<input required type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['locality']) ?>">
+											<input <?php if (get_option('complex_manager')['contactform_mandatory_locality']): ?>
+										required
+									<?php endif ?> type="text" name="complex-unit-inquiry[locality]" placeholder="<?php echo get_cxm_label(false, 'locality', 'complex_inquiry') ?>" class="form-control" value="<?= esc_attr($data['locality']) ?>">
 										</div>
 									</div>
 								</div>
@@ -162,14 +230,30 @@
 					</div>
 				<?php endif ?>
 				<div class="<?= (isset($messages['message'])  ? 'has-error' : '') ?>">
-					<label for="<?= $for_bstring ?>message<?= $for_randid ?>"><?php _e('Message', 'complexmanager') ?></label>
-					<textarea id="<?= $for_bstring ?>message<?= $for_randid ?>" name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>
+					<label for="<?= $for_bstring ?>message<?= $for_randid ?>"><?php _e('Message', 'complexmanager') ?>&nbsp;
+						<?php if (get_option('complex_manager')['contactform_mandatory_message']): ?>
+							<?php 
+								$html = '<small><span class="text-danger">*</span></small>';
+								echo apply_filters('cxm_render_form_label_additional_required', $html);
+							?>
+						<?php else: ?>
+							<?php 
+								$html = '';
+								echo apply_filters('cxm_render_form_label_additional_optional', $html);
+							?>
+						<?php endif ?>
+					</label>
+					<textarea <?php if (get_option('complex_manager')['contactform_mandatory_message']): ?>
+										required
+									<?php endif ?> id="<?= $for_bstring ?>message<?= $for_randid ?>" name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>
 				</div>
 				<?= do_action('cxm_render_before_form_submission', $data, $buildings); ?>
 				<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
 				<?php if (get_option('complex_manager')['recaptcha']): ?>
-					<div class="g-recaptcha" data-callback="verifyCaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
-					<input id="verifyTheCaptcha" type="text" value="" required>
+					<div class="g-recaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
+					<div id="recaptchaerror" style="display: none;" class="alert alert-danger" role="alert">
+						<?php echo __('Invalid reCAPTCHA response!', 'complexmanager') ?>
+					</div>
 				<?php endif ?>
 				<br><button type="submit" class="<?php 
 													$html = 'btn btn-primary pull-right';

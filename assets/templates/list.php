@@ -1,7 +1,18 @@
 <div class="complex-list-wrapper <?php echo ($collapsible ? 'complex-list-wrapper-collapsible' : '') ?> <?php echo $class ?>">
 	<?php foreach ( $the_buildings as $building ) { ?>
 		<div class="complex-unit-wrapper" <?= ($building['hidden'] ? ' style="display:none"' : '') ?>>
-			<h2 class="unit-title"><?= $building['term']->name; ?></h2>
+	 		<?php 
+				$html = '<h2 class="unit-title">';
+				echo apply_filters('cxm_render_building_title_opening_tag', $html);
+			?>	
+
+			<?php echo $building['term']->name; ?>
+
+	 		<?php 
+				$html = '</h2>';
+				echo apply_filters('cxm_render_building_title_closing_tag', $html);
+			?>	
+			
 			<div class="unit-description"><?= wpautop( $building['description'], false ); ?></div>
 			<div class="table-responsive complex-building-<?= $building['term']->slug ?>">
 				<table class="table table-condensed">

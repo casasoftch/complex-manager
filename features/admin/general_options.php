@@ -199,6 +199,85 @@ class general_options extends Feature
             'cxm_1'
         );
 
+        add_settings_field(
+            'print_form_info',
+             __( 'Contact form mandatory fields', 'complexmanager' ),
+             array( $this, 'print_form_info' ),
+             'complex-manager-admin',
+             'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_firstname',
+             __( 'First name', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_firstname_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_lastname',
+             __( 'Last name', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_lastname_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_legalname',
+             __( 'Company', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_legalname_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_phone',
+             __( 'Phone', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_phone_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_mobile',
+             __( 'Mobile', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_mobile_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_street',
+             __( 'Street', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_street_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_zip',
+             __( 'ZIP', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_zip_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_locality',
+             __( 'City', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_locality_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'contactform_mandatory_message',
+             __( 'Message', 'complexmanager' ),
+            array( $this, 'contactform_mandatory_message_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
 
         add_settings_field(
             'list_cols',
@@ -286,6 +365,42 @@ class general_options extends Feature
             $new_input['cache_renders'] = sanitize_text_field( $input['cache_renders'] );
         }
 
+        if( isset( $input['contactform_mandatory_firstname'] ) ) {
+            $new_input['contactform_mandatory_firstname'] = sanitize_text_field( $input['contactform_mandatory_firstname'] );
+        }
+
+        if( isset( $input['contactform_mandatory_lastname'] ) ) {
+            $new_input['contactform_mandatory_lastname'] = sanitize_text_field( $input['contactform_mandatory_lastname'] );
+        }
+
+        if( isset( $input['contactform_mandatory_legalname'] ) ) {
+            $new_input['contactform_mandatory_legalname'] = sanitize_text_field( $input['contactform_mandatory_legalname'] );
+        }
+
+        if( isset( $input['contactform_mandatory_phone'] ) ) {
+            $new_input['contactform_mandatory_phone'] = sanitize_text_field( $input['contactform_mandatory_phone'] );
+        }
+
+        if( isset( $input['contactform_mandatory_mobile'] ) ) {
+            $new_input['contactform_mandatory_mobile'] = sanitize_text_field( $input['contactform_mandatory_mobile'] );
+        }
+
+        if( isset( $input['contactform_mandatory_street'] ) ) {
+            $new_input['contactform_mandatory_street'] = sanitize_text_field( $input['contactform_mandatory_street'] );
+        }
+
+        if( isset( $input['contactform_mandatory_zip'] ) ) {
+            $new_input['contactform_mandatory_zip'] = sanitize_text_field( $input['contactform_mandatory_zip'] );
+        }
+
+        if( isset( $input['contactform_mandatory_locality'] ) ) {
+            $new_input['contactform_mandatory_locality'] = sanitize_text_field( $input['contactform_mandatory_locality'] );
+        }
+
+        if( isset( $input['contactform_mandatory_message'] ) ) {
+            $new_input['contactform_mandatory_message'] = sanitize_text_field( $input['contactform_mandatory_message'] );
+        }
+
         if( isset( $input['global_direct_recipient_email'] ) ) {
             $new_input['global_direct_recipient_email'] = sanitize_text_field( $input['global_direct_recipient_email'] );
         }
@@ -363,6 +478,14 @@ class general_options extends Feature
     }
 
     /**
+     * Print the Section text
+     */
+    public function print_form_info()
+    {
+      
+    }
+
+    /**
      * Get the settings option array and print one of its values
      */
     public function id_number_callback()
@@ -401,6 +524,140 @@ class general_options extends Feature
         ;
 
         echo '&nbsp;&nbsp;<a href="?page=complexmanager-admin&cxm_clear_cache=1" type="button" class="button">Remove cache files</a>';
+    }
+
+    public function contactform_mandatory_firstname_callback()
+    {
+        $checked = false;
+        if ($this->options['contactform_mandatory_firstname'] === NULL || ($this->options['contactform_mandatory_firstname'] && isset( $this->options['contactform_mandatory_firstname']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_firstname]" value="0" />
+            <input type="checkbox" value="1" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_firstname" name="complex_manager[contactform_mandatory_firstname]" /></div>'
+
+        ;
+
+    }
+
+    public function contactform_mandatory_lastname_callback()
+    {
+        $checked = false;
+        if ($this->options['contactform_mandatory_lastname'] === NULL || ($this->options['contactform_mandatory_lastname'] && isset( $this->options['contactform_mandatory_lastname']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_lastname]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_lastname" name="complex_manager[contactform_mandatory_lastname]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_legalname_callback()
+    {
+        $checked = false;
+        if (($this->options['contactform_mandatory_legalname'] && isset( $this->options['contactform_mandatory_legalname']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_legalname]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_legalname" name="complex_manager[contactform_mandatory_legalname]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_phone_callback()
+    {
+        $checked = false;
+        if ($this->options['contactform_mandatory_phone'] === NULL || ($this->options['contactform_mandatory_phone'] && isset( $this->options['contactform_mandatory_phone']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_phone]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_phone" name="complex_manager[contactform_mandatory_phone]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_mobile_callback()
+    {
+        $checked = false;
+        if (($this->options['contactform_mandatory_mobile'] && isset( $this->options['contactform_mandatory_mobile']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_mobile]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_mobile" name="complex_manager[contactform_mandatory_mobile]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_street_callback()
+    {
+        $checked = false;
+        if ($this->options['contactform_mandatory_street'] === NULL || ($this->options['contactform_mandatory_street'] && isset( $this->options['contactform_mandatory_street']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_street]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_street" name="complex_manager[contactform_mandatory_street]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_zip_callback()
+    {
+        $checked = false;
+        if ($this->options['contactform_mandatory_zip'] === NULL || ($this->options['contactform_mandatory_zip'] && isset( $this->options['contactform_mandatory_zip']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_zip]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_zip" name="complex_manager[contactform_mandatory_zip]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_locality_callback()
+    {
+        $checked = false;
+        if ($this->options['contactform_mandatory_locality'] === NULL || ($this->options['contactform_mandatory_locality'] && isset( $this->options['contactform_mandatory_locality']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_locality]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_locality" name="complex_manager[contactform_mandatory_locality]" value="1" /></div>'
+
+        ;
+
+
+    }
+
+    public function contactform_mandatory_message_callback()
+    {
+        $checked = false;
+        if (($this->options['contactform_mandatory_message'] && isset( $this->options['contactform_mandatory_message']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[contactform_mandatory_message]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="contactform_mandatory_message" name="complex_manager[contactform_mandatory_message]" value="1" /></div>'
+
+        ;
+
+
     }
 
     public function provider_slug_callback()
