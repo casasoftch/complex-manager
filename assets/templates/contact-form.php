@@ -5,6 +5,7 @@
 		<?php wp_nonce_field( 'send-inquiry' ); ?>
 		<input type="hidden" name="complex-unit-inquiry[post]" value="1">
 		<?= do_action('cxm_render_before_form_parts', $data, $buildings); ?>
+
 		<div class="complex-form-parts">
 			<?php
 				$unitcount = 0;
@@ -254,6 +255,7 @@
 					<div id="recaptchaerror" style="display: none;" class="alert alert-danger" role="alert">
 						<?php echo __('Invalid reCAPTCHA response!', 'complexmanager') ?>
 					</div>
+					<input type="hidden" name="complex-unit-inquiry[direct_recipient_email]" value="<?= esc_attr($data['direct_recipient_email']); ?>">
 				<?php endif ?>
 				<br><button type="submit" class="<?php 
 													$html = 'btn btn-primary pull-right';

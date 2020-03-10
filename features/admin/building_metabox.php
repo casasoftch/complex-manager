@@ -54,6 +54,27 @@ class building_metabox extends Feature {
 					'max_size' => '',
 					'mime_types' => '',
 				),
+				array(
+					'key' => 'field_5956e2exbccvn',
+					'label' => 'Individuelle Empfänger (Kommasepariert)',
+					'name' => 'individual-direct-recipients',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+					'readonly' => 0,
+					'disabled' => 0,
+				),
 			),
 			'location' => array (
 				array (

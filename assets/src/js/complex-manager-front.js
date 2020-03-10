@@ -15,6 +15,12 @@ if (typeof cxmCallContactFormClickHandler === "undefined") {
 		jQuery('.complex-call-contact-form').click(function(event) {
 			event.preventDefault();
 			var unit_id = jQuery(this).data('unit-id');
+			var $recipients = jQuery(this).closest('[data-recipients]');
+			if ($recipients && $recipients.data('recipients') != '') {
+				jQuery('#complexContactForm form [name="complex-unit-inquiry[direct_recipient_email]"]').val($recipients.data('recipients'));
+			} else {
+				jQuery('#complexContactForm form [name="complex-unit-inquiry[direct_recipient_email]"]').val('');
+			}
 			jQuery('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id).prop('disabled','disabled');
 			jQuery('#complexContactForm').appendTo(jQuery(this).parent());
 			jQuery('#complexContactForm').slideUp(0);

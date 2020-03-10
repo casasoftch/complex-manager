@@ -1164,6 +1164,7 @@ class render extends Feature {
 	}
 
 	public function sendCasamail($provider = false, $publisher = false, $inquiry, $formData){
+
 		if (!$provider) {
 			$provider = $this->get_option("provider_slug");
 		}
@@ -1210,7 +1211,12 @@ class render extends Feature {
 			//$data['property_rooms']         = '3.2';
 			//$data['property_type']          = 'rent';
 			//$data['property_price']         = '123456';
-			$data['direct_recipient_email'] = $this->get_option("global_direct_recipient_email");
+			$data['direct_recipient_email'] = get_cxm($inquiry->ID, 'direct_recipient_email');
+
+			if (!$data['direct_recipient_email']) {
+				$data['direct_recipient_email'] = $this->get_option("global_direct_recipient_email");
+			}
+			
 
 			$term = get_term($formData['reason'], 'inquiry_reason', OBJECT);
 			$extra_data = array();
@@ -1312,7 +1318,6 @@ class render extends Feature {
 
 	public function renderForm($args){
 		$template = $this->get_template();
-
 		$reasons = array();
 
 		$unit_args = array(
@@ -1322,6 +1327,7 @@ class render extends Feature {
 			'order' => 'ASC',
 			'unit_id' => false
 		);
+		
 
 		if (isset($args['unit_id']) && $args['unit_id']) {
 			$unit_args['include'] = $args['unit_id'];

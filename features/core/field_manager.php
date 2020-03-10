@@ -22,6 +22,7 @@ class field_manager extends Feature {
 			'unit_id' => '',
 			'gender' => 'female',
 			'reason' => '',
+			'direct_recipient_email' => ''
 		);
 	}
 
@@ -93,6 +94,10 @@ class field_manager extends Feature {
 			'reason' => array(
 				'label' => __('Reason', 'complexmanager'),
 				'value' => $metas['reason']
+			),
+			'direct_recipient_email' => array(
+				'label' => __('direct_recipient_email', 'complexmanager'),
+				'value' => $metas['direct_recipient_email']
 			),
 		);
 		if ($specials) {
