@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-04 09:16+0100\n"
-"PO-Revision-Date: 2020-03-04 09:17+0100\n"
+"PO-Revision-Date: 2020-04-28 17:43+0200\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -3454,7 +3454,7 @@ msgstr "Pré-réservé"
 #: ../features/core/global_functions.php:133
 #: ../features/core/global_functions.php:347
 msgid "Number of Rooms"
-msgstr ""
+msgstr "Nombre de pièces"
 
 #: ../features/admin/unit_metabox.php:235
 #: ../features/core/global_functions.php:141
