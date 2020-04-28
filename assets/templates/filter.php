@@ -2,7 +2,7 @@
 	<div class="complex-filter">
 		<form method="GET" id="complexFilterForm" action="">
 			<?php foreach ($filters as $filtertype => $value): ?>
-				<?php if ($filtertype == 'rooms'): ?>
+				<?php if ($filtertype == 'number_of_rooms'): ?>
 					<?php if ($roomfilters): ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-rooms-checkboxes">
 							<label class="filteroption-label" for=""><?php echo $value ?></label>
