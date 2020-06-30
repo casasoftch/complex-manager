@@ -471,7 +471,7 @@ jQuery( function () {
 
 			$('.complex-tooltip-unit-item').hide();
 			if ($('.complex-project-graphic:hover').length !== 0) {
-				$('.complex-tooltip').show();
+				$('.complex-tooltip-unit-item[data-unit="'+id+'"]').closest('.complex-tooltip').show();
 			}
 			$('.complex-tooltip-unit-item[data-unit="'+id+'"]').show();
 		}
