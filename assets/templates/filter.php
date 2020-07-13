@@ -44,6 +44,19 @@
 						<input id="usablespace_from" name="usablespace_from" type="text" value="<?php echo $minusablespace ?>" />
 						<input id="usablespace_to" name="usablespace_to" type="text" value="<?php echo $maxusablespace ?>" />
 					</div>
+				<?php elseif ($filtertype == 'purchaseprice') : ?>
+					<div id="filteroption-purchase-price" class="filteroption filteroption-purchaseprice-slider" data-minpurchaseprice="<?php echo $minpurchaseprice ?>" data-maxpurchaseprice="<?php echo $maxpurchaseprice ?>">
+						<div class="slider-range-values">
+							<label class="filteroption-label"><?php echo $value ?></label>
+							<span id="kauf-slider-lower-value"></span>
+							<span class="slider-format-middle"><?= __('to', 'complexmanager') ?></span>
+							<span id="kauf-slider-upper-value"></span>
+						</div>
+						<div id="range-kauf">
+						</div>
+						<input id="purchaseprice_from" name="purchaseprice_from" type="text" value="<?php echo $minpurchaseprice ?>" />
+						<input id="purchaseprice_to" name="purchaseprice_to" type="text" value="<?php echo $maxpurchaseprice ?>" />
+					</div>
 				<?php elseif ($filtertype == 'rentnet') : ?>
 					<div id="filteroption-miete-netto" class="filteroption filteroption-rentnet-slider" data-minrentnet="<?php echo $minrentnet ?>" data-maxrentnet="<?php echo $maxrentnet ?>">
 						<div class="slider-range-values">

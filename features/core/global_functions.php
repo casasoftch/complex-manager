@@ -373,6 +373,11 @@ function cxm_get_filter_label_defaults(){
             'label' => '',
             'order' => 6,
         ),
+        'purchaseprice' => array(
+            'o_label' => __( 'Purchase Price', 'complexmanager' ),
+            'label' => '',
+            'order' => 5,
+        ),
         'story' => array(
             'o_label' => __( 'Floor', 'complexmanager' ),
             'label' => '',

@@ -10,6 +10,7 @@ if (typeof getCXMscrollOffset === "undefined") {
 		return 157;
 	}
 }
+
 if (typeof cxmCallContactFormClickHandler === "undefined") {
 	function cxmCallContactFormClickHandler(){
 		jQuery('.complex-call-contact-form').click(function(event) {
@@ -230,6 +231,9 @@ jQuery( function () {
 			returnQuery.rentgross_from = (!query.rentgross_from ? 0 : query.rentgross_from);
 			returnQuery.rentgross_to = (!query.rentgross_to ? 99999999999 : query.rentgross_to);
 
+			returnQuery.purchaseprice_from = (!query.purchaseprice_from ? 0 : query.purchaseprice_from);
+			returnQuery.purchaseprice_to = (!query.purchaseprice_to ? 99999999999 : query.purchaseprice_to);
+
 			returnQuery.income = (parseFloat(query.income) > 0 ? query.income : null);
 			returnQuery.persons = (parseFloat(query.persons) > 0 ? query.persons : null);
 			return returnQuery;
@@ -436,7 +440,27 @@ jQuery( function () {
 					}
 				}
 
-				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && usablespace_pass && rentnet_pass && rentgross_pass && custom_1_pass && custom_2_pass && custom_3_pass && types_pass && story_pass) {
+				var purchaseprice_pass = true;
+				if (data.r_purchase_price && query.purchaseprice_from) {
+					//only care to filter if it differs from the original value
+					if (query.purchaseprice_from != parseInt($('#filteroption-purchase-price').data('minpurchaseprice')) || query.purchaseprice_to !=  parseInt($('#filteroption-purchase-price').data('maxpurchaseprice'))) {
+                        
+                        var purchase_price = parseFloat(data.r_purchase_price.replace(/[^\d\.]/g, ''));
+
+						purchaseprice_pass = false;
+						if (query.purchaseprice_from !== 0) {
+							if (purchase_price >= query.purchaseprice_from && purchase_price <= query.purchaseprice_to) {
+								purchaseprice_pass = true;
+							}
+						} else {
+							if (purchase_price <= query.purchaseprice_to) {
+								purchaseprice_pass = true;
+							}
+						}
+					}
+				}
+
+				if (persons_pass && income_pass && room_pass && status_pass && livingspace_pass && usablespace_pass && rentnet_pass && rentgross_pass && purchaseprice_pass && custom_1_pass && custom_2_pass && custom_3_pass && types_pass && story_pass) {
 					$(tr).removeClass('filtered');
 					$(tr).next().removeClass('filtered');
 				} else {

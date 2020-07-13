@@ -628,6 +628,9 @@ class render extends Feature {
 	   		if ($key == 'r_rent_gross') {
 	   			$key = 'rentgross';
 	   		}
+	   		if ($key == 'r_purchase_price') {
+	   			$key = 'purchaseprice';
+	   		}
 	   		if ($label['label']) {
 	   			$labelArray[$key] = $label['label'];
 	   		}
@@ -713,6 +716,8 @@ class render extends Feature {
 		$maxRentNet = false;
 		$minRentGross = false;
 		$maxRentGross = false;
+		$minPurchasePrice = false;
+		$maxPurchasePrice = false;
 
 		foreach ($buildings as $building) {
 			foreach ($building['units'] as $unit) {
@@ -765,6 +770,19 @@ class render extends Feature {
 					} else {
 						$minRentGross = get_cxm($unit, 'rent_gross');
 						$maxRentGross = get_cxm($unit, 'rent_gross');
+					}
+				}
+
+				if (get_cxm($unit, 'purchase_price')) {
+					if ($minPurchasePrice && $maxPurchasePrice) {
+						if (get_cxm($unit, 'purchase_price') < $minPurchasePrice) {
+							$minPurchasePrice = get_cxm($unit, 'purchase_price');
+						} elseif (get_cxm($unit, 'purchase_price') > $maxPurchasePrice) {
+							$maxPurchasePrice = get_cxm($unit, 'purchase_price');
+						}
+					} else {
+						$minPurchasePrice = get_cxm($unit, 'purchase_price');
+						$maxPurchasePrice = get_cxm($unit, 'purchase_price');
 					}
 				}
 
@@ -855,6 +873,10 @@ class render extends Feature {
 		$template->set( 'maxrentgross', $maxRentGross );
 
 		$template->set( 'minrentgross', $minRentGross );
+
+		$template->set( 'maxpurchaseprice', $maxPurchasePrice );
+
+		$template->set( 'minpurchaseprice', $minPurchasePrice );
 
 		$template->set( 'filters', $filters );
 
