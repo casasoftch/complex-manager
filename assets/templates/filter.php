@@ -7,6 +7,11 @@
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-rooms-checkboxes">
 							<label class="filteroption-label" for=""><?php echo $value ?></label>
 							<?php foreach ($roomfilters as $val): ?>
+
+								<?php $pattern = '.0'; ?>
+								<?php $replacement = ''; ?>
+								<?php $val = str_replace($pattern, $replacement, $val) ?>
+
 								<span class="checkboxoption"><input type="checkbox" name="rooms[]" id="cxmFilterRooms_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterRooms_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
 							<?php endforeach ?>
 						</div>
@@ -26,7 +31,6 @@
 						</div>
 						<div id="range-flaeche">
 						</div>
-
 						<input id="livingspace_from" name="livingspace_from" type="text" value="<?php echo $minlivingspace ?>" />
 						<input id="livingspace_to" name="livingspace_to" type="text" value="<?php echo $maxlivingspace ?>" />
 					</div>
@@ -40,7 +44,6 @@
 						</div>
 						<div id="range-nutzflaeche">
 						</div>
-
 						<input id="usablespace_from" name="usablespace_from" type="text" value="<?php echo $minusablespace ?>" />
 						<input id="usablespace_to" name="usablespace_to" type="text" value="<?php echo $maxusablespace ?>" />
 					</div>
@@ -86,7 +89,7 @@
 				<?php elseif ($filtertype == 'story') : ?>
 					<?php if ($story_filters): ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-story-checkboxes">
-							<?php  ?>
+							<?php asort($story_filters) ?>
 							<label class="filteroption-label"><?php echo $value ?></label>
 							<?php foreach ($story_filters as $val): ?>
 								<span class="checkboxoption"><input type="checkbox" name="stories[]" id="cxmFilterStory_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterStory_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>

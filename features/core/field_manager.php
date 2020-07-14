@@ -264,8 +264,6 @@ class field_manager extends Feature {
 				'value' => $metas['number_of_rooms'],
 				'pure_value' => $metas['number_of_rooms']
 			),
-
-
 			'min_income' => array(
 				'label' => __('Income (min)', 'complexmanager'),
 				'value' => $metas['min_income'],
