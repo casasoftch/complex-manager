@@ -92,7 +92,7 @@
 							<?php asort($story_filters) ?>
 							<label class="filteroption-label"><?php echo $value ?></label>
 							<?php foreach ($story_filters as $val): ?>
-								<span class="checkboxoption"><input type="checkbox" name="stories[]" id="cxmFilterStory_<?php echo $val ?>" value="<?php echo $val ?>"><label for="cxmFilterStory_<?php echo $val ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
+								<span class="checkboxoption"><input type="checkbox" name="stories[]" id="cxmFilterStory_<?php echo htmlentities(htmlentities($val)) ?>" value="<?php echo htmlentities(htmlentities($val)) ?>"><label for="cxmFilterStory_<?php echo htmlentities(htmlentities($val)) ?>" class="checkbox-inline">&nbsp;<?php echo $val ?></label></span>
 							<?php endforeach ?>
 						</div>
 					<?php endif ?>
