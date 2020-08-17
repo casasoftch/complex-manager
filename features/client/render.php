@@ -1390,7 +1390,7 @@ class render extends Feature {
 		$state = '';
 		$messages = array();
 		if ($formData['post']) {
-			print_r('rendered_form');
+			#print_r('rendered_form');
 			if ($this->formValid()) {
 				if (!$this->formSendHasAlreadyOccuredDuringThisRequest) {
 				 	$this->formSendHasAlreadyOccuredDuringThisRequest = true;
@@ -1437,6 +1437,46 @@ class render extends Feature {
 								//empty form
 								$formData = $this->getFormData(true);
 							}
+						} elseif($this->get_option('honeypot')) { 
+							$honeypot = $formData['firstname'];
+
+							if (! empty($honeypot)) {
+								return;
+							} else {
+								$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
+								$state = 'success';
+
+								$inq_post = array(
+									'post_content'   => '',
+									'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
+									'post_status'    => 'publish',
+									'post_type'      => 'complex_inquiry',
+									'ping_status'    => 'closed',
+									'comment_status' => 'closed',
+								);
+
+								do_action('cxm_before_inquirystore', $formData);
+
+								$inquiry = $this->storeInquiry($inq_post, $formData);
+
+								do_action('cxm_before_inquirysend', $formData);
+								$this->sendEmail(false, $inquiry);
+								$this->sendRemcat(false, $inquiry);
+								$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+								if ($casamail_msgs) {
+									$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
+									$state = 'danger';
+								}
+
+								$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
+
+								do_action('cxm_after_inquirysend', $formData);
+
+								//empty form
+								$formData = $this->getFormData(true);
+							}
+
+
 						} else {
 							$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
 							$state = 'success';

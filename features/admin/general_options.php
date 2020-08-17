@@ -338,7 +338,13 @@ class general_options extends Feature
             'cxm_1'
         );
 
-
+        add_settings_field(
+            'honeypot',
+            __( 'Honeypot', 'complexmanager' ),
+            array( $this, 'honeypot_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
 
 
 
@@ -375,6 +381,10 @@ class general_options extends Feature
 
         if( isset( $input['contactform_mandatory_legalname'] ) ) {
             $new_input['contactform_mandatory_legalname'] = sanitize_text_field( $input['contactform_mandatory_legalname'] );
+        }
+
+        if( isset( $input['honeypot'] ) ) {
+            $new_input['honeypot'] = sanitize_text_field( $input['honeypot'] );
         }
 
         if( isset( $input['contactform_mandatory_phone'] ) ) {
@@ -567,6 +577,20 @@ class general_options extends Feature
 
         ;
 
+
+    }
+
+    public function honeypot_callback()
+    {
+        $checked = false;
+        if (($this->options['honeypot'] && isset( $this->options['honeypot']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[honeypot]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="honeypot" name="complex_manager[honeypot]" value="1" /></div>'
+
+        ;
 
     }
 

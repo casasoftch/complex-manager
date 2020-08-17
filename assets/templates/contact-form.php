@@ -49,6 +49,9 @@
 			</div>
 			<?php endif ?>
 			<div class="complex-form-part">
+				<?php if (get_option('complex_manager')['honeypot']): ?>
+					<input name="complex-unit-inquiry[firstname]" tabindex="-1" autocomplete="random_value" type="text" id="firstname" class="hide-robot">
+				<?php endif; ?>
 				<dl>
 					<dt class="editable">
 						<label><?php _e('Salutation', 'complexmanager') ?></label>
