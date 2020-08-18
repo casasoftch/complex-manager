@@ -110,7 +110,7 @@
 														?>	
 													</a>
 												<?php endif ?>
-											 	<?php if ($the_unit['status'] != 'sold' && $the_unit['status'] != 'rented'): ?>
+											 	<?php if ($the_unit['status'] != 'sold' && $the_unit['status'] != 'rented' && $integrate_form): ?>
 											 		<a class="
 													 		<?php 
 																$html = 'btn btn-primary pull-right complex-call-contact-form';

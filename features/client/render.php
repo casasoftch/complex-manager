@@ -513,6 +513,7 @@ class render extends Feature {
 		$template->set( 'buildings', $buildings, $cols);
 
 		$template->set( 'collapsible', $collapsible );
+		$template->set( 'integrate_form', $integrate_form );
 		$template->set( 'class', $className );
 
 		if ($integrate_form) {
