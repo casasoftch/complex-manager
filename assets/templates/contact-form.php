@@ -258,8 +258,8 @@
 					<div id="recaptchaerror" style="display: none;" class="alert alert-danger" role="alert">
 						<?php echo __('Invalid reCAPTCHA response!', 'complexmanager') ?>
 					</div>
-					<input type="hidden" name="complex-unit-inquiry[direct_recipient_email]" value="<?= esc_attr($data['direct_recipient_email']); ?>">
 				<?php endif ?>
+				<input type="hidden" name="complex-unit-inquiry[direct_recipient_email]" value="<?= esc_attr($data['direct_recipient_email']); ?>">
 				<br><button type="submit" class="<?php 
 													$html = 'btn btn-primary pull-right';
 													echo apply_filters('cxm_render_send_button_classes', $html);
