@@ -24,7 +24,7 @@ class render extends Feature {
 			'gender' => 'That should not be possible',
 			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
 		);
-		if ($this->get_option('recaptcha')) {
+		if ($this->get_option('recaptcha') && !$this->get_option('honeypot')) {
 			$lang = substr(get_bloginfo('language'), 0, 2);
 			wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?hl='.$lang, array(), false, true );
 		}
@@ -922,63 +922,6 @@ class render extends Feature {
 		    $this->auth = $request['auth'];
 		}
 
-		$formData['files'] = [
-			'name' => []
-		];
-
-		//get files from files (should only happen on non javascript posts)
-		if ($_POST) {
-			if (isset($_FILES) && $_FILES  && isset($_FILES['files'])) {
-				$formData['files'] = $_FILES['files'];
-			}
-		}
-
-		//pupulate already existing files
-		if (isset($request['files'])) {
-			foreach ($request['files'] as $fileprop => $files) {
-				foreach ($files as $filekey => $propvalue) {
-					$formData['files'][$fileprop][$filekey] = $propvalue;
-				}
-			}
-		}
-
-		//upload if not already (through javascript)
-		if ($_POST) {
-			$filekeys = [];
-			foreach ($formData['files']['name'] as $filekey => $ignore) {
-				$filekeys[] = $filekey;
-			}
-			foreach ($filekeys as $filekey) {
-				if (!isset($formData['files']['file'][$filekey]) || !$formData['files']['file'][$filekey]) {
-					
-					/*
-					//upload it now
-					$uploadedfile = [];
-					foreach ($formData['files'] as $prop => $value) {
-						$uploadedfile[$prop] = $value[$filekey];
-					}
-
-					$upload_overrides = array( 'test_form' => false );
-
-					$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-
-					if ( $movefile && ! isset( $movefile['error'] ) ) {
-					    //echo "File is valid, and was successfully uploaded.\n";
-					    //var_dump( $movefile );
-					    $formData['files']['file'][$filekey] = $movefile['file'];
-					    $formData['files']['url'][$filekey] = $movefile['url'];
-					} else {
-					    //echo $movefile['error'];
-					    //$output = array("success" => false, "error" => $movefile['error'], 'file' => $uploadedfile);
-					}
-					*/
-				}
-			}
-		}
-
-
-
-
 		return $formData;
 	}
 
@@ -990,10 +933,6 @@ class render extends Feature {
 	public $requiredFields = array(
 		'first_name',
 		'last_name',
-		'phone',
-		'street',
-		'postal_code',
-		'locality',
 		'unit_id'
 	);
 	public function setFieldRequired($col){
@@ -1399,46 +1338,8 @@ class render extends Feature {
 
 						$validCaptcha = null;
 
-						if ($this->get_option('recaptcha')) {
+						if ($this->get_option('honeypot')) {
 
-							if (isset($formData['captcha_response'])) {
-							    $validCaptcha = $this->verifyCaptcha($formData['captcha_response']);
-							}
-							if ($validCaptcha &&  $validCaptcha === 'success') {
-								$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
-								$state = 'success';
-
-								$inq_post = array(
-									'post_content'   => '',
-									'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
-									'post_status'    => 'publish',
-									'post_type'      => 'complex_inquiry',
-									'ping_status'    => 'closed',
-									'comment_status' => 'closed',
-								);
-
-								do_action('cxm_before_inquirystore', $formData);
-
-								$inquiry = $this->storeInquiry($inq_post, $formData);
-
-								do_action('cxm_before_inquirysend', $formData);
-
-								$this->sendEmail(false, $inquiry);
-								$this->sendRemcat(false, $inquiry);
-								$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
-								if ($casamail_msgs) {
-									$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
-									$state = 'danger';
-								}
-
-								$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
-
-								do_action('cxm_after_inquirysend', $formData);
-
-								//empty form
-								$formData = $this->getFormData(true);
-							}
-						} elseif($this->get_option('honeypot')) { 
 							$honeypot = $formData['firstname'];
 
 							if (! empty($honeypot)) {
@@ -1475,9 +1376,47 @@ class render extends Feature {
 
 								//empty form
 								$formData = $this->getFormData(true);
+								
 							}
+						} elseif($this->get_option('recaptcha')) { 
 
+							if (isset($formData['captcha_response'])) {
+								$validCaptcha = $this->verifyCaptcha($formData['captcha_response']);
+							}
+							if ($validCaptcha &&  $validCaptcha === 'success') {
+								$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
+								$state = 'success';
 
+								$inq_post = array(
+									'post_content'   => '',
+									'post_title'     => $formData['first_name'] . ' ' . $formData['last_name'],
+									'post_status'    => 'publish',
+									'post_type'      => 'complex_inquiry',
+									'ping_status'    => 'closed',
+									'comment_status' => 'closed',
+								);
+
+								do_action('cxm_before_inquirystore', $formData);
+
+								$inquiry = $this->storeInquiry($inq_post, $formData);
+
+								do_action('cxm_before_inquirysend', $formData);
+
+								$this->sendEmail(false, $inquiry);
+								$this->sendRemcat(false, $inquiry);
+								$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+								if ($casamail_msgs) {
+									$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
+									$state = 'danger';
+								}
+
+								$this->sendGaEvent('inquiry-sent', get_cxm($inquiry->ID, 'email'), 1);
+
+								do_action('cxm_after_inquirysend', $formData);
+
+								//empty form
+								$formData = $this->getFormData(true);
+							}
 						} else {
 							$msg = __('Inquiry has been sent. Thank you!', 'complexmanager');
 							$state = 'success';
@@ -1532,6 +1471,11 @@ class render extends Feature {
 		if ($terms) {
 			$reasons = $terms;
 		}
+
+		/* $disableajax = false;
+		if (isset($args['disable_ajax'])) {
+			$disableajax = true;
+		} */
 
 		$template->set('messages', $messages);
 		$template->set('message', $msg);

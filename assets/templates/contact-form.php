@@ -253,7 +253,7 @@
 				</div>
 				<?= do_action('cxm_render_before_form_submission', $data, $buildings); ?>
 				<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
-				<?php if (get_option('complex_manager')['recaptcha']): ?>
+				<?php if (get_option('complex_manager')['recaptcha'] && !get_option('complex_manager')['honeypot']): ?>
 					<div class="g-recaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
 					<div id="recaptchaerror" style="display: none;" class="alert alert-danger" role="alert">
 						<?php echo __('Invalid reCAPTCHA response!', 'complexmanager') ?>
