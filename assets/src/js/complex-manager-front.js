@@ -576,57 +576,63 @@ jQuery( function () {
 			}
 		}
 
-		
+		var alreadySubmitted = false;
 		function ajaxifyContactForm($form){
 			$form.on('submit', function(event) {
 				event.preventDefault();
-				if ($('.g-recaptcha').length) {
-					var response = grecaptcha.getResponse();
-					//recaptcha failed validation
-		           if(response.length == 0) {
-		               event.preventDefault();
-		               $('#recaptchaerror').show();
-		           } else {
-		           		$('#recaptchaerror').hide();
-		               $form.find(':input').prop('disabled', false);
-		               if (!$('#complexContactFormLoader').length) {
-		               	$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
-		               }
-		               $('#complexContactFormLoader').fadeIn('slow');
-		               var data = $form.serialize();
-		               $.post($form.prop('action'), data, function(data) {
-		               	var $new_form = $(data).find('.complex-contact-form-wrapper');
-		               	$('.complex-contact-form-wrapper').html($new_form.html());
-		               	if ($('.complex-contact-form-wrapper .alert').length) {
-		               		$('html, body').animate({
-		                       scrollTop: ($('.complex-contact-form-wrapper .alert').offset().top - 200)
-		                   }, 500);
-		               	}
-		               	ajaxifyContactForm($('#complexContactFormAnchor'));
-		               	$form.trigger( "cxm-form-ajax-replaced", [ "Custom", "Event" ] );
+				if (alreadySubmitted == false) {
+					alreadySubmitted = true;
+					if ($('.g-recaptcha').length) {
+						var response = grecaptcha.getResponse();
+						//recaptcha failed validation
+						if (response.length == 0) {
+							event.preventDefault();
+							$('#recaptchaerror').show();
+						} else {
+							$('#recaptchaerror').hide();
+							$form.find(':input').prop('disabled', false);
+							if (!$('#complexContactFormLoader').length) {
+								$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+							}
+							$('#complexContactFormLoader').fadeIn('slow');
+							var data = $form.serialize();
+							$.post($form.prop('action'), data, function (data) {
+								console.log('posted');
+								var $new_form = $(data).find('.complex-contact-form-wrapper');
+								$('.complex-contact-form-wrapper').html($new_form.html());
+								if ($('.complex-contact-form-wrapper .alert').length) {
+									$('html, body').animate({
+										scrollTop: ($('.complex-contact-form-wrapper .alert').offset().top - 200)
+									}, 500);
+								}
+								ajaxifyContactForm($('#complexContactFormAnchor'));
+								$form.trigger("cxm-form-ajax-replaced", ["Custom", "Event"]);
 
-		               });
-		           }
-				} else {
-					$form.find(':input').prop('disabled', false);
-					if (!$('#complexContactFormLoader').length) {
-						$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
-					}
-					$('#complexContactFormLoader').fadeIn('slow');
-					var data = $form.serialize();
-					$.post($form.prop('action'), data, function(data) {
-						var $new_form = $(data).find('.complex-contact-form-wrapper');
-						$('.complex-contact-form-wrapper').html($new_form.html());
-						if ($('.complex-contact-form-wrapper .alert').length) {
-							$('html, body').animate({
-					        scrollTop: ($('.complex-contact-form-wrapper .alert').offset().top - 200)
-					    }, 500);
+							});
 						}
-						ajaxifyContactForm($('#complexContactFormAnchor'));
-						$form.trigger( "cxm-form-ajax-replaced", [ "Custom", "Event" ] );
+					} else {
+						$form.find(':input').prop('disabled', false);
+						if (!$('#complexContactFormLoader').length) {
+							$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+						}
+						$('#complexContactFormLoader').fadeIn('slow');
+						var data = $form.serialize();
+						$.post($form.prop('action'), data, function (data) {
+							console.log('posted');
+							var $new_form = $(data).find('.complex-contact-form-wrapper');
+							$('.complex-contact-form-wrapper').html($new_form.html());
+							if ($('.complex-contact-form-wrapper .alert').length) {
+								$('html, body').animate({
+									scrollTop: ($('.complex-contact-form-wrapper .alert').offset().top - 200)
+								}, 500);
+							}
+							ajaxifyContactForm($('#complexContactFormAnchor'));
+							$form.trigger("cxm-form-ajax-replaced", ["Custom", "Event"]);
 
-					});
+						});
+					}
 				}
+				
 				
 				
 
