@@ -397,6 +397,7 @@ class unit_metabox extends Feature {
 				_e( 'Rent Time segment', 'complexmanager' );
 				echo '</label><br>';
 				echo '<select id="'.$key.'" name="'.$key.'">';
+					echo '<option value="Y" ' . ($value == 'Y' ? 'selected' : '') . '>Year</option>';
 					echo '<option value="M" ' . ($value == 'M' ? 'selected' : '') . '>Month</option>';
 					echo '<option value="W" ' . ($value == 'W' ? 'selected' : '') . '>Week</option>';
 		        echo '</select>';
