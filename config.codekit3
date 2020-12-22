@@ -7,7 +7,7 @@
 		"uuidString": "A57DA562-071C-495E-88C1-72C22EDEEDE5"
 		}
 	],
-"creatorBuild": "31934",
+"creatorBuild": "32186",
 "files": {
 	"/.gitignore": {
 		"cB": 0,
@@ -290,6 +290,16 @@
 		"ma": 0,
 		"oA": 0,
 		"oAP": "/assets/acf/assets/css/acf-global-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/assets/acf/assets/css/acf-input-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/css/acf-input-min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
@@ -601,6 +611,17 @@
 		"oF": 0,
 		"oS": 3
 		},
+	"/assets/acf/assets/inc/select2/3/select2-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/inc/select2/3/select2-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/assets/acf/assets/inc/select2/3/select2-spinner.gif": {
 		"ft": 4194304,
 		"iS": 1849,
@@ -628,6 +649,17 @@
 		"oAP": "/assets/acf/assets/inc/select2/3/select2-min.js",
 		"oF": 0,
 		"sC": 1,
+		"tS": 0
+		},
+	"/assets/acf/assets/inc/select2/3/select2.min-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/inc/select2/3/select2.min-min-min.js",
+		"oF": 0,
+		"sC": 3,
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/3/select2.min.js": {
@@ -948,6 +980,17 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"/assets/acf/assets/inc/select2/select2_locale_de-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/inc/select2/select2_locale_de-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/assets/acf/assets/inc/select2/select2_locale_de.js": {
 		"bF": 0,
 		"ft": 64,
@@ -987,6 +1030,17 @@
 		"oAP": "/assets/acf/assets/inc/select2/select2_locale_es-min.js",
 		"oF": 0,
 		"sC": 1,
+		"tS": 0
+		},
+	"/assets/acf/assets/inc/select2/select2_locale_et-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/inc/select2/select2_locale_et-min-min.js",
+		"oF": 0,
+		"sC": 3,
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_et.js": {
@@ -1086,6 +1140,17 @@
 		"oAP": "/assets/acf/assets/inc/select2/select2_locale_hu-min.js",
 		"oF": 0,
 		"sC": 1,
+		"tS": 0
+		},
+	"/assets/acf/assets/inc/select2/select2_locale_id-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/inc/select2/select2_locale_id-min-min.js",
+		"oF": 0,
+		"sC": 3,
 		"tS": 0
 		},
 	"/assets/acf/assets/inc/select2/select2_locale_id.js": {
@@ -1416,6 +1481,16 @@
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
+		},
+	"/assets/acf/assets/inc/timepicker/jquery-ui-timepicker-addon.min-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/assets/acf/assets/inc/timepicker/jquery-ui-timepicker-addon.min-min-min.css",
+		"oF": 0,
+		"oS": 3
 		},
 	"/assets/acf/assets/inc/timepicker/jquery-ui-timepicker-addon.min.css": {
 		"aP": 1,
@@ -2570,6 +2645,17 @@
 		"oT": 1,
 		"q": 100
 		},
+	"/assets/js/complex-manager-front-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/js/complex-manager-front-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/assets/js/complex-manager-front.js": {
 		"bF": 0,
 		"ft": 64,
@@ -2579,6 +2665,17 @@
 		"oAP": "/assets/js/complex-manager-front-min.js",
 		"oF": 0,
 		"sC": 1,
+		"tS": 0
+		},
+	"/assets/js/complex-manager-options-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/js/complex-manager-options-min-min.js",
+		"oF": 0,
+		"sC": 3,
 		"tS": 0
 		},
 	"/assets/js/complex-manager-options.js": {
@@ -2592,6 +2689,17 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"/assets/js/complexmanager-meta-box-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/js/complexmanager-meta-box-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/assets/js/complexmanager-meta-box.js": {
 		"bF": 0,
 		"ft": 64,
@@ -2601,6 +2709,17 @@
 		"oAP": "/assets/js/complexmanager-meta-box-min.js",
 		"oF": 0,
 		"sC": 1,
+		"tS": 0
+		},
+	"/assets/js/jquery.canvasAreaDraw.min-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/js/jquery.canvasAreaDraw.min-min-min.js",
+		"oF": 0,
+		"sC": 3,
 		"tS": 0
 		},
 	"/assets/js/jquery.canvasAreaDraw.min.js": {
@@ -2715,6 +2834,14 @@
 		"oAP": "/build/assets/src/node_modules",
 		"oF": 0
 		},
+	"/assets/src/package-lock.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/assets/src/package-lock-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"/assets/src/package.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -2753,6 +2880,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/assets/templates/project-graphic.php",
+		"oF": 0
+		},
+	"/build/.gitignore": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/.gitignore",
 		"oF": 0
 		},
 	"/complex-manager.gif": {
@@ -2957,14 +3092,6 @@
 		"oAP": "/features/core/global_functions.php",
 		"oF": 0
 		},
-	"/features/core/import.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/features/core/import.php",
-		"oF": 0
-		},
 	"/features/core/post_types.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -2979,6 +3106,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/features/feature.php",
+		"oF": 0
+		},
+	"/features/import.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/features/import.php",
 		"oF": 0
 		},
 	"/features/kit.php": {
@@ -3670,6 +3805,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"default-case-last": {
+			"active": 0,
+			"optionString": ""
+			},
 		"default-param-last": {
 			"active": 0,
 			"optionString": ""
@@ -3725,6 +3864,10 @@
 		"global-require": {
 			"active": 0,
 			"optionString": ""
+			},
+		"grouped-accessor-pairs": {
+			"active": 0,
+			"optionString": "'anyOrder'"
 			},
 		"guard-for-in": {
 			"active": 0,
@@ -3902,6 +4045,10 @@
 			"active": 1,
 			"optionString": "{'checkLoops': true}"
 			},
+		"no-constructor-return": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-continue": {
 			"active": 0,
 			"optionString": ""
@@ -3927,6 +4074,10 @@
 			"optionString": ""
 			},
 		"no-dupe-class-members": {
+			"active": 1,
+			"optionString": ""
+			},
+		"no-dupe-else-if": {
 			"active": 1,
 			"optionString": ""
 			},
@@ -4070,6 +4221,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-loss-of-precision": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-magic-numbers": {
 			"active": 0,
 			"optionString": "{'ignore': [], 'ignoreArrayIndexes': true, 'enforceConst': false, 'detectObjects': false}"
@@ -4186,6 +4341,10 @@
 			"active": 1,
 			"optionString": ""
 			},
+		"no-restricted-exports": {
+			"active": 0,
+			"optionString": "{'restrictedNamedExports': []}"
+			},
 		"no-restricted-globals": {
 			"active": 0,
 			"optionString": "'event', 'fdescribe'"
@@ -4228,6 +4387,10 @@
 			},
 		"no-sequences": {
 			"active": 0,
+			"optionString": ""
+			},
+		"no-setter-return": {
+			"active": 1,
 			"optionString": ""
 			},
 		"no-shadow": {
@@ -4325,6 +4488,10 @@
 		"no-use-before-define": {
 			"active": 0,
 			"optionString": "{'functions': true, 'classes': true, 'variables': true}"
+			},
+		"no-useless-backreference": {
+			"active": 0,
+			"optionString": ""
 			},
 		"no-useless-call": {
 			"active": 0,
@@ -4433,6 +4600,10 @@
 		"prefer-destructuring": {
 			"active": 0,
 			"optionString": "{'array': true, 'object': true}, {'enforceForRenamedProperties': false}"
+			},
+		"prefer-exponentiation-operator": {
+			"active": 0,
+			"optionString": ""
 			},
 		"prefer-named-capture-group": {
 			"active": 0,
@@ -5130,13 +5301,13 @@
 		"autoOutputPathReplace1": "sass",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 0,
+		"compilerType": 1,
 		"createSourceMap": 0,
-		"debugStyle": 0,
 		"decimalPrecision": 10,
+		"emitCharset": 1,
 		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 1
+		"shouldRunBless": 0
 		},
 	"languageDefaultsSLIM": {
 		"autoOutputAction": 0,

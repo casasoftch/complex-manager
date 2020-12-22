@@ -387,6 +387,14 @@ class general_options extends Feature
             $new_input['honeypot'] = sanitize_text_field( $input['honeypot'] );
         }
 
+        if( isset( $input['separate_building_property_type'] ) ) {
+            $new_input['separate_building_property_type'] = sanitize_text_field( $input['separate_building_property_type'] );
+        }
+
+        if( isset( $input['squaremeterprices'] ) ) {
+            $new_input['squaremeterprices'] = sanitize_text_field( $input['squaremeterprices'] );
+        }
+        
         if( isset( $input['contactform_mandatory_phone'] ) ) {
             $new_input['contactform_mandatory_phone'] = sanitize_text_field( $input['contactform_mandatory_phone'] );
         }
@@ -451,11 +459,15 @@ class general_options extends Feature
             $new_input['list_filters'] = maybe_serialize( $input['list_filters'] );
         }
 
-        if( isset( $input['casagateway_api_key'] ) ) {
-            $new_input['casagateway_api_key'] = $input['casagateway_api_key'];
+        if( isset( $input['cxm_api_key'] ) ) {
+            $new_input['cxm_api_key'] = $input['cxm_api_key'];
         }
-        if( isset( $input['casagateway_private_key'] ) ) {
-            $new_input['casagateway_private_key'] = $input['casagateway_private_key'];
+        if( isset( $input['cxm_private_key'] ) ) {
+            $new_input['cxm_private_key'] = $input['cxm_private_key'];
+        }
+
+        if( isset( $input['cxm_emonitor_api'] ) ) {
+            $new_input['cxm_emonitor_api'] = $input['cxm_emonitor_api'];
         }
 
         if( isset( $input['gap_id'] ) ) {
@@ -974,7 +986,7 @@ class general_options extends Feature
 
     public function import_callback(){
         ?>
-            <tr valign="top">
+            <!-- <tr valign="top">
                 <th scope="row"><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></th>
                 <td class="front-static-pages">
 
@@ -1005,7 +1017,7 @@ class general_options extends Feature
                                 <td><a href="<?php echo $forced  ?>">Letzer erfolgreicher Import erneut anstossen und alle Objekte zwingendermasse durchtesten</a></td>
                             </tr>
                             <tr>
-                                <?php if ($this->options['casagateway_api_key'] && $this->options['casagateway_private_key']): ?>
+                                <?php if ($this->options['cxm_api_key'] && $this->options['cxm_private_key']): ?>
                                     <td><code><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></code></td>
                                 <?php else: ?>
                                     <td><strike><code><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></code></strike></td>
@@ -1018,7 +1030,7 @@ class general_options extends Feature
 
                     <fieldset>
                         <legend class="screen-reader-text"><span><strong>CASA</strong><span style="font-weight:100">GATEWAY</span> API Schlüssel</span></legend>
-                        <?php $name = 'casagateway_api_key'; ?>
+                        <?php $name = 'cxm_api_key'; ?>
                         <?php $text = '<strong>CASA</strong><span style="font-weight:100">GATEWAY</span> • API Key'; ?>
                         <p><?php echo $text; ?></p>
                         <p>
@@ -1027,15 +1039,86 @@ class general_options extends Feature
                     </fieldset>
                     <fieldset>
                         <legend class="screen-reader-text"><span><strong>CASA</strong><span style="font-weight:100">GATEWAY</span> Privater Schlüssel</span></legend>
-                        <?php $name = 'casagateway_private_key'; ?>
+                        <?php $name = 'cxm_private_key'; ?>
                         <?php $text = '<strong>CASA</strong><span style="font-weight:100">GATEWAY</span> • Private Key'; ?>
                         <p><?php echo $text; ?></p>
                         <p>
                             <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                         </p>
                     </fieldset>
-                </td>
-            </tr>
+            </td>
+        </tr> -->
+
+        
+
+        <tr valign="top">
+            <th scope="row"><strong>Emonitor</strong><span style="font-weight:100"></span></th>
+            <td class="front-static-pages">
+            <fieldset>
+                <table>
+                    <tr>
+                        <td><code><strong>Gebäude nach Objektart separieren</strong></code></td>
+                        <td>
+                            <?php
+
+                            $checked = false;
+                            if (($this->options['separate_building_property_type'] && isset( $this->options['separate_building_property_type']))) {
+                                $checked = true;
+                            }
+                            echo
+                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[separate_building_property_type]" value="0" />
+                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="separate_building_property_type" name="complex_manager[separate_building_property_type]" value="1" /></div>'
+
+                            ; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code><strong>Gewerbe Preis/m2 und NK/m2 in C2 + C3 Felder?</strong></code></td>
+                        <td>
+                            <?php
+
+                            $checked = false;
+                            if (($this->options['squaremeterprices'] && isset( $this->options['squaremeterprices']))) {
+                                $checked = true;
+                            }
+                            echo
+                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[squaremeterprices]" value="0" />
+                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="squaremeterprices" name="complex_manager[squaremeterprices]" value="1" /></div>'
+
+                            ; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <?php if ($this->options['cxm_emonitor_api']): ?>
+                            <td><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></td>
+                        <?php else: ?>
+                            <td><strike><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></strike></td>
+                        <?php endif ?>
+                        <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1'); ?>">Import Ausführen</a></td>
+                    </tr>
+                    <tr>
+                        <?php $file = CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.xml'; if (file_exists($file)) : ?>
+                            <td><code>data.xml</code></td>
+                        <?php else: ?>
+                            <td><strike><code>data.xml</code></strike></td>
+                        <?php endif ?>
+                        <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1&force_all_properties=true&force_last_import=true'); ?>">Import Ausführen und Objekte überschreiben</a></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <hr>
+            
+            <fieldset>
+                <legend class="screen-reader-text"><span><strong>Emonitor</strong><span style="font-weight:100"></span> API</span></legend>
+                <?php $name = 'cxm_emonitor_api'; ?>
+                <?php $text = '<strong>Emonitor</strong><span style="font-weight:100"></span> • API'; ?>
+                <p><?php echo $text; ?></p>
+                <p>
+                    <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                </p>
+            </fieldset>
+        </td>
+    </tr>
 
         <?php
     }

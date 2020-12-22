@@ -1046,6 +1046,7 @@ class render extends Feature {
 			    $remcat,
 			);
 
+			
 			add_filter( 'wp_mail_content_type', function($content_type){
 				return 'text/plain';
 			});

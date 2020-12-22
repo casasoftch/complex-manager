@@ -65,7 +65,7 @@ class post_types extends Feature {
 			'has_archive'        => true,
 			'hierarchical'       => true,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'thumbnail','page-attributes', 'editor' ) // 'editor', 'author', 
+			'supports'           => array( 'title', 'thumbnail', 'page-attributes', 'editor' ) // 'editor', 'author', 
 		);
 
 		register_post_type( 'complex_unit', $args );
@@ -176,6 +176,38 @@ class post_types extends Feature {
 			'rewrite'           => array( 'slug' => 'cm-reason' ),
 		);
 		register_taxonomy( 'inquiry_reason', array( 'complex_inquiry' ), $args );
+
+			/*----------  attachments  ----------*/
+
+		    $labels = array(
+		      'name'              => __( 'Property Attachment Types', 'complexmanager' ),
+		        'singular_name'     => __( 'Attachment Type', 'complexmanager' ),
+		        'search_items'      => __( 'Search Attachment Types', 'complexmanager' ),
+		        'all_items'         => __( 'All Attachment Types', 'complexmanager' ),
+		        'parent_item'       => __( 'Parent Attachment Type', 'complexmanager' ),
+		        'parent_item_colon' => __( 'Parent Attachment Type:', 'complexmanager' ),
+		        'edit_item'         => __( 'Edit Attachment Type', 'complexmanager' ),
+		        'update_item'       => __( 'Update Attachment Type', 'complexmanager' ),
+		        'add_new_item'      => __( 'Add New Attachment Type', 'complexmanager' ),
+		        'new_item_name'     => __( 'New Attachment Type Name', 'complexmanager' ),
+		        'menu_name'         => __( 'Attachment Type', 'complexmanager' )
+		    );
+		    $args = array(
+		        'hierarchical'      => true,
+		        'labels'            => $labels,
+		        'show_ui'           => true,
+		        'show_admin_column' => true,
+		        'query_var'         => true,
+		        'rewrite'           => array( 'slug' => 'cm-anhangstyp' )
+		    );
+
+		    register_taxonomy( 'cxm_attachment_type', array( 'complex_unit' ), $args );
+		    register_taxonomy_for_object_type('cxm_attachment_type', 'attachment');
+		    add_post_type_support('attachment', 'cxm_attachment_type');
+		    $id1 = wp_insert_term('Image', 'cxm_attachment_type', array('slug' => 'image'));
+		    $id2 = wp_insert_term('Plan', 'cxm_attachment_type', array('slug' => 'plan'));
+		    $id3 = wp_insert_term('Document', 'cxm_attachment_type', array('slug' => 'document'));
+		    $id3 = wp_insert_term('Sales Brochure', 'cxm_attachment_type', array('slug' => 'sales-brochure'));
 
 		if (is_admin() && function_exists('pti_set_post_type_icon')) {
 			pti_set_post_type_icon( 'complex_inquiry', 'inbox' );

@@ -17,14 +17,23 @@ define( 'casasoft\complexmanager\VERSION', '0.0.1' );
 define( 'casasoft\complexmanager\PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'casasoft\complexmanager\PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+// Additional defines for import.php
+$upload = wp_upload_dir();
+define('CXM_CUR_UPLOAD_BASEDIR', $upload['basedir'] );
+
+
 /*
  * The following includes add features to the plugin
  */
+
+
 require_once( 'features/feature.php' );
 require_once( 'features/template.php' );
 require_once( 'features/options.php' );
 require_once( 'features/class-loader.php' );
 require_once( 'features/kit.php' );
+require_once( 'features/import.php' );
+
 /**
  * The central plugin class and bootstrap for the application.
  *
@@ -116,6 +125,22 @@ if( ! class_exists('acf') ) {
 	// 4. Include ACF
 	include_once(plugin_dir_path( __FILE__ ) . '/assets/acf/acf.php' );
 }
+
+
+
+
+
+if (isset($_GET['emonitorupdate']) && $_GET['page'] == "complexmanager-admin") {
+	$import = new eMonitorImport(false, true);
+	$import->addToLog('Update from Emonitor caused import');
+}
+
+function updateThemeUnits() {
+    $import = new eMonitorImport(false, true);
+    $import->addToLog('Automatic Update from Emonitor caused import');
+}
+
+add_action('update_theme_units_event', 'updateThemeUnits');
 
 
 
