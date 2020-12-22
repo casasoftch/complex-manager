@@ -192,6 +192,70 @@ class general_options extends Feature
         );
 
         add_settings_field(
+            'remcat_website',
+             __( 'Remcat Website', 'complexmanager' ),
+            array( $this, 'remcat_website_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_company',
+             __( 'Remcat Firma', 'complexmanager' ),
+            array( $this, 'remcat_company_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_company_street',
+             __( 'Remcat Firma Strasse', 'complexmanager' ),
+            array( $this, 'remcat_company_street_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_company_postal_code',
+             __( 'Remcat Firma PLZ', 'complexmanager' ),
+            array( $this, 'remcat_company_postal_code_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_company_locality',
+             __( 'Remcat Firma Ort', 'complexmanager' ),
+            array( $this, 'remcat_company_locality_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_company_person_name',
+             __( 'Remcat Firma Ansprechperson', 'complexmanager' ),
+            array( $this, 'remcat_company_person_name_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_company_email',
+             __( 'Remcat Firma E-Mail', 'complexmanager' ),
+            array( $this, 'remcat_company_email_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'remcat_general_property_ref',
+             __( 'Remcat Generelle ID', 'complexmanager' ),
+            array( $this, 'remcat_general_property_ref_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
             'idx_ref_property',
              __( 'IDX / REMCat Property Ref.', 'complexmanager' ),
             array( $this, 'idx_ref_property_callback' ),
@@ -441,6 +505,38 @@ class general_options extends Feature
 
         if( isset( $input['remcat'] ) ) {
             $new_input['remcat'] = sanitize_text_field( $input['remcat'] );
+        }
+
+        if( isset( $input['remcat_website'] ) ) {
+            $new_input['remcat_website'] = sanitize_text_field( $input['remcat_website'] );
+        }
+
+        if( isset( $input['remcat_company'] ) ) {
+            $new_input['remcat_company'] = sanitize_text_field( $input['remcat_company'] );
+        }
+
+        if( isset( $input['remcat_company_street'] ) ) {
+            $new_input['remcat_company_street'] = sanitize_text_field( $input['remcat_company_street'] );
+        }
+
+        if( isset( $input['remcat_company_postal_code'] ) ) {
+            $new_input['remcat_company_postal_code'] = sanitize_text_field( $input['remcat_company_postal_code'] );
+        }
+
+        if( isset( $input['remcat_company_locality'] ) ) {
+            $new_input['remcat_company_locality'] = sanitize_text_field( $input['remcat_company_locality'] );
+        }
+
+        if( isset( $input['remcat_company_person_name'] ) ) {
+            $new_input['remcat_company_person_name'] = sanitize_text_field( $input['remcat_company_person_name'] );
+        }
+
+        if( isset( $input['remcat_company_email'] ) ) {
+            $new_input['remcat_company_email'] = sanitize_text_field( $input['remcat_company_email'] );
+        }
+
+        if( isset( $input['remcat_general_property_ref'] ) ) {
+            $new_input['remcat_general_property_ref'] = sanitize_text_field( $input['remcat_general_property_ref'] );
         }
 
         if( isset( $input['project_image'] ) ) {
@@ -733,6 +829,70 @@ class general_options extends Feature
         printf(
             '<input type="text" id="remcat" name="complex_manager[remcat]" value="%s" />',
             isset( $this->options['remcat'] ) ? esc_attr( $this->options['remcat']) : ''
+        );
+    }
+
+    public function remcat_website_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_website" name="complex_manager[remcat_website]" value="%s" />',
+            isset( $this->options['remcat_website'] ) ? esc_attr( $this->options['remcat_website']) : ''
+        );
+    }
+
+    public function remcat_company_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_company" name="complex_manager[remcat_company]" value="%s" />',
+            isset( $this->options['remcat_company'] ) ? esc_attr( $this->options['remcat_company']) : ''
+        );
+    }
+
+    public function remcat_company_street_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_company_street" name="complex_manager[remcat_company_street]" value="%s" />',
+            isset( $this->options['remcat_company_street'] ) ? esc_attr( $this->options['remcat_company_street']) : ''
+        );
+    }
+
+    public function remcat_company_postal_code_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_company_postal_code" name="complex_manager[remcat_company_postal_code]" value="%s" />',
+            isset( $this->options['remcat_company_postal_code'] ) ? esc_attr( $this->options['remcat_company_postal_code']) : ''
+        );
+    }
+
+    public function remcat_company_locality_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_company_locality" name="complex_manager[remcat_company_locality]" value="%s" />',
+            isset( $this->options['remcat_company_locality'] ) ? esc_attr( $this->options['remcat_company_locality']) : ''
+        );
+    }
+
+    public function remcat_company_person_name_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_company_person_name" name="complex_manager[remcat_company_person_name]" value="%s" />',
+            isset( $this->options['remcat_company_person_name'] ) ? esc_attr( $this->options['remcat_company_person_name']) : ''
+        );
+    }
+
+    public function remcat_company_email_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_company_email" name="complex_manager[remcat_company_email]" value="%s" />',
+            isset( $this->options['remcat_company_email'] ) ? esc_attr( $this->options['remcat_company_email']) : ''
+        );
+    }
+
+    public function remcat_general_property_ref_callback()
+    {
+        printf(
+            '<input type="text" id="remcat_general_property_ref" name="complex_manager[remcat_general_property_ref]" value="%s" />',
+            isset( $this->options['remcat_general_property_ref'] ) ? esc_attr( $this->options['remcat_general_property_ref']) : ''
         );
     }
 

@@ -1010,16 +1010,56 @@ class render extends Feature {
 		if ($remcat) {
 			$unit_id = get_cxm($inquiry->ID, 'unit_id');
 
+			$propertyReference = $this->get_option("idx_ref_property").'.'.get_cxm($unit_id, 'idx_ref_house').'.'.get_cxm($unit_id, 'idx_ref_object');
+			if ($this->get_option('remcat_general_property_ref')) {
+				$propertyReference = '..' . $this->get_option('remcat_general_property_ref');
+			}
+
+			$portalName = 'wp_complex_manager';
+			if ($this->get_option('remcat_website')) {
+				$portalName = $this->get_option('remcat_website');
+			}
+
+			$companyName = '';
+			if ($this->get_option('remcat_company')) {
+				$companyName = $this->get_option('remcat_company');
+			}
+
+			$companyStreet = '';
+			if ($this->get_option('remcat_company_street')) {
+				$companyStreet = $this->get_option('remcat_company_street');
+			}
+
+			$companyPostalCode = '';
+			if ($this->get_option('remcat_company_postal_code')) {
+				$companyPostalCode = $this->get_option('remcat_company_postal_code');
+			}
+
+			$companyLocality = '';
+			if ($this->get_option('remcat_company_locality')) {
+				$companyLocality = $this->get_option('remcat_company_locality');
+			}
+
+			$companyPersonName = '';
+			if ($this->get_option('remcat_company_person_name')) {
+				$companyPersonName = $this->get_option('remcat_company_person_name');
+			}
+
+			$companyEmail = '';
+			if ($this->get_option('remcat_company_email')) {
+				$companyEmail = $this->get_option('remcat_company_email');
+			}
+
 			$remcat_arr = array(
 				'' => '',
-				'Immobilienportalname' => 'wp_complex_manager', //homegate
-				'Immobilienverwaltung Name' => '', //PSP Management AG
-				'Immobilienverwaltung Adresse' => '', //Baslerstrasse 44
-				'Immobilienverwaltung PLZ' => '', //4600
-				'Immobilienverwaltung Ort' => '', //Olten
-				'Immobilienverwaltung Sachbearbeiter' => '', //Urben Michael
-				'Immobilienverwaltung Sachbearbeiter Emailadresse' => '', //remcat@psp.info
-				'Objektreferenz' => $this->get_option("idx_ref_property").'.'.get_cxm($unit_id, 'idx_ref_house').'.'.get_cxm($unit_id, 'idx_ref_object'), //*** 6045.01.0202
+				'Immobilienportalname' => $portalName, //homegate
+				'Immobilienverwaltung Name' => $companyName, //PSP Management AG
+				'Immobilienverwaltung Adresse' => $companyStreet, //Baslerstrasse 44
+				'Immobilienverwaltung PLZ' => $companyPostalCode, //4600
+				'Immobilienverwaltung Ort' => $companyLocality, //Olten
+				'Immobilienverwaltung Sachbearbeiter' => $companyPersonName, //Urben Michael
+				'Immobilienverwaltung Sachbearbeiter Emailadresse' => $companyEmail, //remcat@psp.info
+				'Objektreferenz' => $propertyReference, //*** 6045.01.0202
 				'Advertisement ID' => $inquiry->ID, //*** 101688233
 				'Objekt Adresse' => '', //Stalden 35
 				'Objekt PLZ Ort' => '', //4500 Solothurn
