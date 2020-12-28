@@ -1,6 +1,6 @@
 <div class="complex-list-wrapper <?php echo ($collapsible ? 'complex-list-wrapper-collapsible' : '') ?> <?php echo $class ?>">
 	<?php foreach ( $the_buildings as $building ) { ?>
-
+		
 		<div class="complex-unit-wrapper" <?= ($building['hidden'] ? ' style="display:none"' : '') ?>>
 	 		<?php 
 				$html = '<h2 class="unit-title">';
@@ -55,7 +55,7 @@
 								echo "</tr>";
 								?>
 									
-									<tr class="complex-unit-detail-row">
+									<tr class="complex-unit-detail-row" data-objectref="<?php echo get_cxm($the_unit['post'], 'idx_ref_object') ?>">
 										<td colspan="<?= $colcount+1 ?>">
 											<div class="detail-row-wrapper">
 												<?php if (has_post_thumbnail( $the_unit['post']->ID ) ): ?>

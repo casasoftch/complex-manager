@@ -272,7 +272,6 @@ class render extends Feature {
 
 				$Rfield = get_cxm_item($unit, $field);
 				$displayItem['item'] = $Rfield;
-
 				//==therest==
 				switch ($field) {
 					case 'status':
