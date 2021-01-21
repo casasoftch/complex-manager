@@ -813,7 +813,7 @@ class render extends Feature {
 				if (!in_array($custom_3, $custom_3_filters)) {
 					if ($custom_3) {
 						$custom_3_filters[] = $custom_3 ;
-						asort($custom_3_filters);
+						//asort($custom_3_filters);
 					}
 				}
 
@@ -822,7 +822,7 @@ class render extends Feature {
 				if (!in_array($custom_2, $custom_2_filters)) {
 					if ($custom_2) {
 						$custom_2_filters[] = $custom_2 ;
-						asort($custom_2_filters);
+						//asort($custom_2_filters);
 					}
 				}
 
@@ -831,7 +831,7 @@ class render extends Feature {
 				if (!in_array($custom_1, $custom_1_filters)) {
 					if ($custom_1) {
 						$custom_1_filters[] = $custom_1 ;
-						asort($custom_1_filters);
+						//asort($custom_1_filters);
 					}
 				}
 

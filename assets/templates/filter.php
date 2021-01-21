@@ -107,6 +107,7 @@
 					<?php endif ?>
 				<?php elseif ($filtertype == 'custom_3') : ?>
 					<?php if ($custom_3_filters): ?>
+						<?php asort($custom_3_filters); ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_3-checkboxes">
 							<?php  ?>
 							<label class="filteroption-label"><?php echo $value ?></label>
@@ -117,6 +118,7 @@
 					<?php endif ?>
 				<?php elseif ($filtertype == 'custom_2') : ?>
 					<?php if ($custom_2_filters): ?>
+						<?php asort($custom_2_filters); ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_2-checkboxes">
 							<?php  ?>
 							<label class="filteroption-label"><?php echo $value ?></label>
@@ -127,6 +129,7 @@
 					<?php endif ?>
 				<?php elseif ($filtertype == 'custom_1') : ?>
 					<?php if ($custom_1_filters): ?>
+						<?php asort($custom_1_filters); ?>
 						<div class="filteroption complex-filter-checkboxwrapper filteroption-custom_1-checkboxes">
 							<?php  ?>
 							<label class="filteroption-label"><?php echo $value ?></label>
