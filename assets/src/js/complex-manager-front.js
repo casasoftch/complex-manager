@@ -13,7 +13,7 @@ if (typeof getCXMscrollOffset === "undefined") {
 
 if (typeof cxmCallContactFormClickHandler === "undefined") {
 	function cxmCallContactFormClickHandler(){
-		jQuery('.complex-call-contact-form').click(function(event) {
+		jQuery('.complex-call-contact-form').on('click', function(event) {
 			event.preventDefault();
 			var unit_id = jQuery(this).data('unit-id');
 			var $recipients = jQuery(this).closest('[data-recipients]');
@@ -643,7 +643,7 @@ jQuery( function () {
 		$('.complex-list-wrapper #complexContactForm').hide();
 
 		//fixes safari 6?
-		$(".complex-project-graphic img").load(function(){
+		$(".complex-project-graphic img").on('load', function(){
 			$('.complex-project-graphic-interaction').height($('.complex-project-graphic img').height());
 		});
 
@@ -707,10 +707,17 @@ jQuery( function () {
 			}
 		});
 
-		//row hover
-		$('.complex-unit-header-row').hover(function() {
+		//row hover deprecated hover
+/* 		$('.complex-unit-header-row').hover(function() {
 			highlightProjectUnit($(this), getCXMFadeSpeed());
 		}, function(){
+			unhighlightProjectUnit($(this), getCXMFadeSpeed());
+		}); */
+
+		$(".complex-unit-header-row").on('mouseenter', function(){
+			highlightProjectUnit($(this), getCXMFadeSpeed());
+		})
+		.on('mouseleave', function(){
 			unhighlightProjectUnit($(this), getCXMFadeSpeed());
 		});
 
@@ -729,13 +736,13 @@ jQuery( function () {
 			if ($('#'+hash).length) {
 				$('#'+hash).click();
 			}
-		}).hover(function(){
+		}).on('mouseenter', function(){
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
 			if ($('#'+hash).length) {
 				highlightProjectUnit($('#'+hash), getCXMFadeSpeed());
 			}
-		}, function(){
+		}).on('mouseleave', function(){
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
 			if ($('#'+hash).length) {
@@ -761,7 +768,7 @@ jQuery( function () {
 		// });
 
 		//close contact click
-		$('.complex-sendback-contact-form').click(function(event) {
+		$('.complex-sendback-contact-form').on('click', function(event) {
 			event.preventDefault();
 			$('#complexContactForm').slideUp('slow');
 			$('.complex-call-contact-form').show();
@@ -772,7 +779,7 @@ jQuery( function () {
 
 
 
-		$('#complexFilterForm').change(function(event) {
+		$('#complexFilterForm').on('change', function(event) {
 			var querystring = $('#complexFilterForm').serialize();
 			querystring = querystring.replace(/%5B/g, '[');
 			querystring = querystring.replace(/%5D/g, ']');

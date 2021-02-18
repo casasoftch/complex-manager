@@ -52,12 +52,14 @@ class render extends Feature {
 	        'labels' => '',
 	        'integrate_form' => "1",
 	        'collapsible' => "1",
+			'show_image' => "1",
 	        'building_id' => false,
 	        'class' => '',
 	    ), $atts );
 
 	    $a['integrate_form'] = (bool) $a['integrate_form'];
 	    $a['collapsible'] = (bool) $a['collapsible'];
+		$a['show_image'] = (bool) $a['show_image'];
 
 
 	    $cols = array();
@@ -87,7 +89,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], ($a['building_id'] ? $a['building_id'] : false), $a['class']);
+	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], $a['show_image'], ($a['building_id'] ? $a['building_id'] : false), $a['class']);
 	}
 
 	// [CXM-list-unit cols="name,price,rent" labels="Name,Preis,Mietpreis" sales="rent" type="3"]
@@ -478,7 +480,7 @@ class render extends Feature {
 		return $the_buildings;
 	}
 
-	public function renderTable($cols, $integrate_form = true, $collapsible = true, $building_id = false, $className = ''){
+	public function renderTable($cols, $integrate_form = true, $collapsible = true, $show_image = true, $building_id = false, $className = ''){
 		/*if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
@@ -491,7 +493,7 @@ class render extends Feature {
 		$template = $this->get_template();
 		$template->set( 'cols', $cols );
 		
-		$theBuildingsKey = 'renderTableTheBuildings_' . $integrate_form . '_' . $collapsible . '_' . $building_id;
+		$theBuildingsKey = 'renderTableTheBuildings_' . $integrate_form . '_' . $collapsible . '_' . $show_image . '_' . $building_id;
 		$fromtheBuildingsStorage = $this->getFromStorage($theBuildingsKey);
 		if ($fromtheBuildingsStorage) {
 			$theBuildings = $fromtheBuildingsStorage;
@@ -501,7 +503,7 @@ class render extends Feature {
 		}
 		$template->set( 'the_buildings', $theBuildings, $cols);
 
-		$buildingsKey = 'renderTablebuildings_' . $integrate_form . '_' . $collapsible . '_' . $building_id;
+		$buildingsKey = 'renderTablebuildings_' . $integrate_form . '_' . $collapsible . '_' . $show_image . '_' . $building_id;
 		$frombuildingsStorage = $this->getFromStorage($buildingsKey);
 		if ($frombuildingsStorage) {
 			$buildings = $frombuildingsStorage;
@@ -512,6 +514,7 @@ class render extends Feature {
 		$template->set( 'buildings', $buildings, $cols);
 
 		$template->set( 'collapsible', $collapsible );
+		$template->set( 'show_image', $show_image );
 		$template->set( 'integrate_form', $integrate_form );
 		$template->set( 'class', $className );
 
