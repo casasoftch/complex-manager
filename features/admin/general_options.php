@@ -23,7 +23,7 @@ class general_options extends Feature
     }
 
     public function load_external_scripts(){
-         wp_register_script('complex-manager-options', PLUGIN_URL . 'assets/js/complex-manager-options.js',  array('jquery') );
+         wp_register_script('complex-manager-options', PLUGIN_URL . 'assets/js/complex-manager-options.js',  array('jquery'), '2' );
 
         wp_enqueue_media();
         //wp_enqueue_script('media-upload');

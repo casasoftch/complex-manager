@@ -696,7 +696,7 @@ jQuery( function () {
 
 
 						} else if($(row).find('.col-quick-download a').length){
-							$(row).find('.col-quick-download a').first()[0].click();
+							$(row).find('.col-quick-download a').first()[0].trigger('click');
 						} else if($(row).find('.col-quick-download').length){
 							//silence
 						} else {
@@ -725,7 +725,7 @@ jQuery( function () {
 		//hash click
 		var curHash = $(location).attr('href').replace(/^.*?(#|$)/,'');
 		if (curHash && $('#'+curHash).length) {
-			$('#'+curHash).click();
+			$('#'+curHash).trigger('click');
 		}
 
 		//graphic svg click
@@ -734,7 +734,7 @@ jQuery( function () {
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
 			var hash = idx !== -1 ? url.substring(idx+1) : "";
 			if ($('#'+hash).length) {
-				$('#'+hash).click();
+				$('#'+hash).trigger('click');
 			}
 		}).on('mouseenter', function(){
 			var url =$(this).attr("xlink:href"), idx = url.indexOf("#");
@@ -752,7 +752,7 @@ jQuery( function () {
 
 		//open contact click
 		cxmCallContactFormClickHandler();
-		// $('.complex-call-contact-form').click(function(event) {
+		// $('.complex-call-contact-form').on('click', function(event) {
 		// 	event.preventDefault();
 		// 	var unit_id = $(this).data('unit-id');
 		// 	$('#complexContactForm form [name="complex-unit-inquiry[unit_id]"]').val(unit_id).prop('disabled','disabled');
@@ -804,7 +804,7 @@ jQuery( function () {
 		});
 
 
-		/*$('tr.complex-unit-header-row').click(function() {
+		/*$('tr.complex-unit-header-row').on('click', function() {
 			var $tr = $(this);
 			if ($('complex-unit-detail-row.active').length) {
 				alert('complex-unit active exists');

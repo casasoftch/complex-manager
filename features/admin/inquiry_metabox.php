@@ -100,7 +100,7 @@ class inquiry_metabox extends Feature {
 		 		wp_enqueue_script( 'jquery-canvasareadraw', PLUGIN_URL . 'assets/js/jquery.canvasAreaDraw.min.js', array('jquery'));
 
 		        // Registers and enqueues the required javascript.
-		        wp_register_script( 'complexmanager-meta-box', PLUGIN_URL.'/assets/js/complexmanager-meta-box.js' , array( 'jquery', 'wp-color-picker', 'jquery-canvasareadraw' ) );
+		        wp_register_script( 'complexmanager-meta-box', PLUGIN_URL.'/assets/js/complexmanager-meta-box.js' , array( 'jquery', 'wp-color-picker', 'jquery-canvasareadraw' ), '2' );
 		        wp_localize_script( 'complexmanager-meta-box', 'i18n',
 		            array(
 		                'title' => __( 'Choose or Upload a Document', 'complexmanager' ),
