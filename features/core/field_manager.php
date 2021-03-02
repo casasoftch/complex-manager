@@ -423,26 +423,37 @@ class field_manager extends Feature {
 				$datas['r_purchase_price']['value'] = __('upon request', 'complexmanager');
 				$datas['r_purchase_price']['pure_value'] = $value;
 			}
-			if ((int) $metas['rent_net']) {
-				$value = (int) $metas['rent_net'];
-				if ($value) {
-					$currency = $metas['currency'];
-					$datas['r_rent_net']['value'] = $this->render_money($value, $currency);
-					$datas['r_rent_net']['pure_value'] = $value;
-				}
+
+			$value = $metas['rent_net'];
+			if (is_numeric($value) && $value !== '0') {
+				$currency = $metas['currency'];
+				$datas['r_rent_net']['value'] = $this->render_money($value, $currency);
+				$datas['r_rent_net']['pure_value'] = $value;
+			} elseif ($value === '0') {
+				$datas['r_rent_net']['value'] = __('upon request', 'complexmanager');
+				$datas['r_rent_net']['pure_value'] = $value;
 			}
 			
-			if ((int) $metas['rent_net'] && (int) $metas['extra_costs']) {
+			
+			if (is_numeric($metas['rent_net']) && is_numeric($metas['extra_costs'])) {
 				$value = $metas['rent_net']+$metas['extra_costs'];
 				$datas['rent_gross']['value'] = $value;
 				$datas['rent_gross']['pure_value'] = $value;
 			}
 
-			if ((int) $datas['rent_gross']['value']) {
-				$value = $datas['rent_gross']['value'];
+			if (is_numeric($datas['rent_gross']['value'])) {
+				$netvalue = $metas['rent_net'];
 				$currency = $metas['currency'];
 				$datas['r_rent_gross']['value'] = $this->render_money($value, $currency);
 				$datas['r_rent_gross']['pure_value'] = $value;
+				if (is_numeric($netvalue) && $netvalue !== '0') {
+					$currency = $metas['currency'];
+					$datas['r_rent_gross']['value'] = $this->render_money($value, $currency);
+					$datas['r_rent_gross']['pure_value'] = $value;
+				} elseif ($netvalue === '0') {
+					$datas['r_rent_gross']['value'] = __('upon request', 'complexmanager');
+					$datas['r_rent_gross']['pure_value'] = $value;
+				}
 			}
 			
 			$decimal_spaces = $this->get_option('space_decimal', 1);
