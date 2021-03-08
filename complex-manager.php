@@ -126,23 +126,10 @@ if( ! class_exists('acf') ) {
 	include_once(plugin_dir_path( __FILE__ ) . '/assets/acf/acf.php' );
 }
 
-
-
-
-
 if (isset($_GET['emonitorupdate']) && $_GET['page'] == "complexmanager-admin") {
 	$import = new eMonitorImport(false, true);
 	$import->addToLog('Update from Emonitor caused import');
 }
-
-function updateThemeUnits() {
-    $import = new eMonitorImport(false, true);
-    $import->addToLog('Automatic Update from Emonitor caused import');
-}
-
-add_action('update_theme_units_event', 'updateThemeUnits');
-
-
 
 //...and away we go!
 add_action( 'plugins_loaded', array( 'casasoft\complexmanager\ComplexManager', 'init' ) );

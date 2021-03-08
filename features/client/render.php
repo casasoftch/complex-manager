@@ -1056,7 +1056,7 @@ class render extends Feature {
 			}
 
 			$remcat_arr = array(
-				'' => '',
+				'Hash davor' => '', //Ein valides Remcat beinhaltet genau 27 Hashes. Startet mit # und endet mit ##
 				'Immobilienportalname' => $portalName, //homegate
 				'Immobilienverwaltung Name' => $companyName, //PSP Management AG
 				'Immobilienverwaltung Adresse' => $companyStreet, //Baslerstrasse 44

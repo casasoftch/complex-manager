@@ -11,16 +11,17 @@ class eMonitorImport extends Feature{
   public $trid_store = array();
 
 
-  public function __construct($doimport = false, $emonitorupdate = false){
-    // if ($doimport) {
-    //   $this->addToLog('doimport ' . time());
-    //   //add_action( 'init', array($this, 'casawpImport') );
-    // }
-    if ($emonitorupdate) {
-      $this->addToLog('updateImportDataThroughEmonitor ' . time());
-      //add_action( 'init', array($this, 'updateImportFileThroughCasaGateway') );
-      add_action( 'init', array($this, 'updateImportDataThroughEmonitor'), 20);
-    }
+  public function __construct($autoimport = false, $emonitorupdate = false){
+      if ($autoimport) {
+        $this->addToLog('autoimport ' . time());
+        $this->updateImportDataThroughEmonitor();
+        //add_action( 'init', array($this, 'casawpImport') );
+      }
+      elseif ($emonitorupdate) {
+        $this->addToLog('updateImportDataThroughEmonitor ' . time());
+        //add_action( 'init', array($this, 'updateImportFileThroughCasaGateway') );
+        add_action( 'init', array($this, 'updateImportDataThroughEmonitor'), 20);
+      }
   } 
 
 
