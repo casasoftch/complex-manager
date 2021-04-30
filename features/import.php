@@ -12,17 +12,19 @@ class eMonitorImport extends Feature{
 
 
   public function __construct($autoimport = false, $emonitorupdate = false){
-      if ($autoimport) {
-        $this->addToLog('autoimport ' . time());
-        $this->updateImportDataThroughEmonitor();
-        //add_action( 'init', array($this, 'casawpImport') );
-      }
-      elseif ($emonitorupdate) {
-        $this->addToLog('updateImportDataThroughEmonitor ' . time());
-        //add_action( 'init', array($this, 'updateImportFileThroughCasaGateway') );
-        add_action( 'init', array($this, 'updateImportDataThroughEmonitor'), 20);
-      }
+    if ($autoimport) {
+      $this->addToLog('autoimport ' . time());
+      $this->updateImportDataThroughEmonitor();
+      //add_action( 'init', array($this, 'casawpImport') );
+    }
+    elseif ($emonitorupdate) {
+      $this->addToLog('updateImportDataThroughEmonitor ' . time());
+      //add_action( 'init', array($this, 'updateImportFileThroughCasaGateway') );
+      add_action( 'init', array($this, 'updateImportDataThroughEmonitor'), 20);
+    }
   } 
+
+  
 
 
   public function r( $data ){
@@ -575,7 +577,7 @@ class eMonitorImport extends Feature{
 
 
     if ($apikey) {
-
+      
       //build url
       $url = $apikey;
       //$this->addToLog($url);
@@ -595,9 +597,14 @@ class eMonitorImport extends Feature{
           curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
           $response = curl_exec($ch);
           $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-          if($httpCode == 404) {
-              $response = $httpCode;
+
+
+          $this->addToLog($httpCode);
+
+          if($httpCode == 404 || $httpCode == 0 || $httpCode == 301) {
+            $response = false;
           }
+
       } catch (Exception $e) {
           $response =  $e->getMessage() ;
           $this->addToLog('gateway ERR (' . $response . '): ' . time());
@@ -612,20 +619,35 @@ class eMonitorImport extends Feature{
         $file = CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.xml';
 
         file_put_contents($file, $response);
+
+        $this->addToLog('gateway start update: ' . time());
+        //UPDATE OFFERS NOW!!!!
+        if ($this->getEmonitorImportFile()) {
+          $this->addToLog('import start');
+          $this->updateUnits($response);
+          $this->addToLog('import end');
+        }
+
+
       } else {
         $this->addToLog('ERR no response from gateway: ' . time());
-        $this->addToLog(curl_error($ch));
+
+        $emailreal = "alert@casasoft.com";
+        $subject = get_bloginfo('name');
+        $message = "Die Emonitor Schnittstelle scheint nicht mehr zu funktionieren. Kann das sein? Bitte prüfen.";
+        $headers[] = 'Content-Type: text/html; charset=UTF-8';
+        //$headers[] = 'From: no-reply@central-malley.ch <no-reply@central-malley.ch>';
+
+        $sent = wp_mail( $emailreal, $subject, $message, $headers);
+
+        if( $sent ){
+            $this->addToLog('Email Notification Sent! : ' . $emailreal);
+        } else {
+            $this->addToLog('Email Notification NOT Sent! : ' . $emailreal);
+        }
+
       }
       curl_close($ch);
-
-      $this->addToLog('gateway start update: ' . time());
-      //UPDATE OFFERS NOW!!!!
-      if ($this->getEmonitorImportFile()) {
-        $this->addToLog('import start');
-        $this->updateUnits($response);
-        $this->addToLog('import end');
-      }
-
 
       //echo '<div id="message" class="updated">XML wurde aktualisiert</div>';
     } else {
@@ -1666,9 +1688,9 @@ class eMonitorImport extends Feature{
 
     //$this->addToLog('propertystatus ' . $property['state_simplyfied']);
 
-    if ($property['state_simplyfied'] == 'reserviert') {
+    if ($property['state_simplyfied'] == 'reserviert' || $property['state_simplyfied'] == 'Reserviert') {
       $property['state_simplyfied'] = 'reserved';
-    }  elseif($property['state_simplyfied'] == 'Vermietet'){
+    }  elseif($property['state_simplyfied'] == 'vermietet' || $property['state_simplyfied'] == 'Vermietet' ){
       $property['state_simplyfied'] = 'rented';
     }  else{
       $property['state_simplyfied'] = 'available';
