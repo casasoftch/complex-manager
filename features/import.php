@@ -747,6 +747,7 @@ class eMonitorImport extends Feature{
         'additional_costs_2'       =>  ($property_xml->additional_costs_2 ?:''),
         'min_adult'       =>  ($property_xml->min_adult ?:''),
         'max_adult'       =>  ($property_xml->max_adult ?:''),
+        'rental_conditions'       =>  ($property_xml->rental_conditions ?:''),
 
     );
 
@@ -857,7 +858,6 @@ class eMonitorImport extends Feature{
     // "pets": false,
     // "dogs_allowed": false,
     // "cats_allowed": false,
-    // "rental_conditions": null,
     // "min_child": 0,
     // "max_child": 0,
     // "target_group": null,
@@ -1741,7 +1741,7 @@ class eMonitorImport extends Feature{
 
     $propertytype = PluginOptions::get_option( 'propertytype', false ); //works false or 1
     if ($propertytype == 1){
-      $new_meta_data['_complexmanager_unit_custom_1']             = $property['property_type'];
+      $new_meta_data['_complexmanager_unit_custom_1']             = $property['rental_conditions'];
     }
 
     // $new_meta_data['_complexmanager_unit_custom_1']             = $property['floor']; kein passendes emonitor feld
