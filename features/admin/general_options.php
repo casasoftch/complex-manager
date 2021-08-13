@@ -458,6 +458,10 @@ class general_options extends Feature
         if( isset( $input['squaremeterprices'] ) ) {
             $new_input['squaremeterprices'] = sanitize_text_field( $input['squaremeterprices'] );
         }
+
+        if( isset( $input['propertytype'] ) ) {
+            $new_input['propertytype'] = sanitize_text_field( $input['propertytype'] );
+        }
         
         if( isset( $input['contactform_mandatory_phone'] ) ) {
             $new_input['contactform_mandatory_phone'] = sanitize_text_field( $input['contactform_mandatory_phone'] );
@@ -1244,6 +1248,22 @@ class general_options extends Feature
                             echo
                                 '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[squaremeterprices]" value="0" />
                                 <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="squaremeterprices" name="complex_manager[squaremeterprices]" value="1" /></div>'
+
+                            ; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code><strong>Objektart in Custom 1 Feld?</strong></code></td>
+                        <td>
+                            <?php
+
+                            $checked = false;
+                            if (($this->options['propertytype'] && isset( $this->options['propertytype']))) {
+                                $checked = true;
+                            }
+                            echo
+                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[propertytype]" value="0" />
+                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="propertytype" name="complex_manager[propertytype]" value="1" /></div>'
 
                             ; ?>
                         </td>

@@ -1739,6 +1739,11 @@ class eMonitorImport extends Feature{
       $new_meta_data['_complexmanager_unit_custom_3']             = "CHF " . $property['rentalprice_squaremeter_net'] . "/m²/Jahr";
     }
 
+    $propertytype = PluginOptions::get_option( 'propertytype', false ); //works false or 1
+    if ($propertytype == 1){
+      $new_meta_data['_complexmanager_unit_custom_1']             = $property['property_type'];
+    }
+
     // $new_meta_data['_complexmanager_unit_custom_1']             = $property['floor']; kein passendes emonitor feld
     // $new_meta_data['_complexmanager_unit_custom_2']             = $property['floor']; kein passendes emonitor feld
     // $new_meta_data['_complexmanager_unit_custom_3']             = $property['floor']; kein passendes emonitor feld
