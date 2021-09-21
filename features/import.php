@@ -1817,6 +1817,17 @@ class eMonitorImport extends Feature{
 
     $this->addToLog('finish property update: [' . $casawp_id . ']' . time());
 
+    $removed = 0;
+    $dir = wp_upload_dir(null, true, false);
+    if (is_dir($dir['basedir'] . '/cmx_cache')) {
+        $files = glob($dir['basedir'] . '/cmx_cache/*');
+        foreach($files as $file){ // iterate files
+          if(is_file($file))
+            unlink($file); // delete file
+            $removed++;
+        }
+    }
+
   }
 }
 

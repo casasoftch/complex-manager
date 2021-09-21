@@ -248,6 +248,9 @@ class render extends Feature {
 		foreach ($cols as $field => $col) {
 			$value = get_cxm($unit, $field);
 			$data[$field] = htmlentities($value);
+			if (($field == 'r_link' && $col['hidden-reserved'] == 1) || ($field == 'quick-download' && $col['hidden-reserved'] == 1)) {
+				$data[$field] = 'hidden-reserved';
+			}
 		}
 		$the_unit['data'] = $data;
 
@@ -255,6 +258,7 @@ class render extends Feature {
 		$i = 0;
 		foreach ($cols as $field => $col) {
 
+			
 			$i++;
 			if ($col['active']){
 				$displayItem = array(

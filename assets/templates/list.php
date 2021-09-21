@@ -35,6 +35,7 @@
 					<tbody>
 						<?php 
 						foreach ($building['the_units'] as $the_unit) {
+							
 							$type_array = wp_get_post_terms($the_unit['post']->ID, 'unit_type', array( 'field' => 'slugs' ));
 							$types = '';
 							$new_types = array();
@@ -73,42 +74,50 @@
 													echo $content;
 												?>
 												<?php if (get_cxm($the_unit['post'], 'download_file')): ?>
-												 	<a target="_blank" class="
-												 		<?php 
-															$html = 'btn btn-primary pull-left complex-download-btn';
-															echo apply_filters('cxm_render_download_button_classes', $html);
-														?>" 
-													href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
-														<span>
-															<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
-														</span>
-												 		<?php 
-															$html = '';
-															echo apply_filters('cxm_render_download_button_additional_content', $html);
-														?>	
-													</a>
+													<?php if ($the_unit['data']['status'] == 'reserved' && $the_unit['data']['quick-download'] == 'hidden-reserved'): ?>
+
+													<?php else: ?>
+														<a target="_blank" class="
+															<?php 
+																$html = 'btn btn-primary pull-left complex-download-btn';
+																echo apply_filters('cxm_render_download_button_classes', $html);
+															?>" 
+														href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
+															<span>
+																<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
+															</span>
+															<?php 
+																$html = '';
+																echo apply_filters('cxm_render_download_button_additional_content', $html);
+															?>	
+														</a>
+													<?php endif; ?>
 												<?php endif ?>
 												<?php if (get_cxm($the_unit['post'], 'link_url')): ?>
-												 	<a 
-												 		<?php if (get_cxm($the_unit['post'], 'link_target')): ?> 
-												 			target="<?php echo get_cxm($the_unit['post'], 'link_target') ?>"
-												 		<?php else: ?>
-												 			target="_self"
-														<?php endif; ?>
-												 			class="
-												 		<?php 
-															$html = 'btn btn-primary pull-left complex-link-btn';
-															echo apply_filters('cxm_render_link_button_classes', $html);
-														?>" 
-													href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-														<span>
-															<?php echo (get_cxm($the_unit['post'], 'link_label') ? get_cxm($the_unit['post'], 'link_label') : 'Link') ?>
-														</span>
-												 		<?php 
-															$html = '';
-															echo apply_filters('cxm_render_link_button_additional_content', $html);
-														?>	
-													</a>
+													<?php if ($the_unit['data']['status'] == 'reserved' && $the_unit['data']['r_link'] == 'hidden-reserved'): ?>
+
+													<?php else: ?>
+														<a 
+															<?php if (get_cxm($the_unit['post'], 'link_target')): ?> 
+																target="<?php echo get_cxm($the_unit['post'], 'link_target') ?>"
+															<?php else: ?>
+																target="_self"
+															<?php endif; ?>
+																class="
+															<?php 
+																$html = 'btn btn-primary pull-left complex-link-btn';
+																echo apply_filters('cxm_render_link_button_classes', $html);
+															?>" 
+														href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
+															<span>
+																<?php echo (get_cxm($the_unit['post'], 'link_label') ? get_cxm($the_unit['post'], 'link_label') : 'Link') ?>
+															</span>
+															<?php 
+																$html = '';
+																echo apply_filters('cxm_render_link_button_additional_content', $html);
+															?>	
+														</a>
+													<?php endif; ?>
 												<?php endif ?>
 											 	<?php if ($the_unit['status'] != 'sold' && $the_unit['status'] != 'rented' && $integrate_form): ?>
 											 		<a class="
