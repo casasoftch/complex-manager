@@ -74,7 +74,7 @@
 													echo $content;
 												?>
 												<?php if (get_cxm($the_unit['post'], 'download_file')): ?>
-													<?php if ($the_unit['data']['status'] == 'reserved' && $the_unit['data']['quick-download'] == 'hidden-reserved'): ?>
+													<?php if (($the_unit['data']['status'] == 'reserved' && $the_unit['data']['quick-download'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'sold' && $the_unit['data']['quick-download'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'rented' && $the_unit['data']['quick-download'] == 'hidden-reserved')): ?>
 
 													<?php else: ?>
 														<a target="_blank" class="
@@ -94,7 +94,7 @@
 													<?php endif; ?>
 												<?php endif ?>
 												<?php if (get_cxm($the_unit['post'], 'link_url')): ?>
-													<?php if ($the_unit['data']['status'] == 'reserved' && $the_unit['data']['r_link'] == 'hidden-reserved'): ?>
+													<?php if (($the_unit['data']['status'] == 'reserved' && $the_unit['data']['r_link'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'sold' && $the_unit['data']['r_link'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'rented' && $the_unit['data']['r_link'] == 'hidden-reserved')): ?>
 
 													<?php else: ?>
 														<a 
