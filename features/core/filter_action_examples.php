@@ -1,5 +1,5 @@
 <?php
-namespace casasoft\complexmanager;
+/* namespace casasoft\complexmanager;
 
 class filter_action_examples extends Feature {
 
@@ -8,7 +8,6 @@ class filter_action_examples extends Feature {
 		$this->add_action( 'cxm_render_after_form_parts', 'cxm_render_after_form_parts', 10 );
 	}
 
-	//inputs with extra_data[custom_key] will be persisted
 	public function cxm_render_before_form_parts($data){
 		?>
 			<div class="row">
@@ -17,7 +16,7 @@ class filter_action_examples extends Feature {
 						<strong>I'm Interested in</strong>
 
 						<input type="hidden" name="extra_data[interest_residential]" value="0" />
-						<?php $randy = rand(0,100000); //example random identifier in case you somehow have this form rendered multiple times ?>
+						<?php $randy = rand(0,100000);  ?>
 						<div class="checkboxoption">
 							<input 
 								id="interest_residential_<?= $randy ?>" 
@@ -54,12 +53,11 @@ class filter_action_examples extends Feature {
 						</div>
 					</div>
 
-				</div> <?php /* end col */ ?>
+				</div> 
 				<div class="col-md-9">
 		<?
 	}
 
-	//inputs with extra_data[custom_key] will be persisted
 	public function cxm_render_after_form_parts($data){
 		?>
 					<input type="hidden" name="extra_data[send_me_documentations]" value="0" />
@@ -74,24 +72,13 @@ class filter_action_examples extends Feature {
 						<label for="send_me_documentations">Send to my E-Mail the Properties Documentation</label>
 					</div>
 
-				</div> <?php /* end col */ ?>
-			</div> <?php /* end row */ ?>
+				</div> 
+			</div> 
 		<?
 	}
-
-	//example of translating differently ^^
-	/*function theme_filter_gettext($translation, $text, $domain) {
-		if ($domain == 'complexmanager' && $text == 'Contact') {
-			$translations = get_translations_for_domain( $domain );
-			return $translations->translate( 'Demande de Dossier' );
-	  	}
-	  return $translation;
-	}
-	add_filter('gettext', 'theme_filter_gettext', 10, 4);*/
-
 	
 
-}
+} */
 
 
 // Subscribe to the drop-in to the initialization event
