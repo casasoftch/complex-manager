@@ -16,11 +16,11 @@
 			<?php 
 				$individual_direct_recipients = '';
 				if (isset($building['term']->term_id) && $building['term']->term_id) {
-					$individual_direct_recipients = get_field('individual-direct-recipients', 'building_'.$building['term']->term_id);
+					$individual_direct_recipients = get_term_meta($building['term']->term_id, 'individual-direct-recipients');
 				}
 			 ?>
 			<div class="unit-description"><?= wpautop( $building['description'], false ); ?></div>
-			<div class="table-responsive complex-building-<?= $building['term']->slug ?>" data-recipients="<?php echo $individual_direct_recipients ?>">
+			<div class="table-responsive complex-building-<?= $building['term']->slug ?>" data-recipients="<?php echo implode(',', $individual_direct_recipients) ?>">
 				<table class="table table-condensed">
 					<thead>
 						<tr class="col-labels">
