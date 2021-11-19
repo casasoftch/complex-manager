@@ -559,7 +559,7 @@ class render extends Feature {
 
 	    //building specific base image
 	    if ($building_id) {
-	    	$project_image_alt_id = get_field('alternate-base-image', 'building_'.$building_id);
+	    	$project_image_alt_id = get_term_meta($building_id, 'alternate-base-image', true);
 	    	if ($project_image_alt_id) {
 		        $image_attributes = wp_get_attachment_image_src( $project_image_alt_id, 'full' ); // returns an array
 		        if ($image_attributes) {
