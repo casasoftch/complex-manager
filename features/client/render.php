@@ -622,6 +622,8 @@ class render extends Feature {
 
 	   	//print_r($defaultLabelArray);
 
+		$lang = get_locale();
+
 	   	foreach ($labels as $key => $label) {
 			   //print_r($label);
 	   		if ($key == 'r_living_space') {
@@ -639,11 +641,11 @@ class render extends Feature {
 	   		if ($key == 'r_purchase_price') {
 	   			$key = 'purchaseprice';
 	   		}
-	   		if ($label['label']) {
+	   		if ($label['label'] && $lang == 'de_DE') {
 	   			$labelArray[$key] = $label['label'];
-	   		} elseif($label['label_en']) {
+	   		} elseif($label['label_en'] && $lang == 'en_US') {
 				$labelArray[$key] = $label['label_en'];
-			} elseif($label['label_fr']) {
+			} elseif($label['label_fr'] && $lang == 'fr_FR') {
 				$labelArray[$key] = $label['label_fr'];
 			}
 	   	}
