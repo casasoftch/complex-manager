@@ -623,6 +623,7 @@ class render extends Feature {
 	   	//print_r($defaultLabelArray);
 
 	   	foreach ($labels as $key => $label) {
+			   //print_r($label);
 	   		if ($key == 'r_living_space') {
 	   			$key = 'livingspace';
 	   		}
@@ -640,7 +641,11 @@ class render extends Feature {
 	   		}
 	   		if ($label['label']) {
 	   			$labelArray[$key] = $label['label'];
-	   		}
+	   		} elseif($label['label_en']) {
+				$labelArray[$key] = $label['label_en'];
+			} elseif($label['label_fr']) {
+				$labelArray[$key] = $label['label_fr'];
+			}
 	   	}
 
 	   	$filterLabelArray = array_merge($defaultLabelArray, $labelArray);
