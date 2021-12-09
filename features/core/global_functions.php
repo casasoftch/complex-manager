@@ -63,9 +63,9 @@ function get_cxm($object_id = false, $key = false, $label = false, $type = false
 	}
 
 	if ($type == 'complex_unit') {
-		return $fm->getUnitField($post, $key, $label);
+		return $fm->getUnitField($key, $post, $label);
 	} elseif ($type == 'complex_inquiry') {
-		return $fm->getInquiryField($post, $key, $label);
+		return $fm->getInquiryField($key, $post, $label);
 	}
 	return '';
 }
@@ -84,7 +84,7 @@ function get_cxm_item($object_id = false, $key = false, $type = false){
     }
 
     if ($type == 'complex_unit') {
-        return $fm->getUnitItem($post, $key);
+        return $fm->getUnitItem($key, $post);
     } elseif ($type == 'complex_inquiry') {
         return $fm->getInquiryItem($post, $key);
     }

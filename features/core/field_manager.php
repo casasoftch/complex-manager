@@ -156,7 +156,7 @@ class field_manager extends Feature {
 		return false;
 	}
 
-	public function getInquiryField($inquiry = false, $key, $label = false){
+	public function getInquiryField($key, $inquiry = false, $label = false){
 		$item = $this->getInquiryItem($inquiry, $key);
 		if ($item) {
 			if ($label) {
@@ -492,7 +492,7 @@ class field_manager extends Feature {
 		return $datas;
 	}
 
-	public function getUnitItem($unit = false, $key){
+	public function getUnitItem($key, $unit = false){
 		$datas = $this->getUnitItems($unit);
 
 		if (isset($datas[$key])) {
@@ -501,8 +501,8 @@ class field_manager extends Feature {
 		return false;
 	}
 
-	public function getUnitField($unit = false, $key, $label = false){
-		$item = $this->getUnitItem($unit, $key);
+	public function getUnitField($key, $unit = false, $label = false){
+		$item = $this->getUnitItem($key, $unit);
 		if ($item) {
 			if ($label) {
 				return $item['label'];
