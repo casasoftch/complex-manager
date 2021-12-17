@@ -462,6 +462,10 @@ class general_options extends Feature
         if( isset( $input['propertytype'] ) ) {
             $new_input['propertytype'] = sanitize_text_field( $input['propertytype'] );
         }
+
+        if( isset( $input['virtualtour'] ) ) {
+            $new_input['virtualtour'] = sanitize_text_field( $input['virtualtour'] );
+        }
         
         if( isset( $input['contactform_mandatory_phone'] ) ) {
             $new_input['contactform_mandatory_phone'] = sanitize_text_field( $input['contactform_mandatory_phone'] );
@@ -1264,6 +1268,22 @@ class general_options extends Feature
                             echo
                                 '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[propertytype]" value="0" />
                                 <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="propertytype" name="complex_manager[propertytype]" value="1" /></div>'
+
+                            ; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code><strong>Virtuelle Tour in Custom 2 Feld?</strong></code></td>
+                        <td>
+                            <?php
+
+                            $checked = false;
+                            if (($this->options['virtualtour'] && isset( $this->options['virtualtour']))) {
+                                $checked = true;
+                            }
+                            echo
+                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[virtualtour]" value="0" />
+                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="virtualtour" name="complex_manager[virtualtour]" value="1" /></div>'
 
                             ; ?>
                         </td>

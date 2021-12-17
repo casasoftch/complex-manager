@@ -1706,6 +1706,10 @@ class eMonitorImport extends Feature{
       $property['rentalgross_net'] = $property['rentalprice_squaremeter_net'];
     }
 
+
+
+    
+
     /* echo '<pre>';
     print_r($property);
     echo '</pre>'; */
@@ -1742,6 +1746,11 @@ class eMonitorImport extends Feature{
     $propertytype = PluginOptions::get_option( 'propertytype', false ); //works false or 1
     if ($propertytype == 1){
       $new_meta_data['_complexmanager_unit_custom_1']             = $property['rental_conditions'];
+    }
+
+    $virtualtour = PluginOptions::get_option( 'virtualtour', false ); //works false or 1
+    if ($virtualtour == 1){
+      $new_meta_data['_complexmanager_unit_custom_2']             = $property['virtual_tour_link'];
     }
 
     // $new_meta_data['_complexmanager_unit_custom_1']             = $property['floor']; kein passendes emonitor feld
