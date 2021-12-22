@@ -1628,7 +1628,7 @@ class eMonitorImport extends Feature{
     }
 
     $name = $property['title'];
-    $buildingcontent = $property['building_adress'] . ' ' . $property['building_house_number'] . ' ' . $property['building_plz'] . ' ' . $property['building_city']; 
+    $buildingcontent = $property['building_adress'] . ' ' . $property['building_house_number'] . ', ' . $property['building_plz'] . ' ' . $property['building_city']; 
     if (is_array($name)) {
       $name = $name[0];
     }
