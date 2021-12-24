@@ -73,7 +73,6 @@ class general_options extends Feature
         $this->options = get_option( 'complex_manager' );
         ?>
         <div class="wrap">
-            <?php screen_icon(); ?>
             <h2>Complex Manager</h2>
             <form method="post" action="options.php">
                 <?php
@@ -1166,7 +1165,7 @@ class general_options extends Feature
                                 <?php else: ?>
                                     <td><strike><code>data.xml</code></strike></td>
                                 <?php endif ?>
-                                <td><a href="<?php echo $manually  ?>">Import Manuel anstossen</a></td>
+                                <td><a href="<?php #echo $manually  ?>">Import Manuel anstossen</a></td>
                             </tr>
                             <tr>
                                 <?php $file = CASASYNC_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-done.xml'; if (file_exists($file)) : ?>
@@ -1174,7 +1173,7 @@ class general_options extends Feature
                                 <?php else: ?>
                                     <td><strike><code>data-done.xml</code></strike></td>
                                 <?php endif ?>
-                                <td><a href="<?php echo $force_last  ?>">Letzer erfolgreicher Import erneut anstossen</a></td>
+                                <td><a href="<?php #echo $force_last  ?>">Letzer erfolgreicher Import erneut anstossen</a></td>
                             </tr>
                             <tr>
                                 <?php $file = CASASYNC_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-done.xml'; if (file_exists($file)) : ?>
@@ -1182,15 +1181,15 @@ class general_options extends Feature
                                 <?php else: ?>
                                     <td><strike><code>data-done.xml</code></strike></td>
                                 <?php endif ?>
-                                <td><a href="<?php echo $forced  ?>">Letzer erfolgreicher Import erneut anstossen und alle Objekte zwingendermasse durchtesten</a></td>
+                                <td><a href="<?php #echo $forced  ?>">Letzer erfolgreicher Import erneut anstossen und alle Objekte zwingendermasse durchtesten</a></td>
                             </tr>
                             <tr>
-                                <?php if ($this->options['cxm_api_key'] && $this->options['cxm_private_key']): ?>
+                                <?php #if ($this->options['cxm_api_key'] && $this->options['cxm_private_key']): ?>
                                     <td><code><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></code></td>
-                                <?php else: ?>
+                                <?php #else: ?>
                                     <td><strike><code><strong>CASA</strong><span style="font-weight:100">GATEWAY</span></code></strike></td>
-                                <?php endif ?>
-                                <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&gatewayupdate=1'); ?>">Import Ausführen</a></td>
+                                <?php #endif ?>
+                                <td><a href="<?php #echo  get_admin_url('', 'admin.php?page=complexmanager-admin&gatewayupdate=1'); ?>">Import Ausführen</a></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -1200,22 +1199,22 @@ class general_options extends Feature
                         <legend class="screen-reader-text"><span><strong>CASA</strong><span style="font-weight:100">GATEWAY</span> API Schlüssel</span></legend>
                         <?php $name = 'cxm_api_key'; ?>
                         <?php $text = '<strong>CASA</strong><span style="font-weight:100">GATEWAY</span> • API Key'; ?>
-                        <p><?php echo $text; ?></p>
+                        <p><?php #echo $text; ?></p>
                         <p>
-                            <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                            <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php #echo $name ?>]" value="<?php #echo $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                         </p>
                     </fieldset>
                     <fieldset>
                         <legend class="screen-reader-text"><span><strong>CASA</strong><span style="font-weight:100">GATEWAY</span> Privater Schlüssel</span></legend>
                         <?php $name = 'cxm_private_key'; ?>
                         <?php $text = '<strong>CASA</strong><span style="font-weight:100">GATEWAY</span> • Private Key'; ?>
-                        <p><?php echo $text; ?></p>
+                        <p><?php #echo $text; ?></p>
                         <p>
-                            <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                            <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php #echo $name ?>]" value="<?php #echo $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                         </p>
                     </fieldset>
-            </td>
-        </tr> -->
+                </td>
+            </tr> -->
 
         
 

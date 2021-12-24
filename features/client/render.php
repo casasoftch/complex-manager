@@ -1017,7 +1017,7 @@ class render extends Feature {
 		return true;
 	}
 
-	public function sendRemcat($to = false, $inquiry){
+	public function sendRemcat($inquiry, $to = false){
 		if ($to) {
 			$remcat = $to;
 		} else {
@@ -1116,7 +1116,7 @@ class render extends Feature {
 		}
 	}
 
-	public function sendEmail($to = false, $inquiry){
+	public function sendEmail($inquiry, $to = false){
 		if ($to) {
 			$emails = $to;
 		} else {
@@ -1182,7 +1182,7 @@ class render extends Feature {
 
 	}
 
-	public function sendCasamail($provider = false, $publisher = false, $inquiry, $formData){
+	public function sendCasamail($inquiry, $formData, $provider = false, $publisher = false){
 
 		if (!$provider) {
 			$provider = $this->get_option("provider_slug");
@@ -1419,9 +1419,9 @@ class render extends Feature {
 								$inquiry = $this->storeInquiry($inq_post, $formData);
 
 								do_action('cxm_before_inquirysend', $formData);
-								$this->sendEmail(false, $inquiry);
-								$this->sendRemcat(false, $inquiry);
-								$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+								$this->sendEmail($inquiry, false);
+								$this->sendRemcat($inquiry, false);
+								$casamail_msgs = $this->sendCasamail($inquiry, $formData, false, false);
 								if ($casamail_msgs) {
 									$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
 									$state = 'danger';
@@ -1459,9 +1459,9 @@ class render extends Feature {
 
 								do_action('cxm_before_inquirysend', $formData);
 
-								$this->sendEmail(false, $inquiry);
-								$this->sendRemcat(false, $inquiry);
-								$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+								$this->sendEmail($inquiry, false);
+								$this->sendRemcat($inquiry, false);
+								$casamail_msgs = $this->sendCasamail($inquiry, $formData, false, false);
 								if ($casamail_msgs) {
 									$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
 									$state = 'danger';
@@ -1493,9 +1493,9 @@ class render extends Feature {
 
 							do_action('cxm_before_inquirysend', $formData);
 
-							$this->sendEmail(false, $inquiry);
-							$this->sendRemcat(false, $inquiry);
-							$casamail_msgs = $this->sendCasamail(false, false, $inquiry, $formData);
+							$this->sendEmail($inquiry, false);
+							$this->sendRemcat($inquiry, false);
+							$casamail_msgs = $this->sendCasamail($inquiry, $formData, false, false);
 							if ($casamail_msgs) {
 								$msg .= 'CASAMAIL Fehler: '. print_r($casamail_msgs, true);
 								$state = 'danger';
