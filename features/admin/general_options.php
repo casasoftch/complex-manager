@@ -23,7 +23,7 @@ class general_options extends Feature
     }
 
     public function load_external_scripts(){
-         wp_register_script('complex-manager-options', PLUGIN_URL . 'assets/js/complex-manager-options.js',  array('jquery'), '2' );
+        wp_register_script('complex-manager-options', PLUGIN_URL . 'assets/js/complex-manager-options.js',  array('jquery'), '2' );
 
         wp_enqueue_media();
         //wp_enqueue_script('media-upload');
@@ -654,7 +654,7 @@ class general_options extends Feature
     public function contactform_mandatory_firstname_callback()
     {
         $checked = false;
-        if ($this->options['contactform_mandatory_firstname'] === NULL || ($this->options['contactform_mandatory_firstname'] && isset( $this->options['contactform_mandatory_firstname']))) {
+        if (($this->options['contactform_mandatory_firstname'] ?? TRUE) || (($this->options['contactform_mandatory_firstname'] ?? TRUE) && isset( $this->options['contactform_mandatory_firstname']))) {
             $checked = true;
         }
         echo
@@ -668,7 +668,7 @@ class general_options extends Feature
     public function contactform_mandatory_lastname_callback()
     {
         $checked = false;
-        if ($this->options['contactform_mandatory_lastname'] === NULL || ($this->options['contactform_mandatory_lastname'] && isset( $this->options['contactform_mandatory_lastname']))) {
+        if (($this->options['contactform_mandatory_lastname'] ?? TRUE) || (($this->options['contactform_mandatory_lastname'] ?? TRUE) && isset( $this->options['contactform_mandatory_lastname']))) {
             $checked = true;
         }
         echo
@@ -683,7 +683,7 @@ class general_options extends Feature
     public function contactform_mandatory_legalname_callback()
     {
         $checked = false;
-        if (($this->options['contactform_mandatory_legalname'] && isset( $this->options['contactform_mandatory_legalname']))) {
+        if ((($this->options['contactform_mandatory_legalname'] ?? TRUE) && isset( $this->options['contactform_mandatory_legalname']))) {
             $checked = true;
         }
         echo
@@ -698,7 +698,7 @@ class general_options extends Feature
     public function honeypot_callback()
     {
         $checked = false;
-        if (($this->options['honeypot'] && isset( $this->options['honeypot']))) {
+        if ((($this->options['honeypot'] ?? TRUE) && isset( $this->options['honeypot']))) {
             $checked = true;
         }
         echo
@@ -712,7 +712,7 @@ class general_options extends Feature
     public function contactform_mandatory_phone_callback()
     {
         $checked = false;
-        if ($this->options['contactform_mandatory_phone'] === NULL || ($this->options['contactform_mandatory_phone'] && isset( $this->options['contactform_mandatory_phone']))) {
+        if (($this->options['contactform_mandatory_phone'] ?? TRUE) || (($this->options['contactform_mandatory_phone'] ?? TRUE) && isset( $this->options['contactform_mandatory_phone']))) {
             $checked = true;
         }
         echo
@@ -727,7 +727,7 @@ class general_options extends Feature
     public function contactform_mandatory_mobile_callback()
     {
         $checked = false;
-        if (($this->options['contactform_mandatory_mobile'] && isset( $this->options['contactform_mandatory_mobile']))) {
+        if ((($this->options['contactform_mandatory_mobile'] ?? TRUE) && isset( $this->options['contactform_mandatory_mobile']))) {
             $checked = true;
         }
         echo
@@ -742,7 +742,7 @@ class general_options extends Feature
     public function contactform_mandatory_street_callback()
     {
         $checked = false;
-        if ($this->options['contactform_mandatory_street'] === NULL || ($this->options['contactform_mandatory_street'] && isset( $this->options['contactform_mandatory_street']))) {
+        if (($this->options['contactform_mandatory_street'] ?? TRUE) || (($this->options['contactform_mandatory_street'] ?? TRUE) && isset( $this->options['contactform_mandatory_street']))) {
             $checked = true;
         }
         echo
@@ -757,7 +757,7 @@ class general_options extends Feature
     public function contactform_mandatory_zip_callback()
     {
         $checked = false;
-        if ($this->options['contactform_mandatory_zip'] === NULL || ($this->options['contactform_mandatory_zip'] && isset( $this->options['contactform_mandatory_zip']))) {
+        if (($this->options['contactform_mandatory_zip'] ?? TRUE) || (($this->options['contactform_mandatory_zip'] ?? TRUE) && isset( $this->options['contactform_mandatory_zip']))) {
             $checked = true;
         }
         echo
@@ -772,7 +772,7 @@ class general_options extends Feature
     public function contactform_mandatory_locality_callback()
     {
         $checked = false;
-        if ($this->options['contactform_mandatory_locality'] === NULL || ($this->options['contactform_mandatory_locality'] && isset( $this->options['contactform_mandatory_locality']))) {
+        if (($this->options['contactform_mandatory_locality'] ?? TRUE) || (($this->options['contactform_mandatory_locality'] ?? TRUE) && isset( $this->options['contactform_mandatory_locality']))) {
             $checked = true;
         }
         echo
@@ -787,7 +787,7 @@ class general_options extends Feature
     public function contactform_mandatory_message_callback()
     {
         $checked = false;
-        if (($this->options['contactform_mandatory_message'] && isset( $this->options['contactform_mandatory_message']))) {
+        if ((($this->options['contactform_mandatory_message'] ?? TRUE) && isset( $this->options['contactform_mandatory_message']))) {
             $checked = true;
         }
         echo
@@ -970,7 +970,7 @@ class general_options extends Feature
         }
 
 
-        $cur_array = maybe_unserialize( $this->options['list_cols']);
+        $cur_array = maybe_unserialize( $this->options['list_cols'] ?? NULL);
         if ($cur_array && is_array($cur_array)) {
             foreach ($cur_array as $col => $options) {
                 if (isset($cols[$col])) {
@@ -1079,7 +1079,7 @@ class general_options extends Feature
             }
         }
 
-        $cur_array = maybe_unserialize( $this->options['list_filters']);
+        $cur_array = maybe_unserialize( $this->options['list_filters'] ?? NULL);
         if ($cur_array && is_array($cur_array)) {
             foreach ($cur_array as $col => $options) {
                 if (isset($filters[$col])) {
@@ -1229,7 +1229,7 @@ class general_options extends Feature
                             <?php
 
                             $checked = false;
-                            if (($this->options['separate_building_property_type'] && isset( $this->options['separate_building_property_type']))) {
+                            if ((($this->options['separate_building_property_type'] ?? TRUE) && isset( $this->options['separate_building_property_type']))) {
                                 $checked = true;
                             }
                             echo
@@ -1245,7 +1245,7 @@ class general_options extends Feature
                             <?php
 
                             $checked = false;
-                            if (($this->options['squaremeterprices'] && isset( $this->options['squaremeterprices']))) {
+                            if ((($this->options['squaremeterprices'] ?? TRUE) && isset( $this->options['squaremeterprices']))) {
                                 $checked = true;
                             }
                             echo
@@ -1261,7 +1261,7 @@ class general_options extends Feature
                             <?php
 
                             $checked = false;
-                            if (($this->options['propertytype'] && isset( $this->options['propertytype']))) {
+                            if ((($this->options['propertytype'] ?? TRUE) && isset( $this->options['propertytype']))) {
                                 $checked = true;
                             }
                             echo
@@ -1277,7 +1277,7 @@ class general_options extends Feature
                             <?php
 
                             $checked = false;
-                            if (($this->options['virtualtour'] && isset( $this->options['virtualtour']))) {
+                            if ((($this->options['virtualtour'] ?? TRUE) && isset( $this->options['virtualtour']))) {
                                 $checked = true;
                             }
                             echo
@@ -1288,7 +1288,7 @@ class general_options extends Feature
                         </td>
                     </tr>
                     <tr>
-                        <?php if ($this->options['cxm_emonitor_api']): ?>
+                        <?php if (($this->options['cxm_emonitor_api'] ?? FALSE)): ?>
                             <td><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></td>
                         <?php else: ?>
                             <td><strike><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></strike></td>
@@ -1313,7 +1313,7 @@ class general_options extends Feature
                 <?php $text = '<strong>Emonitor</strong><span style="font-weight:100"></span> • API'; ?>
                 <p><?php echo $text; ?></p>
                 <p>
-                    <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                    <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                 </p>
             </fieldset>
         </td>

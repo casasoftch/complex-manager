@@ -1077,7 +1077,7 @@ class acf_field_flexible_content extends acf_field {
 	*  @return	(array)
 	*/
 	
-	function get_layout( $name = '', $field ) {
+	function get_layout( $field, $name = '' ) {
 		
 		// bail early if no layouts
 		if( !isset($field['layouts']) ) return false;
@@ -1113,7 +1113,7 @@ class acf_field_flexible_content extends acf_field {
 	*  @return	(boolean)
 	*/
 	
-	function delete_row( $i = 0, $field, $post_id ) {
+	function delete_row( $field, $post_id, $i = 0 ) {
 		
 		// vars
 		$value = acf_get_metadata( $post_id, $field['name'] );
@@ -1124,7 +1124,7 @@ class acf_field_flexible_content extends acf_field {
 		
 		
 		// get layout
-		$layout = $this->get_layout($value[ $i ], $field);
+		$layout = $this->get_layout($field, $value[ $i ]);
 		
 		
 		// bail early if no layout
@@ -1165,14 +1165,14 @@ class acf_field_flexible_content extends acf_field {
 	*  @return	(boolean)
 	*/
 	
-	function update_row( $row, $i = 0, $field, $post_id ) {
+	function update_row( $row, $field, $post_id, $i = 0 ) {
 		
 		// bail early if no layout reference
 		if( !is_array($row) || !isset($row['acf_fc_layout']) ) return false;
 		
 		
 		// get layout
-		$layout = $this->get_layout($row['acf_fc_layout'], $field);
+		$layout = $this->get_layout($field, $row['acf_fc_layout']);
 		
 		
 		// bail early if no layout
@@ -1271,13 +1271,13 @@ class acf_field_flexible_content extends acf_field {
 				// delete old row if layout has changed
 				if( isset($old_value[ $i ]) && $old_value[ $i ] !== $row['acf_fc_layout'] ) {
 					
-					$this->delete_row( $i, $field, $post_id );
+					$this->delete_row( $field, $post_id, $i );
 					
 				}
 				
 				
 				// update row
-				$this->update_row( $row, $i, $field, $post_id );
+				$this->update_row( $row, $field, $post_id, $i );
 				
 				
 				// append to order
@@ -1299,7 +1299,7 @@ class acf_field_flexible_content extends acf_field {
 			// loop
 			for( $i = $new_count; $i < $old_count; $i++ ) {
 				
-				$this->delete_row( $i, $field, $post_id );
+				$this->delete_row( $field, $post_id, $i );
 				
 			}
 			
@@ -1343,7 +1343,7 @@ class acf_field_flexible_content extends acf_field {
 		// loop
 		foreach( array_keys($old_value) as $i ) {
 				
-			$this->delete_row( $i, $field, $post_id );
+			$this->delete_row( $field, $post_id, $i );
 			
 		}
 			

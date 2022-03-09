@@ -116,7 +116,7 @@ class acf_field_gallery extends acf_field {
 		
 		
 		// render
-		$this->render_attachment( $options['id'], $field );
+		$this->render_attachment( $field, $options['id'] );
 		die;
 		
 	}
@@ -295,7 +295,7 @@ class acf_field_gallery extends acf_field {
 	*  @return	$post_id (int)
 	*/
 	
-	function render_attachment( $id = 0, $field ) {
+	function render_attachment( $field, $id = 0 ) {
 		
 		// vars
 		$attachment = wp_prepare_attachment_for_js( $id );
