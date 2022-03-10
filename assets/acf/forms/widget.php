@@ -136,7 +136,7 @@ class acf_form_widget {
 				
 				$fields = acf_get_fields( $field_group );
 				
-				acf_render_fields( $post_id, $fields, 'div', $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'] );
 				
 			}
 			

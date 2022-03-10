@@ -3103,7 +3103,7 @@ function acf_get_post_id_info( $post_id = 0 ) {
 	
 	
 	// update cache
-	//acf_set_cache($cache_key, $info);
+	//acf_set_cache($info, $cache_key);
 	
 	
 	// return

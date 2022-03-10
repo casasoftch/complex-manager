@@ -624,7 +624,7 @@ class acf_form {
 			
 			
 			// render
-			acf_render_fields( $post_id, $fields, $args['field_el'], $args['instruction_placement'] );
+			acf_render_fields( $fields, $post_id, $args['field_el'], $args['instruction_placement'] );
 			
 			
 			// html after fields

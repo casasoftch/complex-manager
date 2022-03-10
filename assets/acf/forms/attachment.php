@@ -249,7 +249,7 @@ acf.unload.active = 0;
 				
 				
 				// render			
-				acf_render_fields( $post_id, $fields, $el, $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $post_id, $el, $field_group['instruction_placement'] );
 				
 			}
 			

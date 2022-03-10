@@ -432,7 +432,7 @@ class acf_pro_options_page {
 		
 		
 		// render
-		acf_render_fields( $this->page['post_id'], $fields, 'div', $field_group['instruction_placement'] );
+		acf_render_fields( $fields, $this->page['post_id'], 'div', $field_group['instruction_placement'] );
 		
 		
 		

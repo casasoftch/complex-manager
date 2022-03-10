@@ -228,7 +228,7 @@ function acf_update_option( $option = '', $value = '', $autoload = null ) {
 *  @return	(mixed)
 */
 
-function acf_get_value( $post_id = 0, $field ) {
+function acf_get_value( $field, $post_id = 0 ) {
 	
 	// vars
 	$cache_key = "get_value/post_id={$post_id}/name={$field['name']}";
@@ -266,7 +266,7 @@ function acf_get_value( $post_id = 0, $field ) {
 	
 	
 	// update cache
-	acf_set_cache($cache_key, $value);
+	acf_set_cache($value, $cache_key);
 
 	
 	// return
@@ -312,7 +312,7 @@ function acf_format_value( $value, $post_id, $field ) {
 	
 	
 	// update cache
-	acf_set_cache($cache_key, $value);
+	acf_set_cache($value, $cache_key);
 	
 	
 	// return
@@ -335,7 +335,7 @@ function acf_format_value( $value, $post_id, $field ) {
 *  @return	(boolean)
 */
 
-function acf_update_value( $value = null, $post_id = 0, $field ) {
+function acf_update_value( $field, $value = null, $post_id = 0 ) {
 	
 	// strip slashes
 	if( acf_get_setting('stripslashes') ) {
@@ -355,7 +355,7 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 	// allow null to delete
 	if( $value === null ) {
 		
-		return acf_delete_value( $post_id, $field );
+		return acf_delete_value( $field, $post_id );
 		
 	}
 	
@@ -393,7 +393,7 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 *  @return	(boolean)
 */
 
-function acf_delete_value( $post_id = 0, $field ) {
+function acf_delete_value( $field, $post_id = 0 ) {
 	
 	// action for 3rd party customization
 	do_action("acf/delete_value", $post_id, $field['name'], $field);

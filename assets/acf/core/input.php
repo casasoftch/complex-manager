@@ -320,7 +320,7 @@ do_action('acf/input/admin_footer');
 			
 			
 			// update
-			acf_update_value( $v, $post_id, $field );
+			acf_update_value( $field, $v, $post_id );
 			
 		}
 	

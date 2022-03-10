@@ -177,7 +177,7 @@ function acf_get_field_groups( $args = false ) {
 		
 		
 		// update cache
-		acf_set_cache($cache_key, $post_ids);
+		acf_set_cache($post_ids, $cache_key);
 		
 	}
 	
@@ -345,7 +345,7 @@ function acf_get_field_group( $selector = null ) {
 	
 	// update cache
 	// - Use key instead of ID for best compatibility (not all field groups exist in the DB)
-	$cache_key = acf_set_cache("get_field_group/key={$field_group['key']}", $field_group);
+	$cache_key = acf_set_cache($field_group, "get_field_group/key={$field_group['key']}");
 	
 	
 	// update cache reference

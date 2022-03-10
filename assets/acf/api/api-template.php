@@ -75,7 +75,7 @@ function get_field( $selector, $post_id = false, $format_value = true ) {
 	
 	
 	// get value for field
-	$value = acf_get_value( $post_id, $field );
+	$value = acf_get_value( $field, $post_id );
 	
 	
 	// format value
@@ -159,7 +159,7 @@ function get_field_object( $selector, $post_id = false, $format_value = true, $l
 	// load value
 	if( $load_value ) {
 	
-		$field['value'] = acf_get_value( $post_id, $field );
+		$field['value'] = acf_get_value( $field, $post_id );
 		
 	}
 	
@@ -334,7 +334,7 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 		// load value
 		if( $load_value ) {
 		
-			$field['value'] = acf_get_value( $post_id, $field );
+			$field['value'] = acf_get_value( $field, $post_id );
 			
 		}
 		
@@ -1015,7 +1015,7 @@ function update_field( $selector, $value, $post_id = false ) {
 	
 	
 	// save
-	return acf_update_value( $value, $post_id, $field );
+	return acf_update_value( $field, $value, $post_id );
 		
 }
 
@@ -1060,7 +1060,7 @@ function update_sub_field( $selector, $value, $post_id = false ) {
 
 
 	// update
-	return acf_update_value( $value, $post_id, $sub_field );
+	return acf_update_value( $sub_field, $value, $post_id );
 		
 }
 
@@ -1090,7 +1090,7 @@ function delete_field( $selector, $post_id = false ) {
 	
 	
 	// delete
-	return acf_delete_value( $post_id, $field );
+	return acf_delete_value( $field, $post_id );
 	
 }
 
@@ -1147,7 +1147,7 @@ function add_row( $selector, $row = false, $post_id = false ) {
 	
 	
 	// get raw value
-	$value = acf_get_value( $post_id, $field );
+	$value = acf_get_value( $field, $post_id );
 	
 	
 	// ensure array
@@ -1159,7 +1159,7 @@ function add_row( $selector, $row = false, $post_id = false ) {
 	
 	
 	// update value
-	acf_update_value( $value, $post_id, $field );
+	acf_update_value( $field, $value, $post_id);
 	
 	
 	// return
@@ -1208,7 +1208,7 @@ function add_sub_row( $selector, $row = false, $post_id = false ) {
 	
 		
 	// get raw value
-	$value = acf_get_value( $post_id, $sub_field );
+	$value = acf_get_value( $sub_field, $post_id );
 	
 	
 	// ensure array
@@ -1220,7 +1220,7 @@ function add_sub_row( $selector, $row = false, $post_id = false ) {
 
 
 	// update
-	acf_update_value( $value, $post_id, $sub_field );
+	acf_update_value( $sub_field, $value, $post_id );
 	
 	
 	// return
@@ -1265,7 +1265,7 @@ function update_row( $selector, $i = 1, $row = false, $post_id = false ) {
 	
 	
 	// get raw value
-	$value = acf_get_value( $post_id, $field );
+	$value = acf_get_value( $field, $post_id );
 	
 	
 	// ensure array
@@ -1277,7 +1277,7 @@ function update_row( $selector, $i = 1, $row = false, $post_id = false ) {
 	
 	
 	// update value
-	acf_update_value( $value, $post_id, $field );
+	acf_update_value( $field, $value, $post_id );
 	
 	
 	// return
@@ -1340,7 +1340,7 @@ function update_sub_row( $selector, $i = 1, $row = false, $post_id = false ) {
 
 
 	// update
-	acf_update_value( $value, $post_id, $sub_field );
+	acf_update_value( $sub_field, $value, $post_id );
 	
 	
 	// return
@@ -1384,7 +1384,7 @@ function delete_row( $selector, $i = 1, $post_id = false ) {
 	
 	
 	// get value
-	$value = acf_get_value( $post_id, $field );
+	$value = acf_get_value( $field, $post_id );
 	
 	
 	// ensure array
@@ -1400,7 +1400,7 @@ function delete_row( $selector, $i = 1, $post_id = false ) {
 	
 	
 	// update
-	acf_update_value( $value, $post_id, $field );
+	acf_update_value( $field, $value, $post_id );
 	
 	
 	// return
@@ -1451,7 +1451,7 @@ function delete_sub_row( $selector, $i = 1, $post_id = false ) {
 	
 		
 	// get raw value
-	$value = acf_get_value( $post_id, $sub_field );
+	$value = acf_get_value( $sub_field, $post_id );
 	
 	
 	// ensure array
@@ -1467,7 +1467,7 @@ function delete_sub_row( $selector, $i = 1, $post_id = false ) {
 
 
 	// update
-	acf_update_value( $value, $post_id, $sub_field );
+	acf_update_value( $sub_field, $value, $post_id );
 	
 	
 	// return

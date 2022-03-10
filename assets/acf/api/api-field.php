@@ -324,7 +324,7 @@ function acf_the_field_label( $field ) {
 *  @return	n/a
 */
 
-function acf_render_fields( $post_id = 0, $fields, $el = 'div', $instruction = 'label' ) {
+function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = 'label' ) {
 	
 	// bail early if no fields
 	if( empty($fields) ) return false;
@@ -340,7 +340,7 @@ function acf_render_fields( $post_id = 0, $fields, $el = 'div', $instruction = '
 		// load value
 		if( $field['value'] === null ) {
 			
-			$field['value'] = acf_get_value( $post_id, $field );
+			$field['value'] = acf_get_value( $field, $post_id );
 			
 		} 
 		
@@ -729,7 +729,7 @@ function acf_get_fields_by_id( $parent_id = 0 ) {
 		
 		
 		// update cache
-		acf_set_cache($cache_key, $post_ids);
+		acf_set_cache($post_ids, $cache_key);
 		
 	}
 	
@@ -849,7 +849,7 @@ function acf_get_field( $selector = null, $db_only = false ) {
 	
 	// update cache
 	// - Use key instead of ID for best compatibility (not all fields exist in the DB)
-	$cache_key = acf_set_cache("get_field/key={$field['key']}", $field);
+	$cache_key = acf_set_cache($field, "get_field/key={$field['key']}");
 	
 	
 	// update cache reference

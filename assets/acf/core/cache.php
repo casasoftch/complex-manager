@@ -250,7 +250,7 @@ function acf_get_cache( $key = '' ) {
 *  @return	n/a
 */
 
-function acf_set_cache( $key = '', $data ) {
+function acf_set_cache( $data, $key = '' ) {
 	
 	return acf()->cache->set_cache( $key, $data );
 	

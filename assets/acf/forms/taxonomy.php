@@ -164,7 +164,7 @@ class acf_form_taxonomy {
 				
 				$fields = acf_get_fields( $field_group );
 
-				acf_render_fields( $post_id, $fields, 'div', 'field' );
+				acf_render_fields( $fields, $post_id, 'div', 'field' );
 				
 			}
 			
@@ -220,7 +220,7 @@ class acf_form_taxonomy {
 				<?php endif; ?>
 				<table class="form-table">
 					<tbody>
-						<?php acf_render_fields( $post_id, $fields, 'tr', 'field' ); ?>
+						<?php acf_render_fields( $fields, $post_id, 'tr', 'field' ); ?>
 					</tbody>
 				</table>
 				<?php 

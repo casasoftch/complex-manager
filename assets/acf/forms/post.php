@@ -313,7 +313,7 @@ class acf_form_post {
 			
 			
 			// render
-			acf_render_fields( $this->post_id, $fields, 'div', $field_group['instruction_placement'] );
+			acf_render_fields( $fields, $this->post_id, 'div', $field_group['instruction_placement'] );
 		
 		// render replace-me div
 		} else {
@@ -434,7 +434,7 @@ if( typeof acf !== 'undefined' ) {
 				
 				
 				// render
-				acf_render_fields( $options['post_id'], $fields, 'div', $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $options['post_id'], 'div', $field_group['instruction_placement'] );
 				
 				
 				$item['html'] = ob_get_clean();

@@ -800,7 +800,7 @@ class acf_field_flexible_content extends acf_field {
 				
 				
 				// get value
-				$sub_value = acf_get_value( $post_id, $sub_field );
+				$sub_value = acf_get_value( $sub_field, $post_id );
 				
 				
 				// add value
@@ -1139,7 +1139,7 @@ class acf_field_flexible_content extends acf_field {
 			
 			
 			// delete value
-			acf_delete_value( $post_id, $sub_field );
+			acf_delete_value( $sub_field, $post_id );
 			
 		}
 		
@@ -1209,7 +1209,7 @@ class acf_field_flexible_content extends acf_field {
 								
 			
 			// update field
-			acf_update_value( $value, $post_id, $sub_field );
+			acf_update_value( $sub_field, $value, $post_id );
 				
 		}
 		

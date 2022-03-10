@@ -304,7 +304,7 @@ function acf_get_field_types() {
 	
 	
 	// update cache
-	acf_set_cache($cache_key, $types);
+	acf_set_cache($types, $cache_key);
 	
 	
 	// return

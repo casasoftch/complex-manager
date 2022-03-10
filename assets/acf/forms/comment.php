@@ -179,7 +179,7 @@ class acf_form_comment {
 				<div id="acf-<?php echo $field_group['ID']; ?>" class="stuffbox">
 					<h3 class="hndle"><?php echo $field_group['title']; ?></h3>
 					<div class="inside">
-						<?php acf_render_fields( $post_id, $fields, 'div', $field_group['instruction_placement'] ); ?>
+						<?php acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'] ); ?>
 						<script type="text/javascript">
 						if( typeof acf !== 'undefined' ) {
 								
@@ -245,7 +245,7 @@ class acf_form_comment {
 				
 				$fields = acf_get_fields( $field_group );
 				
-				acf_render_fields( $post_id, $fields, 'p', $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $post_id, 'p', $field_group['instruction_placement'] );
 				
 			}
 		

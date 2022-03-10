@@ -514,7 +514,7 @@ class acf_field_clone extends acf_field {
 			
 			
 			// get value
-			$sub_value = acf_get_value( $post_id, $sub_field );
+			$sub_value = acf_get_value( $sub_field, $post_id );
 			
 			
 			// add value
@@ -644,7 +644,7 @@ class acf_field_clone extends acf_field {
 			
 			
 			// update value
-			acf_update_value( $v, $post_id, $sub_field );
+			acf_update_value( $sub_field, $v, $post_id );
 			
 		}
 		
