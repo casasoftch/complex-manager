@@ -6,6 +6,10 @@ class render extends Feature {
 
 	private $buildingsStore = null;
 
+	public $main_lang = false;
+
+	public $WPML = null;
+
 	public $formSendHasAlreadyOccuredDuringThisRequest = false;
 
 	public function __construct() {
@@ -28,6 +32,33 @@ class render extends Feature {
 			$lang = substr(get_bloginfo('language'), 0, 2);
 			wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?hl='.$lang, array(), false, true );
 		}
+	}
+
+	public function getMainLang(){
+		global $sitepress;
+		if (!$this->main_lang) {
+			$main_lang = 'de';
+			if($this->hasWPML()) {
+				if (function_exists("wpml_get_default_language")) {
+					$main_lang = wpml_get_default_language();
+					$this->WPML = true;
+				}
+			} else {
+				if (get_locale()) {
+					$main_lang = substr(get_locale(), 0, 2);
+				}
+			}
+			$this->main_lang = $main_lang;
+		}
+		return $this->main_lang;
+	}
+
+	public function hasWPML(){
+		global $sitepress;
+		if( $sitepress && is_object($sitepress) && method_exists($sitepress, 'get_language_details' )) {
+			return true;
+		}
+		return false;
 	}
 
 	public function set_shortcodes() {
@@ -641,13 +672,20 @@ class render extends Feature {
 	   		if ($key == 'r_purchase_price') {
 	   			$key = 'purchaseprice';
 	   		}
-	   		if ($label['label'] && $lang == 'de_DE') {
-	   			$labelArray[$key] = $label['label'];
-	   		} elseif($label['label_en'] && $lang == 'en_US') {
-				$labelArray[$key] = $label['label_en'];
-			} elseif($label['label_fr'] && $lang == 'fr_FR') {
-				$labelArray[$key] = $label['label_fr'];
+			if ($this->hasWPML()) {
+				if ($label['label'] && $lang == 'de_DE') {
+					$labelArray[$key] = $label['label'];
+				} elseif($label['label_en'] && $lang == 'en_US') {
+					$labelArray[$key] = $label['label_en'];
+				} elseif($label['label_fr'] && $lang == 'fr_FR') {
+					$labelArray[$key] = $label['label_fr'];
+				}
+			} else {
+				if ($label['label']) {
+					$labelArray[$key] = $label['label'];
+				}
 			}
+	   		
 	   	}
 
 	   	$filterLabelArray = array_merge($defaultLabelArray, $labelArray);
