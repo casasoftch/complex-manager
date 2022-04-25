@@ -253,11 +253,13 @@
 				</div>
 				<?= do_action('cxm_render_before_form_submission', $data, $buildings); ?>
 				<small><span class="text-danger">*</span> <?php _e('Please fill in all the required fields', 'complexmanager') ?></small>
-				<?php if (get_option('complex_manager')['recaptcha'] && !get_option('complex_manager')['honeypot']): ?>
+				<?php if (get_option('complex_manager')['recaptcha'] && !get_option('complex_manager')['honeypot'] && !get_option('complex_manager')['recaptcha_v3']): ?>
 					<div class="g-recaptcha" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
 					<div id="recaptchaerror" style="display: none;" class="alert alert-danger" role="alert">
 						<?php echo __('Invalid reCAPTCHA response!', 'complexmanager') ?>
 					</div>
+				<?php elseif(get_option('complex_manager')['recaptcha_v3'] && get_option('complex_manager')['recaptcha'] && !get_option('complex_manager')['honeypot']): ?>
+					<div class="g-recaptcha-v3" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
 				<?php endif ?>
 				<input type="hidden" name="complex-unit-inquiry[direct_recipient_email]" value="<?= esc_attr($data['direct_recipient_email']); ?>">
 				<br><button type="submit" class="<?php 

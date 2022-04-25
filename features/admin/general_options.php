@@ -402,6 +402,22 @@ class general_options extends Feature
         );
 
         add_settings_field(
+            'recaptcha_v3',
+            __( 'Enable reCaptcha V3', 'complexmanager' ),
+            array( $this, 'recaptcha_v3_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
+            'recaptcha_score',
+            __( 'reCaptcha V3 Score', 'complexmanager' ),
+            array( $this, 'recaptcha_score_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
             'honeypot',
             __( 'Honeypot', 'complexmanager' ),
             array( $this, 'honeypot_callback' ),
@@ -444,6 +460,14 @@ class general_options extends Feature
 
         if( isset( $input['contactform_mandatory_legalname'] ) ) {
             $new_input['contactform_mandatory_legalname'] = sanitize_text_field( $input['contactform_mandatory_legalname'] );
+        }
+
+        if( isset( $input['recaptcha_v3'] ) ) {
+            $new_input['recaptcha_v3'] = sanitize_text_field( $input['recaptcha_v3'] );
+        }
+
+        if( isset( $input['recaptcha_score'] ) ) {
+            $new_input['recaptcha_score'] = sanitize_text_field( $input['recaptcha_score'] );
         }
 
         if( isset( $input['honeypot'] ) ) {
@@ -692,6 +716,28 @@ class general_options extends Feature
 
         ;
 
+
+    }
+
+    public function recaptcha_v3_callback()
+    {
+        $checked = false;
+        if ((($this->options['recaptcha_v3'] ?? TRUE) && isset( $this->options['recaptcha_v3']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[recaptcha_v3]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="recaptcha_v3" name="complex_manager[recaptcha_v3]" value="1" /></div>'
+
+        ;
+    }
+
+    public function recaptcha_score_callback()
+    {
+        printf(
+            '<input type="number" step="0.1" id="recaptcha_score" name="complex_manager[recaptcha_score]" value="%s" />',
+            isset( $this->options['recaptcha_score'] ) ? esc_attr( $this->options['recaptcha_score']) : '0.4'
+        );
 
     }
 

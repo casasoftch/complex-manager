@@ -610,6 +610,35 @@ jQuery( function () {
 
 							});
 						}
+					} else if($('.g-recaptcha-v3').length) { 
+						var sitekey = $('.g-recaptcha-v3').data('sitekey');
+						grecaptcha.ready(function() {
+							// do request for recaptcha token
+							// response is promise with passed token
+							grecaptcha.execute(sitekey, {action: 'cxm_form'}).then(function(token) {
+								// add token to form
+								$form.prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+								$form.find(':input').prop('disabled', false);
+								if (!$('#complexContactFormLoader').length) {
+									$form.append('<div id="complexContactFormLoader"><i class="fa fa-circle-o-notch fa-spin"></i></div>');
+								}
+								$('#complexContactFormLoader').fadeIn('slow');
+								var data = $form.serialize();
+								$.post($form.prop('action'), data, function (data) {
+									console.log('posted');
+									var $new_form = $(data).find('.complex-contact-form-wrapper');
+									$('.complex-contact-form-wrapper').html($new_form.html());
+									if ($('.complex-contact-form-wrapper .alert').length) {
+										$('html, body').animate({
+											scrollTop: ($('.complex-contact-form-wrapper .alert').offset().top - 200)
+										}, 500);
+									}
+									ajaxifyContactForm($('#complexContactFormAnchor'));
+									$form.trigger("cxm-form-ajax-replaced", ["Custom", "Event"]);
+
+								});
+							});;
+						});
 					} else {
 						$form.find(':input').prop('disabled', false);
 						if (!$('#complexContactFormLoader').length) {

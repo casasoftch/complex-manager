@@ -28,7 +28,9 @@ class render extends Feature {
 			'gender' => 'That should not be possible',
 			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
 		);
-		if ($this->get_option('recaptcha') && !$this->get_option('honeypot')) {
+		if ($this->get_option('recaptcha') && $this->get_option('recaptcha_v3') && !$this->get_option('honeypot')) {
+			wp_enqueue_script('recaptcha-v3', 'https://www.google.com/recaptcha/api.js?render=' . $this->get_option('recaptcha'), array(), false, true );
+		} elseif ($this->get_option('recaptcha') && !$this->get_option('honeypot')) {
 			$lang = substr(get_bloginfo('language'), 0, 2);
 			wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?hl='.$lang, array(), false, true );
 		}
@@ -1603,10 +1605,15 @@ class render extends Feature {
 	  // print_r($opts);
 	   $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
 	   $result = json_decode($response, true);
-	 //  print_r($result);
+	   //print_r($result);
+
+		$is_recaptcha_v3 = false;
+	   if ($this->get_option('recaptcha_v3')) {
+			$is_recaptcha_v3 = true;
+	   }
 	   
-	   if (!$result['success']) {
-	       throw new \Exception('Gah! CAPTCHA verification failed. Please email me directly at: jstark at jonathanstark dot com', 1);
+	   if (!$result['success'] || ($is_recaptcha_v3 && $result['score'] <= 0.5)) {
+	       throw new \Exception('Gah! CAPTCHA verification failed.', 1);
 	   } else {
 	   		return 'success';
 	   }
