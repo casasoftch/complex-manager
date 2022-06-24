@@ -22,7 +22,9 @@ To make things easy to fill your page with custom content, the plugin utilizes s
 
 ### [CXM-filter] ###
 
-[CXM-filter filters="rooms, livingspace, rentnet, status"]
+All possible filters:
+
+[CXM-filter filters="number_of_rooms, livingspace, usablespace, purchaseprice, rentnet, rentgross, story, types, custom_1, custom_2, custom_3, income, persons, status"]
 
 ### [CXM-graphic] ###
 
