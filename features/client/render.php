@@ -222,8 +222,10 @@ class render extends Feature {
 			}
 			$serializedData = serialize($data);
 			$myfile = fopen($dir['basedir'] . '/cmx_cache/' . $key . '.php', "w");
-			fwrite($myfile, $serializedData);
-			fclose($myfile);
+			if ($myfile) {
+				fwrite($myfile, $serializedData);
+				fclose($myfile);
+			}	
 
 			return true;
 		}
