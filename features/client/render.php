@@ -1615,7 +1615,7 @@ class render extends Feature {
 	   }
 	   
 	   if (!$result['success'] || ($is_recaptcha_v3 && $result['score'] <= 0.5)) {
-	       throw new \Exception('Gah! CAPTCHA verification failed.', 1);
+	       return 'spam!';
 	   } else {
 	   		return 'success';
 	   }
