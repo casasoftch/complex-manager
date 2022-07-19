@@ -258,7 +258,7 @@
 					<div id="recaptchaerror" style="display: none;" class="alert alert-danger" role="alert">
 						<?php echo __('Invalid reCAPTCHA response!', 'complexmanager') ?>
 					</div>
-				<?php elseif(get_option('complex_manager')['recaptcha_v3'] && get_option('complex_manager')['recaptcha'] && !get_option('complex_manager')['honeypot']): ?>
+				<?php elseif((isset(get_option('complex_manager')['recaptcha_v3']) && get_option('complex_manager')['recaptcha_v3']) && (isset(get_option('complex_manager')['recaptcha']) && get_option('complex_manager')['recaptcha']) && !get_option('complex_manager')['honeypot']): ?>
 					<div class="g-recaptcha-v3" data-sitekey="<?php echo get_option('complex_manager')['recaptcha'] ?>"></div>
 				<?php endif ?>
 				<input type="hidden" name="complex-unit-inquiry[direct_recipient_email]" value="<?= esc_attr($data['direct_recipient_email']); ?>">
