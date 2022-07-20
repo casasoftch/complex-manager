@@ -28,12 +28,7 @@ class render extends Feature {
 			'gender' => 'That should not be possible',
 			'unit_id' => __('Please choose a unit', 'complexmanager'),//'Bitte wählen Sie eine Wohnung'
 		);
-		if ($this->get_option('recaptcha') && $this->get_option('recaptcha_v3') && !$this->get_option('honeypot')) {
-			wp_enqueue_script('recaptcha-v3', 'https://www.google.com/recaptcha/api.js?render=' . $this->get_option('recaptcha'), array(), false, true );
-		} elseif ($this->get_option('recaptcha') && !$this->get_option('honeypot')) {
-			$lang = substr(get_bloginfo('language'), 0, 2);
-			wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js?hl='.$lang, array(), false, true );
-		}
+		
 	}
 
 	public function getMainLang(){

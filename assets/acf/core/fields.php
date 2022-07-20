@@ -44,7 +44,7 @@ class acf_fields {
 	function register_field_type( $instance ) {
 		
 		// bail ealry if no field name
-		if( !$instance->name ) return false;
+		if( !isset($instance->name) ) return false;
 		
 		
 		// bail ealry if already exists
