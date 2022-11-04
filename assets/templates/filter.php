@@ -152,7 +152,11 @@
 					</div>
 				<?php endif ?>
 			<?php endforeach ?>
-
+			
 		</form>
+		<div class="result-count" style="display: none;">
+			<label class="filteroption-label" for=""><?php echo __('Results', 'complexmanager') ?></label>
+			<span id="resultCount"></span> <span><?php echo __('objects', 'complexmanager') ?></span>
+		</div>
 	</div>
 </div>

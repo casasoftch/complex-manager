@@ -83,6 +83,8 @@ class render extends Feature {
 			'show_image' => "1",
 	        'building_id' => false,
 	        'class' => '',
+			'orderby' => 'menu_order',
+			'order' => 'DESC'
 	    ), $atts );
 
 	    $a['integrate_form'] = (bool) $a['integrate_form'];
@@ -117,7 +119,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], $a['show_image'], ($a['building_id'] ? $a['building_id'] : false), $a['class']);
+	    return $this->renderTable($cols, $a['integrate_form'], $a['collapsible'], $a['show_image'], ($a['building_id'] ? $a['building_id'] : false), $a['class'], $a['orderby'], $a['order']);
 	}
 
 	// [CXM-list-unit cols="name,price,rent" labels="Name,Preis,Mietpreis" sales="rent" type="3"]
@@ -144,7 +146,7 @@ class render extends Feature {
 			});
 	   	}
 
-	    return $this->renderGraphic($cols, ($a['building_id'] ? $a['building_id'] : false));
+	    return $this->renderGraphic($cols, ($a['building_id'] ? $a['building_id'] : false), $orderby = 'menu_order', $order = 'DESC');
 	}
 
 	// [CXM-filter]
@@ -368,6 +370,25 @@ class render extends Feature {
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 						break;
+					case 'r_tour':
+						if (
+							$col['hidden-reserved'] == 0
+							||
+							!in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							if (get_cxm($unit, 'tour_url')) {
+								$value = '<a target="'. (get_cxm($unit, 'tour_target') ? get_cxm($unit, 'tour_target') : '_self') . '" href="' . get_cxm($unit, 'tour_url') . '">' . (get_cxm($unit, 'tour_label') ? get_cxm($unit, 'tour_label') : 'Tour') . '</a>';
+							} else {
+								$value = '';
+							}
+	
+						} else {
+							$value = '';
+						}
+						$displayItem['value'] = $value;
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+						break;
 					case 'quick-download':
 						if (
 							$col['hidden-reserved'] == 0
@@ -434,7 +455,7 @@ class render extends Feature {
 		return $the_unit;
 	}
 
-	private function prepareBuildings($buildings, $cols){
+	private function prepareBuildings($buildings, $cols, $orderby, $order){
 
 
 
@@ -469,7 +490,151 @@ class render extends Feature {
 
 			foreach ($building['units'] as $unit) {
 				$the_unit = $this->prepareUnit($unit, $building_cols);
+				/* echo '<pre>';
+				print_r($the_unit);
+				echo '</pre>'; */
 				$building['the_units'][] = $the_unit;
+			}
+
+			if ($orderby != 'menu_order') {
+				switch ($orderby) {
+					case 'title':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item1['data']['name'] <=> $item2['data']['name'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item2['data']['name'] <=> $item1['data']['name'];
+							});
+						}
+						break;
+					case 'status':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item1['status'] <=> $item2['status'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item2['status'] <=> $item1['status'];
+							});
+						}
+						break;
+					case 'storey':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int)$item1['data']['story'] <=> (int)$item2['data']['story'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int)$item2['data']['story'] <=> (int)$item1['data']['story'];
+							});
+						}
+						break;
+					case 'living_space':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_living_space']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_living_space']);
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_living_space']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_living_space']);
+							});
+						}
+						break;
+					case 'usable_space':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_usable_space']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_usable_space']);
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_usable_space']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_usable_space']);
+							});
+						}
+						break;
+					case 'purchase_price':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_purchase_price']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_purchase_price']);
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_purchase_price']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_purchase_price']);
+							});
+						}
+						break;
+					case 'rent_ent':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_ent']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_ent']);
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_ent']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_ent']);
+							});
+						}
+						break;
+					case 'rent_gross':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_gross']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_gross']);
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_gross']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_gross']);
+							});
+						}
+						break;
+					case 'number_of_rooms':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (float)$item1['data']['number_of_rooms'] <=> (float)$item2['data']['number_of_rooms'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return (float)$item2['data']['number_of_rooms'] <=> (float)$item1['data']['number_of_rooms'];
+							});
+						}
+						break;
+					case 'custom_1':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item1['data']['custom_1'] <=> $item2['data']['custom_1'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item2['data']['custom_1'] <=> $item1['data']['custom_1'];
+							});
+						}
+						break;
+					case 'custom_2':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item1['data']['custom_2'] <=> $item2['data']['custom_2'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item2['data']['custom_2'] <=> $item1['data']['custom_2'];
+							});
+						}
+						break;
+					case 'custom_3':
+						if ($order == 'ASC') {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item1['data']['custom_3'] <=> $item2['data']['custom_3'];
+							});
+						} else {
+							usort($building['the_units'], function ($item1, $item2) {
+								return $item2['data']['custom_3'] <=> $item1['data']['custom_3'];
+							});
+						}
+						break;
+					default:
+						# code...
+						break;
+				}
+				
 			}
 
 			//add total row
@@ -514,7 +679,7 @@ class render extends Feature {
 		return $the_buildings;
 	}
 
-	public function renderTable($cols, $integrate_form = true, $collapsible = true, $show_image = true, $building_id = false, $className = ''){
+	public function renderTable($cols, $integrate_form = true, $collapsible = true, $show_image = true, $building_id = false, $className = '', $orderby = '', $order = ''){
 		/*if (!$cols) {
 			$cols = array();
 			foreach (get_default_cxm('unit') as $key => $col) {
@@ -533,7 +698,7 @@ class render extends Feature {
 			$theBuildings = $fromtheBuildingsStorage;
 			$this->store($theBuildingsKey, $fromtheBuildingsStorage);	
 		} else {
-			$theBuildings = $this->prepareBuildings($this->getBuildings($building_id), $cols);
+			$theBuildings = $this->prepareBuildings($this->getBuildings($building_id), $cols, $orderby, $order);
 		}
 		$template->set( 'the_buildings', $theBuildings, $cols);
 
@@ -575,7 +740,7 @@ class render extends Feature {
 		//render single table for a unit
 	}
 
-	public function renderGraphic($cols, $building_id = false){
+	public function renderGraphic($cols, $building_id = false, $orderby = 'menu_order', $order = 'DESC'){
 		$thekey = 'renderGraphic_' . md5(implode(',', array_keys($cols) ) ) . '_' . $building_id;
 		$fromStorage = $this->getFromStorage($thekey);
 		if ($fromStorage) {
@@ -619,7 +784,7 @@ class render extends Feature {
 
 		$template = $this->get_template();
 		$template->set( 'buildings', $this->getBuildings($building_id) );
-		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings($building_id), $cols));
+		$template->set( 'the_buildings', $this->prepareBuildings($this->getBuildings($building_id), $cols, $orderby, $order));
 		$template->set( 'image', $image );
 		$template->set( 'width', $width );
 		$template->set( 'height', $height );
