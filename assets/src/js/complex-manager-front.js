@@ -483,9 +483,53 @@ jQuery( function () {
 			});
 
 			if ($('.complex-building-flex__row-outer').length) {
-				$('#resultCount').text($('.complex-building-flex__row-outer').length - $('.filtered').length);
+				var resultCount = $('.complex-building-flex__row-outer').length - $('.filtered').length;
+				$('#resultCount').text(resultCount);
+				if (resultCount == 1) {
+					if ($('html').attr('lang') == 'fr-FR') {
+						$('#resultLabel').text('objét');
+					} else if ($('html').attr('lang') == 'de-DE') {
+						$('#resultLabel').text('Objekt');
+					} else if ($('html').attr('lang') == 'it-IT') {
+						$('#resultLabel').text('oggetto');
+					} else if ($('html').attr('lang') == 'en-US') {
+						$('#resultLabel').text('object');
+					}
+				} else {
+					if ($('html').attr('lang') == 'fr-FR') {
+						$('#resultLabel').text('objéts');
+					} else if ($('html').attr('lang') == 'de-DE') {
+						$('#resultLabel').text('Objekte');
+					} else if ($('html').attr('lang') == 'it-IT') {
+						$('#resultLabel').text('oggetti');
+					} else if ($('html').attr('lang') == 'en-US') {
+						$('#resultLabel').text('objects');
+					}
+				}
 			} else {
-				$('#resultCount').text($('.complex-unit-header-row').length - $('.complex-unit-header-row.filtered').length);
+				var resultCount = $('.complex-unit-header-row').length - $('.complex-unit-header-row.filtered').length;
+				$('#resultCount').text(resultCount);
+				if (resultCount == 1) {
+					if ($('html').attr('lang') == 'fr-FR') {
+						$('#resultLabel').text('objét');
+					} else if ($('html').attr('lang') == 'de-DE') {
+						$('#resultLabel').text('Objekt');
+					} else if ($('html').attr('lang') == 'it-IT') {
+						$('#resultLabel').text('oggetto');
+					} else if ($('html').attr('lang') == 'en-US') {
+						$('#resultLabel').text('object');
+					}
+				} else {
+					if ($('html').attr('lang') == 'fr-FR') {
+						$('#resultLabel').text('objéts');
+					} else if ($('html').attr('lang') == 'de-DE') {
+						$('#resultLabel').text('Objekte');
+					} else if ($('html').attr('lang') == 'it-IT') {
+						$('#resultLabel').text('oggetti');
+					} else if ($('html').attr('lang') == 'en-US') {
+						$('#resultLabel').text('objects');
+					}
+				}
 			}
 		}
 
