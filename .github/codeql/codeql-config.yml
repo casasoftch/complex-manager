@@ -1,0 +1,13 @@
+name: "CodeQL config"
+
+queries:
+  - uses: security-and-quality
+
+query-filters:
+- exclude:
+    problem.severity:
+      - low
+      - medium
+      - recommendation 
+      - warning
+      - note
