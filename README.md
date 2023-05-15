@@ -38,6 +38,9 @@ Renders a interactive jumpotron graphic. Sadly IE8> will only render the image w
 * ``integrate_form``: Renders form inside of list (default:1)
 * ``collapsible``: (default:1)
 * ``building_id``: only render specific table (default:false)
+* ``class``: append custom css class
+* ``orderby``: define a key to order properties (possible values: menu_order, title, status, storey, living_space, usable_space, purchase_price, rent_net, rent_gross, number_of_rooms, custom_1, custom_2, custom_3)
+* ``order``: define order direction (possible values: ASC, DESC)
 
 
 ### [CXM-form] ###

@@ -564,14 +564,14 @@ class render extends Feature {
 							});
 						}
 						break;
-					case 'rent_ent':
+					case 'rent_net':
 						if ($order == 'ASC') {
 							usort($building['the_units'], function ($item1, $item2) {
-								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_ent']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_ent']);
+								return (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_net']) <=> (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_net']);
 							});
 						} else {
 							usort($building['the_units'], function ($item1, $item2) {
-								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_ent']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_ent']);
+								return (int) str_replace(array(' ', '\''), '', $item2['data']['r_rent_net']) <=> (int) str_replace(array(' ', '\''), '', $item1['data']['r_rent_net']);
 							});
 						}
 						break;
