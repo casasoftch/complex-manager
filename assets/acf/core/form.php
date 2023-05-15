@@ -580,7 +580,7 @@ class acf_form {
 		
 		
 		// honeypot
-		if( $args['honeypot'] ) {
+		if( isset($args['honeypot']) && $args['honeypot'] ) {
 			
 			$fields[] = acf_get_field('_validate_email');
 			

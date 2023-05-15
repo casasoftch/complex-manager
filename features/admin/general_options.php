@@ -180,6 +180,14 @@ class general_options extends Feature
             'cxm_1'
         );
 
+        add_settings_field(
+            'flex_list',
+             __( 'Use Flexbox design for list', 'complexmanager' ),
+            array( $this, 'flex_list_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
 
 
         add_settings_field(
@@ -534,6 +542,10 @@ class general_options extends Feature
             $new_input['space_decimal'] = absint( $input['space_decimal'] );
         }
 
+        if( isset( $input['flex_list'] ) ) {
+            $new_input['flex_list'] = sanitize_text_field( $input['flex_list'] );
+        }
+
         if( isset( $input['remcat'] ) ) {
             $new_input['remcat'] = sanitize_text_field( $input['remcat'] );
         }
@@ -875,6 +887,21 @@ class general_options extends Feature
             '<input type="number" id="space_decimal" name="complex_manager[space_decimal]" value="%s" />',
             isset( $this->options['space_decimal'] ) ? esc_attr( $this->options['space_decimal']) : ''
         );
+    }
+
+    public function flex_list_callback()
+    {
+
+        $checked = false;
+        if ((($this->options['flex_list'] ?? TRUE) && isset( $this->options['flex_list']))) {
+            $checked = true;
+        }
+        echo
+            '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[flex_list]" value="0" />
+            <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="flex_list" name="complex_manager[flex_list]" value="1" /></div>'
+
+        ;
+
     }
 
     public function remcat_callback()

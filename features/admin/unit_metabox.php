@@ -119,6 +119,9 @@ class unit_metabox extends Feature {
 				$this->prefix.'link_label',
 				$this->prefix.'link_target',
 				$this->prefix.'link_url',
+				$this->prefix.'tour_label',
+				$this->prefix.'tour_target',
+				$this->prefix.'tour_url',
 				$this->prefix.'custom_1',
 				$this->prefix.'custom_2',
 				$this->prefix.'custom_3',
@@ -185,6 +188,22 @@ class unit_metabox extends Feature {
 		echo "</p>";
 
         echo "<hr>";
+
+		echo '<p><label for="complexmanager_unit_tour_label">';
+		_e( 'Tour', 'complexmanager' );
+		echo '</label><br>';
+
+		$labelvalue = get_post_meta( $post->ID, '_complexmanager_unit_tour_label', true );
+		$value = get_post_meta( $post->ID, '_complexmanager_unit_tour_url', true );
+		$target = get_post_meta( $post->ID, '_complexmanager_unit_tour_target', true );
+		echo '<div class="uploader">
+				<input type="text" id="complexmanager_unit_tour_label" name="complexmanager_unit_tour_label" placeholder="Link name" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_tour_url" name="complexmanager_unit_tour_url" value="'.$value.'" type="text" placeholder="Url" />
+				<input id="complexmanager_unit_tour_target" name="complexmanager_unit_tour_target" value="'.$target.'" type="text" placeholder="Target" />
+			</div>';
+		echo "</p>";
+
+		echo "<hr>";
 
 
         echo '<p><label for="complexmanager_unit_download_label">';
