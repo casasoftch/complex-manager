@@ -1758,12 +1758,12 @@ class eMonitorImport extends Feature{
     // $new_meta_data['_complexmanager_unit_custom_3']             = $property['floor']; kein passendes emonitor feld
 
     $new_meta_data['_complexmanager_unit_download_file']        = $property['factsheet'];
-    $new_meta_data['_complexmanager_unit_download_label']       = (isset($property['factsheet']) ? 'Grundriss' : '');
+    $new_meta_data['_complexmanager_unit_download_label']       = (isset($property['factsheet']) ? _e('Plan', 'complexmanager') : '');
     
     //$new_meta_data['_complexmanager_unit_link']                 = $property['floor']; kein passendes emonitor feld
     $new_meta_data['_complexmanager_unit_link_target']          = (isset($property['url']) ? '_blank' : '');
     $new_meta_data['_complexmanager_unit_link_url']             = $property['url'];
-    $new_meta_data['_complexmanager_unit_link_label']           = (isset($property['url']) ? 'Jetzt online Bewerben' : '');
+    $new_meta_data['_complexmanager_unit_link_label']           = (isset($property['url']) ? _e('Apply now', 'complexmanager') : '');
 
     $new_meta_data['_complexmanager_unit_custom_overlay']       = $property['isometry'];
 

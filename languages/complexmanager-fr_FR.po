@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 10:18+0100\n"
-"PO-Revision-Date: 2022-10-31 10:19+0100\n"
+"POT-Creation-Date: 2023-05-16 13:44+0200\n"
+"PO-Revision-Date: 2023-05-16 14:21+0200\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../assets/src\n"
@@ -1123,8 +1123,8 @@ msgstr ""
 #, php-format
 msgid ""
 "We also wrote an <a href=\"%s\">upgrade guide</a> to answer any questions, "
-"but if you do have one, please contact our support team via the <a href=\"%s"
-"\">help desk</a>"
+"but if you do have one, please contact our support team via the <a "
+"href=\"%s\">help desk</a>"
 msgstr ""
 
 #: ../assets/acf/admin/views/settings-info.php:72
@@ -2843,9 +2843,9 @@ msgstr ""
 #: ../assets/acf/pro/core/updates.php:206
 #, php-format
 msgid ""
-"To enable updates, please enter your license key on the <a href=\"%s"
-"\">Updates</a> page. If you don't have a licence key, please see <a href=\"%s"
-"\">details & pricing</a>."
+"To enable updates, please enter your license key on the <a "
+"href=\"%s\">Updates</a> page. If you don't have a licence key, please see <a "
+"href=\"%s\">details & pricing</a>."
 msgstr ""
 
 #: ../assets/acf/pro/fields/clone.php:36
@@ -4145,6 +4145,14 @@ msgstr ""
 #: ../features/core/post_types.php:192
 msgid "New Attachment Type Name"
 msgstr ""
+
+#: ../features/import.php:1761
+msgid "Plan"
+msgstr "Plan"
+
+#: ../features/import.php:1766
+msgid "Apply now"
+msgstr "Postulez maintenant"
 
 #: ../features/silence.php:3
 msgid "Silence is golden... or at least isn't completely annoying."

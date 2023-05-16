@@ -2,19 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 09:15+0100\n"
-"PO-Revision-Date: 2020-03-04 09:16+0100\n"
+"POT-Creation-Date: 2023-05-16 14:26+0200\n"
+"PO-Revision-Date: 2023-05-16 14:26+0200\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../assets/src\n"
 
@@ -122,7 +122,7 @@ msgstr ""
 
 #: ../assets/acf/admin/admin.php:113
 #: ../assets/acf/admin/views/field-group-options.php:114
-#: ../features/admin/unit_metabox.php:436
+#: ../features/admin/unit_metabox.php:456
 msgid "Custom Fields"
 msgstr ""
 
@@ -353,8 +353,8 @@ msgid "Description"
 msgstr ""
 
 #: ../assets/acf/admin/field-groups.php:509
-#: ../features/admin/unit_metabox.php:211
-#: ../features/core/field_manager.php:291
+#: ../features/admin/unit_metabox.php:230
+#: ../features/core/field_manager.php:297
 #: ../features/core/global_functions.php:225
 #: ../features/core/global_functions.php:352
 msgid "Status"
@@ -678,14 +678,14 @@ msgstr ""
 #: ../assets/acf/admin/views/field-group-fields.php:17
 #: ../assets/acf/fields/taxonomy.php:966
 #: ../assets/acf/pro/fields/flexible-content.php:619
-#: ../assets/templates/contact-form.php:74
-#: ../features/core/field_manager.php:100
+#: ../assets/templates/contact-form.php:78
+#: ../features/core/field_manager.php:105
 #: ../features/core/global_functions.php:125
 msgid "Name"
 msgstr "Nome completo"
 
 #: ../assets/acf/admin/views/field-group-fields.php:18
-#: ../features/core/global_functions.php:382
+#: ../features/core/global_functions.php:387
 msgid "Type"
 msgstr "Typ"
 
@@ -1149,8 +1149,8 @@ msgstr ""
 #, php-format
 msgid ""
 "We also wrote an <a href=\"%s\">upgrade guide</a> to answer any questions, "
-"but if you do have one, please contact our support team via the <a href=\"%s"
-"\">help desk</a>"
+"but if you do have one, please contact our support team via the <a "
+"href=\"%s\">help desk</a>"
 msgstr ""
 
 #: ../assets/acf/admin/views/settings-info.php:72
@@ -1739,7 +1739,7 @@ msgstr ""
 #: ../assets/acf/fields/select.php:479 ../assets/acf/fields/text.php:142
 #: ../assets/acf/fields/textarea.php:139
 #: ../assets/acf/fields/true_false.php:150 ../assets/acf/fields/url.php:114
-#: ../assets/acf/fields/wysiwyg.php:436
+#: ../assets/acf/fields/wysiwyg.php:438
 msgid "Default Value"
 msgstr ""
 
@@ -1954,14 +1954,14 @@ msgstr ""
 #: ../assets/acf/fields/email.php:36
 #: ../features/admin/inquiry_archive_cols.php:17
 #: ../features/admin/inquiry_metabox.php:180
-#: ../features/core/field_manager.php:74
+#: ../features/core/field_manager.php:75
 msgid "Email"
 msgstr "Email"
 
 #: ../assets/acf/fields/email.php:134 ../assets/acf/fields/number.php:146
 #: ../assets/acf/fields/radio.php:284 ../assets/acf/fields/text.php:143
 #: ../assets/acf/fields/textarea.php:140 ../assets/acf/fields/url.php:115
-#: ../assets/acf/fields/wysiwyg.php:437
+#: ../assets/acf/fields/wysiwyg.php:439
 msgid "Appears when creating a new post"
 msgstr ""
 
@@ -2213,10 +2213,10 @@ msgstr ""
 
 #: ../assets/acf/fields/message.php:36 ../assets/acf/fields/message.php:115
 #: ../assets/acf/fields/true_false.php:141
-#: ../assets/templates/contact-form.php:189
-#: ../features/admin/general_options.php:284
+#: ../assets/templates/contact-form.php:237
+#: ../features/admin/general_options.php:347
 #: ../features/admin/inquiry_metabox.php:246
-#: ../features/core/field_manager.php:82
+#: ../features/core/field_manager.php:83
 msgid "Message"
 msgstr "Messaggio"
 
@@ -2718,48 +2718,48 @@ msgstr ""
 msgid "Wysiwyg Editor"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:385
+#: ../assets/acf/fields/wysiwyg.php:387
 msgid "Visual"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:386
+#: ../assets/acf/fields/wysiwyg.php:388
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:392
+#: ../assets/acf/fields/wysiwyg.php:394
 msgid "Click to initialize TinyMCE"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:445
+#: ../assets/acf/fields/wysiwyg.php:447
 msgid "Tabs"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:450
+#: ../assets/acf/fields/wysiwyg.php:452
 msgid "Visual & Text"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:451
+#: ../assets/acf/fields/wysiwyg.php:453
 msgid "Visual Only"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:452
+#: ../assets/acf/fields/wysiwyg.php:454
 msgid "Text Only"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:459
+#: ../assets/acf/fields/wysiwyg.php:461
 msgid "Toolbar"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:469
+#: ../assets/acf/fields/wysiwyg.php:471
 msgid "Show Media Upload Buttons?"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:479
+#: ../assets/acf/fields/wysiwyg.php:481
 msgid "Delay initialization?"
 msgstr ""
 
-#: ../assets/acf/fields/wysiwyg.php:480
+#: ../assets/acf/fields/wysiwyg.php:482
 msgid "TinyMCE will not be initalized until field is clicked"
 msgstr ""
 
@@ -2864,7 +2864,7 @@ msgstr ""
 
 #: ../assets/acf/pro/api/api-options-page.php:22
 #: ../assets/acf/pro/api/api-options-page.php:23
-#: ../features/admin/building_metabox.php:81
+#: ../features/admin/building_metabox.php:102
 msgid "Options"
 msgstr ""
 
@@ -2901,9 +2901,9 @@ msgstr ""
 #: ../assets/acf/pro/core/updates.php:206
 #, php-format
 msgid ""
-"To enable updates, please enter your license key on the <a href=\"%s"
-"\">Updates</a> page. If you don't have a licence key, please see <a href=\"%s"
-"\">details & pricing</a>."
+"To enable updates, please enter your license key on the <a "
+"href=\"%s\">Updates</a> page. If you don't have a licence key, please see <a "
+"href=\"%s\">details & pricing</a>."
 msgstr ""
 
 #: ../assets/acf/pro/fields/clone.php:36
@@ -3218,82 +3218,118 @@ msgstr ""
 msgid "Maximum Rows"
 msgstr ""
 
-#: ../assets/templates/contact-form.php:25
+#: ../assets/templates/contact-form.php:26
 msgid "I am interested in"
 msgstr "Sono interessato a"
 
-#: ../assets/templates/contact-form.php:53
+#: ../assets/templates/contact-form.php:57
 #: ../features/admin/inquiry_metabox.php:142
 msgid "Salutation"
 msgstr "Saluto"
 
-#: ../assets/templates/contact-form.php:60
-#: ../features/core/field_manager.php:118
+#: ../assets/templates/contact-form.php:64
+#: ../features/core/field_manager.php:123
 msgid "Mrs."
 msgstr "Signora"
 
-#: ../assets/templates/contact-form.php:67
-#: ../features/core/field_manager.php:118
+#: ../assets/templates/contact-form.php:71
+#: ../features/core/field_manager.php:123
 msgid "Mr."
 msgstr "Signore"
 
-#: ../assets/templates/contact-form.php:122
-#: ../features/admin/general_options.php:244
+#: ../assets/templates/contact-form.php:146
+#: ../features/admin/general_options.php:307
 #: ../features/admin/inquiry_metabox.php:189
-#: ../features/core/field_manager.php:54
+#: ../features/core/field_manager.php:55
 msgid "Phone"
 msgstr "Telefono"
 
-#: ../assets/templates/contact-form.php:145
+#: ../assets/templates/contact-form.php:180
 #: ../features/admin/inquiry_archive_cols.php:16
-#: ../features/core/field_manager.php:104
-#: ../features/core/field_manager.php:108
+#: ../features/core/field_manager.php:109
+#: ../features/core/field_manager.php:113
 msgid "Address"
 msgstr "Indirizzo"
 
-#: ../assets/templates/contact-form.php:179
+#: ../assets/templates/contact-form.php:227
 msgid "I've heard of this project through..."
 msgstr "Ho sentito di questo progetto attraverso..."
 
-#: ../assets/templates/contact-form.php:190
+#: ../assets/templates/contact-form.php:252
 msgid "Describe your inquiry"
 msgstr "Descriva la sua domanda"
 
-#: ../assets/templates/contact-form.php:193
+#: ../assets/templates/contact-form.php:255
 msgid "Please fill in all the required fields"
 msgstr "Compilare tutti i campi obbligatori"
 
-#: ../assets/templates/contact-form.php:197
+#: ../assets/templates/contact-form.php:259
 msgid "Invalid reCAPTCHA response!"
 msgstr "Risposta reCAPTCHA invalida!"
 
-#: ../assets/templates/contact-form.php:205
+#: ../assets/templates/contact-form.php:270
 msgid "Send"
 msgstr "Invia"
 
-#: ../assets/templates/filter.php:17 ../features/admin/unit_archive_cols.php:71
-#: ../features/admin/unit_metabox.php:214 ../features/client/render.php:281
+#: ../assets/templates/filter.php:22 ../assets/templates/list.php:77
+#: ../assets/templates/list.php:80 ../features/admin/unit_archive_cols.php:71
+#: ../features/admin/unit_metabox.php:233 ../features/client/render.php:318
 msgid "Available"
 msgstr "Disponibile"
 
-#: ../assets/templates/filter.php:24 ../assets/templates/filter.php:38
-#: ../assets/templates/filter.php:52 ../assets/templates/filter.php:65
+#: ../assets/templates/filter.php:29 ../assets/templates/filter.php:42
+#: ../assets/templates/filter.php:55 ../assets/templates/filter.php:68
+#: ../assets/templates/filter.php:81
 msgid "to"
 msgstr ""
 
-#: ../assets/templates/filter.php:126 ../assets/templates/filter.php:132
+#: ../assets/templates/filter.php:145 ../assets/templates/filter.php:151
 msgid "Please choose"
 msgstr ""
 
-#: ../assets/templates/list.php:92
+#: ../assets/templates/filter.php:158
+msgid "Results"
+msgstr ""
+
+#: ../assets/templates/filter.php:159
+#, fuzzy
+#| msgid "Subject"
+msgid "objects"
+msgstr "Betreff"
+
+#: ../assets/templates/list.php:65 ../features/admin/unit_archive_cols.php:74
+#: ../features/admin/unit_metabox.php:236 ../features/client/render.php:322
+#: ../features/client/render.php:416
+msgid "Sold"
+msgstr "Venduto"
+
+#: ../assets/templates/list.php:68 ../features/admin/unit_archive_cols.php:73
+#: ../features/admin/unit_metabox.php:237 ../features/client/render.php:321
+#: ../features/client/render.php:415
+msgid "Rented"
+msgstr "Affittato"
+
+#: ../assets/templates/list.php:71
+#, fuzzy
+#| msgid "Reserved"
+msgid "Pre-reserver"
+msgstr "Riservati"
+
+#: ../assets/templates/list.php:74 ../features/admin/unit_archive_cols.php:72
+#: ../features/admin/unit_metabox.php:235 ../features/client/render.php:320
+#: ../features/client/render.php:414
+msgid "Reserved"
+msgstr "Riservati"
+
+#: ../assets/templates/list.php:180 ../assets/templates/list.php:308
 msgid "Contact"
 msgstr "Contatti"
 
-#: ../assets/templates/list.php:134
+#: ../assets/templates/list.php:352
 msgid "Cancel"
 msgstr "Cancella"
 
-#: ../features/admin/building_metabox.php:80
+#: ../features/admin/building_metabox.php:101
 msgid "Visible"
 msgstr ""
 
@@ -3301,133 +3337,180 @@ msgstr ""
 msgid "Complex Manager Settings"
 msgstr ""
 
-#: ../features/admin/general_options.php:105
+#: ../features/admin/general_options.php:104
 msgid "Main Settings"
 msgstr "Impostazioni Principali"
 
-#: ../features/admin/general_options.php:120
+#: ../features/admin/general_options.php:119
 msgid "Project Image"
 msgstr "Immagine progetto"
 
-#: ../features/admin/general_options.php:128
+#: ../features/admin/general_options.php:127
 msgid "Emails"
 msgstr "Email"
 
-#: ../features/admin/general_options.php:136
+#: ../features/admin/general_options.php:135
 msgid "Use File-Cache for Renders"
 msgstr ""
 
-#: ../features/admin/general_options.php:146
+#: ../features/admin/general_options.php:145
 msgid ""
 "<strong>CASA</strong><span style=\"font-weight:100\">MAIL</span> direkte E-"
 "Mail"
 msgstr ""
 
-#: ../features/admin/general_options.php:154
+#: ../features/admin/general_options.php:153
 msgid ""
 "<strong>CASA</strong><span style=\"font-weight:100\">MAIL</span> Provider ID"
 msgstr ""
 
-#: ../features/admin/general_options.php:162
+#: ../features/admin/general_options.php:161
 msgid ""
 "<strong>CASA</strong><span style=\"font-weight:100\">MAIL</span> Publisher ID"
 msgstr ""
 
-#: ../features/admin/general_options.php:170
+#: ../features/admin/general_options.php:169
 msgid "Tausend Separator"
 msgstr ""
 
-#: ../features/admin/general_options.php:178
+#: ../features/admin/general_options.php:177
 msgid "Space/Area Decimal"
 msgstr "Spazio/Area decimale"
 
-#: ../features/admin/general_options.php:188
+#: ../features/admin/general_options.php:185
+msgid "Use Flexbox design for list"
+msgstr ""
+
+#: ../features/admin/general_options.php:195
 msgid "Remcat"
 msgstr ""
 
-#: ../features/admin/general_options.php:196
+#: ../features/admin/general_options.php:203
+msgid "Remcat Website"
+msgstr ""
+
+#: ../features/admin/general_options.php:211
+msgid "Remcat Firma"
+msgstr ""
+
+#: ../features/admin/general_options.php:219
+msgid "Remcat Firma Strasse"
+msgstr ""
+
+#: ../features/admin/general_options.php:227
+msgid "Remcat Firma PLZ"
+msgstr ""
+
+#: ../features/admin/general_options.php:235
+msgid "Remcat Firma Ort"
+msgstr ""
+
+#: ../features/admin/general_options.php:243
+msgid "Remcat Firma Ansprechperson"
+msgstr ""
+
+#: ../features/admin/general_options.php:251
+msgid "Remcat Firma E-Mail"
+msgstr ""
+
+#: ../features/admin/general_options.php:259
+msgid "Remcat Generelle ID"
+msgstr ""
+
+#: ../features/admin/general_options.php:267
 msgid "IDX / REMCat Property Ref."
 msgstr ""
 
-#: ../features/admin/general_options.php:204
+#: ../features/admin/general_options.php:275
 msgid "Contact form mandatory fields"
 msgstr ""
 
-#: ../features/admin/general_options.php:212
-#: ../features/admin/general_options.php:220
+#: ../features/admin/general_options.php:283
 #: ../features/admin/inquiry_metabox.php:151
-#: ../features/core/field_manager.php:42
+#: ../features/core/field_manager.php:43
 msgid "First name"
 msgstr "Nome"
 
-#: ../features/admin/general_options.php:228
+#: ../features/admin/general_options.php:291
 #: ../features/admin/inquiry_metabox.php:160
 #: ../features/admin/inquiry_metabox.php:170
-#: ../features/core/field_manager.php:46
+#: ../features/core/field_manager.php:47
 msgid "Last name"
 msgstr "Cognome"
 
-#: ../features/admin/general_options.php:236
-#: ../features/core/field_manager.php:50
+#: ../features/admin/general_options.php:299
+#: ../features/core/field_manager.php:51
 msgid "Company"
 msgstr "Ditta"
 
-#: ../features/admin/general_options.php:252
-#: ../features/core/field_manager.php:58
+#: ../features/admin/general_options.php:315
+#: ../features/core/field_manager.php:59
 msgid "Mobile"
 msgstr ""
 
-#: ../features/admin/general_options.php:260
+#: ../features/admin/general_options.php:323
 #: ../features/admin/inquiry_metabox.php:201
-#: ../features/core/field_manager.php:62
+#: ../features/core/field_manager.php:63
 msgid "Street"
 msgstr "Strada"
 
-#: ../features/admin/general_options.php:268
+#: ../features/admin/general_options.php:331
 #: ../features/admin/inquiry_metabox.php:210
-#: ../features/core/field_manager.php:66
+#: ../features/core/field_manager.php:67
 msgid "ZIP"
 msgstr "NPA"
 
-#: ../features/admin/general_options.php:276
+#: ../features/admin/general_options.php:339
 #: ../features/admin/inquiry_metabox.php:219
-#: ../features/core/field_manager.php:70
+#: ../features/core/field_manager.php:71
 msgid "City"
 msgstr "Località"
 
-#: ../features/admin/general_options.php:292
+#: ../features/admin/general_options.php:355
 msgid "Column values to show in Lists"
 msgstr ""
 
-#: ../features/admin/general_options.php:300
+#: ../features/admin/general_options.php:363
 msgid "Filter translations"
 msgstr ""
 
-#: ../features/admin/general_options.php:308
+#: ../features/admin/general_options.php:371
 msgid "Import settings"
 msgstr ""
 
-#: ../features/admin/general_options.php:316
+#: ../features/admin/general_options.php:379
 msgid "Google Analytics Code"
 msgstr ""
 
-#: ../features/admin/general_options.php:326
+#: ../features/admin/general_options.php:389
 msgid "Income max"
 msgstr ""
 
-#: ../features/admin/general_options.php:335
+#: ../features/admin/general_options.php:398
 msgid "reCaptcha Key"
 msgstr ""
 
-#: ../features/admin/general_options.php:343
+#: ../features/admin/general_options.php:406
 msgid "reCaptcha Secret"
 msgstr ""
 
-#: ../features/admin/general_options.php:485
+#: ../features/admin/general_options.php:414
+msgid "Enable reCaptcha V3"
+msgstr ""
+
+#: ../features/admin/general_options.php:422
+msgid "reCaptcha V3 Score"
+msgstr ""
+
+#: ../features/admin/general_options.php:430
+msgid "Honeypot"
+msgstr ""
+
+#: ../features/admin/general_options.php:638
 msgid "Enter your settings below:"
 msgstr ""
 
-#: ../features/admin/general_options.php:712
+#: ../features/admin/general_options.php:1016
 msgid "Upload Image"
 msgstr ""
 
@@ -3449,12 +3532,12 @@ msgid "Unit Settings"
 msgstr ""
 
 #: ../features/admin/inquiry_metabox.php:106
-#: ../features/admin/unit_metabox.php:148
+#: ../features/admin/unit_metabox.php:151
 msgid "Choose or Upload a Document"
 msgstr ""
 
 #: ../features/admin/inquiry_metabox.php:107
-#: ../features/admin/unit_metabox.php:149
+#: ../features/admin/unit_metabox.php:152
 msgid "Use this document"
 msgstr ""
 
@@ -3463,7 +3546,7 @@ msgid "Unit id"
 msgstr ""
 
 #: ../features/admin/inquiry_metabox.php:228
-#: ../features/core/field_manager.php:94
+#: ../features/core/field_manager.php:95
 msgid "Reason"
 msgstr "Motivazione"
 
@@ -3475,185 +3558,172 @@ msgstr "Post Tipo Icone"
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ../features/admin/unit_archive_cols.php:72
-#: ../features/admin/unit_metabox.php:216 ../features/client/render.php:283
-#: ../features/client/render.php:358
-msgid "Reserved"
-msgstr "Riservati"
-
-#: ../features/admin/unit_archive_cols.php:73
-#: ../features/admin/unit_metabox.php:218 ../features/client/render.php:284
-#: ../features/client/render.php:359
-msgid "Rented"
-msgstr "Affittato"
-
-#: ../features/admin/unit_archive_cols.php:74
-#: ../features/admin/unit_metabox.php:217 ../features/client/render.php:285
-#: ../features/client/render.php:360
-msgid "Sold"
-msgstr "Venduto"
-
 #: ../features/admin/unit_metabox.php:34
 #, fuzzy
 #| msgid "Main Settings"
 msgid "Unit Graphic Settings"
 msgstr "Impostazioni Principali"
 
-#: ../features/admin/unit_metabox.php:174
-#: ../features/core/field_manager.php:410
+#: ../features/admin/unit_metabox.php:177
+#: ../features/core/field_manager.php:431
 #: ../features/core/global_functions.php:314
 msgid "Link"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:191
-#: ../features/core/field_manager.php:331
+#: ../features/admin/unit_metabox.php:193
+msgid "Tour"
+msgstr ""
+
+#: ../features/admin/unit_metabox.php:210
+#: ../features/core/field_manager.php:337
 msgid "Download file"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:207
+#: ../features/admin/unit_metabox.php:226
 msgid "General"
 msgstr "Generale"
 
-#: ../features/admin/unit_metabox.php:215 ../features/client/render.php:282
-#: ../features/client/render.php:357
+#: ../features/admin/unit_metabox.php:234 ../features/client/render.php:319
+#: ../features/client/render.php:413
 #, fuzzy
 #| msgid "Reserved"
 msgid "pre-reserved"
 msgstr "Riservati"
 
-#: ../features/admin/unit_metabox.php:224
+#: ../features/admin/unit_metabox.php:243
 #: ../features/core/global_functions.php:133
 #: ../features/core/global_functions.php:347
 msgid "Number of Rooms"
 msgstr "Numero di Camere"
 
-#: ../features/admin/unit_metabox.php:235
+#: ../features/admin/unit_metabox.php:254
 #: ../features/core/global_functions.php:141
 msgid "Apartment Story"
 msgstr "Appartamento storia"
 
-#: ../features/admin/unit_metabox.php:246
-#: ../features/core/field_manager.php:296
+#: ../features/admin/unit_metabox.php:265
+#: ../features/core/field_manager.php:302
 msgid "IDX / REMCat House Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:255
-#: ../features/core/field_manager.php:301
+#: ../features/admin/unit_metabox.php:274
+#: ../features/core/field_manager.php:307
 msgid "IDX / REMCat Object Ref."
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:263
-#: ../features/core/field_manager.php:275
+#: ../features/admin/unit_metabox.php:282
+#: ../features/core/field_manager.php:281
 #: ../features/core/global_functions.php:281
 #, fuzzy
 #| msgid "Number of Rooms"
 msgid "Number of people (min)"
 msgstr "Numero di Camere"
 
-#: ../features/admin/unit_metabox.php:271
-#: ../features/core/field_manager.php:280
+#: ../features/admin/unit_metabox.php:290
+#: ../features/core/field_manager.php:286
 #: ../features/core/global_functions.php:289
 #, fuzzy
 #| msgid "Number of Rooms"
 msgid "Number of people (max)"
 msgstr "Numero di Camere"
 
-#: ../features/admin/unit_metabox.php:279
-#: ../features/core/field_manager.php:265
+#: ../features/admin/unit_metabox.php:298
+#: ../features/core/field_manager.php:271
 #: ../features/core/global_functions.php:297
 msgid "Income (min)"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:287
-#: ../features/core/field_manager.php:270
+#: ../features/admin/unit_metabox.php:306
+#: ../features/core/field_manager.php:276
 #: ../features/core/global_functions.php:305
 msgid "Income (max)"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:297
+#: ../features/admin/unit_metabox.php:316
 msgid "Spaces"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:302
+#: ../features/admin/unit_metabox.php:321
 #: ../features/core/global_functions.php:149
 #: ../features/core/global_functions.php:357
 msgid "Living Space"
 msgstr "Spazio abitabile:"
 
-#: ../features/admin/unit_metabox.php:311
+#: ../features/admin/unit_metabox.php:330
 #: ../features/core/global_functions.php:158
 #: ../features/core/global_functions.php:362
 msgid "Usable Space"
 msgstr "Spazio utilizzabile"
 
-#: ../features/admin/unit_metabox.php:321
+#: ../features/admin/unit_metabox.php:340
 #: ../features/core/global_functions.php:204
 msgid "Terrace Space"
 msgstr "Terrazza Spazio"
 
-#: ../features/admin/unit_metabox.php:330
+#: ../features/admin/unit_metabox.php:349
 #: ../features/core/global_functions.php:213
 msgid "Balcony Space"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:344
+#: ../features/admin/unit_metabox.php:363
 msgid "Buy"
 msgstr "Acquista"
 
-#: ../features/admin/unit_metabox.php:348
-#: ../features/core/field_manager.php:248
+#: ../features/admin/unit_metabox.php:367
+#: ../features/core/field_manager.php:256
 #: ../features/core/global_functions.php:234
 msgid "Currency"
 msgstr "Valuta"
 
-#: ../features/admin/unit_metabox.php:362
+#: ../features/admin/unit_metabox.php:381
 #: ../features/core/global_functions.php:166
+#: ../features/core/global_functions.php:377
 msgid "Purchase Price"
 msgstr "Prezzo di Acquisto"
 
-#: ../features/admin/unit_metabox.php:366
+#: ../features/admin/unit_metabox.php:385
 msgid "\"\" = not for sale, 0 = upon request"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:372
+#: ../features/admin/unit_metabox.php:391
 msgid "Purchase scope"
 msgstr "Prezzo di Acquisto"
 
-#: ../features/admin/unit_metabox.php:382
-#: ../features/core/field_manager.php:253
+#: ../features/admin/unit_metabox.php:401
+#: ../features/core/field_manager.php:261
 msgid "Rent"
 msgstr "Affitto"
 
-#: ../features/admin/unit_metabox.php:387
+#: ../features/admin/unit_metabox.php:406
 #: ../features/core/global_functions.php:175
 #: ../features/core/global_functions.php:367
 msgid "Rent Net Price"
 msgstr "Prezzo netto in affitto"
 
-#: ../features/admin/unit_metabox.php:391
+#: ../features/admin/unit_metabox.php:410
 msgid "\"\" = not for rent, 0 = upon request"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:397
+#: ../features/admin/unit_metabox.php:416
 msgid "Rent Time segment"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:408
+#: ../features/admin/unit_metabox.php:428
 msgid "Rental scope"
 msgstr ""
 
-#: ../features/admin/unit_metabox.php:419
-#: ../features/core/field_manager.php:326
+#: ../features/admin/unit_metabox.php:439
+#: ../features/core/field_manager.php:332
 #: ../features/core/global_functions.php:195
 msgid "Extra Costs"
 msgstr "Costi extra"
 
-#: ../features/admin/unit_metabox.php:441
-#: ../features/admin/unit_metabox.php:450
-#: ../features/admin/unit_metabox.php:459
-#: ../features/core/field_manager.php:341
-#: ../features/core/field_manager.php:346
-#: ../features/core/field_manager.php:351
+#: ../features/admin/unit_metabox.php:461
+#: ../features/admin/unit_metabox.php:470
+#: ../features/admin/unit_metabox.php:479
+#: ../features/core/field_manager.php:347
+#: ../features/core/field_manager.php:352
+#: ../features/core/field_manager.php:357
 #: ../features/core/global_functions.php:243
 #: ../features/core/global_functions.php:252
 #: ../features/core/global_functions.php:261
@@ -3661,152 +3731,171 @@ msgstr "Costi extra"
 msgid "Custom %d"
 msgstr ""
 
-#: ../features/client/render.php:14
+#: ../features/client/render.php:18
 msgid "First name is required"
 msgstr ""
 
-#: ../features/client/render.php:15
+#: ../features/client/render.php:19
 msgid "Last name is required"
 msgstr ""
 
-#: ../features/client/render.php:16
+#: ../features/client/render.php:20
 msgid "The company is required"
 msgstr ""
 
-#: ../features/client/render.php:17
+#: ../features/client/render.php:21
 msgid "Email is not valid"
 msgstr ""
 
-#: ../features/client/render.php:18
+#: ../features/client/render.php:22
 msgid "A phone number is required"
 msgstr ""
 
-#: ../features/client/render.php:19
+#: ../features/client/render.php:23
 msgid "A street address is required"
 msgstr ""
 
-#: ../features/client/render.php:20
+#: ../features/client/render.php:24
 msgid "ZIP is required"
 msgstr ""
 
-#: ../features/client/render.php:21
+#: ../features/client/render.php:25
 msgid "City is required"
 msgstr ""
 
-#: ../features/client/render.php:22
+#: ../features/client/render.php:26
 msgid "Message is required"
 msgstr ""
 
-#: ../features/client/render.php:23
+#: ../features/client/render.php:27
 msgid "Ivalid post"
 msgstr ""
 
-#: ../features/client/render.php:25
+#: ../features/client/render.php:29
 msgid "Please choose a unit"
 msgstr ""
 
-#: ../features/client/render.php:1091 ../features/client/render.php:1156
+#: ../features/client/render.php:1312 ../features/client/render.php:1377
 msgid "Unit inquiry"
 msgstr ""
 
-#: ../features/client/render.php:1124
+#: ../features/client/render.php:1345
 msgid "Phone:"
 msgstr "Telefono:"
 
-#: ../features/client/render.php:1128
+#: ../features/client/render.php:1349
 msgid "Mobile:"
 msgstr ""
 
-#: ../features/client/render.php:1144 ../features/core/field_manager.php:90
-#: ../features/core/field_manager.php:112
-#: ../features/core/field_manager.php:238
+#: ../features/client/render.php:1365 ../features/core/field_manager.php:91
+#: ../features/core/field_manager.php:117
+#: ../features/core/field_manager.php:246
 msgid "Unit"
 msgstr ""
 
-#: ../features/client/render.php:1379 ../features/client/render.php:1413
+#: ../features/client/render.php:1607 ../features/client/render.php:1646
+#: ../features/client/render.php:1680
 msgid "Inquiry has been sent. Thank you!"
 msgstr ""
 
-#: ../features/client/render.php:1450
+#: ../features/client/render.php:1717
 msgid "Please check the following and try again:"
 msgstr ""
 
-#: ../features/core/field_manager.php:86
+#: ../features/core/field_manager.php:87
 msgid "Gender"
 msgstr "Sesso"
 
-#: ../features/core/field_manager.php:243
+#: ../features/core/field_manager.php:99
+msgid "direct_recipient_email"
+msgstr ""
+
+#: ../features/core/field_manager.php:251
 msgid "Purchase price"
 msgstr "Prezzo di acquisto"
 
-#: ../features/core/field_manager.php:258
+#: ../features/core/field_manager.php:266
 msgid "Rooms"
 msgstr "Stanze"
 
-#: ../features/core/field_manager.php:286
-#: ../features/core/global_functions.php:377
+#: ../features/core/field_manager.php:292
+#: ../features/core/global_functions.php:382
 msgid "Floor"
 msgstr "Piano"
 
-#: ../features/core/field_manager.php:306
-#: ../features/core/field_manager.php:390
-#: ../features/core/field_manager.php:394
+#: ../features/core/field_manager.php:312
+#: ../features/core/field_manager.php:411
+#: ../features/core/field_manager.php:415
 msgid "Living space"
 msgstr "Superficie abitabile"
 
-#: ../features/core/field_manager.php:311
+#: ../features/core/field_manager.php:317
 msgid "Usable space"
 msgstr "Spazio utilizzabile"
 
-#: ../features/core/field_manager.php:316
-#: ../features/core/field_manager.php:398
+#: ../features/core/field_manager.php:322
+#: ../features/core/field_manager.php:419
 msgid "Terrace space"
 msgstr "spazio Terrazza"
 
-#: ../features/core/field_manager.php:321
-#: ../features/core/field_manager.php:402
+#: ../features/core/field_manager.php:327
+#: ../features/core/field_manager.php:423
 msgid "Balcony space"
 msgstr ""
 
-#: ../features/core/field_manager.php:336
+#: ../features/core/field_manager.php:342
 msgid "Download label"
 msgstr ""
 
-#: ../features/core/field_manager.php:356
+#: ../features/core/field_manager.php:362
 msgid "Link target"
 msgstr ""
 
-#: ../features/core/field_manager.php:361
+#: ../features/core/field_manager.php:367
 msgid "Link url"
 msgstr ""
 
-#: ../features/core/field_manager.php:366
+#: ../features/core/field_manager.php:372
 msgid "Link label"
 msgstr ""
 
-#: ../features/core/field_manager.php:374
+#: ../features/core/field_manager.php:377
+msgid "Tour target"
+msgstr ""
+
+#: ../features/core/field_manager.php:382
+msgid "Tour url"
+msgstr ""
+
+#: ../features/core/field_manager.php:387
+msgid "Tour label"
+msgstr ""
+
+#: ../features/core/field_manager.php:395
 #, php-format
 msgid "Purchase price%s in %s%s"
 msgstr ""
 
-#: ../features/core/field_manager.php:378
+#: ../features/core/field_manager.php:399
 #, php-format
 msgid "Rent%s in %s%s"
 msgstr ""
 
-#: ../features/core/field_manager.php:382
-#: ../features/core/field_manager.php:386
+#: ../features/core/field_manager.php:403
+#: ../features/core/field_manager.php:407
 #: ../features/core/global_functions.php:184
 #: ../features/core/global_functions.php:372
 msgid "Rent gross"
 msgstr "Affitto"
 
-#: ../features/core/field_manager.php:406
+#: ../features/core/field_manager.php:427
 #, php-format
 msgid "Extra Costs%s in %s%s"
 msgstr ""
 
-#: ../features/core/field_manager.php:420
+#: ../features/core/field_manager.php:441
+#: ../features/core/field_manager.php:451
+#: ../features/core/field_manager.php:472
 msgid "upon request"
 msgstr ""
 
@@ -3814,23 +3903,23 @@ msgstr ""
 msgid "Download"
 msgstr "Scarica"
 
-#: ../features/core/global_functions.php:387
+#: ../features/core/global_functions.php:392
 msgid "Custom 1"
 msgstr ""
 
-#: ../features/core/global_functions.php:392
+#: ../features/core/global_functions.php:397
 msgid "Custom 2"
 msgstr ""
 
-#: ../features/core/global_functions.php:397
+#: ../features/core/global_functions.php:402
 msgid "Custom 3"
 msgstr ""
 
-#: ../features/core/global_functions.php:402
+#: ../features/core/global_functions.php:407
 msgid "Your yearly income"
 msgstr ""
 
-#: ../features/core/global_functions.php:407
+#: ../features/core/global_functions.php:412
 #, fuzzy
 #| msgid "Number of Rooms"
 msgid "Number of people"
@@ -4106,6 +4195,54 @@ msgstr ""
 msgid "Reasons"
 msgstr ""
 
+#: ../features/core/post_types.php:183
+msgid "Property Attachment Types"
+msgstr ""
+
+#: ../features/core/post_types.php:184 ../features/core/post_types.php:193
+msgid "Attachment Type"
+msgstr ""
+
+#: ../features/core/post_types.php:185
+msgid "Search Attachment Types"
+msgstr ""
+
+#: ../features/core/post_types.php:186
+msgid "All Attachment Types"
+msgstr ""
+
+#: ../features/core/post_types.php:187
+msgid "Parent Attachment Type"
+msgstr ""
+
+#: ../features/core/post_types.php:188
+msgid "Parent Attachment Type:"
+msgstr ""
+
+#: ../features/core/post_types.php:189
+msgid "Edit Attachment Type"
+msgstr ""
+
+#: ../features/core/post_types.php:190
+msgid "Update Attachment Type"
+msgstr ""
+
+#: ../features/core/post_types.php:191
+msgid "Add New Attachment Type"
+msgstr ""
+
+#: ../features/core/post_types.php:192
+msgid "New Attachment Type Name"
+msgstr ""
+
+#: ../features/import.php:1761
+msgid "Plan"
+msgstr "Pianta"
+
+#: ../features/import.php:1766
+msgid "Apply now"
+msgstr "Candidarsi ora"
+
 #: ../features/silence.php:3
 msgid "Silence is golden... or at least isn't completely annoying."
 msgstr "Il silenzio è d&#39;oro ... o almeno non è completamente fastidioso."
@@ -4115,9 +4252,6 @@ msgstr "Il silenzio è d&#39;oro ... o almeno non è completamente fastidioso."
 
 #~ msgid "What do you wish to know?"
 #~ msgstr "Was möchten Sie wissen?"
-
-#~ msgid "Subject"
-#~ msgstr "Betreff"
 
 #~ msgid "Price"
 #~ msgstr "Preis"
