@@ -609,6 +609,14 @@ class general_options extends Feature
             $new_input['cxm_emonitor_api'] = $input['cxm_emonitor_api'];
         }
 
+        if( isset( $input['cxm_emonitor_rewrite_download_label'] ) ) {
+            $new_input['cxm_emonitor_rewrite_download_label'] = $input['cxm_emonitor_rewrite_download_label'];
+        }
+
+        if( isset( $input['cxm_emonitor_rewrite_link_label'] ) ) {
+            $new_input['cxm_emonitor_rewrite_link_label'] = $input['cxm_emonitor_rewrite_link_label'];
+        }
+
         if( isset( $input['gap_id'] ) ) {
             $new_input['gap_id'] = sanitize_text_field( $input['gap_id'] );
         }
@@ -1326,6 +1334,26 @@ class general_options extends Feature
                 <p><?php echo $text; ?></p>
                 <p>
                     <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend class="screen-reader-text"><span>Emonitor Download Label umschreiben</span></legend>
+                <?php $name = 'cxm_emonitor_rewrite_download_label'; ?>
+                <?php $text = 'Emonitor Download Label umschreiben'; ?>
+                <p><?php echo $text; ?></p>
+                <p>
+                    <input type="text" placeholder="Grundriss" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend class="screen-reader-text"><span>Emonitor Link Label umschreiben</span></legend>
+                <?php $name = 'cxm_emonitor_rewrite_link_label'; ?>
+                <?php $text = 'Emonitor Link Label umschreiben'; ?>
+                <p><?php echo $text; ?></p>
+                <p>
+                    <input type="text" placeholder="Jetzt online bewerben" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
                 </p>
             </fieldset>
         </td>

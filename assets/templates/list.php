@@ -133,9 +133,16 @@
 															echo apply_filters('cxm_render_download_button_classes', $html);
 														?>" 
 													href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
-														<span>
-															<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
-														</span>
+														<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
+															<span>
+																<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_download_label']; ?>
+															</span>
+														<?php else: ?>
+															<span>
+																<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
+															</span>
+														<?php endif; ?>
+														
 														<?php 
 															$html = '';
 															echo apply_filters('cxm_render_download_button_additional_content', $html);
@@ -159,9 +166,15 @@
 															echo apply_filters('cxm_render_link_button_classes', $html);
 														?>" 
 													href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-														<span>
-															<?php echo (get_cxm($the_unit['post'], 'link_label') ? get_cxm($the_unit['post'], 'link_label') : 'Link') ?>
-														</span>
+														<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
+															<span>
+																<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_link_label']; ?>
+															</span>
+														<?php else: ?>
+															<span>
+																<?php echo (get_cxm($the_unit['post'], 'link_label') ? get_cxm($the_unit['post'], 'link_label') : 'Link') ?>
+															</span>
+														<?php endif; ?>
 														<?php 
 															$html = '';
 															echo apply_filters('cxm_render_link_button_additional_content', $html);
@@ -261,9 +274,15 @@
 																	echo apply_filters('cxm_render_download_button_classes', $html);
 																?>" 
 															href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
-																<span>
-																	<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
-																</span>
+																<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
+																	<span>
+																		<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_download_label']; ?>
+																	</span>
+																<?php else: ?>
+																	<span>
+																		<?php echo (get_cxm($the_unit['post'], 'download_label') ? get_cxm($the_unit['post'], 'download_label') : 'Download') ?>
+																	</span>
+																<?php endif; ?>
 																<?php 
 																	$html = '';
 																	echo apply_filters('cxm_render_download_button_additional_content', $html);
@@ -287,9 +306,16 @@
 																	echo apply_filters('cxm_render_link_button_classes', $html);
 																?>" 
 															href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-																<span>
-																	<?php echo (get_cxm($the_unit['post'], 'link_label') ? get_cxm($the_unit['post'], 'link_label') : 'Link') ?>
-																</span>
+																
+																<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
+																	<span>
+																		<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_link_label']; ?>
+																	</span>
+																<?php else: ?>
+																	<span>
+																		<?php echo (get_cxm($the_unit['post'], 'link_label') ? get_cxm($the_unit['post'], 'link_label') : 'Link') ?>
+																	</span>
+																<?php endif; ?>
 																<?php 
 																	$html = '';
 																	echo apply_filters('cxm_render_link_button_additional_content', $html);
