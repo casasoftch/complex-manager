@@ -1688,9 +1688,9 @@ class eMonitorImport extends Feature{
 
     //$this->addToLog('propertystatus ' . $property['state_simplyfied']);
 
-    if ($property['state_simplyfied'] == 'reserviert' || $property['state_simplyfied'] == 'Reserviert') {
+    if ($property['state_simplyfied'] == 'reserviert' || $property['state_simplyfied'] == 'Reserviert' || $property['state_simplyfied'] == 'réservé') {
       $property['state_simplyfied'] = 'reserved';
-    }  elseif($property['state_simplyfied'] == 'vermietet' || $property['state_simplyfied'] == 'Vermietet' ){
+    }  elseif($property['state_simplyfied'] == 'vermietet' || $property['state_simplyfied'] == 'Vermietet' || $property['state_simplyfied'] == 'loué'){
       $property['state_simplyfied'] = 'rented';
     }  else{
       $property['state_simplyfied'] = 'available';
