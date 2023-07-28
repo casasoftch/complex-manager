@@ -1722,8 +1722,8 @@ class eMonitorImport extends Feature{
     $new_meta_data['_complexmanager_unit_number_of_rooms']      = (is_numeric($property['rooms']) ? $property['rooms'] : '');
     //$new_meta_data['_complexmanager_unit_min_income']           = $property['']; kein passendes emonitor feld
     //$new_meta_data['_complexmanager_unit_max_income']           = $property['']; kein passendes emonitor feld
-    $new_meta_data['_complexmanager_unit_min_sorted_xmls']          = (is_numeric($property['min_adult']) ? $property['min_adult'] : '');
-    $new_meta_data['_complexmanager_unit_max_sorted_xmls']          = (is_numeric($property['max_adult']) ? $property['max_adult'] : '');
+    $new_meta_data['_complexmanager_unit_min_persons']          = (is_numeric($property['min_adult']) ? $property['min_adult'] : '');
+    $new_meta_data['_complexmanager_unit_max_persons']          = (is_numeric($property['max_adult']) ? $property['max_adult'] : '');
     $new_meta_data['_complexmanager_unit_story']                = $property['floor'];
     $new_meta_data['_complexmanager_unit_status']               = $property['state_simplyfied'];
     //$new_meta_data['_complexmanager_unit_currency']             = $property['floor']; kein passendes emonitor feld
