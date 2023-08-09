@@ -145,22 +145,45 @@ class eMonitorImport extends Feature{
         }
         $this->transcript['attachments'][$casawp_id]["uploaded_from_gateway"][] = $filename;
 
+        $currentDomain = $_SERVER['HTTP_HOST'];
+        $isLocalDomain = strpos($currentDomain, '.local') !== false;
+
         $contextOptions = array(
-          "ssl" => array(
-            "verify_peer"      => false,
-            "verify_peer_name" => false,
-          ),
+            "ssl" => array(
+                "verify_peer" => !$isLocalDomain,
+                "verify_peer_name" => !$isLocalDomain,
+            ),
         );
 
-        if (strpos($fileurl, '://') && !strpos($fileurl, 'missing_file_icon')) {
+        /*   if (strpos($fileurl, '://') && !strpos($fileurl, 'missing_file_icon')) {
           $could_copy = copy(urldecode($fileurl), CXM_CUR_UPLOAD_BASEDIR . $filename, stream_context_create( $contextOptions ));
-        } else {
-          //$could_copy = copy($fileurl, CXM_CUR_UPLOAD_BASEDIR . $filename );
         }
         if (!$could_copy) {
           $this->transcript['attachments'][$casawp_id]["uploaded_from_gateway"][] = 'FAILED: ' .$filename;
           $filename = false;
+        } */
+
+        $ch = curl_init($fileurl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+        if ($isLocalDomain) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        } else {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         }
+
+        $data = curl_exec($ch);
+
+        if ($data === false) {
+            $this->transcript['attachments'][$casawp_id]["uploaded_from_gateway"][] = 'cURL error: ' . curl_error($ch);
+        } else {
+            file_put_contents(CXM_CUR_UPLOAD_BASEDIR . $filename, $data);
+        }
+
+        curl_close($ch);
 
       }
     }
@@ -238,244 +261,6 @@ class eMonitorImport extends Feature{
       return $filename . " could not be found!";
     }
   }
-
-
-
-  // public function setOfferAttachments($offer_medias, $wp_post, $casawp_id, $casawp_id, $property){
-  //   ### future task: for better performace compare new and old data ###
-
-
-  //   //get xml media files
-  //   $the_casawp_attachments = array();
-  //   if ($offer_medias) {
-  //     $o = 0;
-  //     foreach ($offer_medias as $offer_media) {
-  //       $o++;
-  //       $media = $offer_media['media'];
-  //       if (in_array($offer_media['type'], array('image', 'document', 'plan', 'offer-logo', 'sales-brochure'))) {
-  //         $the_casawp_attachments[] = array(
-  //           'type'    => $offer_media['type'],
-  //           'alt'     => $offer_media['alt'],
-  //           'title'   => ( $offer_media['title'] ? $offer_media['title'] : basename($media['original_file'])),
-  //           'file'    => '',
-  //           'url'     => $media['original_file'],
-  //           'caption' => $offer_media['caption'],
-  //           'order'   => $o
-  //         );
-  //       }
-  //     }
-  //   }
-
-  //   if (get_option('casawp_limit_reference_images') && $property['availability'] == 'reference') {
-  //     $title_image = false;
-  //     foreach ($the_casawp_attachments as $key => $attachment) {
-  //       if ($attachment['type'] == 'image') {
-  //         $title_image = $attachment;
-  //         break;
-  //       }
-  //     }
-  //     if ($title_image) {
-  //       $the_casawp_attachments = array(0 => $title_image);
-  //     }
-  //   }
-
-  //   //get post attachments already attached
-  //   $wp_casawp_attachments = array();
-  //   $args = array(
-  //     'post_type'   => 'attachment',
-  //     'numberposts' => -1,
-  //     'post_status' => null,
-  //     'post_parent' => $wp_post->ID,
-  //     'tax_query'   => array(
-  //       'relation'  => 'AND',
-  //       array(
-  //         'taxonomy' => 'cxm_attachment_type',
-  //         'field'    => 'slug',
-  //         'terms'    => array( 'image', 'plan', 'document', 'offer-logo', 'sales-brochure' )
-  //       )
-  //     )
-  //   );
-  //   $attachments = get_posts($args);
-  //   if ($attachments) {
-  //     foreach ($attachments as $attachment) {
-  //       $wp_casawp_attachments[] = $attachment;
-  //     }
-  //   }
-
-  //   //upload necesary images to wordpress
-  //   if (isset($the_casawp_attachments)) { // go through each attachment specified in xml
-  //     $wp_casawp_attachments_to_remove = $wp_casawp_attachments;
-  //     $dup_checker_arr = [];
-  //     foreach ($the_casawp_attachments as $the_mediaitem) { // go through each available attachment already in db
-  //       //look up wp and see if file is already attached
-  //       $existing = false;
-  //       $existing_attachment = array();
-  //       foreach ($wp_casawp_attachments as $key => $wp_mediaitem) {
-  //         $attachment_customfields = get_post_custom($wp_mediaitem->ID);
-  //         $original_filename = (array_key_exists('_origin', $attachment_customfields) ? $attachment_customfields['_origin'][0] : '');
-
-  //         // this checks for duplicates and ignores them if they exist. This can fix duplicates existing in the DB if they where, for instance, created durring run-in imports.
-  //         if (in_array($original_filename, $dup_checker_arr)) {
-  //           $this->addToLog('found duplicate for id: ' . $wp_mediaitem->ID . ' orig: ' . $original_filename);
-  //           // this file appears to be a duplicate, skip it (that way it will be deleted later) aka. it will remain in $wp_casawp_attachments_to_remove.
-  //           // because it encountered this file before it must be made existing in the past loop right?
-  //           // DISABLE FOR NOW
-  //           // $existing = true;
-  //           // continue;
-  //         }
-  //         $dup_checker_arr[] = $original_filename;
-
-  //         $alt = '';
-  //         if (
-  //           $original_filename == ($the_mediaitem['file'] ? $the_mediaitem['file'] : $the_mediaitem['url'])
-  //           ||
-  //           str_replace('%3D', '=', str_replace('%3F', '?', $original_filename)) == ($the_mediaitem['file'] ? $the_mediaitem['file'] : $the_mediaitem['url'])
-  //         ) {
-  //           $existing = true;
-  //           $this->addToLog('updating attachment ' . $wp_mediaitem->ID);
-
-  //           //it's here to stay
-  //           unset($wp_casawp_attachments_to_remove[$key]);
-
-  //           $types = wp_get_post_terms( $wp_mediaitem->ID, 'cxm_attachment_type');
-  //           if (array_key_exists(0, $types)) {
-  //             $typeslug = $types[0]->slug;
-  //             $alt = get_post_meta($wp_mediaitem->ID, '_wp_attachment_image_alt', true);
-  //             //build a proper array out of it
-  //             $existing_attachment = array(
-  //               'type'    => $typeslug,
-  //               'alt'     => $alt,
-  //               'title'   => $wp_mediaitem->post_title,
-  //               'file'    => $the_mediaitem['file'],
-  //               //'file'    => maibe? -> (is_file($the_mediaitem['file']) ? $the_mediaitem['file'] : '')
-  //               'url'     => $the_mediaitem['url'],
-  //               'caption' => $wp_mediaitem->post_excerpt,
-  //               'order'   => $wp_mediaitem->menu_order
-  //             );
-  //           }
-
-  //           //have its values changed?
-  //           if($existing_attachment != $the_mediaitem ){
-  //             $changed = true;
-  //             $this->transcript[$casawp_id]['attachments']["updated"] = 1;
-  //             //update attachment data
-  //             if ($existing_attachment['caption'] != $the_mediaitem['caption']
-  //               || $existing_attachment['title'] != $the_mediaitem['title']
-  //               || $existing_attachment['order'] != $the_mediaitem['order']
-  //               ) {
-  //               $att['post_excerpt'] = $the_mediaitem['caption'];
-  //               $att['post_title']   = ( $the_mediaitem['title'] ? $the_mediaitem['title'] : basename($filename));
-  //               $att['ID']           = $wp_mediaitem->ID;
-  //               $att['menu_order']   = $the_mediaitem['order'];
-  //               $insert_id           = wp_update_post( $att);
-  //             }
-  //             //update attachment category
-  //             if ($existing_attachment['type'] != $the_mediaitem['type']) {
-  //               $term = get_term_by('slug', $the_mediaitem['type'], 'cxm_attachment_type');
-  //               $term_id = $term->term_id;
-  //               wp_set_post_terms( $wp_mediaitem->ID,  array($term_id), 'cxm_attachment_type' );
-  //             }
-  //             //update attachment alt
-  //             if ($alt != $the_mediaitem['alt']) {
-  //               update_post_meta($wp_mediaitem->ID, '_wp_attachment_image_alt', $the_mediaitem['alt']);
-  //             }
-  //           }
-  //         }
-
-
-  //       }
-
-  //       if (!$existing) {
-  //         $this->addToLog('creating new attachment ' . $wp_mediaitem->ID);
-  //         //insert the new image
-  //         $new_id = $this->cxmUploadAttachment($the_mediaitem, $wp_post->ID, $casawp_id);
-  //         if (is_int($new_id)) {
-  //           $this->transcript[$casawp_id]['attachments']["created"] = $the_mediaitem['file'];
-  //         } else {
-  //           $this->transcript[$casawp_id]['attachments']["failed_to_create"] = $new_id;
-  //         }
-  //       }
-
-  //       //tries to fix missing files
-  //       if (! get_option('casawp_use_casagateway_cdn', false) && isset($the_mediaitem['url'])) {
-  //         $this->cxmUploadAttachmentFromGateway($casawp_id, $the_mediaitem['url']);
-  //       }
-
-
-  //     } //foreach ($the_casawp_attachments as $the_mediaitem) {
-
-  //     //images to remove
-  //     if ($wp_casawp_attachments_to_remove){
-  //       $this->addToLog('removing ' . count($wp_casawp_attachments_to_remove) . ' attachments');
-  //     }
-  //     foreach ($wp_casawp_attachments_to_remove as $attachment) {
-  //       $this->addToLog('removing ' . $attachment->ID);
-  //       $this->transcript[$casawp_id]['attachments']["removed"] = $attachment;
-
-  //       // $attachment_customfields = get_post_custom($attachment->ID);
-  //       // $original_filename = (array_key_exists('_origin', $attachment_customfields) ? $attachment_customfields['_origin'][0] : '');
-  //       wp_delete_attachment( $attachment->ID );
-  //     }
-
-  //     //featured image (refetch to avoid setting just removed items or not having new items)
-  //     $args = array(
-  //       'post_type'   => 'attachment',
-  //       'numberposts' => -1,
-  //       'post_status' => null,
-  //       'post_parent' => $wp_post->ID,
-  //       'tax_query'   => array(
-  //         'relation'  => 'AND',
-  //         array(
-  //           'taxonomy' => 'cxm_attachment_type',
-  //           'field'    => 'slug',
-  //           'terms'    => array( 'image', 'plan', 'document', 'offer-logo', 'sales-brochure' )
-  //         )
-  //       )
-  //     );
-  //     $attachments = get_posts($args);
-  //     if ($attachments) {
-  //       unset($wp_casawp_attachments);
-  //       foreach ($attachments as $attachment) {
-  //         $wp_casawp_attachments[] = $attachment;
-  //       }
-  //     }
-
-  //     $attachment_image_order = array();
-  //     foreach ($the_casawp_attachments as $the_mediaitem) {
-  //       if ($the_mediaitem['type'] == 'image') {
-  //         $attachment_image_order[$the_mediaitem['order']] = $the_mediaitem;
-  //       }
-  //     }
-  //     if (isset($attachment_image_order) && !empty($attachment_image_order)) {
-  //       ksort($attachment_image_order);
-  //       $attachment_image_order = reset($attachment_image_order);
-  //       if (!empty($attachment_image_order)) {
-  //         foreach ($wp_casawp_attachments as $wp_mediaitem) {
-  //           $attachment_customfields = get_post_custom($wp_mediaitem->ID);
-  //           $original_filename = (array_key_exists('_origin', $attachment_customfields) ? $attachment_customfields['_origin'][0] : '');
-  //           if (
-  //             $original_filename == ($attachment_image_order['file'] ? $attachment_image_order['file'] : $attachment_image_order['url'])
-  //             ||
-  //             str_replace('%3D', '=', str_replace('%3F', '?', $original_filename)) == ($attachment_image_order['file'] ? $attachment_image_order['file'] : $attachment_image_order['url'])
-  //           ) {
-  //             $cur_thumbnail_id = get_post_thumbnail_id( $wp_post->ID );
-  //             if ($cur_thumbnail_id != $wp_mediaitem->ID) {
-  //               set_post_thumbnail( $wp_post->ID, $wp_mediaitem->ID );
-  //               $this->transcript[$casawp_id]['attachments']["featured_image_set"] = 1;
-  //               break;
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-
-
-
-
-  //   } //(isset($the_casawp_attachments)
-
-
-  // }
 
 
   public function setPropertyBuilding($wp_post, $building, $casawp_id, $buildingcontent, $propertytype){
@@ -667,126 +452,89 @@ class eMonitorImport extends Feature{
     $propertydata = array(
 
         //building data
-        'building_adress'       =>  ($property_xml->building->adress ?:''),
-        'building_publicated_adress'       =>  ($property_xml->building->publicated_adress ?:''),
-        'building_house_number_supplement'       =>  ($property_xml->building->house_number_supplement ?:''),
-        'building_house_number'       =>  ($property_xml->building->house_number ?:''),
-        'building_year_of_construction'       =>  ($property_xml->building->year_of_construction ?:''),
-        'building_plz'       =>  ($property_xml->building->plz ?:''),
-        'building_city'       =>  ($property_xml->building->city ?:''),
-        'building_state'       =>  ($property_xml->building->state ?:''),
-        'building_lift'       =>  ($property_xml->building->lift ?:''),
-        'building_title'       =>  ($property_xml->building->title ?:''),
-        'building_mark'       =>  ($property_xml->building->mark ?:''),
-        'building_mark_property'       =>  ($property_xml->building->mark_property ?:''),
-        'building_colony'       =>  ($property_xml->building->colony ?:''),
-        'building_metropolitan'       =>  ($property_xml->building->metropolitan ?:''),
-        'building_district'       =>  ($property_xml->building->district ?:''),
+        'building_adress'       =>  $property_xml->building->adress ?? '',
+        'building_publicated_adress'       =>  $property_xml->building->publicated_adress ?? '',
+        'building_house_number_supplement'       =>  $property_xml->building->house_number_supplement ?? '',
+        'building_house_number'       =>  $property_xml->building->house_number ?? '',
+        'building_year_of_construction'       =>  $property_xml->building->year_of_construction ?? '',
+        'building_plz'       =>  $property_xml->building->plz ?? '',
+        'building_city'       =>  $property_xml->building->city ?? '',
+        'building_state'       =>  $property_xml->building->state ?? '',
+        'building_lift'       =>  $property_xml->building->lift ?? '',
+        'building_title'       =>  $property_xml->building->title ?? '',
+        'building_mark'       =>  $property_xml->building->mark ?? '',
+        'building_mark_property'       =>  $property_xml->building->mark_property ?? '',
+        'building_colony'       =>  $property_xml->building->colony ?? '',
+        'building_metropolitan'       =>  $property_xml->building->metropolitan ?? '',
+        'building_district'       =>  $property_xml->building->district ?? '',
         
         
         //property data media
-        'images'       =>  ($property_xml->images ?:''),
-        'factsheet'       =>  ($property_xml->factsheet ?:''),
-        'pdf_file_link'       =>  ($property_xml->pdf_file_link ?:''),
-        'pdf_file'       =>  ($property_xml->pdf_file ?:''),
-        'image'       =>  ($property_xml->image ?:''),
-        'isometry'       =>  ($property_xml->isometry ?:''),
-        'situation_plan'       =>  ($property_xml->situation_plan ?:''),
-        'factsheets'       =>  ($property_xml->factsheets ?:''),
-        'application_pdf'       =>  ($property_xml->application_pdf ?:''),
-        'ref'       =>  ($property_xml->ref ?:''),
-        'layout_plan'       =>  ($property_xml->layout_plan ?:''),
+        'images'       =>  $property_xml->images ?? '',
+        'factsheet'       =>  $property_xml->factsheet ?? '',
+        'pdf_file_link'       =>  $property_xml->pdf_file_link ?? '',
+        'pdf_file'       =>  $property_xml->pdf_file ?? '',
+        'image' => $property_xml->image ?? '',
+        'isometry'       =>  $property_xml->isometry ?? '',
+        'situation_plan'       =>  $property_xml->situation_plan ?? '',
+        'factsheets'       =>  $property_xml->factsheets ?? '',
+        'application_pdf'       =>  $property_xml->application_pdf ?? '',
+        'ref'       =>  $property_xml->ref ?? '',
+        'layout_plan'       =>  $property_xml->layout_plan ?? '',
 
 
         //property data
-        'incidental_costs'       =>  ($property_xml->incidental_costs ?:''),
-        'incidental_costs_squaremeter'       =>  ($property_xml->incidental_costs_squaremeter ?:''),
-        'rentalprice_squaremeter'       =>  ($property_xml->rentalprice_squaremeter ?:''),
-        'rentalprice_squaremeter_net'       =>  ($property_xml->rentalprice_squaremeter_net ?:''),
-        'state_simplyfied'       =>  ($property_xml->state_simplyfied ?:''),
-        'url'       =>  ($property_xml->url ?:''),
-        'end_date'       =>  ($property_xml->end_date ?:''),
-        'creation'       =>  ($property_xml->start_date ?:''),
-        'move_in_date'       =>  ($property_xml->move_in_date ?:''),
-        'property_type'       =>  ($property_xml->property_type ?:''),
-        'rentalgross'       =>  ($property_xml->rentalgross ?:''),
-        'rentalgross_net'       =>  ($property_xml->rentalgross_net ?:''),
-        'price_unit'       =>  ($property_xml->price_unit ?:''),
-        'state'       =>  ($property_xml->state ?:''),
-        'mark'       =>  ($property_xml->mark ?:''),
-        'title'       =>  ($property_xml->title ?:''),
-        'area'       =>  ($property_xml->area ?:''),
-        'rooms'       =>  ($property_xml->rooms ?:''),
-        'area_brutto'       =>  ($property_xml->area_brutto ?:''),
-        'area_property'       =>  ($property_xml->area_property ?:''),
-        'reference_date'       =>  ($property_xml->reference_date ?:''),
-        'object'       =>  ($property_xml->object ?:''),
-        'orientation'       =>  ($property_xml->orientation ?:''),
-        'add_costs_per_month_m2'       =>  ($property_xml->add_costs_per_month_m2 ?:''),
-        'virtual_tour_link'       =>  ($property_xml->virtual_tour_link ?:''),
-        'website_link'       =>  ($property_xml->website_link ?:''),
-        'balcony'       =>  ($property_xml->balcony ?:''),
-        'balcony_yes_no'       =>  ($property_xml->balcony_yes_no ?:''),
-        'loggia'       =>  ($property_xml->loggia ?:''),
-        'loggia_area'       =>  ($property_xml->loggia_area ?:''),
-        'loggia_number'       =>  ($property_xml->loggia_number ?:''),
-        'garden_text'       =>  ($property_xml->garden_text ?:''),
-        'garden_sitting_place'       =>  ($property_xml->garden_sitting_place ?:''),
-        'garden_sitting_place_area'       =>  ($property_xml->garden_sitting_place_area ?:''),
-        'shared_garden'       =>  ($property_xml->shared_garden ?:''),
-        'winter_garden'       =>  ($property_xml->winter_garden ?:''),
-        'winter_garden_number'       =>  ($property_xml->winter_garden_number ?:''),
-        'terrace'       =>  ($property_xml->terrace ?:''),
-        'terrace_area'       =>  ($property_xml->terrace_area ?:''),
-        'terrace_garden_number'       =>  ($property_xml->terrace_garden_number ?:''),
-        'floor'       =>  ($property_xml->floor ?:''),
-        'location_on_floor'       =>  ($property_xml->location_on_floor ?:''),
-        'bath'       =>  ($property_xml->bath ?:''),
-        'bath_number'       =>  ($property_xml->bath_number ?:''),
-        'additional_costs_1'       =>  ($property_xml->additional_costs_1 ?:''),
-        'additional_costs_2'       =>  ($property_xml->additional_costs_2 ?:''),
-        'min_adult'       =>  ($property_xml->min_adult ?:''),
-        'max_adult'       =>  ($property_xml->max_adult ?:''),
-        'rental_conditions'       =>  ($property_xml->rental_conditions ?:''),
+        'incidental_costs'       =>  $property_xml->incidental_costs ?? '',
+        'incidental_costs_squaremeter'       =>  $property_xml->incidental_costs_squaremeter ?? '',
+        'rentalprice_squaremeter'       =>  $property_xml->rentalprice_squaremeter ?? '',
+        'rentalprice_squaremeter_net'       =>  $property_xml->rentalprice_squaremeter_net ?? '',
+        'state_simplyfied'       =>  $property_xml->state_simplyfied ?? '',
+        'url'       =>  $property_xml->url ?? '',
+        'end_date'       =>  $property_xml->end_date ?? '',
+        'creation'       =>  $property_xml->start_date ?? '',
+        'move_in_date'       =>  $property_xml->move_in_date ?? '',
+        'property_type'       =>  $property_xml->property_type ?? '',
+        'rentalgross'       =>  $property_xml->rentalgross ?? '',
+        'rentalgross_net'       =>  $property_xml->rentalgross_net ?? '',
+        'price_unit'       =>  $property_xml->price_unit ?? '',
+        'state'       =>  $property_xml->state ?? '',
+        'mark'       =>  $property_xml->mark ?? '',
+        'title'       =>  $property_xml->title ?? '',
+        'area'       =>  $property_xml->area ?? '',
+        'rooms'       =>  $property_xml->rooms ?? '',
+        'area_brutto'       =>  $property_xml->area_brutto ?? '',
+        'area_property'       =>  $property_xml->area_property ?? '',
+        'reference_date'       =>  $property_xml->reference_date ?? '',
+        'object'       =>  $property_xml->object ?? '',
+        'orientation'       =>  $property_xml->orientation ?? '',
+        'add_costs_per_month_m2'       =>  $property_xml->add_costs_per_month_m2 ?? '',
+        'virtual_tour_link'       =>  $property_xml->virtual_tour_link ?? '',
+        'website_link'       =>  $property_xml->website_link ?? '',
+        'balcony'       =>  $property_xml->balcony ?? '',
+        'balcony_yes_no'       =>  $property_xml->balcony_yes_no ?? '',
+        'loggia'       =>  $property_xml->loggia ?? '',
+        'loggia_area'       =>  $property_xml->loggia_area ?? '',
+        'loggia_number'       =>  $property_xml->loggia_number ?? '',
+        'garden_text'       =>  $property_xml->garden_text ?? '',
+        'garden_sitting_place'       =>  $property_xml->garden_sitting_place ?? '',
+        'garden_sitting_place_area'       =>  $property_xml->garden_sitting_place_area ?? '',
+        'shared_garden'       =>  $property_xml->shared_garden ?? '',
+        'winter_garden'       =>  $property_xml->winter_garden ?? '',
+        'winter_garden_number'       =>  $property_xml->winter_garden_number ?? '',
+        'terrace'       =>  $property_xml->terrace ?? '',
+        'terrace_area'       =>  $property_xml->terrace_area ?? '',
+        'terrace_garden_number'       =>  $property_xml->terrace_garden_number ?? '',
+        'floor'       =>  $property_xml->floor ?? '',
+        'location_on_floor'       =>  $property_xml->location_on_floor ?? '',
+        'bath'       =>  $property_xml->bath ?? '',
+        'bath_number'       =>  $property_xml->bath_number ?? '',
+        'additional_costs_1'       =>  $property_xml->additional_costs_1 ?? '',
+        'additional_costs_2'       =>  $property_xml->additional_costs_2 ?? '',
+        'min_adult'       =>  $property_xml->min_adult ?? '',
+        'max_adult'       =>  $property_xml->max_adult ?? '',
+        'rental_conditions'       =>  $property_xml->rental_conditions ?? '',
 
     );
-
-  
-
-  //attachments
-  // $propertydata['layout_plan'] = array();
-  // if ($property_xml->layout_plan) {
-  //   $this->addToLog('TEST1');
-
-  //     foreach ($property_xml->layout_plan as $xml_media) {
-  //       $this->addToLog('TEST2');
-  //         if ($xml_media->file) {
-  //             $source = dirname($this->file) . $xml_media->file->__toString();
-  //             $this->addToLog('TEST3');
-  //         } elseif ($xml_media->url) {
-  //             $source = $xml_media->url->__toString();
-  //             $source = implode('/', array_map('rawurlencode', explode('/', $source)));
-  //             $source = str_replace('http%3A//', 'http://', $source);
-  //             $source = str_replace('https%3A//', 'https://', $source);
-  //             $this->addToLog('TEST4');
-  //         } else {
-  //           $this->addToLog('TEST5');
-  //             $this->addToTranscript("file or url missing from attachment media!");
-  //             continue;
-  //         }
-  //         $offerData['offer_medias'][] = array(
-  //             'alt' => $xml_media->alt->__toString(),
-  //             'title' => $xml_media->title->__toString(),
-  //             'caption' => $xml_media->caption->__toString(),
-  //             'description' => $xml_media->description->__toString(),
-  //             'type' => (isset($xml_media['type']) ? $xml_media['type']->__toString() : 'image'),
-  //             'media' => array(
-  //                 'original_file' => $source,
-  //             )
-  //         );
-  //     }
-  // }
-
 
 
     // emonitor fields not included for now
@@ -890,42 +638,20 @@ class eMonitorImport extends Feature{
     if (!is_dir(CXM_CUR_UPLOAD_BASEDIR . '/cxm/import/attachment')) {
       mkdir(CXM_CUR_UPLOAD_BASEDIR . '/cxm/import/attachment');
     }
-    // if (!is_dir(CXM_CUR_UPLOAD_BASEDIR . '/cxm/import/attachment/externalsync')) {
-    //   mkdir(CXM_CUR_UPLOAD_BASEDIR . '/cxm/import/attachment/externalsync');
-    // }
 
-    //$this->addToLog('Response: '. $response);
 
-    //$this->renameImportFileTo(CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-done.xml');
     set_time_limit(600);
     global $wpdb;
-    //libxml_use_internal_errors();
-
 
     $xml = file_get_contents($this->getEmonitorImportFile(), true);
     $xml = json_decode($xml);
     
-    // $this->addToLog(is_object($xml));
-    // $this->addToLog(is_array($xml));
 
-    // $errors = libxml_get_errors();
-    // if (!$xml) {
-    //   die('could not read XML!!!');
-    // }
-    // if ($errors) {
-    //   $this->transcript['error'] = 'XML read error' . print_r($errors, true);
-    //   die('XML read error');
-    // }
     $found_posts = array();
     //key is id value is rank!!!!
     $ranksort = array();
     $curRank = 0;
 
-
-    // echo '<pre>';
-    // $totalTime = microtime(true);
-
-    // select all properties from db at once
     $startfullselectiontime = microtime(true);
     $posts_pool = [];
     $the_query = new \WP_Query( 'post_status=publish,pending,draft,future,trash&post_type=complex_unit&suppress_filters=true&posts_per_page=100000' );
@@ -939,29 +665,7 @@ class eMonitorImport extends Feature{
       }
     endwhile;
     wp_reset_postdata();
-    // echo count($posts_pool);
-    // echo'<br />select all time';
-    // echo number_format((microtime(true) - $startfullselectiontime), 10);
-    // echo '<br />';
 
-
-    // function convert($size)
-    // {
-    //     $unit=array('b','kb','mb','gb','tb','pb');
-    //     return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
-    // }
-
-    // echo convert(memory_get_usage(true)); // 123 kb
-
-    // die();
-
-      //$this->addToLog(json_decode($xml));
-
-      //$xml = json_decode(json_encode($xml), true);
-
-      
-
-    // Sort the XML by unit title
     $sortArray = array();
     foreach($xml as $xml_unit){
         foreach($xml_unit as $key=>$value){
@@ -972,131 +676,58 @@ class eMonitorImport extends Feature{
         }
     }
 
-    $orderby = "title"; //change this to whatever key you want from the array
+    $orderby = "title"; 
 
     array_multisort($sortArray[$orderby],SORT_ASC,$xml);
 
-    //var_dump($xml);
-    //$this->addToLog($xml);
-
-    
-
     foreach ($xml as $property) {
       $curRank++;
-
       $timeStart = microtime(true);
-
       $propertyData = $this->unit2Array($property);
-      //make main language first and "single out" if not multilingual
-
-      //$this->addToLog($propertyData);
-
       $theoffers = array();
       $i = 0;
-
-      //$this->r($propertyData['offers']);
       foreach ($propertyData as $offer) {
         $i++;
-        //if ($offer['lang'] == $this->getMainLang()) {
-          $theoffers[$i] = $offer;
-        // } else {
-        //   if ($this->hasWPML()) {
-        //     $theoffers[] = $offer;
-        //   }
-        // }
+        $theoffers[$i] = $offer;
       }
 
-      
-
-      //complete missing translations if multilingual
-      // if ($this->hasWPML()) {
-      //   $theoffers = $this->fillMissingTranslations($theoffers);
-      // }
-
-      //$this->addToLog($propertyData);
-
-      //$this->addToLog($theoffers);
+      $building_title = $propertyData['building_title'] ?? '';
 
       $offer_pos = 0;
-      //$this->addToLog($theoffers);
-      //foreach ($theoffers as $offerData) {
-        $offer_pos++;
+      $offer_pos++;
+      $casawp_id = $propertyData['title'] . '-' . $building_title;
 
-        //is it already in db
-        //$casawp_id = $propertyData['exportcasawp_id'] . $offerData['lang'];
-        $casawp_id = $propertyData['title'];
-        $this->addToLog($casawp_id);
+      $this->addToLog($casawp_id);
 
+      $wp_post = false;
+      if (array_key_exists($casawp_id, $posts_pool)) {
+        $wp_post = $posts_pool[$casawp_id];
+      }
 
-        // select one at a time
-        // $the_query = new \WP_Query( 'post_status=publish,pending,draft,future,trash&post_type=complex_unit&suppress_filters=true&meta_key=casawp_id&meta_value=' . $casawp_id );
-        // $wp_post = false;
-        // while ( $the_query->have_posts() ) :
-        //   $the_query->the_post();
-        //   global $post;
-        //   $wp_post = $post;
-        // endwhile;
-        // wp_reset_postdata();
+      if (!$wp_post) {
+        $this->transcript[$casawp_id]['action'] = 'new';
+        $the_post['post_title'] = $propertyData['title'];
+        $the_post['post_content'] = '';
+        $the_post['post_status'] = 'publish';
+        $the_post['post_type'] = 'complex_unit';
+        $the_post['menu_order'] = $curRank;
+        $the_post['post_name'] = sanitize_title_with_dashes($casawp_id,'','save');
 
-        // select from pool
-        $wp_post = false;
-        if (array_key_exists($casawp_id, $posts_pool)) {
-          $wp_post = $posts_pool[$casawp_id];
-        }
+        $the_post['post_date'] = ($propertyData['creation'] ?: '');
 
-        //$this->addToLog($posts_pool[$casawp_id]);
+        $insert_id = wp_insert_post($the_post);
+        update_post_meta($insert_id, 'casawp_id', $casawp_id);
+        $wp_post = get_post($insert_id, OBJECT, 'raw');
+        $this->addToLog('new property: '. $casawp_id);
+      }
 
-        //if not create a basic property
-        //$this->addToLog('WP post???');
-        if (!$wp_post) {
-          $this->transcript[$casawp_id]['action'] = 'new';
-          $the_post['post_title'] = $propertyData['title'];
-          //$this->addToLog($the_post['post_title']);
-          $the_post['post_content'] = '';
-          $the_post['post_status'] = 'publish';
-          $the_post['post_type'] = 'complex_unit';
-          $the_post['menu_order'] = $curRank;
-          $the_post['post_name'] = sanitize_title_with_dashes($casawp_id,'','save');
+      $ranksort[$wp_post->ID] = $curRank;
 
-          //use the casagateway creation date if its new
-          $the_post['post_date'] = ($propertyData['creation'] ?: '');
-          //die($the_post['post_date']);
+      $found_posts[] = $wp_post->ID;
 
-          $_POST['icl_post_language'] = $offerData['lang'];
-          $insert_id = wp_insert_post($the_post);
-          update_post_meta($insert_id, 'casawp_id', $casawp_id);
-          $wp_post = get_post($insert_id, OBJECT, 'raw');
-          $this->addToLog('new property: '. $casawp_id);
-        }
+      $this->updateUnit($casawp_id, $offer_pos, $propertyData, $wp_post);
 
-        $ranksort[$wp_post->ID] = $curRank;
-
-        $found_posts[] = $wp_post->ID;
-
-
-        //$this->addToLog($found_posts);
-
-        $this->updateUnit($casawp_id, $offer_pos, $propertyData, $offerData, $wp_post);
-
-        //$this->updateInsertWPMLconnection($wp_post, $offerData['lang'], $propertyData['exportcasawp_id']);
-
-      //}
-
-      // echo $curRank . '<br />';
-      // echo number_format((microtime(true) - $timeStart), 10);
-      // echo '<br />';
-      // if ($curRank > 500) {
-      //   break;
-      // }
-      // echo '</pre>';
     }
-
-    //$this->addToLog('End of Loop');
-
-    // echo'<br />Total';
-    // echo number_format((microtime(true) - $totalTime), 10);
-    // echo '<br />';
-    // die();
 
     if (!$found_posts) {
       $this->transcript['error'] = 'NO PROPERTIES FOUND IN XML!!!';
@@ -1105,39 +736,42 @@ class eMonitorImport extends Feature{
       ];
 
       copy(CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.xml', CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-error.xml');
-
-      //wp_mail('alert@casasoft.com', get_bloginfo('name'), 'Dieser Kunde hat alle Objekte von der Webseite gelöscht. Kann das sein? Bitte prüfen.');
-      //die('custom block');
     }
 
-      //3. remove all the unused properties
-      $properties_to_remove = get_posts(  array(
+    //3. remove all the unused properties
+    $properties_to_remove = get_posts(  array(
+      'suppress_filters'=>true,
+      'language'=>'ALL',
+      'numberposts' =>  100,
+      'exclude'     =>  $found_posts,
+      'post_type'   =>  'complex_unit',
+      'post_status' =>  'publish'
+      )
+    );
+
+    /* echo '<pre>';
+    print_r($properties_to_remove);
+    echo '</pre>';
+    die(); */
+    
+    foreach ($properties_to_remove as $prop_to_rm) {
+      //remove the attachments
+      $attachments = get_posts( array(
         'suppress_filters'=>true,
         'language'=>'ALL',
-        'numberposts' =>  100,
-        'exclude'     =>  $found_posts,
-        'post_type'   =>  'complex_unit',
-        'post_status' =>  'publish'
-        )
-      );
-      foreach ($properties_to_remove as $prop_to_rm) {
-        //remove the attachments
-        $attachments = get_posts( array(
-          'suppress_filters'=>true,
-          'language'=>'ALL',
-          'post_type'      => 'attachment',
-          'posts_per_page' => -1,
-          'post_parent'    => $prop_to_rm->ID,
-          'exclude'        => get_post_thumbnail_id()
-        ) );
-        if ( $attachments ) {
-          foreach ( $attachments as $attachment ) {
-            $attachment_id = $attachment->ID;
-          }
+        'post_type'      => 'attachment',
+        'posts_per_page' => -1,
+        'post_parent'    => $prop_to_rm->ID,
+        'exclude'        => get_post_thumbnail_id()
+      ) );
+      if ( $attachments ) {
+        foreach ( $attachments as $attachment ) {
+          $attachment_id = $attachment->ID;
         }
-        wp_trash_post($prop_to_rm->ID);
-
       }
+      wp_trash_post($prop_to_rm->ID);
+
+    }
 
       //4. set property menu_order
       $properties_to_sort = get_posts(  array(
@@ -1150,12 +784,7 @@ class eMonitorImport extends Feature{
         )
       );
       $sortsUpdated = 0;
-      // echo '<pre>';
-      // echo "properties_to_sort\n";
-      // print_r($properties_to_sort);
 
-      // echo "ranksort\n";
-      // print_r($ranksort);
       // TODO: when one changes an id of a property in the xml with wpml:  Error: Maximum function nesting level of '256'  happens:   WPML_Post_Synchronization->sync_with_translations( ) happens indefinetly
       foreach ($properties_to_sort as $prop_to_sort) {
         if (array_key_exists($prop_to_sort->ID, $ranksort)) {
@@ -1181,111 +810,10 @@ class eMonitorImport extends Feature{
         }
 
       }
-      // echo '</pre>';
 
       $this->transcript['sorts_updated'] = $sortsUpdated;
       $this->transcript['properties_found_in_xml'] = count($found_posts);
       $this->transcript['properties_removed'] = count($properties_to_remove);
-
-      // //5a. fetch max and min options and set them anew
-      // global $wpdb;
-      // $query = $wpdb->prepare("SELECT max( cast( meta_value as UNSIGNED ) ) FROM {$wpdb->postmeta} WHERE meta_key='areaForOrder'", 'foo', 'bar');
-      // $max_area = $wpdb->get_var( $query );
-      // $query = $wpdb->prepare("SELECT min( cast( meta_value as UNSIGNED ) ) FROM {$wpdb->postmeta} WHERE meta_key='areaForOrder'", 'foo', 'bar');
-      // $min_area = $wpdb->get_var( $query );
-
-      // //5b. fetch max and min options and set them anew
-      // $query = $wpdb->prepare("SELECT max( cast(meta_value as DECIMAL(10, 1) ) ) FROM {$wpdb->postmeta} WHERE meta_key='number_of_rooms'", 'foo', 'bar');
-      // $max_rooms = $wpdb->get_var( $query );
-      // $query = $wpdb->prepare("SELECT min( cast( meta_value as DECIMAL(10, 1) ) ) FROM {$wpdb->postmeta} WHERE meta_key='number_of_rooms'", 'foo', 'bar');
-      // $min_rooms = $wpdb->get_var( $query );
-
-      // update_option('casawp_archive_area_min', $min_area);
-      // update_option('casawp_archive_area_max', $max_area);
-      // update_option('casawp_archive_rooms_min', $min_rooms);
-      // update_option('casawp_archive_rooms_max', $max_rooms);
-
-
-    //projects
-    // if ($xml->projects) {
-
-    //   $found_posts = array();
-    //   $sorti = 0;
-    //   foreach ($xml->projects->project as $project) {
-    //     $sorti++;
-
-    //     $projectData = $this->project2Array($project);
-    //     $projectDataLangified = $this->langifyProject($projectData);
-
-    //     foreach ($projectDataLangified as $projectData) {
-    //       $lang = $projectData['lang'];
-    //       //is project already in db
-    //       $casawp_id = $projectData['ref'] . $projectData['lang'];
-
-    //       $the_query = new \WP_Query( 'post_type=complex_unit&suppress_filters=true&meta_key=casawp_id&meta_value=' . $casawp_id );
-    //       $wp_post = false;
-    //       while ( $the_query->have_posts() ) :
-    //         $the_query->the_post();
-    //         global $post;
-    //         $wp_post = $post;
-    //       endwhile;
-    //       wp_reset_postdata();
-
-    //       //if not create a basic project
-    //       if (!$wp_post) {
-    //         $this->transcript[$casawp_id]['action'] = 'new';
-    //         $the_post['post_title'] = $projectData['detail']['name'];
-    //         $the_post['post_content'] = 'unsaved project';
-    //         $the_post['post_status'] = 'publish';
-    //         $the_post['post_type'] = 'casawp_project';
-    //         $the_post['post_name'] = sanitize_title_with_dashes($casawp_id . '-' . $projectData['detail']['name'],'','save');
-    //         $_POST['icl_post_language'] = $lang;
-    //         $insert_id = wp_insert_post($the_post);
-
-    //         update_post_meta($insert_id, 'casawp_id', $casawp_id);
-    //         $wp_post = get_post($insert_id, OBJECT, 'raw');
-
-    //       }
-    //       $found_posts[] = $wp_post->ID;
-
-
-    //       $found_posts = $this->updateProject($sorti, $casawp_id, $projectData, $wp_post, false, $found_posts);
-    //       $this->updateInsertWPMLconnection($wp_post, $lang, 'project_'.$projectData['ref']);
-
-
-    //     }
-    //   }
-
-
-      // //3. remove all the unused projects
-      // $projects_to_remove = get_posts(  array(
-      //   'suppress_filters' => true,
-      //   'language' => 'ALL',
-      //   'numberposts' =>  100,
-      //   'exclude'     =>  $found_posts,
-      //   'post_type'   =>  'casawp_project',
-      //   'post_status' =>  'publish'
-      //   )
-      // );
-      // foreach ($projects_to_remove as $prop_to_rm) {
-      //   //remove the attachments
-      //   $attachments = get_posts( array(
-      //     'suppress_filters'=>true,
-      //     'language'=>'ALL',
-      //     'post_type'      => 'attachment',
-      //     'posts_per_page' => -1,
-      //     'post_parent'    => $prop_to_rm->ID,
-      //     'exclude'        => get_post_thumbnail_id()
-      //   ) );
-      //   if ( $attachments ) {
-      //     foreach ( $attachments as $attachment ) {
-      //       $attachment_id = $attachment->ID;
-      //     }
-      //   }
-      //   wp_trash_post($prop_to_rm->ID);
-      //   $this->transcript['projects_removed'] = count($projects_to_remove);
-      // }
-    //}
 
     flush_rewrite_rules();
 
@@ -1482,7 +1010,7 @@ class eMonitorImport extends Feature{
         }
 
         if (!$existing) {
-          $this->addToLog('creating new attachment ' . $wp_mediaitem->ID);
+          //$this->addToLog('creating new attachment ' . $wp_mediaitem->ID);
           //insert the new image
           $new_id = $this->cxmUploadAttachment($the_mediaitem, $wp_post->ID, $casawp_id);
           if (is_int($new_id)) {
@@ -1574,7 +1102,7 @@ class eMonitorImport extends Feature{
   }
 
 
-  public function updateUnit($casawp_id, $offer_pos, $property, $offer, $wp_post){
+  public function updateUnit($casawp_id, $offer_pos, $property, $wp_post){
 
     $new_meta_data = array();
 
@@ -1633,7 +1161,7 @@ class eMonitorImport extends Feature{
       $name = $name[0];
     }
 
-    $excerpt = (isset($publisher_options['override_excerpt']) && $publisher_options['override_excerpt'] ? $publisher_options['override_excerpt'] : $offer['excerpt']);
+    $excerpt = (isset($publisher_options['override_excerpt']) && $publisher_options['override_excerpt'] ? $publisher_options['override_excerpt'] : '');
     if (is_array($excerpt)) {
       $excerpt = $excerpt[0];
     }
