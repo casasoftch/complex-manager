@@ -1244,7 +1244,7 @@ class eMonitorImport extends Feature{
     //$this->addToLog('propertystatus ' . $property['state_simplyfied']);
 
     $new_meta_data['_complexmanager_unit_name']                 = $property['title'];
-    //$new_meta_data['_complexmanager_unit_purchase_price']       = $property['']; kein passendes emonitor feld
+    $new_meta_data['_complexmanager_unit_purchase_price']       = (is_numeric($property['selling_price']) ? $property['selling_price'] : '');
     $new_meta_data['_complexmanager_unit_rent_net']             = (is_numeric($property['rentalgross_net']) ? $property['rentalgross_net'] : '');
     $new_meta_data['_complexmanager_unit_rent_gross']           = (is_numeric($property['rentalgross']) ? $property['rentalgross'] : '');
     $new_meta_data['_complexmanager_unit_number_of_rooms']      = (is_numeric($property['rooms']) ? $property['rooms'] : '');
