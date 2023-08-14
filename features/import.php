@@ -496,6 +496,7 @@ class eMonitorImport extends Feature{
         'property_type'       =>  $property_xml->property_type ?? '',
         'rentalgross'       =>  $property_xml->rentalgross ?? '',
         'rentalgross_net'       =>  $property_xml->rentalgross_net ?? '',
+        'selling_price'       =>  $property_xml->selling_price ?? '',
         'price_unit'       =>  $property_xml->price_unit ?? '',
         'state'       =>  $property_xml->state ?? '',
         'mark'       =>  $property_xml->mark ?? '',
