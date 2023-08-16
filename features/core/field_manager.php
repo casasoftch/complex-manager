@@ -209,6 +209,9 @@ class field_manager extends Feature {
 			'link_target' => '',
 			'link_url' => '',
 			'link_label' => '',
+			'link_target_2' => '',
+			'link_url_2' => '',
+			'link_label_2' => '',
 			'tour_target' => '',
 			'tour_url' => '',
 			'tour_label' => '',
@@ -372,6 +375,21 @@ class field_manager extends Feature {
 				'label' => __('Link label', 'complexmanager'),
 				'value' => $metas['link_label'],
 				'pure_value' => $metas['link_label'],
+			),
+			'link_target_2' => array(
+				'label' => __('Link target', 'complexmanager'),
+				'value' => $metas['link_target_2'],
+				'pure_value' => $metas['link_target_2'],
+			),
+			'link_url_2' => array(
+				'label' => __('Link url', 'complexmanager'),
+				'value' => $metas['link_url_2'],
+				'pure_value' => $metas['link_url_2'],
+			),
+			'link_label_2' => array(
+				'label' => __('Link label', 'complexmanager'),
+				'value' => $metas['link_label_2'],
+				'pure_value' => $metas['link_label_2'],
 			),
 			'tour_target' => array(
 				'label' => __('Tour target', 'complexmanager'),

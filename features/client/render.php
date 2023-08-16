@@ -370,6 +370,27 @@ class render extends Feature {
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 						break;
+
+					case 'r_link_2':
+						if (
+							$col['hidden-reserved'] == 0
+							||
+							!in_array($status, array('reserved', 'sold', 'rented'))
+						) {
+							if (get_cxm($unit, 'link_url_2')) {
+								$value = '<a target="'. (get_cxm($unit, 'link_target_2') ? get_cxm($unit, 'link_target_2') : '_self') . '" href="' . get_cxm($unit, 'link_url_2') . '">' . (get_cxm($unit, 'link_label_2') ? get_cxm($unit, 'link_label_2') : 'Link') . '</a>';
+							} else {
+								$value = '';
+							}
+
+						} else {
+							$value = '';
+						}
+						$displayItem['value'] = $value;
+						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
+						$displayItem['hidden-xs'] = $col['hidden-xs'];
+						break;
+
 					case 'r_tour':
 						if (
 							$col['hidden-reserved'] == 0
@@ -389,6 +410,7 @@ class render extends Feature {
 						$displayItem['td_classes'] = ($col['hidden-xs'] ? 'hidden-sm hidden-xs' : '') . ' col-' . $field;
 						$displayItem['hidden-xs'] = $col['hidden-xs'];
 						break;
+						
 					case 'quick-download':
 						if (
 							$col['hidden-reserved'] == 0

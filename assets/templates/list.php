@@ -182,6 +182,36 @@
 													</a>
 												<?php endif; ?>
 											<?php endif ?>
+
+											<?php if (get_cxm($the_unit['post'], 'link_url_2')): ?>
+												<?php if (($the_unit['data']['status'] == 'reserved' && $the_unit['data']['r_link'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'sold' && $the_unit['data']['r_link'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'rented' && $the_unit['data']['r_link'] == 'hidden-reserved')): ?>
+
+												<?php else: ?>
+													<a 
+														<?php if (get_cxm($the_unit['post'], 'link_target_2')): ?> 
+															target="<?php echo get_cxm($the_unit['post'], 'link_target_2') ?>"
+														<?php else: ?>
+															target="_self"
+														<?php endif; ?>
+															class="
+														<?php 
+															$html = 'btn btn-primary pull-left complex-link-btn';
+															echo apply_filters('cxm_render_link_button_classes', $html);
+														?>" 
+													href="<?= get_cxm($the_unit['post'], 'link_url_2') ?>">
+														
+														<span>
+															<?php echo (get_cxm($the_unit['post'], 'link_label_2') ? get_cxm($the_unit['post'], 'link_label_2') : 'Link') ?>
+														</span>
+														
+														<?php 
+															$html = '';
+															#echo apply_filters('cxm_render_link_button_additional_content', $html);
+														?>	
+													</a>
+												<?php endif; ?>
+											<?php endif ?>
+
 											<?php if ($the_unit['status'] != 'sold' && $the_unit['status'] != 'rented' && $integrate_form): ?>
 												<a class="
 														<?php 
@@ -348,6 +378,36 @@
 																<?php 
 																	$html = '';
 																	echo apply_filters('cxm_render_link_button_additional_content', $html);
+																?>	
+															</a>
+														<?php endif; ?>
+													<?php endif ?>
+
+													<?php if (get_cxm($the_unit['post'], 'link_url_2')): ?>
+														<?php if (($the_unit['data']['status'] == 'reserved' && $the_unit['data']['r_link'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'sold' && $the_unit['data']['r_link'] == 'hidden-reserved') || ($the_unit['data']['status'] == 'rented' && $the_unit['data']['r_link'] == 'hidden-reserved')): ?>
+
+														<?php else: ?>
+															<a 
+																<?php if (get_cxm($the_unit['post'], 'link_target_2')): ?> 
+																	target="<?php echo get_cxm($the_unit['post'], 'link_target_2') ?>"
+																<?php else: ?>
+																	target="_self"
+																<?php endif; ?>
+																	class="
+																<?php 
+																	$html = 'btn btn-primary pull-left complex-link-btn';
+																	echo apply_filters('cxm_render_link_button_classes', $html);
+																?>" 
+															href="<?= get_cxm($the_unit['post'], 'link_url_2') ?>">
+																
+																
+																	<span>
+																		<?php echo (get_cxm($the_unit['post'], 'link_label_2') ? get_cxm($the_unit['post'], 'link_label_2') : 'Link') ?>
+																	</span>
+																
+																<?php 
+																	$html = '';
+																	#echo apply_filters('cxm_render_link_button_additional_content', $html);
 																?>	
 															</a>
 														<?php endif; ?>

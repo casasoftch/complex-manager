@@ -1157,7 +1157,13 @@ class eMonitorImport extends Feature{
     }
 
     $name = $property['title'];
-    $buildingcontent = $property['building_adress'] . ' ' . $property['building_house_number'] . ', ' . $property['building_plz'] . ' ' . $property['building_city']; 
+    
+    if($property['building_city'] == ''){
+      $buildingcontent = $property['building_adress'];
+    } else{
+      $buildingcontent = $property['building_adress'] . ' ' . $property['building_house_number'] . ', ' . $property['building_plz'] . ' ' . $property['building_city']; 
+    }
+
     if (is_array($name)) {
       $name = $name[0];
     }
@@ -1290,12 +1296,23 @@ class eMonitorImport extends Feature{
     $new_meta_data['_complexmanager_unit_download_label']       = (isset($property['factsheet']) ? 'Grundriss' : '');
     
     //$new_meta_data['_complexmanager_unit_link']                 = $property['floor']; kein passendes emonitor feld
+
+    //Link
     $new_meta_data['_complexmanager_unit_link_target']          = (isset($property['url']) ? '_blank' : '');
     $new_meta_data['_complexmanager_unit_link_url']             = $property['url'];
     $new_meta_data['_complexmanager_unit_link_label']           = (isset($property['url']) ? 'Jetzt online bewerben' : '');
 
-    $new_meta_data['_complexmanager_unit_custom_overlay']       = $property['isometry'];
+    //Link2
+    $new_meta_data['_complexmanager_unit_link_target_2']          = (isset($property['pdf_file']) ? '_blank' : '');
+    $new_meta_data['_complexmanager_unit_link_url_2']             = $property['pdf_file'];
+    $new_meta_data['_complexmanager_unit_link_label_2']           = (isset($property['pdf_file']) ? 'Mietzinsentwicklung' : '');
 
+    //Tour Link
+    $new_meta_data['_complexmanager_unit_tour_target']          = (isset($property['virtual_tour_link']) ? '_blank' : '');
+    $new_meta_data['_complexmanager_unit_tour_url']             = $property['virtual_tour_link'];
+    $new_meta_data['_complexmanager_unit_tour_label']           = (isset($property['virtual_tour_link']) ? 'Möblieren' : '');
+
+    $new_meta_data['_complexmanager_unit_custom_overlay']       = $property['isometry'];
 
     //$this->addToLog($new_meta_data['']);
     
