@@ -12,6 +12,8 @@
 				$labels_array[$key] = $label['label_en'];
 			} elseif($label['label_fr'] && $lang == 'fr_FR') {
 				$labels_array[$key] = $label['label_fr'];
+			} else {
+				$labels_array[$key] = $label['label'];
 			}
 		} else {
 			if ($label['label']) {
