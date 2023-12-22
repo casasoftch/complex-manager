@@ -1,3 +1,26 @@
+
+<?php 
+	$labels = maybe_unserialize((maybe_unserialize(get_option('complex_manager')['translate_labels'])));
+	$labels_array = [];
+	global $sitepress;
+	$lang = get_locale();
+	foreach ($labels as $key => $label) {
+		if ($sitepress) {
+			if ($label['label'] && $lang == 'de_DE') {
+				$labels_array[$key] = $label['label'];
+			} elseif($label['label_en'] && $lang == 'en_US') {
+				$labels_array[$key] = $label['label_en'];
+			} elseif($label['label_fr'] && $lang == 'fr_FR') {
+				$labels_array[$key] = $label['label_fr'];
+			}
+		} else {
+			if ($label['label']) {
+				$labels_array[$key] = $label['label'];
+			}
+		}
+	}
+?>
+
 <div class="complex-list-wrapper <?php echo ($collapsible ? 'complex-list-wrapper-collapsible' : '') ?> <?php echo $class ?>">
 	<?php foreach ( $the_buildings as $building ) { ?>
 		
@@ -113,9 +136,15 @@
 															echo apply_filters('cxm_render_tour_button_classes', $html);
 														?>" 
 													href="<?= get_cxm($the_unit['post'], 'tour_url') ?>">
-														<span>
-															<?php echo (get_cxm($the_unit['post'], 'tour_label') ? get_cxm($the_unit['post'], 'tour_label') : 'Link') ?>
-														</span>
+														<?php if (!empty($labels_array) && isset($labels_array['virtual_tour']) && $labels_array['virtual_tour']): ?>
+															<span>
+																<?php echo $labels_array['virtual_tour']; ?>
+															</span>
+														<?php else: ?>
+															<span>
+																<?php echo (get_cxm($the_unit['post'], 'tour_label') ? get_cxm($the_unit['post'], 'tour_label') : 'Link') ?>
+															</span>
+														<?php endif; ?>
 														<?php 
 															$html = '';
 															echo apply_filters('cxm_render_tour_button_additional_content', $html);
@@ -133,7 +162,11 @@
 															echo apply_filters('cxm_render_download_button_classes', $html);
 														?>" 
 													href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
-														<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
+														<?php if (!empty($labels_array) && isset($labels_array['download_file']) && $labels_array['download_file']): ?>
+															<span>
+																<?php echo $labels_array['download_file']; ?>
+															</span>
+														<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
 															<span>
 																<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_download_label']; ?>
 															</span>
@@ -166,7 +199,11 @@
 															echo apply_filters('cxm_render_link_button_classes', $html);
 														?>" 
 													href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-														<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
+														<?php if (!empty($labels_array) && isset($labels_array['link']) && $labels_array['link']): ?>
+															<span>
+																<?php echo $labels_array['link']; ?>
+															</span>
+														<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
 															<span>
 																<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_link_label']; ?>
 															</span>
@@ -281,9 +318,16 @@
 																	echo apply_filters('cxm_render_tour_button_classes', $html);
 																?>" 
 															href="<?= get_cxm($the_unit['post'], 'tour_url') ?>">
-																<span>
-																	<?php echo (get_cxm($the_unit['post'], 'tour_label') ? get_cxm($the_unit['post'], 'tour_label') : 'Link') ?>
-																</span>
+																<?php if (!empty($labels_array) && isset($labels_array['virtual_tour']) && $labels_array['virtual_tour']): ?>
+																	<span>
+																		<?php echo $labels_array['virtual_tour']; ?>
+																	</span>
+																<?php else: ?>
+																	<span>
+																		<?php echo (get_cxm($the_unit['post'], 'tour_label') ? get_cxm($the_unit['post'], 'tour_label') : 'Link') ?>
+																	</span>
+																<?php endif; ?>
+																
 																<?php 
 																	$html = '';
 																	echo apply_filters('cxm_render_tour_button_additional_content', $html);
@@ -302,7 +346,11 @@
 																	echo apply_filters('cxm_render_download_button_classes', $html);
 																?>" 
 															href="<?= get_cxm($the_unit['post'], 'download_file') ?>">
-																<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
+																<?php if (!empty($labels_array) && isset($labels_array['download_file']) && $labels_array['download_file']): ?>
+																	<span>
+																		<?php echo $labels_array['download_file']; ?>
+																	</span>
+																<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
 																	<span>
 																		<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_download_label']; ?>
 																	</span>
@@ -335,8 +383,11 @@
 																	echo apply_filters('cxm_render_link_button_classes', $html);
 																?>" 
 															href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-																
-																<?php if (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
+																<?php if (!empty($labels_array) && isset($labels_array['link']) && $labels_array['link']): ?>
+																	<span>
+																		<?php echo $labels_array['link']; ?>
+																	</span>
+																<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
 																	<span>
 																		<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_link_label']; ?>
 																	</span>
