@@ -367,9 +367,17 @@ class general_options extends Feature
         );
 
         add_settings_field(
+            'translate_labels',
+             __( 'Label translations', 'complexmanager' ),
+            array( $this, 'translate_labels_callback' ),
+            'complex-manager-admin',
+            'cxm_1'
+        );
+
+        add_settings_field(
             'import',
-             __( 'Import settings', 'complexmanager' ),
-            array( $this, 'import_callback' ),
+             __( 'Import settings eMonitor', 'complexmanager' ),
+            array( $this, 'import_emonitor_callback' ),
             'complex-manager-admin',
             'cxm_1'
         );
@@ -598,6 +606,10 @@ class general_options extends Feature
             $new_input['list_filters'] = maybe_serialize( $input['list_filters'] );
         }
 
+        if( isset( $input['translate_labels'] ) ) {
+            $new_input['translate_labels'] = maybe_serialize( $input['translate_labels'] );
+        }
+
         if( isset( $input['cxm_api_key'] ) ) {
             $new_input['cxm_api_key'] = $input['cxm_api_key'];
         }
@@ -607,6 +619,18 @@ class general_options extends Feature
 
         if( isset( $input['cxm_emonitor_api'] ) ) {
             $new_input['cxm_emonitor_api'] = $input['cxm_emonitor_api'];
+        }
+
+        if( isset( $input['cxm_emonitor_custom1_matching'] ) ) {
+            $new_input['cxm_emonitor_custom1_matching'] = $input['cxm_emonitor_custom1_matching'];
+        }
+
+        if( isset( $input['cxm_emonitor_custom2_matching'] ) ) {
+            $new_input['cxm_emonitor_custom2_matching'] = $input['cxm_emonitor_custom2_matching'];
+        }
+
+        if( isset( $input['cxm_emonitor_custom3_matching'] ) ) {
+            $new_input['cxm_emonitor_custom3_matching'] = $input['cxm_emonitor_custom3_matching'];
         }
 
         if( isset( $input['cxm_emonitor_rewrite_download_label'] ) ) {
@@ -1232,83 +1256,127 @@ class general_options extends Feature
         echo "</table>";
     }
 
-    public function import_callback(){
+    public function translate_labels_callback(){
+
+        $labels = [
+            'download_file' => [
+                'o_label' => 'Download',
+                'label' => '',
+                'order' => 1
+            ],
+            'link' => [
+                'o_label' => 'Link',
+                'label' => '',
+                'order' => 2
+            ],
+            'virtual_tour' => [
+                'o_label' => 'Virtuelle Tour',
+                'label' => '',
+                'order' => 3
+            ]
+        ];
+
+        //add linguistical attribute defaults?
+        $extra_langs = array();
+        $defaultlang = get_bloginfo('language');
+        if (function_exists('icl_get_languages')) {
+            $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+            foreach ($langs as $iso => $options) {
+                $extra_langs[$iso] = $options;
+            }
+        }
+
+        foreach ($labels as $key => $data) {
+            foreach ($extra_langs as $iso => $options) {
+                $labels[$key]['label_'.$iso] = '';
+            }
+        }
+
+        $cur_array = maybe_unserialize( $this->options['translate_labels'] ?? NULL);
+        if ($cur_array && is_array($cur_array)) {
+            foreach ($cur_array as $col => $options) {
+                if (isset($labels[$col])) {
+                    foreach ($options as $option_key => $option_value) {
+                        if (isset($labels[$col][$option_key])) {
+                            $labels[$col][$option_key] = $option_value;
+                        }
+                    }
+                }
+            }
+        }
+
+        $extra_langs = array();
+        $defaultlang = get_bloginfo('language');
+        if (function_exists('icl_get_languages')) {
+            $langs = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+            foreach ($langs as $iso => $options) {
+                $extra_langs[$iso] = $options;
+            }
+        } else {
+            $extra_langs[substr($defaultlang, 0, 2)] = array(
+                'code' => substr($defaultlang, 0, 2),
+                'id' => '',
+                'native_name' => '',
+                'major' => '1',
+                'active' => '',
+                'default_locale' => $defaultlang,
+                'encode_url' => '',
+                'tag' => $defaultlang,
+                'translated_name' => '',
+                'url' => '',
+                'country_flag_url' => '',
+                'language_code' => substr($defaultlang, 0, 2),
+            );
+        }
+
+        $th_langs = '';
+        foreach ($extra_langs as $iso => $options) {
+             if (substr($defaultlang, 0, 2)== $iso) {
+                $th_langs .= '<th>Label</th>';
+            } else {
+                $th_langs .= '<th>Label ' . $options['code'] . '</th>';
+            }
+        }
+
+        echo '<table class="table">';
+            echo '<thead><tr>
+                <th>Feld</th>
+                '.$th_langs.'
+            </tr></thead>';
+
+            echo "<tbody>";
+            foreach ($labels as $col => $col_options) {
+                $td_inputs = '';
+                foreach ($extra_langs as $iso => $options) {
+                    if (substr($defaultlang, 0, 2)== $iso) {
+                        $td_inputs .= '<td><input type="text" style="width:200px" placeholder="'.$col_options['o_label'].'" name="complex_manager[translate_labels]['.$col.'][label]" value="'.$col_options['label'].'" /></td>';
+                    } else {
+                        $td_inputs .= '<td><input type="text" style="width:200px" placeholder="'.$iso.'" name="complex_manager[translate_labels]['.$col.'][label_'.$iso.']" value="'.$col_options['label_'.$iso.''].'" /></td>';
+                    }
+                }
+                echo '<tr>
+                    <th>'.$col_options['o_label'].'</th>
+                    ' . $td_inputs . '
+                </tr>';
+            }
+            echo "</tbody>";
+
+        echo "</table>";
+    }
+
+    public function import_emonitor_v2_callback(){
         ?>
         
 
         
 
         <tr valign="top">
-            <th scope="row"><strong>Emonitor</strong><span style="font-weight:100"></span></th>
+            <th scope="row"><strong>Settings</strong><span style="font-weight:100"></span></th>
             <td class="front-static-pages">
             <fieldset>
                 <table>
                     <tr>
-                        <td><code><strong>Gebäude nach Objektart separieren</strong></code></td>
-                        <td>
-                            <?php
-
-                            $checked = false;
-                            if ((($this->options['separate_building_property_type'] ?? TRUE) && isset( $this->options['separate_building_property_type']))) {
-                                $checked = true;
-                            }
-                            echo
-                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[separate_building_property_type]" value="0" />
-                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="separate_building_property_type" name="complex_manager[separate_building_property_type]" value="1" /></div>'
-
-                            ; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code><strong>Gewerbe Preis/m2 und NK/m2 in C2 + C3 Felder?</strong></code></td>
-                        <td>
-                            <?php
-
-                            $checked = false;
-                            if ((($this->options['squaremeterprices'] ?? TRUE) && isset( $this->options['squaremeterprices']))) {
-                                $checked = true;
-                            }
-                            echo
-                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[squaremeterprices]" value="0" />
-                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="squaremeterprices" name="complex_manager[squaremeterprices]" value="1" /></div>'
-
-                            ; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code><strong>Objektart in Custom 1 Feld?</strong></code></td>
-                        <td>
-                            <?php
-
-                            $checked = false;
-                            if ((($this->options['propertytype'] ?? TRUE) && isset( $this->options['propertytype']))) {
-                                $checked = true;
-                            }
-                            echo
-                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[propertytype]" value="0" />
-                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="propertytype" name="complex_manager[propertytype]" value="1" /></div>'
-
-                            ; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code><strong>Virtuelle Tour in Custom 2 Feld?</strong></code></td>
-                        <td>
-                            <?php
-
-                            $checked = false;
-                            if ((($this->options['virtualtour'] ?? TRUE) && isset( $this->options['virtualtour']))) {
-                                $checked = true;
-                            }
-                            echo
-                                '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[virtualtour]" value="0" />
-                                <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="virtualtour" name="complex_manager[virtualtour]" value="1" /></div>'
-
-                            ; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <?php if (($this->options['cxm_emonitor_api'] ?? FALSE)): ?>
+                        <?php if (($this->options['cxm_emonitor_api_v2'] ?? FALSE)): ?>
                             <td><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></td>
                         <?php else: ?>
                             <td><strike><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></strike></td>
@@ -1329,13 +1397,15 @@ class general_options extends Feature
             
             <fieldset>
                 <legend class="screen-reader-text"><span><strong>Emonitor</strong><span style="font-weight:100"></span> API</span></legend>
-                <?php $name = 'cxm_emonitor_api'; ?>
+                <?php $name = 'cxm_emonitor_api_v2'; ?>
                 <?php $text = '<strong>Emonitor</strong><span style="font-weight:100"></span> • API'; ?>
                 <p><?php echo $text; ?></p>
                 <p>
                     <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                 </p>
             </fieldset>
+
+           
 
             <fieldset>
                 <legend class="screen-reader-text"><span>Emonitor Download Label umschreiben</span></legend>
@@ -1359,6 +1429,180 @@ class general_options extends Feature
         </td>
     </tr>
 
+        <?php
+    }
+
+    public function import_emonitor_callback(){
+        ?>
+        
+
+        
+
+        <tr valign="top">
+            <th scope="row"><strong>General Settings</strong><span style="font-weight:100"></span></th>
+            <td class="front-static-pages">
+                <fieldset>
+                    <table>
+                        <tr>
+                            <?php if (($this->options['cxm_emonitor_api'] ?? FALSE)): ?>
+                                <td><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></td>
+                            <?php else: ?>
+                                <td><strike><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></strike></td>
+                            <?php endif ?>
+                            <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1'); ?>">Import Ausführen</a></td>
+                        </tr>
+                        <tr>
+                            <?php $file = CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.xml'; if (file_exists($file)) : ?>
+                                <td><code>data.xml</code></td>
+                            <?php else: ?>
+                                <td><strike><code>data.xml</code></strike></td>
+                            <?php endif ?>
+                            <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1&force_all_properties=true&force_last_import=true'); ?>">Import Ausführen und Objekte überschreiben</a></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                
+                <fieldset>
+                    <legend class="screen-reader-text"><span><strong>Emonitor</strong><span style="font-weight:100"></span> API</span></legend>
+                    <?php $name = 'cxm_emonitor_api'; ?>
+                    <?php $text = '<strong>Emonitor</strong><span style="font-weight:100"></span> • API'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                    </p>
+                </fieldset>
+
+                <hr>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><strong>V2 Settings</strong><span style="font-weight:100"></span></th>
+            <td class="front-static-pages">           
+
+                <fieldset>
+                    <?php $name = 'cxm_emonitor_custom1_matching'; ?>
+                    <?php $text = 'Custom 1 match with specific eMonitor field'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="eMonitor Field Key" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>"  />
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <?php $name = 'cxm_emonitor_custom2_matching'; ?>
+                    <?php $text = 'Custom 2 match with specific eMonitor field'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="eMonitor Field Key" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>"  />
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <?php $name = 'cxm_emonitor_custom3_matching'; ?>
+                    <?php $text = 'Custom 3 match with specific eMonitor field'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="eMonitor Field Key" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>"  />
+                    </p>
+                </fieldset>
+
+                <hr>
+            </td>
+        </tr>
+        <tr valign="top">
+            <th scope="row"><strong>V1 Settings</strong><span style="font-weight:100"></span></th>
+            <td class="front-static-pages">
+                <fieldset>
+                    <table>
+                        <tr>
+                            <td><code><strong>Gebäude nach Objektart separieren</strong></code></td>
+                            <td>
+                                <?php
+
+                                $checked = false;
+                                if ((($this->options['separate_building_property_type'] ?? TRUE) && isset( $this->options['separate_building_property_type']))) {
+                                    $checked = true;
+                                }
+                                echo
+                                    '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[separate_building_property_type]" value="0" />
+                                    <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="separate_building_property_type" name="complex_manager[separate_building_property_type]" value="1" /></div>'
+
+                                ; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code><strong>Gewerbe Preis/m2 und NK/m2 in C2 + C3 Felder?</strong></code></td>
+                            <td>
+                                <?php
+
+                                $checked = false;
+                                if ((($this->options['squaremeterprices'] ?? TRUE) && isset( $this->options['squaremeterprices']))) {
+                                    $checked = true;
+                                }
+                                echo
+                                    '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[squaremeterprices]" value="0" />
+                                    <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="squaremeterprices" name="complex_manager[squaremeterprices]" value="1" /></div>'
+
+                                ; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code><strong>Objektart in Custom 1 Feld?</strong></code></td>
+                            <td>
+                                <?php
+
+                                $checked = false;
+                                if ((($this->options['propertytype'] ?? TRUE) && isset( $this->options['propertytype']))) {
+                                    $checked = true;
+                                }
+                                echo
+                                    '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[propertytype]" value="0" />
+                                    <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="propertytype" name="complex_manager[propertytype]" value="1" /></div>'
+
+                                ; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code><strong>Virtuelle Tour in Custom 2 Feld?</strong></code></td>
+                            <td>
+                                <?php
+
+                                $checked = false;
+                                if ((($this->options['virtualtour'] ?? TRUE) && isset( $this->options['virtualtour']))) {
+                                    $checked = true;
+                                }
+                                echo
+                                    '<div class="form-field-mandatory"><input type="hidden" name="complex_manager[virtualtour]" value="0" />
+                                    <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="virtualtour" name="complex_manager[virtualtour]" value="1" /></div>'
+
+                                ; ?>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="screen-reader-text"><span>Emonitor Download Label umschreiben</span></legend>
+                    <?php $name = 'cxm_emonitor_rewrite_download_label'; ?>
+                    <?php $text = 'Emonitor Download Label umschreiben'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="Grundriss" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="screen-reader-text"><span>Emonitor Link Label umschreiben</span></legend>
+                    <?php $name = 'cxm_emonitor_rewrite_link_label'; ?>
+                    <?php $text = 'Emonitor Link Label umschreiben'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="Jetzt online bewerben" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
+                    </p>
+                </fieldset>
+                <hr>
+            </td>
+        </tr>
         <?php
     }
 
