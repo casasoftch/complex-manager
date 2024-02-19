@@ -70,7 +70,11 @@
 								<?php echo $types; ?> 
 								id="unit_<?php echo $the_unit['post']->ID ?>" 
 								data-unit-id="<?php echo $the_unit['post']->ID ?>" 
-								data-json="<?php echo htmlspecialchars(json_encode($the_unit['data']), ENT_QUOTES, 'UTF-8'); ?>">
+								<?php
+									$data = array_map('htmlspecialchars_decode', $the_unit['data']);
+									$json_encoded_data = json_encode($data);
+								?>
+								data-json="<?php echo htmlspecialchars($json_encoded_data, ENT_QUOTES, 'UTF-8'); ?>">
 								<div class="complex-building-flex__row   
 									state-<?php echo $the_unit['state'] ?> 
 									status-<?php echo $the_unit['status'] ?> 
@@ -307,7 +311,10 @@
 								}
 							
 								$colcount = count($the_unit['displayItems']);
-								echo '<tr class="complex-unit-header-row state-' . $the_unit['state'] . ' status-' . $the_unit['status'] . '" id="unit_'.$the_unit['post']->ID.'" data-unit-id="' . $the_unit['post']->ID .'"' . $types .' data-json="' . htmlspecialchars(json_encode($the_unit['data']), ENT_QUOTES, 'UTF-8') . '">';
+								$data = array_map('htmlspecialchars_decode', $the_unit['data']);
+								$json_encoded_data = json_encode($data);
+
+								echo '<tr class="complex-unit-header-row state-' . $the_unit['state'] . ' status-' . $the_unit['status'] . '" id="unit_'.$the_unit['post']->ID.'" data-unit-id="' . $the_unit['post']->ID .'"' . $types .' data-json="' . htmlspecialchars($json_encoded_data, ENT_QUOTES, 'UTF-8') . '">';
 								foreach ($the_unit['displayItems'] as $displayItem) {
 									echo '<td class="'.$displayItem['td_classes'].'">'.$displayItem['value'].'</td>';
 								}
