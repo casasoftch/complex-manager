@@ -75,19 +75,18 @@
 						</div>
 					</dd>
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>firstName<?= $for_randid ?>"><?php _e('Name', 'complexmanager') ?>&nbsp;
-							<?php if (isset(get_option('complex_manager')['contactform_mandatory_firstname']) && get_option('complex_manager')['contactform_mandatory_firstname'] || isset(get_option('complex_manager')['contactform_mandatory_lastname']) && get_option('complex_manager')['contactform_mandatory_lastname']): ?>
-								<?php 
-									$html = '<small><span class="text-danger">*</span></small>';
-									echo apply_filters('cxm_render_form_label_additional_required', $html);
-								?>
-							<?php else: ?>
-								<?php 
-									$html = '';
-									echo apply_filters('cxm_render_form_label_additional_optional', $html);
-								?>
-							<?php endif ?>
-						</label>
+						<label for="<?= $for_bstring ?>firstName<?= $for_randid ?>"><?php _e('Name', 'complexmanager') ?></label>
+						<?php if (isset(get_option('complex_manager')['contactform_mandatory_firstname']) && get_option('complex_manager')['contactform_mandatory_firstname'] || isset(get_option('complex_manager')['contactform_mandatory_lastname']) && get_option('complex_manager')['contactform_mandatory_lastname']): ?>
+							<?php 
+								$html = '<small><span class="text-danger">*</span></small>';
+								echo apply_filters('cxm_render_form_label_additional_required', $html);
+							?>
+						<?php else: ?>
+							<?php 
+								$html = '';
+								echo apply_filters('cxm_render_form_label_additional_optional', $html);
+							?>
+						<?php endif ?>						
 					</dt>
 					<dd class="editable">
 						<div class="row">
@@ -129,12 +128,11 @@
 						</div>
 					</dd>
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>email<?= $for_randid ?>"><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?>&nbsp;
-							<?php 
-								$html = '<small><span class="text-danger">*</span></small>';
-								echo apply_filters('cxm_render_form_label_additional_required', $html);
-							?>
-						</label>
+						<label for="<?= $for_bstring ?>email<?= $for_randid ?>"><?php echo get_cxm_label(false, 'email', 'complex_inquiry') ?></label>
+						<?php 
+							$html = '<small><span class="text-danger">*</span></small>';
+							echo apply_filters('cxm_render_form_label_additional_required', $html);
+						?>
 					</dt>
 					<dd class="editable">
 						<div class="<?= (isset($messages['email'])  ? 'has-error' : '') ?>">
@@ -143,19 +141,18 @@
 					</dd>
 
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>name<?= $for_randid ?>"><?php _e('Phone', 'complexmanager') ?>&nbsp;
-							<?php if (isset(get_option('complex_manager')['contactform_mandatory_phone']) && get_option('complex_manager')['contactform_mandatory_phone'] || isset(get_option('complex_manager')['contactform_mandatory_mobile']) && get_option('complex_manager')['contactform_mandatory_mobile']): ?>
-								<?php 
-									$html = '<small><span class="text-danger">*</span></small>';
-									echo apply_filters('cxm_render_form_label_additional_required', $html);
-								?>
-							<?php else: ?>
-								<?php 
-									$html = '';
-									echo apply_filters('cxm_render_form_label_additional_optional', $html);
-								?>
-							<?php endif ?>
-						</label>
+						<label for="<?= $for_bstring ?>name<?= $for_randid ?>"><?php _e('Phone', 'complexmanager') ?></label>
+						<?php if (isset(get_option('complex_manager')['contactform_mandatory_phone']) && get_option('complex_manager')['contactform_mandatory_phone'] || isset(get_option('complex_manager')['contactform_mandatory_mobile']) && get_option('complex_manager')['contactform_mandatory_mobile']): ?>
+							<?php 
+								$html = '<small><span class="text-danger">*</span></small>';
+								echo apply_filters('cxm_render_form_label_additional_required', $html);
+							?>
+						<?php else: ?>
+							<?php 
+								$html = '';
+								echo apply_filters('cxm_render_form_label_additional_optional', $html);
+							?>
+						<?php endif ?>						
 					</dt>
 					<dd class="editable">
 						<div class="row">
@@ -177,19 +174,18 @@
 					</dd>
 
 					<dt class="editable">
-						<label for="<?= $for_bstring ?>street<?= $for_randid ?>"><?php _e('Address', 'complexmanager') ?>&nbsp;
-							<?php if (isset(get_option('complex_manager')['contactform_mandatory_street']) && get_option('complex_manager')['contactform_mandatory_street'] || isset(get_option('complex_manager')['contactform_mandatory_zip']) && get_option('complex_manager')['contactform_mandatory_zip'] || isset(get_option('complex_manager')['contactform_mandatory_locality']) && get_option('complex_manager')['contactform_mandatory_locality']): ?>
-								<?php 
-									$html = '<small><span class="text-danger">*</span></small>';
-									echo apply_filters('cxm_render_form_label_additional_required', $html);
-								?>
-							<?php else: ?>
-								<?php 
-									$html = '';
-									echo apply_filters('cxm_render_form_label_additional_optional', $html);
-								?>
-							<?php endif ?>
-						</label>
+						<label for="<?= $for_bstring ?>street<?= $for_randid ?>"><?php _e('Address', 'complexmanager') ?></label>
+						<?php if (isset(get_option('complex_manager')['contactform_mandatory_street']) && get_option('complex_manager')['contactform_mandatory_street'] || isset(get_option('complex_manager')['contactform_mandatory_zip']) && get_option('complex_manager')['contactform_mandatory_zip'] || isset(get_option('complex_manager')['contactform_mandatory_locality']) && get_option('complex_manager')['contactform_mandatory_locality']): ?>
+							<?php 
+								$html = '<small><span class="text-danger">*</span></small>';
+								echo apply_filters('cxm_render_form_label_additional_required', $html);
+							?>
+						<?php else: ?>
+							<?php 
+								$html = '';
+								echo apply_filters('cxm_render_form_label_additional_optional', $html);
+							?>
+						<?php endif ?>
 					</dt>
 					<dd class="editable">
 						<div class="address-picker-group">
@@ -234,19 +230,19 @@
 					</div>
 				<?php endif ?>
 				<div class="<?= (isset($messages['message'])  ? 'has-error' : '') ?>">
-					<label for="<?= $for_bstring ?>message<?= $for_randid ?>"><?php _e('Message', 'complexmanager') ?>&nbsp;
-						<?php if (isset(get_option('complex_manager')['contactform_mandatory_message']) && get_option('complex_manager')['contactform_mandatory_message']): ?>
-							<?php 
-								$html = '<small><span class="text-danger">*</span></small>';
-								echo apply_filters('cxm_render_form_label_additional_required', $html);
-							?>
-						<?php else: ?>
-							<?php 
-								$html = '';
-								echo apply_filters('cxm_render_form_label_additional_optional', $html);
-							?>
-						<?php endif ?>
-					</label>
+					<label for="<?= $for_bstring ?>message<?= $for_randid ?>"><?php _e('Message', 'complexmanager') ?></label>
+					<?php if (isset(get_option('complex_manager')['contactform_mandatory_message']) && get_option('complex_manager')['contactform_mandatory_message']): ?>
+						<?php 
+							$html = '<small><span class="text-danger">*</span></small>';
+							echo apply_filters('cxm_render_form_label_additional_required', $html);
+						?>
+					<?php else: ?>
+						<?php 
+							$html = '';
+							echo apply_filters('cxm_render_form_label_additional_optional', $html);
+						?>
+					<?php endif ?>
+					
 					<textarea <?php if (isset(get_option('complex_manager')['contactform_mandatory_message']) && get_option('complex_manager')['contactform_mandatory_message']): ?>
 										required
 									<?php endif ?> id="<?= $for_bstring ?>message<?= $for_randid ?>" name="complex-unit-inquiry[message]" rows="7" class="form-control" placeholder="<?php _e('Describe your inquiry', 'complexmanager') ?>"><?= $data['message'] ?></textarea>
