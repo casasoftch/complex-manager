@@ -142,13 +142,18 @@ class building_metabox extends Feature {
 		if (!$cols || !is_array($cols)) {
 			$cols = array();
 		} else {
-			//sort
+			// Sort
 			uasort($cols, function($a, $b){
-				return $a["order"] - $b["order"];
+				// Check if 'order' is set and is a number, otherwise use a default large value to sort it last
+				$orderA = (isset($a["order"]) && is_numeric($a["order"])) ? (int)$a["order"] : PHP_INT_MAX;
+				$orderB = (isset($b["order"]) && is_numeric($b["order"])) ? (int)$b["order"] : PHP_INT_MAX;
+
+				return $orderA - $orderB;
 			});
 		}
 		return $cols;
 	}
+
 
 	public function add_group_field($term, $taxonomy) {
 		$default_cols = cxm_get_list_col_defaults();
