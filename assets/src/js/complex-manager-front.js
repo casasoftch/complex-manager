@@ -389,7 +389,13 @@ jQuery( function () {
 
 				var livingspace_pass = true;
 				if (data.r_living_space && query.livingspace_from) {
-					var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/[^\d\.]/g,''));
+					//var living_space = parseFloat(data.r_living_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/[^\d\.]/g,''));
+					var living_space = parseFloat(
+						data.r_living_space
+							.replace(/&amp;nbsp;|&nbsp;/g, ' ')
+							.replace(/<sup>2<\/sup>|&lt;sup&gt;2&lt;\/sup&gt;/g, '')
+							.replace(/[^\d\.]/g, '')
+					);
 					livingspace_pass = false;
 					if (query.livingspace_from !== 0) {
 						if (living_space >= query.livingspace_from && living_space <= query.livingspace_to) {
@@ -404,7 +410,13 @@ jQuery( function () {
 
 				var usablespace_pass = true;
 				if (data.r_usable_space && query.usablespace_from) {
-					var usable_space = parseFloat(data.r_usable_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/[^\d\.]/g,''));
+					//var usable_space = parseFloat(data.r_usable_space.replace("&amp;nbsp;m&lt;sup&gt;2&lt;/sup&gt;", '').replace(/[^\d\.]/g,''));
+					var usable_space = parseFloat(
+						data.r_usable_space
+							.replace(/&amp;nbsp;|&nbsp;/g, ' ')
+							.replace(/<sup>2<\/sup>|&lt;sup&gt;2&lt;\/sup&gt;/g, '')
+							.replace(/[^\d\.]/g, '')
+					);
 					usablespace_pass = false;
 					if (query.usablespace_from !== 0) {
 						if (usable_space >= query.usablespace_from && usable_space <= query.usablespace_to) {
