@@ -627,6 +627,26 @@ class eMonitorImport extends Feature
       copy(CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.json', CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data-error.json');
     }
 
+    if (PluginOptions::get_option('cxm_exclude_buildings', false)) {
+      $buildings = PluginOptions::get_option('cxm_exclude_buildings', false);
+      $excluded_building_ids = explode(',', $buildings);
+
+      $excluded_posts = get_posts(array(
+          'posts_per_page' => -1,
+          'post_type'      => 'complex_unit',
+          'fields'         => 'ids',
+          'tax_query'      => array(
+              array(
+                  'taxonomy' => 'building',
+                  'field'    => 'term_id',
+                  'terms'    => $excluded_building_ids,
+                  'operator' => 'IN',
+              ),
+          ),
+      ));
+      $found_posts = array_unique(array_merge($found_posts, $excluded_posts));
+    }
+
     $properties_to_remove = get_posts(
       array(
         'suppress_filters' => true,

@@ -621,6 +621,10 @@ class general_options extends Feature
             $new_input['cxm_emonitor_api'] = $input['cxm_emonitor_api'];
         }
 
+        if( isset( $input['cxm_exclude_buildings'] ) ) {
+            $new_input['cxm_exclude_buildings'] = $input['cxm_exclude_buildings'];
+        }
+
         if( isset( $input['cxm_emonitor_custom1_matching'] ) ) {
             $new_input['cxm_emonitor_custom1_matching'] = $input['cxm_emonitor_custom1_matching'];
         }
@@ -1364,74 +1368,6 @@ class general_options extends Feature
         echo "</table>";
     }
 
-    public function import_emonitor_v2_callback(){
-        ?>
-        
-
-        
-
-        <tr valign="top">
-            <th scope="row"><strong>Settings</strong><span style="font-weight:100"></span></th>
-            <td class="front-static-pages">
-            <fieldset>
-                <table>
-                    <tr>
-                        <?php if (($this->options['cxm_emonitor_api_v2'] ?? FALSE)): ?>
-                            <td><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></td>
-                        <?php else: ?>
-                            <td><strike><code><strong>Emonitor</strong><span style="font-weight:100"></span></code></strike></td>
-                        <?php endif ?>
-                        <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1'); ?>">Import Ausführen</a></td>
-                    </tr>
-                    <tr>
-                        <?php $file = CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.xml'; if (file_exists($file)) : ?>
-                            <td><code>data.xml</code></td>
-                        <?php else: ?>
-                            <td><strike><code>data.xml</code></strike></td>
-                        <?php endif ?>
-                        <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1&force_all_properties=true&force_last_import=true'); ?>">Import Ausführen und Objekte überschreiben</a></td>
-                    </tr>
-                </table>
-            </fieldset>
-            <hr>
-            
-            <fieldset>
-                <legend class="screen-reader-text"><span><strong>Emonitor</strong><span style="font-weight:100"></span> API</span></legend>
-                <?php $name = 'cxm_emonitor_api_v2'; ?>
-                <?php $text = '<strong>Emonitor</strong><span style="font-weight:100"></span> • API'; ?>
-                <p><?php echo $text; ?></p>
-                <p>
-                    <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
-                </p>
-            </fieldset>
-
-           
-
-            <fieldset>
-                <legend class="screen-reader-text"><span>Emonitor Download Label umschreiben</span></legend>
-                <?php $name = 'cxm_emonitor_rewrite_download_label'; ?>
-                <?php $text = 'Emonitor Download Label umschreiben'; ?>
-                <p><?php echo $text; ?></p>
-                <p>
-                    <input type="text" placeholder="Grundriss" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
-                </p>
-            </fieldset>
-
-            <fieldset>
-                <legend class="screen-reader-text"><span>Emonitor Link Label umschreiben</span></legend>
-                <?php $name = 'cxm_emonitor_rewrite_link_label'; ?>
-                <?php $text = 'Emonitor Link Label umschreiben'; ?>
-                <p><?php echo $text; ?></p>
-                <p>
-                    <input type="text" placeholder="Jetzt online bewerben" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
-                </p>
-            </fieldset>
-        </td>
-    </tr>
-
-        <?php
-    }
-
     public function import_emonitor_callback(){
         ?>
         
@@ -1469,6 +1405,16 @@ class general_options extends Feature
                     <p><?php echo $text; ?></p>
                     <p>
                         <input type="text" placeholder="Deaktiviert" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="screen-reader-text"><span>Bestehende Gebäude von Import exkludieren (kommasepariert)</span></legend>
+                    <?php $name = 'cxm_exclude_buildings'; ?>
+                    <?php $text = '<span>Bestehende Gebäude von Import exkludieren</span>'; ?>
+                    <p><?php echo $text; ?></p>
+                    <p>
+                        <input type="text" placeholder="Gebäude ID's (Komma separeriert)" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                     </p>
                 </fieldset>
 
