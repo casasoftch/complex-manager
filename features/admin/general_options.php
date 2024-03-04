@@ -1409,12 +1409,12 @@ class general_options extends Feature
                 </fieldset>
 
                 <fieldset>
-                    <legend class="screen-reader-text"><span>Bestehende Gebäude von Import exkludieren (kommasepariert)</span></legend>
+                    <legend class="screen-reader-text"><span>Bestehende Gebäude von Import-Cleanup exkludieren (kommasepariert)</span></legend>
                     <?php $name = 'cxm_exclude_buildings'; ?>
-                    <?php $text = '<span>Bestehende Gebäude von Import exkludieren</span>'; ?>
+                    <?php $text = '<span>Bestehende Gebäude von Import-Cleanup exkludieren (Komma separiert)</span>'; ?>
                     <p><?php echo $text; ?></p>
                     <p>
-                        <input type="text" placeholder="Gebäude ID's (Komma separeriert)" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                        <input type="text" placeholder="Gebäude ID's (Komma separiert)" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                     </p>
                 </fieldset>
 
