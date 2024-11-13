@@ -117,7 +117,13 @@
 									<?php endif; ?>
 									<div class="complex-building-flex__row__data">
 										<?php foreach($the_unit['displayItems'] as $displayItem): ?>
-											<?php if ($displayItem['field'] != 'status'): ?>
+											<?php if(
+												($displayItem['field'] == 'r_rent_net' && (get_cxm($the_unit['post'], 'status') == 'sold' || get_cxm($the_unit['post'], 'status') == 'rented')) || 
+												($displayItem['field'] == 'r_purchase_price' && (get_cxm($the_unit['post'], 'status') == 'sold' || get_cxm($the_unit['post'], 'status') == 'rented')) || 
+												($displayItem['field'] == 'r_rent_gross' && (get_cxm($the_unit['post'], 'status') == 'sold' || get_cxm($the_unit['post'], 'status') == 'rented'))
+												): ?>
+
+											<?php elseif ($displayItem['field'] != 'status'): ?>
 												<div class="complex-building-flex__row__item <?php echo $displayItem['td_classes']; ?>">
 													<?php echo $displayItem['label']; ?>: <strong><?php echo $displayItem['value']; ?></strong>
 												</div>
