@@ -475,7 +475,7 @@ class eMonitorImport extends Feature
 
     $json_string = file_get_contents($this->getEmonitorImportFile());
 
-    if ($json_string === false) {
+    if ($json_string === false || empty($json_string)) {
       return;
     }
 
@@ -483,6 +483,11 @@ class eMonitorImport extends Feature
 
     if ($data === null) {
         return;
+    }
+
+    if (!is_array($data)) {
+      #error_log("Error: Decoded data is not an array.");
+      return;
     }
 
     $found_posts = array();
@@ -514,6 +519,13 @@ class eMonitorImport extends Feature
     }
 
     $orderby = "title";
+
+    if (isset($sortArray[$orderby]) && is_array($sortArray[$orderby]) && !empty($sortArray[$orderby])) {
+      array_multisort($sortArray[$orderby], SORT_ASC, $data);
+    } else {
+      #error_log("Error: Cannot sort data because 'title' field is missing or invalid.");
+      return;
+    }
 
     array_multisort($sortArray[$orderby], SORT_ASC, $data);
 
