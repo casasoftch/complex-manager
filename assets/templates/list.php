@@ -1,27 +1,35 @@
 
 <?php 
-	$labels = maybe_unserialize((maybe_unserialize(get_option('complex_manager')['translate_labels'])));
+	if (isset(get_option('complex_manager')['translate_labels']) && get_option('complex_manager')['translate_labels']) {
+		$labels = maybe_unserialize((maybe_unserialize(get_option('complex_manager')['translate_labels'])));
+	} else {
+		$labels = [];
+	}
 	$labels_array = [];
 	global $sitepress;
 	$lang = get_locale();
-	foreach ($labels as $key => $label) {
-		if ($sitepress) {
-			if ($label['label'] && $lang == 'de_DE') {
-				$labels_array[$key] = $label['label'];
-			} elseif($label['label_en'] && $lang == 'en_US') {
-				$labels_array[$key] = $label['label_en'];
-			} elseif($label['label_fr'] && $lang == 'fr_FR') {
-				$labels_array[$key] = $label['label_fr'];
+	if (!empty($labels) && isset($labels['labels']) && $labels['labels']) {
+		foreach ($labels as $key => $label) {
+			if ($sitepress) {
+				if ($label['label'] && $lang == 'de_DE') {
+					$labels_array[$key] = $label['label'];
+				} elseif($label['label_en'] && $lang == 'en_US') {
+					$labels_array[$key] = $label['label_en'];
+				} elseif($label['label_fr'] && $lang == 'fr_FR') {
+					$labels_array[$key] = $label['label_fr'];
+				} else {
+					$labels_array[$key] = $label['label'];
+				}
 			} else {
-				$labels_array[$key] = $label['label'];
-			}
-		} else {
-			if ($label['label']) {
-				$labels_array[$key] = $label['label'];
+				if ($label['label']) {
+					$labels_array[$key] = $label['label'];
+				}
 			}
 		}
 	}
+	
 ?>
+
 
 <div class="complex-list-wrapper <?php echo ($collapsible ? 'complex-list-wrapper-collapsible' : '') ?> <?php echo $class ?>">
 	<?php foreach ( $the_buildings as $building ) { ?>
@@ -178,7 +186,7 @@
 															<span>
 																<?php echo $labels_array['download_file']; ?>
 															</span>
-														<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
+														<?php elseif (isset(get_option('complex_manager')['cxm_emonitor_rewrite_download_label']) && get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
 															<span>
 																<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_download_label']; ?>
 															</span>
@@ -215,7 +223,7 @@
 															<span>
 																<?php echo $labels_array['link']; ?>
 															</span>
-														<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
+														<?php elseif (isset(get_option('complex_manager')['cxm_emonitor_rewrite_link_label']) && get_option('complex_manager')['cxm_emonitor_rewrite_link_label']): ?>
 															<span>
 																<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_link_label']; ?>
 															</span>
