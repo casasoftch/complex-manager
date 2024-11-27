@@ -162,6 +162,7 @@ class building_metabox extends Feature {
 			<tbody>
 				<?php $hide_building = get_term_meta( $term->term_id, 'hide_building', true ); ?>
 				<?php $show_total = get_term_meta( $term->term_id, 'show_total', true ); ?>
+				<?php $show_price_segments = get_term_meta( $term->term_id, 'show_price_segments', true ); ?>
 				<tr class="form-field form-required term-name-wrap">
 					<th scope="row"><label for="name">Anzeige</label></th>
 					<td>
@@ -170,6 +171,9 @@ class building_metabox extends Feature {
 						<br>
 						<input type="hidden" name="show_total" value="0" />
 						<label><input type="checkbox" name="show_total" value="1" <?= ($show_total ? 'CHECKED' : '')?> /> Spalten-Total auf Liste anzeigen</label>
+						<br>
+						<input type="hidden" name="show_price_segments" value="0" />
+						<label><input type="checkbox" name="show_price_segments" value="1" <?= ($show_price_segments ? 'CHECKED' : '')?> /> Zeit- & Preissegmentierung nach Preisen anzeigen</label>
 					</td>
 				</tr>
 
@@ -244,6 +248,11 @@ class building_metabox extends Feature {
 		if( isset( $_POST['show_total'] ) && '' !== $_POST['show_total'] ){
 			$val = ($_POST['show_total'] ? 1 : 0);
 			update_term_meta( $term_id, 'show_total', $val );
+		}
+
+		if( isset( $_POST['show_price_segments'] ) && '' !== $_POST['show_price_segments'] ){
+			$val = ($_POST['show_price_segments'] ? 1 : 0);
+			update_term_meta( $term_id, 'show_price_segments', $val );
 		}
 
 		if( isset( $_POST['building_col_options'] ) && '' !== $_POST['building_col_options'] ){

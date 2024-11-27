@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 13:55+0100\n"
-"PO-Revision-Date: 2024-03-25 13:56+0100\n"
+"POT-Creation-Date: 2024-11-27 15:02+0100\n"
+"PO-Revision-Date: 2024-11-27 15:03+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../assets/src\n"
@@ -3204,8 +3204,8 @@ msgstr "Réponse reCAPTCHA invalide!"
 msgid "Send"
 msgstr "Envoyer"
 
-#: ../assets/templates/filter.php:22 ../assets/templates/list.php:106
-#: ../assets/templates/list.php:109 ../features/admin/unit_archive_cols.php:71
+#: ../assets/templates/filter.php:22 ../assets/templates/list.php:115
+#: ../assets/templates/list.php:118 ../features/admin/unit_archive_cols.php:71
 #: ../features/admin/unit_metabox.php:254 ../features/client/render.php:318
 msgid "Available"
 msgstr "Disponible"
@@ -3228,35 +3228,47 @@ msgstr "Résultats"
 msgid "objects"
 msgstr "objéts"
 
-#: ../assets/templates/list.php:94 ../features/admin/unit_archive_cols.php:74
+#: ../assets/templates/list.php:103 ../features/admin/unit_archive_cols.php:74
 #: ../features/admin/unit_metabox.php:257 ../features/client/render.php:322
 #: ../features/client/render.php:438
 msgid "Sold"
 msgstr "Vendu"
 
-#: ../assets/templates/list.php:97 ../features/admin/unit_archive_cols.php:73
+#: ../assets/templates/list.php:106 ../features/admin/unit_archive_cols.php:73
 #: ../features/admin/unit_metabox.php:258 ../features/client/render.php:321
 #: ../features/client/render.php:437
 msgid "Rented"
 msgstr "Loué"
 
-#: ../assets/templates/list.php:100
+#: ../assets/templates/list.php:109
 #, fuzzy
 #| msgid "pre-reserved"
 msgid "Pre-reserver"
 msgstr "Pré-réservé"
 
-#: ../assets/templates/list.php:103 ../features/admin/unit_archive_cols.php:72
+#: ../assets/templates/list.php:112 ../features/admin/unit_archive_cols.php:72
 #: ../features/admin/unit_metabox.php:256 ../features/client/render.php:320
 #: ../features/client/render.php:436
 msgid "Reserved"
 msgstr "Réservé"
 
-#: ../assets/templates/list.php:266 ../assets/templates/list.php:484
+#: ../assets/templates/list.php:142
+msgid "week"
+msgstr "semaine"
+
+#: ../assets/templates/list.php:145 ../assets/templates/list.php:151
+msgid "month"
+msgstr "mois"
+
+#: ../assets/templates/list.php:148
+msgid "year"
+msgstr "an"
+
+#: ../assets/templates/list.php:328 ../assets/templates/list.php:546
 msgid "Contact"
 msgstr ""
 
-#: ../assets/templates/list.php:528
+#: ../assets/templates/list.php:590
 msgid "Cancel"
 msgstr ""
 

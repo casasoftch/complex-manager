@@ -64,6 +64,7 @@
 						<?php foreach($building['the_units'] as $the_unit): ?>
 							<?php 
 								$type_array = wp_get_post_terms($the_unit['post']->ID, 'unit_type', array( 'field' => 'slugs' ));
+								$the_unit_ID = $the_unit['post']->ID;
 								$types = '';
 								$new_types = array();
 								if ($type_array) {
@@ -76,8 +77,8 @@
 							?>
 							<div class="complex-building-flex__row-outer" 
 								<?php echo $types; ?> 
-								id="unit_<?php echo $the_unit['post']->ID ?>" 
-								data-unit-id="<?php echo $the_unit['post']->ID ?>" 
+								id="unit_<?php echo $the_unit_ID ?>" 
+								data-unit-id="<?php echo $the_unit_ID ?>" 
 								<?php
 									$data = array_map('htmlspecialchars_decode', $the_unit['data']);
 									$json_encoded_data = json_encode($data);
@@ -130,7 +131,54 @@
 												($displayItem['field'] == 'r_purchase_price' && (get_cxm($the_unit['post'], 'status') == 'sold' || get_cxm($the_unit['post'], 'status') == 'rented')) || 
 												($displayItem['field'] == 'r_rent_gross' && (get_cxm($the_unit['post'], 'status') == 'sold' || get_cxm($the_unit['post'], 'status') == 'rented'))
 												): ?>
+											<?php elseif ($displayItem['field'] == 'r_rent_net' || $displayItem['field'] == 'r_rent_gross'): ?>
+												<?php 
 
+													$show_price_segments = get_term_meta($building['term']->term_id, 'show_price_segments', true);
+
+													$rent_timesegment = get_post_meta($the_unit_ID, '_complexmanager_unit_rent_timesegment', true);
+													switch ($rent_timesegment) {
+														case 'W':
+															$rent_timesegment = __('week', 'complexmanager');
+															break;
+														case 'M':
+															$rent_timesegment = __('month', 'complexmanager');
+															break;
+														case 'Y':
+															$rent_timesegment = __('year', 'complexmanager');
+															break;
+														default:
+															$rent_timesegment = __('month', 'complexmanager');
+															break;
+													}
+
+													$rent_propertysegment = get_post_meta($the_unit_ID, '_complexmanager_unit_rent_propertysegment', true);
+													switch ($rent_propertysegment) {
+														case 'full':
+															$rent_propertysegment = '';
+															break;
+														case 'M2':
+															$rent_propertysegment = 'm²';
+															break;
+														default:
+															$rent_propertysegment = '';
+															break;
+													}
+
+													$value = $displayItem['value'];
+
+													if ($show_price_segments) {
+														if ($rent_propertysegment == 'm²') {
+															$value = $value . ' / ' . $rent_propertysegment . ' / ' . $rent_timesegment;
+														} else {
+															$value = $value . ' / ' . $rent_timesegment;
+														}
+													}
+
+												?>
+												<div class="complex-building-flex__row__item <?php echo $displayItem['td_classes']; ?>">
+													<?php echo $displayItem['label']; ?>: <strong><?php echo $value; ?></strong>
+												</div>
 											<?php elseif ($displayItem['field'] != 'status'): ?>
 												<div class="complex-building-flex__row__item <?php echo $displayItem['td_classes']; ?>">
 													<?php echo $displayItem['label']; ?>: <strong><?php echo $displayItem['value']; ?></strong>
@@ -275,7 +323,7 @@
 															$html = 'btn btn-primary pull-right complex-call-contact-form';
 															echo apply_filters('cxm_render_contact_button_classes', $html);
 														?>"
-													data-unit-id="<?= $the_unit['post']->ID ?>" href="#complexContactForm">
+													data-unit-id="<?= $the_unit_ID ?>" href="#complexContactForm">
 													<span>
 														<?php echo __('Contact', 'complexmanager'); ?>
 													</span>
