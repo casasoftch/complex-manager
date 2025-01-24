@@ -1058,7 +1058,11 @@ class eMonitorImport extends Feature
         $new_meta_data['_complexmanager_unit_tour_target']       = '_blank';
       }
 
-      if (isset($property['website_link']) && $property['website_link']) {
+      if (isset($property['application_form']) && $property['application_form']) {
+        $new_meta_data['_complexmanager_unit_link_url']       = $property['application_form'];
+        $new_meta_data['_complexmanager_unit_link_label']       = 'Jetzt online bewerben';
+        $new_meta_data['_complexmanager_unit_link_target']       = '_blank';
+      } elseif (isset($property['website_link']) && $property['website_link']) {
         $new_meta_data['_complexmanager_unit_link_url']       = $property['website_link'];
         $new_meta_data['_complexmanager_unit_link_label']       = 'Jetzt online bewerben';
         $new_meta_data['_complexmanager_unit_link_target']       = '_blank';
