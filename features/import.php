@@ -1041,7 +1041,7 @@ class eMonitorImport extends Feature
       if (isset($property['factsheets']) && $property['factsheets']) {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['factsheets'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
-      } /* elseif(isset($property['layout_plan']) && $property['layout_plan']) {
+      } elseif(isset($property['layout_plan']) && $property['layout_plan']) {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['layout_plan'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
       } elseif(isset($property['situation_plan']) && $property['situation_plan']) {
@@ -1050,7 +1050,7 @@ class eMonitorImport extends Feature
       } elseif(isset($property['pdf_file']) && $property['pdf_file']) {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['pdf_file'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
-      } */
+      }
 
       if (isset($property['virtual_tour_link']) && $property['virtual_tour_link']) {
         $new_meta_data['_complexmanager_unit_tour_url']       = $property['virtual_tour_link'];
