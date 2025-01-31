@@ -1038,16 +1038,16 @@ class eMonitorImport extends Feature
 
       $new_meta_data['_complexmanager_unit_custom_overlay']       = $property['isometry'] ?? '';
 
-      if (isset($property['factsheets']) && $property['factsheets']) {
+      if (isset($property['factsheets']) && $property['factsheets'] && $property['factsheets'] !== '#') {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['factsheets'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
-      } elseif(isset($property['layout_plan']) && $property['layout_plan']) {
+      } elseif(isset($property['layout_plan']) && $property['layout_plan'] && $property['layout_plan'] !== '#') {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['layout_plan'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
-      } elseif(isset($property['situation_plan']) && $property['situation_plan']) {
+      } elseif(isset($property['situation_plan']) && $property['situation_plan'] && $property['situation_plan'] !== '#') {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['situation_plan'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
-      } elseif(isset($property['pdf_file']) && $property['pdf_file']) {
+      } elseif(isset($property['pdf_file']) && $property['pdf_file'] && $property['pdf_file'] !== '#') {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['pdf_file'];
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
       }
