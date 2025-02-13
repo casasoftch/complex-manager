@@ -58,7 +58,7 @@
 			 ?>
 			<div class="unit-description"><?= wpautop( $building['description'], false ); ?></div>
 			
-			<?php if (get_option('complex_manager')['flex_list']): ?>
+			<?php if (!empty(get_option('complex_manager')['flex_list'])): ?>
 				<div class="table-responsive table-responsive--flex complex-building-<?= $building['term']->slug ?>" data-recipients="<?php echo implode(',', $individual_direct_recipients) ?>">
 					<div class="complex-building-flex">
 						<?php foreach($building['the_units'] as $the_unit): ?>
@@ -451,7 +451,7 @@
 																	<span>
 																		<?php echo $labels_array['download_file']; ?>
 																	</span>
-																<?php elseif (get_option('complex_manager')['cxm_emonitor_rewrite_download_label']): ?>
+																<?php elseif (!empty(get_option('complex_manager')['cxm_emonitor_rewrite_download_label'])): ?>
 																	<span>
 																		<?php echo get_option('complex_manager')['cxm_emonitor_rewrite_download_label']; ?>
 																	</span>
