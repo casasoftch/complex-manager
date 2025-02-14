@@ -859,19 +859,18 @@ class render extends Feature {
 	   			$key = 'purchaseprice';
 	   		}
 			if ($this->hasWPML()) {
-				if ($label['label'] && $lang == 'de_DE') {
+				if (!empty($label['label']) && $lang == 'de_DE') {
 					$labelArray[$key] = $label['label'];
-				} elseif($label['label_en'] && $lang == 'en_US') {
+				} elseif (!empty($label['label_en']) && $lang == 'en_US') {
 					$labelArray[$key] = $label['label_en'];
-				} elseif($label['label_fr'] && $lang == 'fr_FR') {
+				} elseif (!empty($label['label_fr']) && $lang == 'fr_FR') {
 					$labelArray[$key] = $label['label_fr'];
 				}
 			} else {
-				if ($label['label']) {
+				if (!empty($label['label'])) {
 					$labelArray[$key] = $label['label'];
 				}
-			}
-	   		
+			}	
 	   	}
 
 	   	$filterLabelArray = array_merge($defaultLabelArray, $labelArray);
