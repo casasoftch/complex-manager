@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-27 15:02+0100\n"
-"PO-Revision-Date: 2024-11-27 15:03+0100\n"
+"POT-Creation-Date: 2025-03-21 13:36+0100\n"
+"PO-Revision-Date: 2025-03-21 13:38+0100\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -344,7 +344,7 @@ msgstr ""
 #: ../features/core/global_functions.php:225
 #: ../features/core/global_functions.php:352
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #: ../assets/acf/admin/field-groups.php:609
 #: ../assets/acf/admin/settings-info.php:76
@@ -3718,30 +3718,30 @@ msgstr ""
 msgid "Please choose a unit"
 msgstr ""
 
-#: ../features/client/render.php:1334 ../features/client/render.php:1399
+#: ../features/client/render.php:1333 ../features/client/render.php:1398
 msgid "Unit inquiry"
 msgstr ""
 
-#: ../features/client/render.php:1367
+#: ../features/client/render.php:1366
 msgid "Phone:"
 msgstr ""
 
-#: ../features/client/render.php:1371
+#: ../features/client/render.php:1370
 msgid "Mobile:"
 msgstr ""
 
-#: ../features/client/render.php:1387 ../features/core/field_manager.php:91
+#: ../features/client/render.php:1386 ../features/core/field_manager.php:91
 #: ../features/core/field_manager.php:117
 #: ../features/core/field_manager.php:249
 msgid "Unit"
 msgstr "Objet"
 
-#: ../features/client/render.php:1629 ../features/client/render.php:1668
-#: ../features/client/render.php:1702
+#: ../features/client/render.php:1628 ../features/client/render.php:1667
+#: ../features/client/render.php:1701
 msgid "Inquiry has been sent. Thank you!"
 msgstr "Votre demande a bien été transmise. Merci!"
 
-#: ../features/client/render.php:1739
+#: ../features/client/render.php:1738
 msgid "Please check the following and try again:"
 msgstr "S'il vous plaît vérifier les points suivants et réessayer:"
 
