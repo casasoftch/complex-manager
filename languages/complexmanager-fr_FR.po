@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starter Kit 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-21 13:36+0100\n"
-"PO-Revision-Date: 2025-03-21 13:38+0100\n"
+"POT-Creation-Date: 2025-04-25 15:32+0200\n"
+"PO-Revision-Date: 2025-04-25 15:32+0200\n"
 "Last-Translator: Jens Stalder <js@casasoft.ch>\n"
 "Language-Team: aut0poietic\n"
 "Language: fr\n"
@@ -3832,7 +3832,7 @@ msgstr ""
 #: ../features/core/global_functions.php:184
 #: ../features/core/global_functions.php:372
 msgid "Rent gross"
-msgstr ""
+msgstr "Loyer brut"
 
 #: ../features/core/field_manager.php:445
 #, php-format
