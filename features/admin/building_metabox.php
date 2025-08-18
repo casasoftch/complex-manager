@@ -75,6 +75,22 @@ class building_metabox extends Feature {
 					'readonly' => 0,
 					'disabled' => 0,
 				),
+				array(
+					'key' => 'field_595dexecb2c54n',
+					'label' => 'Individueller Hook (Aktivierung von Theme-Funktionen, wie Versand in Custom CRM, etc.)',
+					'name' => 'individual-hook',
+					'type' => 'true_false',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '',
+					'default_value' => 0,
+				),
 			),
 			'location' => array (
 				array (
