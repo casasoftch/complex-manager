@@ -304,9 +304,15 @@ class render extends Feature {
 				//==label==
 
 				// check for lingustic alternatives
-				$label_text = (isset($col['label_'.$lang]) ? $col['label_'.$lang] : (isset($col['label']) ? $col['label'] : ''));
-				$displayItem['label'] = nl2br(str_replace('\n', "\n", ($label_text ? $label_text : get_cxm_label(false, $field, 'complex_unit') ) ) );
-
+				$label_text = '';
+				if (!empty($col['label_'.$lang])) {
+					$label_text = $col['label_'.$lang];
+				} elseif (!empty($col['label'])) {
+					$label_text = $col['label'];
+				}
+				$displayItem['label'] = nl2br(str_replace('\n', "\n",
+					($label_text !== '' ? $label_text : get_cxm_label(false, $field, 'complex_unit'))
+				));
 
 				$Rfield = get_cxm_item($unit, $field);
 				$displayItem['item'] = $Rfield;
@@ -493,6 +499,7 @@ class render extends Feature {
 			$building['description'] = ($building['term']->description ? $building['term']->description : '');
 			$building['the_units'] = array();
 			$col_options = get_term_meta( $building['term']->term_id, 'building_col_options', true );
+			error_log('CXM DBG [term '.$building['term']->term_id.'] building_col_options[custom_1]: ' . print_r($col_options['custom_1'] ?? null, true));
 			$hide_building = get_term_meta( $building['term']->term_id, 'hide_building', true );
 			/*if ($hide_building) {
 				continue;
