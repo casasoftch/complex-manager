@@ -1036,7 +1036,11 @@ class eMonitorImport extends Feature
       $new_meta_data['_complexmanager_unit_terrace_space']        = $property['terrace_area'] ?? '';
       $new_meta_data['_complexmanager_unit_balcony_space']        = $property['balcony_area'] ?? '';
 
-      $new_meta_data['_complexmanager_unit_custom_overlay']       = $property['isometry'] ?? '';
+      
+
+      if (isset($property['isometry']) && $property['isometry'] && $property['isometry'] !== '#') {
+        $new_meta_data['_complexmanager_unit_custom_overlay']       = $property['isometry'] ?? '';
+      }
 
       if (isset($property['factsheets']) && $property['factsheets'] && $property['factsheets'] !== '#') {
         $new_meta_data['_complexmanager_unit_download_file']        = $property['factsheets'];
@@ -1052,17 +1056,17 @@ class eMonitorImport extends Feature
         $new_meta_data['_complexmanager_unit_download_label']       = 'Grundriss';
       }
 
-      if (isset($property['virtual_tour_link']) && $property['virtual_tour_link']) {
+      if (isset($property['virtual_tour_link']) && $property['virtual_tour_link'] && $property['virtual_tour_link'] !== '#') {
         $new_meta_data['_complexmanager_unit_tour_url']       = $property['virtual_tour_link'];
         $new_meta_data['_complexmanager_unit_tour_label']       = 'Virtuelle Tour';
         $new_meta_data['_complexmanager_unit_tour_target']       = '_blank';
       }
 
-      if (isset($property['application_form']) && $property['application_form']) {
+      if (isset($property['application_form']) && $property['application_form'] && $property['application_form'] !== '#') {
         $new_meta_data['_complexmanager_unit_link_url']       = $property['application_form'];
         $new_meta_data['_complexmanager_unit_link_label']       = 'Jetzt online bewerben';
         $new_meta_data['_complexmanager_unit_link_target']       = '_blank';
-      } elseif (isset($property['website_link']) && $property['website_link']) {
+      } elseif (isset($property['website_link']) && $property['website_link'] && $property['website_link'] !== '#') {
         $new_meta_data['_complexmanager_unit_link_url']       = $property['website_link'];
         $new_meta_data['_complexmanager_unit_link_label']       = 'Jetzt online bewerben';
         $new_meta_data['_complexmanager_unit_link_target']       = '_blank';
