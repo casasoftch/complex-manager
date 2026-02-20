@@ -306,3 +306,22 @@ add_filter('cxm_filter_form_required_messages', 'cxm_filter_form_required_messag
 ```
 
 
+#### Theme Schnipsel für Cron automatische Emonitor Importe
+
+function updateThemeUnits() {
+    $force_update = PluginOptions::get_option('cxm_force_property_update', false);
+
+    // Wenn Force-Option aktiv, GET-Parameter simulieren
+    if ($force_update) {
+        $_GET['force_all_properties'] = 'true';
+        $_GET['force_last_import'] = 'true';
+    }
+
+    // Autoimport starten
+    $import = new casasoft\complexmanager\eMonitorImport(true, true);
+    $import->addToLog('Automatic Update from Emonitor caused import' . ($force_update ? ' (forced updates)' : ''));
+}
+
+add_action('update_theme_units_event', 'updateThemeUnits');
+
+

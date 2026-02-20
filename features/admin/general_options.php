@@ -621,6 +621,9 @@ class general_options extends Feature
             $new_input['cxm_emonitor_api'] = $input['cxm_emonitor_api'];
         }
 
+        // Checkbox für forced updates
+        $new_input['cxm_force_property_update'] = !empty($input['cxm_force_property_update']) ? 1 : 0;
+
         if( isset( $input['cxm_exclude_buildings'] ) ) {
             $new_input['cxm_exclude_buildings'] = $input['cxm_exclude_buildings'];
         }
@@ -1394,6 +1397,22 @@ class general_options extends Feature
                                 <td><strike><code>data.xml</code></strike></td>
                             <?php endif ?>
                             <td><a href="<?php echo  get_admin_url('', 'admin.php?page=complexmanager-admin&emonitorupdate=1&force_all_properties=true&force_last_import=true'); ?>">Import Ausführen und Objekte überschreiben</a></td>
+                        </tr>
+                         <tr>
+                            <td><label for="cxm_force_property_update">Automatische Updates -> Objekte immer überschreiben</label></td>
+                            <td> 
+                                <?php
+                                $checked = !empty( $this->options['cxm_force_property_update'] );
+                                echo
+                                    '<div class="form-field-mandatory">
+                                        <input type="hidden" name="complex_manager[cxm_force_property_update]" value="0" />
+                                        <input type="checkbox" ' . ($checked ? 'checked="checked"' : '') . ' id="cxm_force_property_update" name="complex_manager[cxm_force_property_update]" value="1" />
+                                    </div>'
+
+                                ;
+
+                                ?>
+                            </td>
                         </tr>
                     </table>
                 </fieldset>
