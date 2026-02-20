@@ -306,7 +306,7 @@ add_filter('cxm_filter_form_required_messages', 'cxm_filter_form_required_messag
 ```
 
 
-#### Theme Schnipsel für Cron automatische Emonitor Importe
+#### Theme Schnipsel für Cron automatische forced Emonitor Importe
 
 function updateThemeUnits() {
     $force_update = get_option('complex_manager')['cxm_force_property_update'] ?? false;
