@@ -184,9 +184,9 @@ class unit_metabox extends Feature {
         $value = get_post_meta( $post->ID, '_complexmanager_unit_link_url', true );
         $target = get_post_meta( $post->ID, '_complexmanager_unit_link_target', true );
         echo '<div class="uploader">
-        		<input type="text" id="complexmanager_unit_link_label" name="complexmanager_unit_link_label" placeholder="Link name" value="' . esc_attr( $labelvalue ) . '"  />
-				<input id="complexmanager_unit_link_url" name="complexmanager_unit_link_url" value="'.$value.'" type="text" placeholder="Url" />
-				<input id="complexmanager_unit_link_target" name="complexmanager_unit_link_target" value="'.$target.'" type="text" placeholder="Target" />
+				<input type="text" id="complexmanager_unit_link_label" name="complexmanager_unit_link_label" placeholder="' . esc_attr__( 'Link label', 'complexmanager' ) . '" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_link_url" name="complexmanager_unit_link_url" value="'.$value.'" type="text" placeholder="' . esc_attr__( 'Link url', 'complexmanager' ) . '" />
+				<input id="complexmanager_unit_link_target" name="complexmanager_unit_link_target" value="'.$target.'" type="text" placeholder="' . esc_attr__( 'Link target', 'complexmanager' ) . '" />
 			</div>';
 		echo "</p>";
 
@@ -201,9 +201,9 @@ class unit_metabox extends Feature {
         $value = get_post_meta( $post->ID, '_complexmanager_unit_link_url_2', true );
         $target = get_post_meta( $post->ID, '_complexmanager_unit_link_target_2', true );
         echo '<div class="uploader">
-        		<input type="text" id="complexmanager_unit_link_label_2" name="complexmanager_unit_link_label_2" placeholder="Link name" value="' . esc_attr( $labelvalue ) . '"  />
-				<input id="complexmanager_unit_link_url_2" name="complexmanager_unit_link_url_2" value="'.$value.'" type="text" placeholder="Url" />
-				<input id="complexmanager_unit_link_target_2" name="complexmanager_unit_link_target_2" value="'.$target.'" type="text" placeholder="Target" />
+				<input type="text" id="complexmanager_unit_link_label_2" name="complexmanager_unit_link_label_2" placeholder="' . esc_attr__( 'Link label', 'complexmanager' ) . '" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_link_url_2" name="complexmanager_unit_link_url_2" value="'.$value.'" type="text" placeholder="' . esc_attr__( 'Link url', 'complexmanager' ) . '" />
+				<input id="complexmanager_unit_link_target_2" name="complexmanager_unit_link_target_2" value="'.$target.'" type="text" placeholder="' . esc_attr__( 'Link target', 'complexmanager' ) . '" />
 			</div>';
 		echo "</p>";
 
@@ -218,9 +218,9 @@ class unit_metabox extends Feature {
 		$value = get_post_meta( $post->ID, '_complexmanager_unit_tour_url', true );
 		$target = get_post_meta( $post->ID, '_complexmanager_unit_tour_target', true );
 		echo '<div class="uploader">
-				<input type="text" id="complexmanager_unit_tour_label" name="complexmanager_unit_tour_label" placeholder="Link name" value="' . esc_attr( $labelvalue ) . '"  />
-				<input id="complexmanager_unit_tour_url" name="complexmanager_unit_tour_url" value="'.$value.'" type="text" placeholder="Url" />
-				<input id="complexmanager_unit_tour_target" name="complexmanager_unit_tour_target" value="'.$target.'" type="text" placeholder="Target" />
+				<input type="text" id="complexmanager_unit_tour_label" name="complexmanager_unit_tour_label" placeholder="' . esc_attr__( 'Tour label', 'complexmanager' ) . '" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_tour_url" name="complexmanager_unit_tour_url" value="'.$value.'" type="text" placeholder="' . esc_attr__( 'Tour url', 'complexmanager' ) . '" />
+				<input id="complexmanager_unit_tour_target" name="complexmanager_unit_tour_target" value="'.$target.'" type="text" placeholder="' . esc_attr__( 'Tour target', 'complexmanager' ) . '" />
 			</div>';
 		echo "</p>";
 
@@ -234,9 +234,9 @@ class unit_metabox extends Feature {
 		$labelvalue = get_post_meta( $post->ID, '_complexmanager_unit_download_label', true );
         $value = get_post_meta( $post->ID, '_complexmanager_unit_download_file', true );
         echo '<div class="uploader">
-        		<input type="text" id="complexmanager_unit_download_label" name="complexmanager_unit_download_label" placeholder="Button name" value="' . esc_attr( $labelvalue ) . '"  />
-				<input id="complexmanager_unit_download_file" name="complexmanager_unit_download_file" value="'.$value.'" type="text" placeholder="Datei" />
-				<input id="complexmanager_unit_download_file_button" class="button" name="complexmanager_unit_download_file_button" type="button" value="Download-Datei auswählen" />
+				<input type="text" id="complexmanager_unit_download_label" name="complexmanager_unit_download_label" placeholder="' . esc_attr__( 'Download label', 'complexmanager' ) . '" value="' . esc_attr( $labelvalue ) . '"  />
+				<input id="complexmanager_unit_download_file" name="complexmanager_unit_download_file" value="'.$value.'" type="text" placeholder="' . esc_attr__( 'File', 'complexmanager' ) . '" />
+				<input id="complexmanager_unit_download_file_button" class="button" name="complexmanager_unit_download_file_button" type="button" value="' . esc_attr__( 'Choose download file', 'complexmanager' ) . '" />
 			</div>';
 		echo "</p>";
 
@@ -412,8 +412,8 @@ class unit_metabox extends Feature {
 				_e( 'Purchase scope', 'complexmanager' );
 				echo '</label><br>';
 				echo '<select id="'.$key.'" name="'.$key.'">';
-					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>Full price</option>';
-					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>per M2</option>';
+					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>' . esc_html__( 'Full price', 'complexmanager' ) . '</option>';
+					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>' . esc_html__( 'per m²', 'complexmanager' ) . '</option>';
 		        echo '</select>';
 		        echo '</p>';
 
@@ -424,7 +424,7 @@ class unit_metabox extends Feature {
 		   		$key = $this->prefix.'rent_net';
 		        $value = get_post_meta( $post->ID, '_'.$key, true );
 		        echo '<p><label for="'.$key.'">';
-				_e( 'Rent Net Price', 'complexmanager' );
+				_e( 'Net rent', 'complexmanager' );
 				echo '</label><br>';
 				echo '<input type="number" step="1" id="'.$key.'" name="'.$key.'"';
 		                echo ' value="' . esc_attr( $value ) . '" size="25" />';
@@ -437,9 +437,9 @@ class unit_metabox extends Feature {
 				_e( 'Rent Time segment', 'complexmanager' );
 				echo '</label><br>';
 				echo '<select id="'.$key.'" name="'.$key.'">';
-					echo '<option value="Y" ' . ($value == 'Y' ? 'selected' : '') . '>Year</option>';
-					echo '<option value="M" ' . ($value == 'M' ? 'selected' : '') . '>Month</option>';
-					echo '<option value="W" ' . ($value == 'W' ? 'selected' : '') . '>Week</option>';
+					echo '<option value="Y" ' . ($value == 'Y' ? 'selected' : '') . '>' . esc_html__( 'Year', 'complexmanager' ) . '</option>';
+					echo '<option value="M" ' . ($value == 'M' ? 'selected' : '') . '>' . esc_html__( 'Month', 'complexmanager' ) . '</option>';
+					echo '<option value="W" ' . ($value == 'W' ? 'selected' : '') . '>' . esc_html__( 'Week', 'complexmanager' ) . '</option>';
 		        echo '</select>';
 		        echo '</p>';
 
@@ -449,8 +449,8 @@ class unit_metabox extends Feature {
 				_e( 'Rental scope', 'complexmanager' );
 				echo '</label><br>';
 				echo '<select id="'.$key.'" name="'.$key.'">';
-					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>Full price</option>';
-					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>per M2</option>';
+					echo '<option value="full" ' . ($value == 'full' ? 'selected' : '') . '>' . esc_html__( 'Full price', 'complexmanager' ) . '</option>';
+					echo '<option value="M2" ' . ($value == 'M2' ? 'selected' : '') . '>' . esc_html__( 'per m²', 'complexmanager' ) . '</option>';
 		        echo '</select>';
 		        echo '</p>';
 
@@ -604,7 +604,7 @@ class unit_metabox extends Feature {
         $value = get_post_meta( $post->ID, '_complexmanager_unit_custom_overlay', true );
         echo '<div class="uploader">
 				<input style="width:100%;" id="complexmanager_unit_custom_overlay" name="complexmanager_unit_custom_overlay" value="'.$value.'" type="text" />
-				<input style="width:100%;" id="complexmanager_unit_custom_overlay_button" class="button" name="complexmanager_unit_custom_overlay_button" type="button" value="Spezifisches Overlay auswählen" />
+				<input style="width:100%;" id="complexmanager_unit_custom_overlay_button" class="button" name="complexmanager_unit_custom_overlay_button" type="button" value="' . esc_attr__( 'Choose custom overlay', 'complexmanager' ) . '" />
 			</div>';
 		echo "</p>";
 

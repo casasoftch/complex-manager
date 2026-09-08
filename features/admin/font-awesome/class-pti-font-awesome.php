@@ -940,7 +940,7 @@ class PTI_Font_Awesome {
 			.font-awesome-icon-<?php echo $icon ?>:before { content: '<?php echo $this->get_font_awesome_icon( $icon ) ?>'; }
 			<?php endforeach ?>
 		</style>
-		<h2 style="clear:both">Font Awesome Icon Library</h2>
+		<h2 style="clear:both"><?php esc_html_e( 'Font Awesome Icon Library', 'complexmanager' ); ?></h2>
 		<div id="font_awesome_icons">
 			<?php foreach ( $icons as $icon ) : ?>
 				<dl><dt class="font-awesome-icon-<?php echo $icon ?>"></dt><dd><?php echo $icon ?></dd></dl>

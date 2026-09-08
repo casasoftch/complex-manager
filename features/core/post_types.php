@@ -204,10 +204,10 @@ class post_types extends Feature {
 		    register_taxonomy( 'cxm_attachment_type', array( 'complex_unit' ), $args );
 		    register_taxonomy_for_object_type('cxm_attachment_type', 'attachment');
 		    add_post_type_support('attachment', 'cxm_attachment_type');
-		    $id1 = wp_insert_term('Image', 'cxm_attachment_type', array('slug' => 'image'));
-		    $id2 = wp_insert_term('Plan', 'cxm_attachment_type', array('slug' => 'plan'));
-		    $id3 = wp_insert_term('Document', 'cxm_attachment_type', array('slug' => 'document'));
-		    $id3 = wp_insert_term('Sales Brochure', 'cxm_attachment_type', array('slug' => 'sales-brochure'));
+		    $id1 = wp_insert_term( __( 'Image', 'complexmanager' ), 'cxm_attachment_type', array('slug' => 'image'));
+		    $id2 = wp_insert_term( __( 'Plan', 'complexmanager' ), 'cxm_attachment_type', array('slug' => 'plan'));
+		    $id3 = wp_insert_term( __( 'Document', 'complexmanager' ), 'cxm_attachment_type', array('slug' => 'document'));
+		    $id3 = wp_insert_term( __( 'Sales Brochure', 'complexmanager' ), 'cxm_attachment_type', array('slug' => 'sales-brochure'));
 
 		if (is_admin() && function_exists('pti_set_post_type_icon')) {
 			pti_set_post_type_icon( 'complex_inquiry', 'inbox' );
@@ -254,6 +254,5 @@ class post_types extends Feature {
 
 // Subscribe to the drop-in to the initialization event
 add_action( 'complexmanager_init', array( 'casasoft\complexmanager\post_types', 'init' ), 10 );
-
 
 

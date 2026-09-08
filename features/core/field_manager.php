@@ -418,11 +418,11 @@ class field_manager extends Feature {
 				'value' => ''
 			);
 			$datas['rent_gross'] = array(
-				'label' => __('Rent gross', 'complexmanager'),
+				'label' => __('Gross rent', 'complexmanager'),
 				'value' => ''
 			);
 			$datas['r_rent_gross'] = array(
-				'label' => __('Rent gross', 'complexmanager'),
+				'label' => __('Gross rent', 'complexmanager'),
 				'value' => ''
 			);
 			$datas['r_living_space'] = array(
