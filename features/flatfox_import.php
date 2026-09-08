@@ -115,7 +115,7 @@ class FlatfoxImport extends Feature {
 
 		$source = isset( $_POST['cxm_clear_source'] ) ? sanitize_key( wp_unslash( $_POST['cxm_clear_source'] ) ) : '';
 		if ( ! in_array( $source, array( 'manual', 'emonitor', self::SOURCE ), true ) ) {
-			wp_die( esc_html__( 'Invalid unit source.', 'complexmanager' ), 400 );
+			wp_die( esc_html__( 'Invalid unit source.', 'complexmanager' ), '', array( 'response' => 400 ) );
 		}
 
 		$post_ids = $this->get_post_ids_for_source( $source );
@@ -134,7 +134,7 @@ class FlatfoxImport extends Feature {
 
 	private function require_manage_options() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You are not allowed to manage Complex Manager imports.', 'complexmanager' ), 403 );
+			wp_die( esc_html__( 'You are not allowed to manage Complex Manager imports.', 'complexmanager' ), '', array( 'response' => 403 ) );
 		}
 	}
 

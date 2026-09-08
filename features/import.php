@@ -45,7 +45,7 @@ class eMonitorImport extends Feature
   public static function handle_manual_import()
   {
     if (!current_user_can('manage_options')) {
-      wp_die(esc_html__('You are not allowed to manage Complex Manager imports.', 'complexmanager'), 403);
+      wp_die(esc_html__('You are not allowed to manage Complex Manager imports.', 'complexmanager'), '', array('response' => 403));
     }
 
     check_admin_referer('cxm_run_emonitor_import');

@@ -1572,7 +1572,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_emonitor_api'; ?>
                     <p><?php esc_html_e( 'eMonitor API endpoint', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'Disabled', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'Disabled', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                     </p>
                 </fieldset>
 
@@ -1581,7 +1581,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_exclude_buildings'; ?>
                     <p><?php esc_html_e( 'Exclude existing buildings from import cleanup (comma-separated)', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'Building IDs (comma-separated)', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'Building IDs (comma-separated)', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>" class="large-text code" rows="2" cols="50"  />
                     </p>
                 </fieldset>
 
@@ -1590,7 +1590,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_emonitor_custom1_matching'; ?>
                     <p><?php esc_html_e( 'Map Custom 1 from an eMonitor field', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'eMonitor field key', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>"  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'eMonitor field key', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>"  />
                     </p>
                 </fieldset>
 
@@ -1598,7 +1598,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_emonitor_custom2_matching'; ?>
                     <p><?php esc_html_e( 'Map Custom 2 from an eMonitor field', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'eMonitor field key', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>"  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'eMonitor field key', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>"  />
                     </p>
                 </fieldset>
 
@@ -1606,7 +1606,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_emonitor_custom3_matching'; ?>
                     <p><?php esc_html_e( 'Map Custom 3 from an eMonitor field', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'eMonitor field key', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>"  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'eMonitor field key', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>"  />
                     </p>
                 </fieldset>
 
@@ -1685,7 +1685,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_emonitor_rewrite_download_label'; ?>
                     <p><?php esc_html_e( 'Override eMonitor download label', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'Floor plan', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'Floor plan', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>" class=""  />
                     </p>
                 </fieldset>
 
@@ -1694,7 +1694,7 @@ class general_options extends Feature
                     <?php $name = 'cxm_emonitor_rewrite_link_label'; ?>
                     <p><?php esc_html_e( 'Override eMonitor link label', 'complexmanager' ); ?></p>
                     <p>
-                        <input type="text" placeholder="<?php echo esc_attr__( 'Apply online now', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?= $this->options[$name] ?? NULL ?>" id="<?php echo $name; ?>" class=""  />
+                        <input type="text" placeholder="<?php echo esc_attr__( 'Apply online now', 'complexmanager' ); ?>" name="complex_manager[<?php echo $name ?>]" value="<?php echo esc_attr( isset( $this->options[ $name ] ) ? $this->options[ $name ] : '' ); ?>" id="<?php echo $name; ?>" class=""  />
                     </p>
                 </fieldset>
         </div>

@@ -24,8 +24,8 @@ new PluginUpdater(
 	VERSION,
 	'https://wp.casasoft.com/complex-manager/update.php',
 	plugin_basename( __FILE__ ),
-	'user',
-	'abcd'
+	'',
+	''
 );
 
 // Additional defines for import.php
