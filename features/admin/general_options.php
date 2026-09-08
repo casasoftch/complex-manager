@@ -1512,7 +1512,7 @@ class general_options extends Feature
                 </p>
                 <p><label for="cxm_flatfox_organization_slug"><?php esc_html_e( 'Flatfox organization slug', 'complexmanager' ); ?></label></p>
                 <p>
-                    <input type="text" id="cxm_flatfox_organization_slug" name="complex_manager[cxm_flatfox_organization_slug]" value="<?php echo esc_attr( $organization_slug ); ?>" class="regular-text" placeholder="xaver-meyer-ag64" />
+                    <input type="text" id="cxm_flatfox_organization_slug" name="complex_manager[cxm_flatfox_organization_slug]" value="<?php echo esc_attr( $organization_slug ); ?>" class="regular-text" placeholder="your-organization" />
                 </p>
                 <p class="description"><?php esc_html_e( 'Use the organization slug from Flatfox’s exported submit links. It creates the canonical Flatfox contact URL and further limits the public listing query.', 'complexmanager' ); ?></p>
                 <p class="description"><?php esc_html_e( 'Uses Flatfox’s public listing API. The configured project is synchronized hourly; no API key is required.', 'complexmanager' ); ?></p>
