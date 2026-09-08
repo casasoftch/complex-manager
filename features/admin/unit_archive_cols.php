@@ -37,7 +37,7 @@ class unit_archive_cols extends Feature {
 			}
 		}
 
-		$defaults['files'] = 'Dateien';
+		$defaults['files'] = __( 'Files', 'complexmanager' );
 
 		return $defaults;
 	}

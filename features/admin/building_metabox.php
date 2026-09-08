@@ -28,11 +28,11 @@ class building_metabox extends Feature {
 
 		acf_add_local_field_group(array (
 			'key' => 'group_5756e44015508',
-			'title' => 'Weitere Einstellungen',
+			'title' => __( 'Additional settings', 'complexmanager' ),
 			'fields' => array (
 				array (
 					'key' => 'field_5756e4e4bcca4',
-					'label' => 'Alternative Ausgangsgrafik',
+					'label' => __( 'Alternative base image', 'complexmanager' ),
 					'name' => 'alternate-base-image',
 					'type' => 'image',
 					'instructions' => '',
@@ -56,7 +56,7 @@ class building_metabox extends Feature {
 				),
 				array(
 					'key' => 'field_5956e2exbccvn',
-					'label' => 'Individuelle Empfänger (Kommasepariert)',
+					'label' => __( 'Individual recipients (comma-separated)', 'complexmanager' ),
 					'name' => 'individual-direct-recipients',
 					'type' => 'text',
 					'instructions' => '',
@@ -77,7 +77,7 @@ class building_metabox extends Feature {
 				),
 				array(
 					'key' => 'field_595dexecb2c54n',
-					'label' => 'Individueller Hook (Aktivierung von Theme-Funktionen, wie Versand in Custom CRM, etc.)',
+					'label' => __( 'Individual hook (enables theme-specific functionality, such as delivery to a custom CRM)', 'complexmanager' ),
 					'name' => 'individual-hook',
 					'type' => 'true_false',
 					'instructions' => '',
@@ -180,16 +180,16 @@ class building_metabox extends Feature {
 				<?php $show_total = get_term_meta( $term->term_id, 'show_total', true ); ?>
 				<?php $show_price_segments = get_term_meta( $term->term_id, 'show_price_segments', true ); ?>
 				<tr class="form-field form-required term-name-wrap">
-					<th scope="row"><label for="name">Anzeige</label></th>
+					<th scope="row"><label for="name"><?php esc_html_e( 'Display', 'complexmanager' ); ?></label></th>
 					<td>
 						<input type="hidden" name="hide_building" value="0" />
-						<label><input type="checkbox" name="hide_building" value="1" <?= ($hide_building ? 'CHECKED' : '')?> /> Auf Liste verbergen</label>
+						<label><input type="checkbox" name="hide_building" value="1" <?= ($hide_building ? 'CHECKED' : '')?> /> <?php esc_html_e( 'Hide from list', 'complexmanager' ); ?></label>
 						<br>
 						<input type="hidden" name="show_total" value="0" />
-						<label><input type="checkbox" name="show_total" value="1" <?= ($show_total ? 'CHECKED' : '')?> /> Spalten-Total auf Liste anzeigen</label>
+						<label><input type="checkbox" name="show_total" value="1" <?= ($show_total ? 'CHECKED' : '')?> /> <?php esc_html_e( 'Show column total in list', 'complexmanager' ); ?></label>
 						<br>
 						<input type="hidden" name="show_price_segments" value="0" />
-						<label><input type="checkbox" name="show_price_segments" value="1" <?= ($show_price_segments ? 'CHECKED' : '')?> /> Zeit- & Preissegmentierung nach Preisen anzeigen</label>
+						<label><input type="checkbox" name="show_price_segments" value="1" <?= ($show_price_segments ? 'CHECKED' : '')?> /> <?php esc_html_e( 'Show time and price segmentation by price', 'complexmanager' ); ?></label>
 					</td>
 				</tr>
 
@@ -199,14 +199,14 @@ class building_metabox extends Feature {
 					$building_col_options = get_term_meta( $term->term_id, 'building_col_options', true );
 				?>
 				<tr class="form-field form-required term-name-wrap">
-					<th scope="row"><label for="name">Feld/Spalte</label></th>
+					<th scope="row"><label for="name"><?php esc_html_e( 'Field / column', 'complexmanager' ); ?></label></th>
 					<td>
 						<table style="width: 100%; background-color: white; border: 1px solid #ddd;">
 							<thead>
 								<tr>
-									<td><strong>Feld</strong></td>
-									<td style="text-align:center"><strong>Ausblenden</strong></td>
-									<td><strong>Alternativer Anzeigetitel</strong></td>
+									<td><strong><?php esc_html_e( 'Field', 'complexmanager' ); ?></strong></td>
+									<td style="text-align:center"><strong><?php esc_html_e( 'Hide', 'complexmanager' ); ?></strong></td>
+									<td><strong><?php esc_html_e( 'Alternative display title', 'complexmanager' ); ?></strong></td>
 								</tr>
 							</thead>
 							<tbody>

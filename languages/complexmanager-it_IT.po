@@ -5,148 +5,148 @@ msgstr ""
 "POT-Creation-Date: 2026-09-01 09:42+0200\n"
 "PO-Revision-Date: 2026-09-01 00:00+0000\n"
 "Last-Translator: \n"
-"Language-Team: French\n"
-"Language: fr_FR\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: assets/templates/contact-form.php:26
 msgid "I am interested in"
-msgstr "Je suis interessé(e) par"
+msgstr "Sono interessato/a a"
 
 #: assets/templates/contact-form.php:57 features/admin/inquiry_metabox.php:142
 msgid "Salutation"
-msgstr "Titre"
+msgstr "Titolo"
 
 #: assets/templates/contact-form.php:64 features/core/field_manager.php:123
 msgid "Mrs."
-msgstr "Madame"
+msgstr "Sig.ra"
 
 #: assets/templates/contact-form.php:71 features/core/field_manager.php:123
 msgid "Mr."
-msgstr "Monsieur"
+msgstr "Sig."
 
 #: assets/templates/contact-form.php:78 assets/acf/fields/taxonomy.php:966
 #: assets/acf/admin/views/field-group-fields.php:17
 #: assets/acf/pro/fields/flexible-content.php:619
 #: features/core/global_functions.php:125 features/core/field_manager.php:105
 msgid "Name"
-msgstr "Nom"
+msgstr "Nome"
 
 #: assets/templates/contact-form.php:144 features/core/field_manager.php:55
 #: features/admin/general_options.php:466
 #: features/admin/inquiry_metabox.php:189
 msgid "Phone"
-msgstr "Téléphone"
+msgstr "Telefono"
 
 #: assets/templates/contact-form.php:177 features/core/field_manager.php:109
 #: features/core/field_manager.php:113
 #: features/admin/inquiry_archive_cols.php:16
 msgid "Address"
-msgstr "Adresse"
+msgstr "Indirizzo"
 
 #: assets/templates/contact-form.php:223
 msgid "I've heard of this project through..."
-msgstr "J’ai entendu parler du projet par ..."
+msgstr "Ho conosciuto questo progetto tramite…"
 
 #: assets/templates/contact-form.php:233 assets/acf/fields/message.php:36
 #: assets/acf/fields/message.php:115 assets/acf/fields/true_false.php:141
 #: features/core/field_manager.php:83 features/admin/general_options.php:506
 #: features/admin/inquiry_metabox.php:246
 msgid "Message"
-msgstr "Message"
+msgstr "Messaggio"
 
 #: assets/templates/contact-form.php:248
 msgid "Describe your inquiry"
-msgstr "Précisez votre demande"
+msgstr "Descrivi la tua richiesta"
 
 #: assets/templates/contact-form.php:251
 msgid "Please fill in all the required fields"
-msgstr "Champs obligatoires"
+msgstr "Compila tutti i campi obbligatori"
 
 #: assets/templates/contact-form.php:255
 msgid "Invalid reCAPTCHA response!"
-msgstr "Réponse reCAPTCHA invalide!"
+msgstr "Risposta reCAPTCHA non valida!"
 
 #: assets/templates/contact-form.php:266
 msgid "Send"
-msgstr "Envoyer"
+msgstr "Invia"
 
 #: assets/templates/contact-form.php:280 assets/acf/pro/fields/gallery.php:585
 msgid "Close"
-msgstr "Fermer"
+msgstr "Chiudi"
 
 #: assets/templates/filter.php:22 assets/templates/list.php:115
 #: assets/templates/list.php:118 features/client/render.php:324
 #: features/admin/unit_archive_cols.php:71 features/admin/unit_metabox.php:254
 msgid "Available"
-msgstr "Disponible"
+msgstr "Disponibile"
 
 #: assets/templates/filter.php:29 assets/templates/filter.php:42
 #: assets/templates/filter.php:55 assets/templates/filter.php:68
 #: assets/templates/filter.php:81
 msgid "to"
-msgstr "à"
+msgstr "a"
 
 #: assets/templates/filter.php:145 assets/templates/filter.php:151
 msgid "Please choose"
-msgstr "Veuillez choisir"
+msgstr "Seleziona"
 
 #: assets/templates/filter.php:158
 msgid "Results"
-msgstr "Résultats"
+msgstr "Risultati"
 
 #: assets/templates/filter.php:159
 msgid "objects"
-msgstr "objéts"
+msgstr "immobili"
 
 #: assets/templates/list.php:103 features/client/render.php:328
 #: features/client/render.php:444 features/admin/unit_archive_cols.php:74
 #: features/admin/unit_metabox.php:257
 msgid "Sold"
-msgstr "Vendu"
+msgstr "Venduto"
 
 #: assets/templates/list.php:106 features/client/render.php:327
 #: features/client/render.php:443 features/admin/unit_archive_cols.php:73
 #: features/admin/unit_metabox.php:258
 msgid "Rented"
-msgstr "Loué"
+msgstr "Affittato"
 
 #: assets/templates/list.php:109
 msgid "Pre-reserver"
-msgstr "Pré-réservé"
+msgstr "Pre-riservato"
 
 #: assets/templates/list.php:112 features/client/render.php:326
 #: features/client/render.php:442 features/admin/unit_archive_cols.php:72
 #: features/admin/unit_metabox.php:256
 msgid "Reserved"
-msgstr "Réservé"
+msgstr "Riservato"
 
 #: assets/templates/list.php:142
 msgid "week"
-msgstr "semaine"
+msgstr "settimana"
 
 #: assets/templates/list.php:145 assets/templates/list.php:151
 msgid "month"
-msgstr "mois"
+msgstr "mese"
 
 #: assets/templates/list.php:148
 msgid "year"
-msgstr "an"
+msgstr "anno"
 
 #: assets/templates/list.php:328 assets/templates/list.php:546
 msgid "Contact"
-msgstr "Contact"
+msgstr "Contatto"
 
 #: assets/templates/list.php:590
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Annulla"
 
 #: assets/acf/fields/image.php:36 features/core/post_types.php:207
 msgid "Image"
-msgstr "Image"
+msgstr "Immagine"
 
 #: assets/acf/fields/image.php:51
 msgid "Select Image"
@@ -552,7 +552,7 @@ msgstr ""
 #: assets/acf/pro/fields/flexible-content.php:606
 #: features/admin/general_options.php:1344
 msgid "Label"
-msgstr "Libellé"
+msgstr "Etichetta"
 
 #: assets/acf/fields/checkbox.php:313 assets/acf/fields/select.php:535
 #: assets/acf/fields/radio.php:314
@@ -848,7 +848,7 @@ msgstr ""
 
 #: assets/acf/fields/file.php:36 features/admin/unit_metabox.php:238
 msgid "File"
-msgstr "Fichier"
+msgstr "File"
 
 #: assets/acf/fields/file.php:46 assets/acf/admin/views/settings-tools.php:77
 msgid "Select File"
@@ -1398,7 +1398,7 @@ msgstr ""
 #: assets/acf/acf.php:319 features/admin/building_metabox.php:207
 #: features/admin/general_options.php:1352
 msgid "Field"
-msgstr "Champ"
+msgstr "Campo"
 
 #: assets/acf/acf.php:321
 msgid "Add New Field"
@@ -1702,7 +1702,7 @@ msgstr ""
 #: assets/acf/admin/views/field-group-fields.php:18
 #: features/core/global_functions.php:387
 msgid "Type"
-msgstr "Typ"
+msgstr "Tipo"
 
 #: assets/acf/admin/views/field-group-fields.php:24
 msgid ""
@@ -1757,7 +1757,7 @@ msgstr ""
 #: assets/acf/admin/views/settings-tools.php:86
 #: features/admin/general_options.php:44
 msgid "Import"
-msgstr "Importation"
+msgstr "Importazione"
 
 #: assets/acf/admin/views/settings-tools-export.php:27
 msgid "Export Field Groups to PHP"
@@ -1869,7 +1869,7 @@ msgstr ""
 #: assets/acf/admin/views/field-group-options.php:5
 #: assets/acf/admin/field-group.php:395 features/admin/general_options.php:1141
 msgid "Active"
-msgstr "Actif"
+msgstr "Attivo"
 
 #: assets/acf/admin/views/field-group-options.php:19
 msgid "Style"
@@ -1965,7 +1965,7 @@ msgstr ""
 #: assets/acf/admin/views/field-group-options.php:114
 #: assets/acf/admin/admin.php:113 features/admin/unit_metabox.php:477
 msgid "Custom Fields"
-msgstr "Champs personnalisés"
+msgstr "Campi personalizzati"
 
 #: assets/acf/admin/views/field-group-options.php:115
 msgid "Discussion"
@@ -2286,7 +2286,7 @@ msgstr ""
 #: features/core/global_functions.php:352 features/core/field_manager.php:300
 #: features/admin/unit_metabox.php:251
 msgid "Status"
-msgstr "Statut"
+msgstr "Stato"
 
 #: assets/acf/admin/field-groups.php:610
 #, php-format
@@ -2602,7 +2602,7 @@ msgstr ""
 
 #: assets/acf/pro/fields/clone.php:875 features/admin/building_metabox.php:183
 msgid "Display"
-msgstr "Affichage"
+msgstr "Visualizzazione"
 
 #: assets/acf/pro/fields/clone.php:876
 msgid "Specify the style used to render the clone field"
@@ -2896,7 +2896,7 @@ msgstr ""
 #: assets/acf/pro/api/api-options-page.php:23
 #: features/admin/building_metabox.php:118
 msgid "Options"
-msgstr "Options"
+msgstr "Opzioni"
 
 #: assets/acf/pro/admin/settings-updates.php:57
 #: assets/acf/pro/admin/views/settings-updates.php:17
@@ -2932,7 +2932,7 @@ msgstr ""
 
 #: features/silence.php:3
 msgid "Silence is golden... or at least isn't completely annoying."
-msgstr "Le silence est d’or… ou du moins pas trop dérangeant."
+msgstr "Il silenzio è d’oro… o almeno non è particolarmente fastidioso."
 
 #: assets/acf/pro/admin/views/settings-updates.php:11
 msgid "Deactivate License"
@@ -2993,314 +2993,314 @@ msgstr ""
 #: features/core/post_types.php:40
 msgctxt "post type general name"
 msgid "Apartment Units"
-msgstr "Logements"
+msgstr "Unità abitative"
 
 #: features/core/post_types.php:41
 msgctxt "post type singular name"
 msgid "Unit"
-msgstr "Logement"
+msgstr "Unità"
 
 #: features/core/post_types.php:42
 msgctxt "admin menu"
 msgid "Apartment Units"
-msgstr "Logements"
+msgstr "Unità abitative"
 
 #: features/core/post_types.php:43
 msgctxt "add new on admin bar"
 msgid "Unit"
-msgstr "Logement"
+msgstr "Unità"
 
 #: features/core/post_types.php:44
 msgctxt "unit"
 msgid "Add New"
-msgstr "Ajouter"
+msgstr "Aggiungi nuova"
 
 #: features/core/post_types.php:45
 msgid "Add New Unit"
-msgstr "Ajouter un logement"
+msgstr "Aggiungi nuova unità"
 
 #: features/core/post_types.php:46
 msgid "New Unit"
-msgstr "Nouveau logement"
+msgstr "Nuova unità"
 
 #: features/core/post_types.php:47
 msgid "Edit Unit"
-msgstr "Modifier le logement"
+msgstr "Modifica unità"
 
 #: features/core/post_types.php:48
 msgid "View Unit"
-msgstr "Voir le logement"
+msgstr "Visualizza unità"
 
 #: features/core/post_types.php:49
 msgid "All Units"
-msgstr "Tous les logements"
+msgstr "Tutte le unità"
 
 #: features/core/post_types.php:50
 msgid "Search Units"
-msgstr "Rechercher des logements"
+msgstr "Cerca unità"
 
 #: features/core/post_types.php:51
 msgid "Parent Unit:"
-msgstr "Logement parent :"
+msgstr "Unità genitore:"
 
 #: features/core/post_types.php:52
 msgid "No units found."
-msgstr "Aucun logement trouvé."
+msgstr "Nessuna unità trovata."
 
 #: features/core/post_types.php:53
 msgid "No units found in Trash."
-msgstr "Aucun logement trouvé dans la corbeille."
+msgstr "Nessuna unità trovata nel cestino."
 
 #: features/core/post_types.php:78
 msgctxt "taxonomy general name"
 msgid "Buildings"
-msgstr "Bâtiments"
+msgstr "Edifici"
 
 #: features/core/post_types.php:79
 msgctxt "taxonomy singular name"
 msgid "Building"
-msgstr "Bâtiment"
+msgstr "Edificio"
 
 #: features/core/post_types.php:80
 msgid "Search Buildings"
-msgstr "Rechercher des bâtiments"
+msgstr "Cerca edifici"
 
 #: features/core/post_types.php:81
 msgid "All Buildings"
-msgstr "Tous les bâtiments"
+msgstr "Tutti gli edifici"
 
 #: features/core/post_types.php:82
 msgid "Parent Building"
-msgstr "Bâtiment parent"
+msgstr "Edificio genitore"
 
 #: features/core/post_types.php:83
 msgid "Parent Building:"
-msgstr "Bâtiment parent :"
+msgstr "Edificio genitore:"
 
 #: features/core/post_types.php:84
 msgid "Edit Building"
-msgstr "Modifier le bâtiment"
+msgstr "Modifica edificio"
 
 #: features/core/post_types.php:85
 msgid "Update Building"
-msgstr "Mettre à jour le bâtiment"
+msgstr "Aggiorna edificio"
 
 #: features/core/post_types.php:86
 msgid "Add New Building"
-msgstr "Ajouter un bâtiment"
+msgstr "Aggiungi nuovo edificio"
 
 #: features/core/post_types.php:87
 msgid "New Building Name"
-msgstr "Nom du nouveau bâtiment"
+msgstr "Nome del nuovo edificio"
 
 #: features/core/post_types.php:88
 msgid "Building"
-msgstr "Bâtiment"
+msgstr "Edificio"
 
 #: features/core/post_types.php:101
 msgctxt "taxonomy general name"
 msgid "Types"
-msgstr "Types"
+msgstr "Tipi"
 
 #: features/core/post_types.php:102
 msgctxt "taxonomy singular name"
 msgid "Type"
-msgstr "Type"
+msgstr "Tipo"
 
 #: features/core/post_types.php:103
 msgid "Search Types"
-msgstr "Rechercher des types"
+msgstr "Cerca tipi"
 
 #: features/core/post_types.php:104
 msgid "All Types"
-msgstr "Tous les types"
+msgstr "Tutti i tipi"
 
 #: features/core/post_types.php:105
 msgid "Parent Type"
-msgstr "Type parent"
+msgstr "Tipo genitore"
 
 #: features/core/post_types.php:106
 msgid "Parent Type:"
-msgstr "Type parent :"
+msgstr "Tipo genitore:"
 
 #: features/core/post_types.php:107
 msgid "Edit Type"
-msgstr "Modifier le type"
+msgstr "Modifica tipo"
 
 #: features/core/post_types.php:108
 msgid "Update Type"
-msgstr "Mettre à jour le type"
+msgstr "Aggiorna tipo"
 
 #: features/core/post_types.php:109
 msgid "Add New Type"
-msgstr "Ajouter un type"
+msgstr "Aggiungi nuovo tipo"
 
 #: features/core/post_types.php:110
 msgid "New Type Name"
-msgstr "Nom du nouveau type"
+msgstr "Nome del nuovo tipo"
 
 #: features/core/post_types.php:111
 msgid "Types"
-msgstr "Types"
+msgstr "Tipi"
 
 #: features/core/post_types.php:124
 msgctxt "post type general name"
 msgid "Inquiries"
-msgstr "Demandes"
+msgstr "Richieste"
 
 #: features/core/post_types.php:125
 msgctxt "post type singular name"
 msgid "Inquiry"
-msgstr "Demande"
+msgstr "Richiesta"
 
 #: features/core/post_types.php:126
 msgctxt "admin menu"
 msgid "Inquiries"
-msgstr "Demandes"
+msgstr "Richieste"
 
 #: features/core/post_types.php:127
 msgctxt "add new on admin bar"
 msgid "Inquiry"
-msgstr "Demande"
+msgstr "Richiesta"
 
 #: features/core/post_types.php:128
 msgctxt "inquiry"
 msgid "Add New"
-msgstr "Ajouter"
+msgstr "Aggiungi nuova"
 
 #: features/core/post_types.php:129
 msgid "Add New Inquiry"
-msgstr "Ajouter une demande"
+msgstr "Aggiungi nuova richiesta"
 
 #: features/core/post_types.php:130
 msgid "New Inquiry"
-msgstr "Nouvelle demande"
+msgstr "Nuova richiesta"
 
 #: features/core/post_types.php:131
 msgid "Edit Inquiry"
-msgstr "Modifier la demande"
+msgstr "Modifica richiesta"
 
 #: features/core/post_types.php:132
 msgid "View Inquiry"
-msgstr "Voir la demande"
+msgstr "Visualizza richiesta"
 
 #: features/core/post_types.php:133
 msgid "All Inquiries"
-msgstr "Toutes les demandes"
+msgstr "Tutte le richieste"
 
 #: features/core/post_types.php:134
 msgid "Search Inquiries"
-msgstr "Rechercher des demandes"
+msgstr "Cerca richieste"
 
 #: features/core/post_types.php:135
 msgid "Parent Inquiries:"
-msgstr "Demandes parentes :"
+msgstr "Richieste genitore:"
 
 #: features/core/post_types.php:136
 msgid "No inquiries found."
-msgstr "Aucune demande trouvée."
+msgstr "Nessuna richiesta trovata."
 
 #: features/core/post_types.php:137
 msgid "No inquiries found in Trash."
-msgstr "Aucune demande trouvée dans la corbeille."
+msgstr "Nessuna richiesta trovata nel cestino."
 
 #: features/core/post_types.php:158
 msgctxt "taxonomy general name"
 msgid "Reasons"
-msgstr "Motifs"
+msgstr "Motivi"
 
 #: features/core/post_types.php:159
 msgctxt "taxonomy singular name"
 msgid "Reason"
-msgstr "Motif"
+msgstr "Motivo"
 
 #: features/core/post_types.php:160
 msgid "Search Reasons"
-msgstr "Rechercher des motifs"
+msgstr "Cerca motivi"
 
 #: features/core/post_types.php:161
 msgid "All Reasons"
-msgstr "Tous les motifs"
+msgstr "Tutti i motivi"
 
 #: features/core/post_types.php:162
 msgid "Parent Reason"
-msgstr "Motif parent"
+msgstr "Motivo genitore"
 
 #: features/core/post_types.php:163
 msgid "Parent Reason:"
-msgstr "Motif parent :"
+msgstr "Motivo genitore:"
 
 #: features/core/post_types.php:164
 msgid "Edit Reason"
-msgstr "Modifier le motif"
+msgstr "Modifica motivo"
 
 #: features/core/post_types.php:165
 msgid "Update Reason"
-msgstr "Mettre à jour le motif"
+msgstr "Aggiorna motivo"
 
 #: features/core/post_types.php:166
 msgid "Add New Reason"
-msgstr "Ajouter un motif"
+msgstr "Aggiungi nuovo motivo"
 
 #: features/core/post_types.php:167
 msgid "New Reason Name"
-msgstr "Nom du nouveau motif"
+msgstr "Nome del nuovo motivo"
 
 #: features/core/post_types.php:168
 msgid "Reasons"
-msgstr "Motifs"
+msgstr "Motivi"
 
 #: features/core/post_types.php:183
 msgid "Property Attachment Types"
-msgstr "Types de pièces jointes du bien"
+msgstr "Tipi di allegati dell’immobile"
 
 #: features/core/post_types.php:184 features/core/post_types.php:193
 msgid "Attachment Type"
-msgstr "Type de pièce jointe"
+msgstr "Tipo di allegato"
 
 #: features/core/post_types.php:185
 msgid "Search Attachment Types"
-msgstr "Rechercher des types de pièces jointes"
+msgstr "Cerca tipi di allegati"
 
 #: features/core/post_types.php:186
 msgid "All Attachment Types"
-msgstr "Tous les types de pièces jointes"
+msgstr "Tutti i tipi di allegati"
 
 #: features/core/post_types.php:187
 msgid "Parent Attachment Type"
-msgstr "Type de pièce jointe parent"
+msgstr "Tipo di allegato genitore"
 
 #: features/core/post_types.php:188
 msgid "Parent Attachment Type:"
-msgstr "Type de pièce jointe parent :"
+msgstr "Tipo di allegato genitore:"
 
 #: features/core/post_types.php:189
 msgid "Edit Attachment Type"
-msgstr "Modifier le type de pièce jointe"
+msgstr "Modifica tipo di allegato"
 
 #: features/core/post_types.php:190
 msgid "Update Attachment Type"
-msgstr "Mettre à jour le type de pièce jointe"
+msgstr "Aggiorna tipo di allegato"
 
 #: features/core/post_types.php:191
 msgid "Add New Attachment Type"
-msgstr "Ajouter un type de pièce jointe"
+msgstr "Aggiungi nuovo tipo di allegato"
 
 #: features/core/post_types.php:192
 msgid "New Attachment Type Name"
-msgstr "Nom du nouveau type de pièce jointe"
+msgstr "Nome del nuovo tipo di allegato"
 
 #: features/core/post_types.php:208
 msgid "Plan"
-msgstr "Plan"
+msgstr "Planimetria"
 
 #: features/core/post_types.php:209
 msgid "Document"
-msgstr "Document"
+msgstr "Documento"
 
 #: features/core/post_types.php:210
 msgid "Sales Brochure"
-msgstr "Brochure de vente"
+msgstr "Brochure di vendita"
 
 #: features/core/post_types.php:226
 #, php-format
@@ -3312,55 +3312,55 @@ msgstr[1] "%s "
 #: features/core/global_functions.php:133
 #: features/core/global_functions.php:347 features/admin/unit_metabox.php:264
 msgid "Number of Rooms"
-msgstr "Nombre de pièces"
+msgstr "Numero di locali"
 
 #: features/core/global_functions.php:141 features/admin/unit_metabox.php:275
 msgid "Apartment Story"
-msgstr "Étage du logement"
+msgstr "Piano dell’unità"
 
 #: features/core/global_functions.php:149
 #: features/core/global_functions.php:357 features/admin/unit_metabox.php:342
 msgid "Living Space"
-msgstr "Surface nette"
+msgstr "Superficie abitabile"
 
 #: features/core/global_functions.php:158
 #: features/core/global_functions.php:362 features/admin/unit_metabox.php:351
 msgid "Usable Space"
-msgstr "Surface utile"
+msgstr "Superficie utile"
 
 #: features/core/global_functions.php:166
 #: features/core/global_functions.php:377 features/admin/unit_metabox.php:402
 msgid "Purchase Price"
-msgstr "Prix de vente"
+msgstr "Prezzo di acquisto"
 
 #: features/core/global_functions.php:175
 #: features/core/global_functions.php:367 features/admin/unit_metabox.php:427
 msgid "Net rent"
-msgstr "Loyer net"
+msgstr "Affitto netto"
 
 #: features/core/global_functions.php:184
 #: features/core/global_functions.php:372 features/core/field_manager.php:421
 #: features/core/field_manager.php:425
 msgid "Gross rent"
-msgstr "Loyer brut"
+msgstr "Affitto lordo"
 
 #: features/core/global_functions.php:195 features/core/field_manager.php:335
 #: features/admin/unit_metabox.php:460
 msgid "Extra Costs"
-msgstr "Frais accessoires"
+msgstr "Costi accessori"
 
 #: features/core/global_functions.php:204 features/admin/unit_metabox.php:361
 msgid "Terrace Space"
-msgstr "Surface de la terrasse"
+msgstr "Superficie della terrazza"
 
 #: features/core/global_functions.php:213 features/admin/unit_metabox.php:370
 msgid "Balcony Space"
-msgstr "Surface du balcon"
+msgstr "Superficie del balcone"
 
 #: features/core/global_functions.php:234 features/core/field_manager.php:259
 #: features/admin/unit_metabox.php:388
 msgid "Currency"
-msgstr "Devise"
+msgstr "Valuta"
 
 #: features/core/global_functions.php:243
 #: features/core/global_functions.php:252
@@ -3370,204 +3370,204 @@ msgstr "Devise"
 #: features/admin/unit_metabox.php:500
 #, php-format
 msgid "Custom %d"
-msgstr "Personnalisé %d"
+msgstr "Personalizzato %d"
 
 #: features/core/global_functions.php:270
 #: features/admin/general_options.php:1272
 msgid "Download"
-msgstr "Téléchargement"
+msgstr "Download"
 
 #: features/core/global_functions.php:281 features/core/field_manager.php:284
 #: features/admin/unit_metabox.php:303
 msgid "Number of people (min)"
-msgstr "Nombre de personnes (min.)"
+msgstr "Numero di persone (min.)"
 
 #: features/core/global_functions.php:289 features/core/field_manager.php:289
 #: features/admin/unit_metabox.php:311
 msgid "Number of people (max)"
-msgstr "Nombre de personnes (max.)"
+msgstr "Numero di persone (max.)"
 
 #: features/core/global_functions.php:297 features/core/field_manager.php:274
 #: features/admin/unit_metabox.php:319
 msgid "Income (min)"
-msgstr "Revenu (min.)"
+msgstr "Reddito (min.)"
 
 #: features/core/global_functions.php:305 features/core/field_manager.php:279
 #: features/admin/unit_metabox.php:327
 msgid "Income (max)"
-msgstr "Revenu (max.)"
+msgstr "Reddito (max.)"
 
 #: features/core/global_functions.php:314 features/core/field_manager.php:449
 #: features/admin/general_options.php:1277 features/admin/unit_metabox.php:180
 msgid "Link"
-msgstr "Lien"
+msgstr "Link"
 
 #: features/core/global_functions.php:382 features/core/field_manager.php:295
 msgid "Floor"
-msgstr "Étage"
+msgstr "Piano"
 
 #: features/core/global_functions.php:392
 msgid "Custom 1"
-msgstr "Personnalisé 1"
+msgstr "Personalizzato 1"
 
 #: features/core/global_functions.php:397
 msgid "Custom 2"
-msgstr "Personnalisé 2"
+msgstr "Personalizzato 2"
 
 #: features/core/global_functions.php:402
 msgid "Custom 3"
-msgstr "Personnalisé 3"
+msgstr "Personalizzato 3"
 
 #: features/core/global_functions.php:407
 msgid "Your yearly income"
-msgstr "Votre revenu annuel"
+msgstr "Il tuo reddito annuo"
 
 #: features/core/global_functions.php:412
 msgid "Number of people"
-msgstr "Nombre de personne dans le logement"
+msgstr "Numero di persone"
 
 #: features/core/field_manager.php:43 features/admin/general_options.php:442
 #: features/admin/inquiry_metabox.php:151
 msgid "First name"
-msgstr "Prénom"
+msgstr "Nome"
 
 #: features/core/field_manager.php:47 features/admin/general_options.php:450
 #: features/admin/inquiry_metabox.php:160
 #: features/admin/inquiry_metabox.php:170
 msgid "Last name"
-msgstr "Nom"
+msgstr "Cognome"
 
 #: features/core/field_manager.php:51 features/admin/general_options.php:458
 msgid "Company"
-msgstr "Société"
+msgstr "Azienda"
 
 #: features/core/field_manager.php:59 features/admin/general_options.php:474
 msgid "Mobile"
-msgstr "Portable"
+msgstr "Cellulare"
 
 #: features/core/field_manager.php:63 features/admin/general_options.php:482
 #: features/admin/inquiry_metabox.php:201
 msgid "Street"
-msgstr "Rue"
+msgstr "Via"
 
 #: features/core/field_manager.php:67 features/admin/general_options.php:490
 #: features/admin/inquiry_metabox.php:210
 msgid "ZIP"
-msgstr "Code postal"
+msgstr "CAP"
 
 #: features/core/field_manager.php:71 features/admin/general_options.php:498
 #: features/admin/inquiry_metabox.php:219
 msgid "City"
-msgstr "Localité"
+msgstr "Località"
 
 #: features/core/field_manager.php:87
 msgid "Gender"
-msgstr "Civilité"
+msgstr "Genere"
 
 #: features/core/field_manager.php:91 features/core/field_manager.php:117
 #: features/core/field_manager.php:249 features/client/render.php:1393
 msgid "Unit"
-msgstr "Objet"
+msgstr "Unità"
 
 #: features/core/field_manager.php:95 features/admin/inquiry_metabox.php:228
 msgid "Reason"
-msgstr "Motif"
+msgstr "Motivo"
 
 #: features/core/field_manager.php:99
 msgid "direct_recipient_email"
-msgstr "E-mail du destinataire direct"
+msgstr "E-mail del destinatario diretto"
 
 #: features/core/field_manager.php:254
 msgid "Purchase price"
-msgstr "Prix de vente"
+msgstr "Prezzo di acquisto"
 
 #: features/core/field_manager.php:264 features/admin/unit_metabox.php:422
 msgid "Rent"
-msgstr "Loyer"
+msgstr "Affitto"
 
 #: features/core/field_manager.php:269
 msgid "Rooms"
-msgstr "Pièces"
+msgstr "Locali"
 
 #: features/core/field_manager.php:305 features/admin/unit_metabox.php:286
 msgid "IDX / REMCat House Ref."
-msgstr "Réf. bâtiment IDX / REMCat"
+msgstr "Rif. edificio IDX / REMCat"
 
 #: features/core/field_manager.php:310 features/admin/unit_metabox.php:295
 msgid "IDX / REMCat Object Ref."
-msgstr "Réf. objet IDX / REMCat"
+msgstr "Rif. immobile IDX / REMCat"
 
 #: features/core/field_manager.php:315 features/core/field_manager.php:429
 #: features/core/field_manager.php:433
 msgid "Living space"
-msgstr "Surface nette"
+msgstr "Superficie abitabile"
 
 #: features/core/field_manager.php:320
 msgid "Usable space"
-msgstr "Surface utile"
+msgstr "Superficie utile"
 
 #: features/core/field_manager.php:325 features/core/field_manager.php:437
 msgid "Terrace space"
-msgstr "Terrasse"
+msgstr "Superficie della terrazza"
 
 #: features/core/field_manager.php:330 features/core/field_manager.php:441
 msgid "Balcony space"
-msgstr "Balcon"
+msgstr "Superficie del balcone"
 
 #: features/core/field_manager.php:340 features/admin/unit_metabox.php:231
 msgid "Download file"
-msgstr "Télécharger le fichier"
+msgstr "Scarica file"
 
 #: features/core/field_manager.php:345 features/admin/unit_metabox.php:237
 msgid "Download label"
-msgstr "Libellé de téléchargement"
+msgstr "Etichetta di download"
 
 #: features/core/field_manager.php:365 features/core/field_manager.php:380
 #: features/admin/unit_metabox.php:189 features/admin/unit_metabox.php:206
 msgid "Link target"
-msgstr "Cible du lien"
+msgstr "Destinazione del link"
 
 #: features/core/field_manager.php:370 features/core/field_manager.php:385
 #: features/admin/unit_metabox.php:188 features/admin/unit_metabox.php:205
 msgid "Link url"
-msgstr "URL du lien"
+msgstr "URL del link"
 
 #: features/core/field_manager.php:375 features/core/field_manager.php:390
 #: features/admin/unit_metabox.php:187 features/admin/unit_metabox.php:204
 msgid "Link label"
-msgstr "Libellé du lien"
+msgstr "Etichetta del link"
 
 #: features/core/field_manager.php:395 features/admin/unit_metabox.php:223
 msgid "Tour target"
-msgstr "Cible de la visite"
+msgstr "Destinazione del tour"
 
 #: features/core/field_manager.php:400 features/admin/unit_metabox.php:222
 msgid "Tour url"
-msgstr "URL de la visite"
+msgstr "URL del tour"
 
 #: features/core/field_manager.php:405 features/admin/unit_metabox.php:221
 msgid "Tour label"
-msgstr "Libellé de la visite"
+msgstr "Etichetta del tour"
 
 #: features/core/field_manager.php:413
 #, php-format
 msgid "Purchase price%s in %s%s"
-msgstr "Prix%s de vente %s%s"
+msgstr "Prezzo di acquisto%s in %s%s"
 
 #: features/core/field_manager.php:417
 #, php-format
 msgid "Rent%s in %s%s"
-msgstr "Loyer%s en %s%s"
+msgstr "Affitto%s in %s%s"
 
 #: features/core/field_manager.php:445
 #, php-format
 msgid "Extra Costs%s in %s%s"
-msgstr "Frais accessoires%s en %s%s"
+msgstr "Costi accessori%s in %s%s"
 
 #: features/core/field_manager.php:459 features/core/field_manager.php:469
 #: features/core/field_manager.php:490
 msgid "upon request"
-msgstr "Prix sur demande"
+msgstr "su richiesta"
 
 #: assets/acf/pro/core/updates.php:206
 #, php-format
@@ -3651,172 +3651,172 @@ msgstr ""
 
 #: features/client/render.php:18
 msgid "First name is required"
-msgstr "Prénom est requis"
+msgstr "Il nome è obbligatorio"
 
 #: features/client/render.php:19
 msgid "Last name is required"
-msgstr "Nom de famille est requis"
+msgstr "Il cognome è obbligatorio"
 
 #: features/client/render.php:20
 msgid "The company is required"
-msgstr "La société est requise"
+msgstr "L’azienda è obbligatoria"
 
 #: features/client/render.php:21
 msgid "Email is not valid"
-msgstr "Email n'est pas valide"
+msgstr "L’e-mail non è valida"
 
 #: features/client/render.php:22
 msgid "A phone number is required"
-msgstr "Un numéro de téléphone est requis"
+msgstr "Il numero di telefono è obbligatorio"
 
 #: features/client/render.php:23
 msgid "A street address is required"
-msgstr "Une adresse est requis"
+msgstr "L’indirizzo è obbligatorio"
 
 #: features/client/render.php:24
 msgid "ZIP is required"
-msgstr "Code postale est requis"
+msgstr "Il CAP è obbligatorio"
 
 #: features/client/render.php:25
 msgid "City is required"
-msgstr "Ville est requis"
+msgstr "La località è obbligatoria"
 
 #: features/client/render.php:26
 msgid "Message is required"
-msgstr "Le message est requis"
+msgstr "Il messaggio è obbligatorio"
 
 #: features/client/render.php:27
 msgid "Ivalid post"
-msgstr "Publication non valide"
+msgstr "Post non valido"
 
 #: features/client/render.php:29
 msgid "Please choose a unit"
-msgstr "Veuillez choisir un logement"
+msgstr "Seleziona un’unità"
 
 #: features/client/render.php:325 features/client/render.php:441
 #: features/admin/unit_metabox.php:255
 msgid "pre-reserved"
-msgstr "Pré-réservé"
+msgstr "pre-riservato"
 
 #: features/client/render.php:1340 features/client/render.php:1405
 msgid "Unit inquiry"
-msgstr "Demande de logement"
+msgstr "Richiesta per l’unità"
 
 #: features/client/render.php:1373
 msgid "Phone:"
-msgstr "Téléphone :"
+msgstr "Telefono:"
 
 #: features/client/render.php:1377
 msgid "Mobile:"
-msgstr "Portable :"
+msgstr "Cellulare:"
 
 #: features/client/render.php:1635 features/client/render.php:1674
 #: features/client/render.php:1708
 msgid "Inquiry has been sent. Thank you!"
-msgstr "Votre demande a bien été transmise. Merci!"
+msgstr "La richiesta è stata inviata. Grazie!"
 
 #: features/client/render.php:1745
 msgid "Please check the following and try again:"
-msgstr "S'il vous plaît vérifier les points suivants et réessayer:"
+msgstr "Controlla quanto segue e riprova:"
 
 #: features/admin/font-awesome/class-pti-font-awesome.php:943
 msgid "Font Awesome Icon Library"
-msgstr "Bibliothèque d’icônes Font Awesome"
+msgstr "Libreria di icone Font Awesome"
 
 #: features/admin/inquiry_archive_cols.php:15
 msgid "From"
-msgstr "De"
+msgstr "Da"
 
 #: features/admin/inquiry_archive_cols.php:18
 msgid "Telephone"
-msgstr "Téléphone"
+msgstr "Telefono"
 
 #: features/admin/inquiry_archive_cols.php:19
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
 #: features/admin/unit_archive_cols.php:40
 msgid "Files"
-msgstr "Fichiers"
+msgstr "File"
 
 #: features/admin/inquiry_options_page.php:12
 #: features/admin/inquiry_options_page.php:60
 msgid "Inquiry options"
-msgstr "Options de demande"
+msgstr "Opzioni della richiesta"
 
 #: features/admin/inquiry_options_page.php:22
 #: features/admin/inquiry_options_page.php:40
 #: features/admin/inquiry_options_page.php:51
 msgid "Download CSV"
-msgstr "Télécharger le CSV"
+msgstr "Scarica CSV"
 
 #: features/admin/inquiry_options_page.php:33
 msgid "CSV downloaded"
-msgstr "CSV téléchargé"
+msgstr "CSV scaricato"
 
 #: features/admin/building_metabox.php:31
 msgid "Additional settings"
-msgstr "Paramètres supplémentaires"
+msgstr "Impostazioni aggiuntive"
 
 #: features/admin/building_metabox.php:35
 msgid "Alternative base image"
-msgstr "Image de base alternative"
+msgstr "Immagine di base alternativa"
 
 #: features/admin/building_metabox.php:59
 msgid "Individual recipients (comma-separated)"
-msgstr "Destinataires individuels (séparés par des virgules)"
+msgstr "Destinatari individuali (separati da virgole)"
 
 #: features/admin/building_metabox.php:80
 msgid ""
 "Individual hook (enables theme-specific functionality, such as delivery to a "
 "custom CRM)"
 msgstr ""
-"Hook individuel (active des fonctions propres au thème, comme l’envoi vers "
-"un CRM personnalisé)"
+"Hook individuale (abilita funzionalità specifiche del tema, come l’invio a "
+"un CRM personalizzato)"
 
 #: features/admin/building_metabox.php:117
 msgid "Visible"
-msgstr "Visible"
+msgstr "Visibile"
 
 #: features/admin/building_metabox.php:186
 msgid "Hide from list"
-msgstr "Masquer de la liste"
+msgstr "Nascondi dall’elenco"
 
 #: features/admin/building_metabox.php:189
 msgid "Show column total in list"
-msgstr "Afficher le total de la colonne dans la liste"
+msgstr "Mostra il totale della colonna nell’elenco"
 
 #: features/admin/building_metabox.php:192
 msgid "Show time and price segmentation by price"
-msgstr "Afficher la segmentation temporelle et tarifaire par prix"
+msgstr "Mostra la segmentazione temporale e di prezzo per prezzo"
 
 #: features/admin/building_metabox.php:202
 msgid "Field / column"
-msgstr "Champ / colonne"
+msgstr "Campo / colonna"
 
 #: features/admin/building_metabox.php:208
 msgid "Hide"
-msgstr "Masquer"
+msgstr "Nascondi"
 
 #: features/admin/building_metabox.php:209
 msgid "Alternative display title"
-msgstr "Titre d’affichage alternatif"
+msgstr "Titolo di visualizzazione alternativo"
 
 #: features/admin/general_options.php:40 features/admin/unit_metabox.php:247
 msgid "General"
-msgstr "Général"
+msgstr "Generale"
 
 #: features/admin/general_options.php:41
 msgid "Lists & Filters"
-msgstr "Listes et filtres"
+msgstr "Elenchi e filtri"
 
 #: features/admin/general_options.php:42
 msgid "Contact Form"
-msgstr "Formulaire de contact"
+msgstr "Modulo di contatto"
 
 #: features/admin/general_options.php:43
 msgid "Inquiry Delivery"
-msgstr "Transmission de demande"
+msgstr "Invio delle richieste"
 
 #: features/admin/general_options.php:130
 msgid "eMonitor"
@@ -3825,14 +3825,14 @@ msgstr "eMonitor"
 #: features/admin/general_options.php:191
 #: features/admin/general_options.php:192
 msgid "Complex Manager Settings"
-msgstr "Paramètres de Complex Manager"
+msgstr "Impostazioni di Complex Manager"
 
 #: features/admin/general_options.php:218
 #, php-format
 msgid "Removed %d cache file."
 msgid_plural "Removed %d cache files."
-msgstr[0] "%d fichier de cache supprimé."
-msgstr[1] "%d fichiers de cache supprimés."
+msgstr[0] "%d file della cache rimosso."
+msgstr[1] "%d file della cache rimossi."
 
 #: features/admin/general_options.php:230
 msgid "Complex Manager"
@@ -3840,43 +3840,43 @@ msgstr "Complex Manager"
 
 #: features/admin/general_options.php:250
 msgid "Regenerate default terms"
-msgstr "Régénérer les termes par défaut"
+msgstr "Rigenera i termini predefiniti"
 
 #: features/admin/general_options.php:278
 msgid "Project Image"
-msgstr "Image du projet"
+msgstr "Immagine del progetto"
 
 #: features/admin/general_options.php:286
 msgid "Emails"
-msgstr "E-mails"
+msgstr "E-mail"
 
 #: features/admin/general_options.php:294
 msgid "Use File-Cache for Renders"
-msgstr "Utiliser le cache de fichiers pour le rendu"
+msgstr "Usa la cache dei file per il rendering"
 
 #: features/admin/general_options.php:304
 msgid "CASAMAIL direct email"
-msgstr "E-mail direct CASAMAIL"
+msgstr "E-mail diretta CASAMAIL"
 
 #: features/admin/general_options.php:312
 msgid "CASAMAIL provider ID"
-msgstr "ID de fournisseur CASAMAIL"
+msgstr "ID provider CASAMAIL"
 
 #: features/admin/general_options.php:320
 msgid "CASAMAIL publisher ID"
-msgstr "ID d’éditeur CASAMAIL"
+msgstr "ID editore CASAMAIL"
 
 #: features/admin/general_options.php:328
 msgid "Thousands separator"
-msgstr "Séparateur des milliers"
+msgstr "Separatore delle migliaia"
 
 #: features/admin/general_options.php:336
 msgid "Space/Area Decimal"
-msgstr "Décimales de surface"
+msgstr "Decimali della superficie"
 
 #: features/admin/general_options.php:344
 msgid "Use Flexbox layout for lists"
-msgstr "Utiliser la mise en page Flexbox pour les listes"
+msgstr "Usa il layout Flexbox per gli elenchi"
 
 #: features/admin/general_options.php:354
 msgid "REMCat"
@@ -3884,79 +3884,79 @@ msgstr "REMCat"
 
 #: features/admin/general_options.php:362
 msgid "REMCat website"
-msgstr "Site web REMCat"
+msgstr "Sito web REMCat"
 
 #: features/admin/general_options.php:370
 msgid "REMCat company"
-msgstr "Société REMCat"
+msgstr "Azienda REMCat"
 
 #: features/admin/general_options.php:378
 msgid "REMCat company street"
-msgstr "Rue de la société REMCat"
+msgstr "Via dell’azienda REMCat"
 
 #: features/admin/general_options.php:386
 msgid "REMCat company postal code"
-msgstr "Code postal de la société REMCat"
+msgstr "CAP dell’azienda REMCat"
 
 #: features/admin/general_options.php:394
 msgid "REMCat company locality"
-msgstr "Localité de la société REMCat"
+msgstr "Località dell’azienda REMCat"
 
 #: features/admin/general_options.php:402
 msgid "REMCat company contact person"
-msgstr "Personne de contact de la société REMCat"
+msgstr "Referente dell’azienda REMCat"
 
 #: features/admin/general_options.php:410
 msgid "REMCat company email"
-msgstr "E-mail de la société REMCat"
+msgstr "E-mail dell’azienda REMCat"
 
 #: features/admin/general_options.php:418
 msgid "REMCat general ID"
-msgstr "ID général REMCat"
+msgstr "ID generale REMCat"
 
 #: features/admin/general_options.php:426
 msgid "IDX / REMCat property reference"
-msgstr "Référence de propriété IDX / REMCat"
+msgstr "Riferimento immobile IDX / REMCat"
 
 #: features/admin/general_options.php:434
 msgid "Contact form mandatory fields"
-msgstr "Champs obligatoires du formulaire de contact"
+msgstr "Campi obbligatori del modulo di contatto"
 
 #: features/admin/general_options.php:514
 msgid "Columns displayed in lists"
-msgstr "Colonnes affichées dans les listes"
+msgstr "Colonne visualizzate negli elenchi"
 
 #: features/admin/general_options.php:522
 msgid "Filter translations"
-msgstr "Traductions des filtres"
+msgstr "Traduzioni dei filtri"
 
 #: features/admin/general_options.php:530
 msgid "Label translations"
-msgstr "Traductions des libellés"
+msgstr "Traduzioni delle etichette"
 
 #: features/admin/general_options.php:547
 msgid "Google Analytics Code"
-msgstr "Code Google Analytics"
+msgstr "Codice Google Analytics"
 
 #: features/admin/general_options.php:557
 msgid "Income maximum"
-msgstr "Revenu maximal"
+msgstr "Reddito massimo"
 
 #: features/admin/general_options.php:566
 msgid "reCAPTCHA site key"
-msgstr "Clé de site reCAPTCHA"
+msgstr "Chiave del sito reCAPTCHA"
 
 #: features/admin/general_options.php:574
 msgid "reCAPTCHA secret key"
-msgstr "Clé secrète reCAPTCHA"
+msgstr "Chiave segreta reCAPTCHA"
 
 #: features/admin/general_options.php:582
 msgid "Enable reCAPTCHA v3"
-msgstr "Activer reCAPTCHA v3"
+msgstr "Abilita reCAPTCHA v3"
 
 #: features/admin/general_options.php:590
 msgid "reCAPTCHA v3 score"
-msgstr "Score reCAPTCHA v3"
+msgstr "Punteggio reCAPTCHA v3"
 
 #: features/admin/general_options.php:598
 msgid "Honeypot"
@@ -3964,283 +3964,283 @@ msgstr "Honeypot"
 
 #: features/admin/general_options.php:727
 msgid "Remove cache files"
-msgstr "Supprimer les fichiers de cache"
+msgstr "Rimuovi i file della cache"
 
 #: features/admin/general_options.php:1032
 msgid "Used to send events."
-msgstr "Utilisé pour envoyer des événements."
+msgstr "Utilizzato per inviare eventi."
 
 #: features/admin/general_options.php:1057
 msgid "Upload Image"
-msgstr "Téléverser l’image"
+msgstr "Carica immagine"
 
 #: features/admin/general_options.php:1132
 msgid "Display name"
-msgstr "Nom d’affichage"
+msgstr "Nome visualizzato"
 
 #: features/admin/general_options.php:1134
 #, php-format
 msgid "Display name (%s)"
-msgstr "Nom d’affichage (%s)"
+msgstr "Nome visualizzato (%s)"
 
 #: features/admin/general_options.php:1140
 msgid "Field name"
-msgstr "Nom du champ"
+msgstr "Nome del campo"
 
 #: features/admin/general_options.php:1142
 msgid "Hide on mobile"
-msgstr "Masquer sur mobile"
+msgstr "Nascondi su mobile"
 
 #: features/admin/general_options.php:1143
 msgid "Hide when reserved"
-msgstr "Masquer lorsqu’il est réservé"
+msgstr "Nascondi quando riservato"
 
 #: features/admin/general_options.php:1145
 msgid "Sort order"
-msgstr "Ordre de tri"
+msgstr "Ordine di ordinamento"
 
 #: features/admin/general_options.php:1236
 msgid "Filter label"
-msgstr "Libellé du filtre"
+msgstr "Etichetta del filtro"
 
 #: features/admin/general_options.php:1238
 #, php-format
 msgid "Filter label (%s)"
-msgstr "Libellé du filtre (%s)"
+msgstr "Etichetta del filtro (%s)"
 
 #: features/admin/general_options.php:1244
 msgid "Filter"
-msgstr "Filtre"
+msgstr "Filtro"
 
 #: features/admin/general_options.php:1282
 msgid "Virtual tour"
-msgstr "Visite virtuelle"
+msgstr "Tour virtuale"
 
 #: features/admin/general_options.php:1346
 #, php-format
 msgid "Label (%s)"
-msgstr "Libellé (%s)"
+msgstr "Etichetta (%s)"
 
 #: features/admin/general_options.php:1383
 msgid "General settings"
-msgstr "Paramètres généraux"
+msgstr "Impostazioni generali"
 
 #: features/admin/general_options.php:1392
 msgid "Run import"
-msgstr "Lancer l’importation"
+msgstr "Avvia importazione"
 
 #: features/admin/general_options.php:1400
 msgid "Run import and overwrite units"
-msgstr "Lancer l’importation et écraser les unités"
+msgstr "Avvia importazione e sovrascrivi le unità"
 
 #: features/admin/general_options.php:1403
 msgid "Always overwrite units during automatic updates"
-msgstr "Toujours écraser les unités lors des mises à jour automatiques"
+msgstr "Sovrascrivi sempre le unità durante gli aggiornamenti automatici"
 
 #: features/admin/general_options.php:1422
 #: features/admin/general_options.php:1424
 msgid "eMonitor API endpoint"
-msgstr "Point de terminaison API eMonitor"
+msgstr "Endpoint API eMonitor"
 
 #: features/admin/general_options.php:1426
 msgid "Disabled"
-msgstr "Désactivé"
+msgstr "Disabilitato"
 
 #: features/admin/general_options.php:1431
 #: features/admin/general_options.php:1433
 msgid "Exclude existing buildings from import cleanup (comma-separated)"
 msgstr ""
-"Exclure les bâtiments existants du nettoyage de l’importation (séparés par "
-"des virgules)"
+"Escludi gli edifici esistenti dalla pulizia dell’importazione (separati da "
+"virgole)"
 
 #: features/admin/general_options.php:1435
 msgid "Building IDs (comma-separated)"
-msgstr "ID des bâtiments (séparés par des virgules)"
+msgstr "ID degli edifici (separati da virgole)"
 
 #: features/admin/general_options.php:1439
 msgid "Version 2 settings"
-msgstr "Paramètres de la version 2"
+msgstr "Impostazioni versione 2"
 
 #: features/admin/general_options.php:1442
 msgid "Map Custom 1 from an eMonitor field"
-msgstr "Associer Personnalisé 1 à un champ eMonitor"
+msgstr "Mappa Personalizzato 1 da un campo eMonitor"
 
 #: features/admin/general_options.php:1444
 #: features/admin/general_options.php:1452
 #: features/admin/general_options.php:1460
 msgid "eMonitor field key"
-msgstr "Clé de champ eMonitor"
+msgstr "Chiave del campo eMonitor"
 
 #: features/admin/general_options.php:1450
 msgid "Map Custom 2 from an eMonitor field"
-msgstr "Associer Personnalisé 2 à un champ eMonitor"
+msgstr "Mappa Personalizzato 2 da un campo eMonitor"
 
 #: features/admin/general_options.php:1458
 msgid "Map Custom 3 from an eMonitor field"
-msgstr "Associer Personnalisé 3 à un champ eMonitor"
+msgstr "Mappa Personalizzato 3 da un campo eMonitor"
 
 #: features/admin/general_options.php:1464
 msgid "Version 1 settings"
-msgstr "Paramètres de la version 1"
+msgstr "Impostazioni versione 1"
 
 #: features/admin/general_options.php:1468
 msgid "Separate buildings by property type"
-msgstr "Séparer les bâtiments par type de bien"
+msgstr "Separa gli edifici per tipologia di immobile"
 
 #: features/admin/general_options.php:1484
 msgid ""
 "Store commercial price/m² and ancillary costs/m² in Custom 2 and Custom 3"
 msgstr ""
-"Enregistrer le prix commercial/m² et les frais annexes/m² dans Personnalisé "
-"2 et Personnalisé 3"
+"Memorizza il prezzo commerciale/m² e i costi accessori/m² in Personalizzato "
+"2 e Personalizzato 3"
 
 #: features/admin/general_options.php:1500
 msgid "Store property type in Custom 1"
-msgstr "Enregistrer le type de bien dans Personnalisé 1"
+msgstr "Memorizza la tipologia di immobile in Personalizzato 1"
 
 #: features/admin/general_options.php:1516
 msgid "Store virtual tour in Custom 2"
-msgstr "Enregistrer la visite virtuelle dans Personnalisé 2"
+msgstr "Memorizza il tour virtuale in Personalizzato 2"
 
 #: features/admin/general_options.php:1535
 #: features/admin/general_options.php:1537
 msgid "Override eMonitor download label"
-msgstr "Remplacer le libellé de téléchargement eMonitor"
+msgstr "Sostituisci l’etichetta di download eMonitor"
 
 #: features/admin/general_options.php:1539
 msgid "Floor plan"
-msgstr "Plan d’étage"
+msgstr "Planimetria"
 
 #: features/admin/general_options.php:1544
 #: features/admin/general_options.php:1546
 msgid "Override eMonitor link label"
-msgstr "Remplacer le libellé de lien eMonitor"
+msgstr "Sostituisci l’etichetta del link eMonitor"
 
 #: features/admin/general_options.php:1548
 msgid "Apply online now"
-msgstr "Postuler en ligne maintenant"
+msgstr "Candidati online ora"
 
 #: features/admin/general_options.php:1586
 msgid "Search engines"
-msgstr "Moteurs de recherche"
+msgstr "Motori di ricerca"
 
 #: features/admin/general_options.php:1587
 msgid "Real-estate platform"
-msgstr "Plateforme immobilière"
+msgstr "Piattaforma immobiliare"
 
 #: features/admin/general_options.php:1588
 msgid "Events / advertisements"
-msgstr "Événements / annonces"
+msgstr "Eventi / annunci"
 
 #: features/admin/general_options.php:1589
 msgid "Suggested personally"
-msgstr "Recommandé personnellement"
+msgstr "Suggerito personalmente"
 
 #: features/admin/unit_metabox.php:26 features/admin/inquiry_metabox.php:27
 msgid "Unit Settings"
-msgstr "Paramètres du logement"
+msgstr "Impostazioni dell’unità"
 
 #: features/admin/unit_metabox.php:34
 msgid "Unit Graphic Settings"
-msgstr "Paramètres graphiques du logement"
+msgstr "Impostazioni grafiche dell’unità"
 
 #: features/admin/unit_metabox.php:154 features/admin/inquiry_metabox.php:106
 msgid "Choose or Upload a Document"
-msgstr "Choisir ou téléverser un document"
+msgstr "Scegli o carica un documento"
 
 #: features/admin/unit_metabox.php:155 features/admin/inquiry_metabox.php:107
 msgid "Use this document"
-msgstr "Utiliser ce document"
+msgstr "Usa questo documento"
 
 #: features/admin/unit_metabox.php:197
 msgid "Link 2"
-msgstr "Lien 2"
+msgstr "Link 2"
 
 #: features/admin/unit_metabox.php:214
 msgid "Tour"
-msgstr "Visite"
+msgstr "Tour"
 
 #: features/admin/unit_metabox.php:239
 msgid "Choose download file"
-msgstr "Choisir un fichier à télécharger"
+msgstr "Scegli file da scaricare"
 
 #: features/admin/unit_metabox.php:337
 msgid "Spaces"
-msgstr "Surfaces"
+msgstr "Superfici"
 
 #: features/admin/unit_metabox.php:384
 msgid "Buy"
-msgstr "Acheter"
+msgstr "Acquisto"
 
 #: features/admin/unit_metabox.php:406
 msgid "\"\" = not for sale, 0 = upon request"
-msgstr "\"\" = non à vendre, 0 = sur demande"
+msgstr "\"\" = non in vendita, 0 = su richiesta"
 
 #: features/admin/unit_metabox.php:412
 msgid "Purchase scope"
-msgstr "Prix d’achat"
+msgstr "Ambito di acquisto"
 
 #: features/admin/unit_metabox.php:415 features/admin/unit_metabox.php:452
 msgid "Full price"
-msgstr "Prix total"
+msgstr "Prezzo totale"
 
 #: features/admin/unit_metabox.php:416 features/admin/unit_metabox.php:453
 msgid "per m²"
-msgstr "par m²"
+msgstr "per m²"
 
 #: features/admin/unit_metabox.php:431
 msgid "\"\" = not for rent, 0 = upon request"
-msgstr "\"\" = non à louer, 0 = sur demande"
+msgstr "\"\" = non in affitto, 0 = su richiesta"
 
 #: features/admin/unit_metabox.php:437
 msgid "Rent Time segment"
-msgstr "Période de location"
+msgstr "Periodo di affitto"
 
 #: features/admin/unit_metabox.php:440
 msgid "Year"
-msgstr "Année"
+msgstr "Anno"
 
 #: features/admin/unit_metabox.php:441
 msgid "Month"
-msgstr "Mois"
+msgstr "Mese"
 
 #: features/admin/unit_metabox.php:442
 msgid "Week"
-msgstr "Semaine"
+msgstr "Settimana"
 
 #: features/admin/unit_metabox.php:449
 msgid "Rental scope"
-msgstr "Champ de location"
+msgstr "Ambito di locazione"
 
 #: features/admin/unit_metabox.php:607
 msgid "Choose custom overlay"
-msgstr "Choisir une superposition personnalisée"
+msgstr "Scegli sovrapposizione personalizzata"
 
 #: features/admin/inquiry_metabox.php:133
 msgid "Unit id"
-msgstr "ID du logement"
+msgstr "ID dell’unità"
 
 #: features/admin/post_type_icons.php:33
 msgid "Post Type Icons"
-msgstr "Icônes des types de publication"
+msgstr "Icone dei tipi di contenuto"
 
 #: features/admin/post_type_icons.php:37
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
-"Vous n’avez pas les autorisations nécessaires pour accéder à cette page."
+"Non disponi delle autorizzazioni necessarie per accedere a questa pagina."
 
 #: features/flatfox_import.php:114
 msgid "Invalid unit source."
-msgstr "Source d’unité non valide."
+msgstr "Origine dell’unità non valida."
 
 #: features/flatfox_import.php:133
 msgid "You are not allowed to manage Complex Manager imports."
-msgstr "Vous n’êtes pas autorisé à gérer les importations de Complex Manager."
+msgstr "Non sei autorizzato a gestire le importazioni di Complex Manager."
 
 #: features/flatfox_import.php:395
 #, php-format
 msgid "Flatfox building %d"
-msgstr "Immeuble Flatfox %d"
+msgstr "Edificio Flatfox %d"
 
 #: features/admin/general_options.php:164
 #: features/admin/general_options.php:327
@@ -4251,116 +4251,89 @@ msgstr "Flatfox"
 #, php-format
 msgid ""
 "Flatfox import completed: %1$d units imported, %2$d units moved to Trash."
-msgstr "Importation Flatfox terminée : %1$d unités importées, %2$d unités déplacées dans la corbeille."
+msgstr "Importazione Flatfox completata: %1$d unità importate, %2$d unità spostate nel cestino."
 
 #: features/admin/general_options.php:316
 msgid "Enter a Flatfox project ID before running the import."
-msgstr "Saisissez un identifiant de projet Flatfox avant de lancer l’importation."
+msgstr "Inserisci un ID progetto Flatfox prima di avviare l’importazione."
 
 #: features/admin/general_options.php:318
 msgid "Flatfox import failed. Existing Flatfox units were left untouched."
-msgstr "L’importation Flatfox a échoué. Les unités Flatfox existantes n’ont pas été modifiées."
+msgstr "L’importazione Flatfox non è riuscita. Le unità Flatfox esistenti non sono state modificate."
 
 #: features/admin/general_options.php:320
 msgid ""
 "Flatfox import could not save every unit. Existing Flatfox units were left "
 "untouched."
-msgstr "L’importation Flatfox n’a pas pu enregistrer toutes les unités. Les unités Flatfox existantes n’ont pas été modifiées."
+msgstr "L’importazione Flatfox non ha potuto salvare tutte le unità. Le unità Flatfox esistenti non sono state modificate."
 
 #: features/admin/general_options.php:325
 msgid "manually created"
-msgstr "créées manuellement"
+msgstr "create manualmente"
 
 #: features/admin/general_options.php:332
 #, php-format
 msgid "%1$d %2$s unit permanently deleted."
 msgid_plural "%1$d %2$s units permanently deleted."
-msgstr[0] "%1$d unité %2$s supprimée définitivement."
-msgstr[1] "%1$d unités %2$s supprimées définitivement."
+msgstr[0] "%1$d unità %2$s eliminata definitivamente."
+msgstr[1] "%1$d unità %2$s eliminate definitivamente."
 
 #: features/admin/general_options.php:1470
 msgid ""
 "This permanently deletes the selected units. Shared buildings and media will "
 "be kept. Continue?"
-msgstr "Cette action supprime définitivement les unités sélectionnées. Les immeubles et médias partagés seront conservés. Continuer ?"
+msgstr "Questa azione elimina definitivamente le unità selezionate. Gli edifici e i media condivisi verranno mantenuti. Continuare?"
 
 #: features/admin/general_options.php:1475
 #: features/admin/general_options.php:1476
 msgid "Flatfox project ID"
-msgstr "Identifiant du projet Flatfox"
+msgstr "ID progetto Flatfox"
 
 #: features/admin/general_options.php:1479
 msgid "Run Flatfox import"
-msgstr "Lancer l’importation Flatfox"
+msgstr "Avvia importazione Flatfox"
 
 #: features/admin/general_options.php:1481
 msgid ""
 "Uses Flatfox’s public listing API. The configured project is synchronized "
 "hourly; no API key is required."
-msgstr "Utilise l’API publique des annonces Flatfox. Le projet configuré est synchronisé toutes les heures ; aucune clé API n’est requise."
+msgstr "Utilizza l’API pubblica degli annunci Flatfox. Il progetto configurato viene sincronizzato ogni ora; non è richiesta alcuna chiave API."
 
 #: features/admin/general_options.php:1484
 msgid "Clear units"
-msgstr "Supprimer les unités"
+msgstr "Elimina unità"
 
 #: features/admin/general_options.php:1485
 msgid ""
 "These actions permanently delete only the selected source’s units. Shared "
 "buildings and media are kept."
-msgstr "Ces actions suppriment définitivement uniquement les unités de la source sélectionnée. Les immeubles et médias partagés sont conservés."
+msgstr "Queste azioni eliminano definitivamente solo le unità della fonte selezionata. Gli edifici e i media condivisi vengono mantenuti."
 
 #: features/admin/general_options.php:1495
 msgid "Clear manually created units"
-msgstr "Supprimer les unités créées manuellement"
+msgstr "Elimina le unità create manualmente"
 
 #: features/admin/general_options.php:1504
 msgid "Clear eMonitor units"
-msgstr "Supprimer les unités eMonitor"
+msgstr "Elimina le unità eMonitor"
 
 #: features/admin/general_options.php:1513
 msgid "Clear Flatfox units"
-msgstr "Supprimer les unités Flatfox"
+msgstr "Elimina le unità Flatfox"
 
 #: assets/templates/list.php:271 assets/templates/list.php:490
 msgid "Registration form"
-msgstr "Formulaire d’inscription"
+msgstr "Modulo di iscrizione"
 
 #: features/admin/general_options.php:1481
 msgid "Flatfox organization slug"
-msgstr "Slug de l’organisation Flatfox"
+msgstr "Slug dell’organizzazione Flatfox"
 
 #: features/admin/general_options.php:1485
 msgid ""
 "Use the organization slug from Flatfox’s exported submit links. It creates the "
 "canonical Flatfox contact URL and further limits the public listing query."
 msgstr ""
-"Utilisez le slug de l’organisation figurant dans les liens de soumission "
-"exportés par Flatfox. Il crée l’URL de contact Flatfox canonique et limite "
-"davantage la requête publique des annonces."
-
-#~ msgid "Rent gross"
-#~ msgstr "Loyer brut"
-
-#~ msgid "Number of rooms"
-#~ msgstr "Nombre de pièces"
-
-#~ msgid "Surface"
-#~ msgstr "Surface"
-
-#~ msgid "Rent Price"
-#~ msgstr "Prix de location:"
-
-#~ msgid "Hover color"
-#~ msgstr "Schwebefarbe"
-
-#~ msgid "What do you wish to know?"
-#~ msgstr "Was möchten Sie wissen?"
-
-#~ msgid "Price"
-#~ msgstr "Preis"
-
-#~ msgid "Story"
-#~ msgstr "Etage"
-
-#~ msgid "File Upload"
-#~ msgstr "Datei hochladen"
+"Utilizza lo slug dell’organizzazione presente nei link di invio esportati da "
+"Flatfox. Crea l’URL di contatto Flatfox canonico e limita ulteriormente la "
+"query pubblica degli annunci."

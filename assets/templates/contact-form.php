@@ -277,7 +277,7 @@
 <?php endif ?>
 <?php if ($message): ?>
 	<div class="alert alert-<?= $state ?>">
-		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"><?php esc_html_e( 'Close', 'complexmanager' ); ?></span></button>
 		<?= $message ?>
 	</div>
 <?php endif ?>

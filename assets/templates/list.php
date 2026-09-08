@@ -267,7 +267,9 @@
 															echo apply_filters('cxm_render_link_button_classes', $html);
 														?>" 
 													href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-														<?php if (!empty($labels_array) && isset($labels_array['link']) && $labels_array['link']): ?>
+														<?php if ('flatfox' === get_post_meta($the_unit['post']->ID, '_complexmanager_import_source', true)): ?>
+															<span><?php esc_html_e( 'Registration form', 'complexmanager' ); ?></span>
+														<?php elseif (!empty($labels_array) && isset($labels_array['link']) && $labels_array['link']): ?>
 															<span>
 																<?php echo $labels_array['link']; ?>
 															</span>
@@ -484,7 +486,9 @@
 																	echo apply_filters('cxm_render_link_button_classes', $html);
 																?>" 
 															href="<?= get_cxm($the_unit['post'], 'link_url') ?>">
-																<?php if (!empty($labels_array) && isset($labels_array['link']) && $labels_array['link']): ?>
+															<?php if ('flatfox' === get_post_meta($the_unit['post']->ID, '_complexmanager_import_source', true)): ?>
+																<span><?php esc_html_e( 'Registration form', 'complexmanager' ); ?></span>
+															<?php elseif (!empty($labels_array) && isset($labels_array['link']) && $labels_array['link']): ?>
 																	<span>
 																		<?php echo $labels_array['link']; ?>
 																	</span>

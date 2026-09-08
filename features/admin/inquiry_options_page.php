@@ -9,7 +9,7 @@ class inquiry_options_page extends Feature {
 	public function __construct() {
 		if( function_exists('acf_add_local_field_group') ):
 			acf_add_options_sub_page(array(
-				'title' => 'Anfrage Optionen',
+				'title' => __( 'Inquiry options', 'complexmanager' ),
 				'parent' => 'edit.php?post_type=complex_inquiry'
 			));
 
@@ -19,7 +19,7 @@ class inquiry_options_page extends Feature {
 			if (isset($_GET['csv-download'])) {
 				$fields[] =  array (
 					'key' => 'field_as9d78fg9as8df9as8gdf',
-					'label' => 'csv-download',
+					'label' => __( 'Download CSV', 'complexmanager' ),
 					'name' => '',
 					'type' => 'message',
 					'instructions' => '',
@@ -30,14 +30,14 @@ class inquiry_options_page extends Feature {
 						'class' => '',
 						'id' => '',
 					),
-					'message' => 'CSV DOWNLOADED',
+					'message' => __( 'CSV downloaded', 'complexmanager' ),
 					'new_lines' => 'wpautop',
 					'esc_html' => 0,
 				);
 			} else {
 				$fields[] =  array (
 					'key' => 'field_lsjdijfijdifjidjif',
-					'label' => 'csv-download',
+					'label' => __( 'Download CSV', 'complexmanager' ),
 					'name' => '',
 					'type' => 'message',
 					'instructions' => '',
@@ -48,7 +48,7 @@ class inquiry_options_page extends Feature {
 						'class' => '',
 						'id' => '',
 					),
-					'message' => '<a href="?page=acf-options-anfrage-optionen&csv-download=1">CSV Herunterladen</a>',
+					'message' => '<a href="?page=acf-options-anfrage-optionen&csv-download=1">' . esc_html__( 'Download CSV', 'complexmanager' ) . '</a>',
 					'new_lines' => 'wpautop',
 					'esc_html' => 0,
 				);
@@ -57,7 +57,7 @@ class inquiry_options_page extends Feature {
 
 			acf_add_local_field_group(array (
 				'key' => 'group_5919659ee3192',
-				'title' => 'Anfrage Optionen',
+				'title' => __( 'Inquiry options', 'complexmanager' ),
 				'fields' => $fields,
 				'location' => array (
 					array (

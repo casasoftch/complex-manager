@@ -172,7 +172,7 @@ function cxm_get_list_col_defaults(){
         ),
 
         'r_rent_net' => array(
-            'o_label' => __( 'Rent Net Price', 'complexmanager' ),
+            'o_label' => __( 'Net rent', 'complexmanager' ),
             'active' => 0,
             'hidden-xs' => 0,
             'hidden-reserved' => 1,
@@ -181,7 +181,7 @@ function cxm_get_list_col_defaults(){
         ),
 
         'r_rent_gross' => array(
-            'o_label' => __( 'Rent gross', 'complexmanager' ),
+            'o_label' => __( 'Gross rent', 'complexmanager' ),
             'active' => 0,
             'hidden-xs' => 0,
             'hidden-reserved' => 1,
@@ -364,12 +364,12 @@ function cxm_get_filter_label_defaults(){
             'order' => 4,
         ),
         'rentnet' => array(
-            'o_label' => __( 'Rent Net Price', 'complexmanager' ),
+            'o_label' => __( 'Net rent', 'complexmanager' ),
             'label' => '',
             'order' => 5,
         ),
         'rentgross' => array(
-            'o_label' => __( 'Rent gross', 'complexmanager' ),
+            'o_label' => __( 'Gross rent', 'complexmanager' ),
             'label' => '',
             'order' => 6,
         ),

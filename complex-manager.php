@@ -4,18 +4,29 @@
  *	Description:    Plugin for managing and presenting real-estate building project sales.
  *	Author:         Casasoft AG
  *	Author URI:     http://casasoft.ch
- *	Version: 		0.0.1
+ *	Version: 		1.1.0
  *	Text Domain: 	complexmanager
  *	Domain Path: 	languages/
+ * Requires PHP: 8.0
  */
 
 namespace casasoft\complexmanager;
 require_once( 'features/silence.php' );
 
 
-define( 'casasoft\complexmanager\VERSION', '0.0.1' );
+define( 'casasoft\complexmanager\VERSION', '1.1.0' );
 define( 'casasoft\complexmanager\PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'casasoft\complexmanager\PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+// Self-hosted updates are served from wp.casasoft.com, like CASAWP.
+require_once( 'features/plugin_updater.php' );
+new PluginUpdater(
+	VERSION,
+	'https://wp.casasoft.com/complex-manager/update.php',
+	plugin_basename( __FILE__ ),
+	'user',
+	'abcd'
+);
 
 // Additional defines for import.php
 $upload = wp_upload_dir();
@@ -33,6 +44,15 @@ require_once( 'features/options.php' );
 require_once( 'features/class-loader.php' );
 require_once( 'features/kit.php' );
 require_once( 'features/import.php' );
+require_once( 'features/flatfox_import.php' );
+
+// Manual eMonitor imports are privileged, nonce-protected POST actions. The
+// existing scheduled importer remains independent from this administrative route.
+add_action( 'admin_post_cxm_run_emonitor_import', array( 'casasoft\\complexmanager\\eMonitorImport', 'handle_manual_import' ) );
+
+// Flatfox owns its public-API sync and administrative actions. eMonitor keeps
+// using its established importer and existing triggers.
+new FlatfoxImport();
 
 /**
  * The central plugin class and bootstrap for the application.
@@ -77,6 +97,7 @@ class ComplexManager extends Kit {
 	 * @hook register_activation_hook
 	 */
 	public static function activate_plugin() {
+		FlatfoxImport::activate_plugin();
 		//generate standard inquiry-reasons
 
 		/*$terms = get_terms( 'inquiry_reason', array() );
@@ -96,7 +117,7 @@ class ComplexManager extends Kit {
 	 * @hook register_deactivation_hook
 	 */
 	public static function deactivate_plugin() {
-
+		FlatfoxImport::deactivate_plugin();
 	}
 
 	public static function cxm_acf_settings_path( $path ) {
@@ -124,11 +145,6 @@ if( ! class_exists('acf') ) {
 
 	// 4. Include ACF
 	include_once(plugin_dir_path( __FILE__ ) . '/assets/acf/acf.php' );
-}
-
-if (isset($_GET['emonitorupdate']) && $_GET['page'] == "complexmanager-admin") {
-	$import = new eMonitorImport(false, true);
-	$import->addToLog('Update from Emonitor caused import');
 }
 
 //...and away we go!

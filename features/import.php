@@ -13,6 +13,8 @@ class eMonitorImport extends Feature
   public $transcript = array();
   public $curtrid = false;
   public $trid_store = array();
+  public $force_all_properties = false;
+  public $force_last_import = false;
 
   public function __construct($autoimport = false, $emonitorupdate = false)
   {
@@ -23,6 +25,47 @@ class eMonitorImport extends Feature
       $this->addToLog('updateImportDataThroughEmonitor ' . time());
       add_action('init', array($this, 'updateImportDataThroughEmonitor'), 20);
     }
+  }
+
+  /**
+   * Runs the legacy eMonitor importer from a verified administrative request.
+   * Scheduled imports continue to call updateImportDataThroughEmonitor()
+   * directly and therefore keep their established behavior.
+   */
+  public function run_manual_import($force_all_properties = false, $force_last_import = false)
+  {
+    $this->force_all_properties = (bool) $force_all_properties;
+    $this->force_last_import = (bool) $force_last_import;
+    $this->addToLog('manual eMonitor import ' . time());
+
+    return $this->updateImportDataThroughEmonitor();
+  }
+
+  /** Handles the nonce-protected wp-admin manual import action. */
+  public static function handle_manual_import()
+  {
+    if (!current_user_can('manage_options')) {
+      wp_die(esc_html__('You are not allowed to manage Complex Manager imports.', 'complexmanager'), 403);
+    }
+
+    check_admin_referer('cxm_run_emonitor_import');
+
+    $force_overwrite = isset($_POST['cxm_emonitor_force_overwrite'])
+      && '1' === sanitize_text_field(wp_unslash($_POST['cxm_emonitor_force_overwrite']));
+
+    $import = new self();
+
+    // The legacy importer can echo transport errors. Keep the admin-post
+    // response redirectable while retaining its existing log/email handling.
+    ob_start();
+    $import->run_manual_import($force_overwrite, $force_overwrite);
+    ob_end_clean();
+
+    wp_safe_redirect(add_query_arg(array(
+      'page' => 'complexmanager-admin',
+      'tab'  => 'import',
+    ), admin_url('admin.php')));
+    exit;
   }
 
   public function r($data)
@@ -50,7 +93,7 @@ class eMonitorImport extends Feature
         $this->addToLog('file found lets go: ' . time());
       } else {
         $this->addToLog('file was missing ' . time());
-        if (isset($_GET['force_last_import'])) {
+        if ($this->force_last_import) {
           $this->addToLog('importing last file based on force_last_import: ' . time());
           $file = CXM_CUR_UPLOAD_BASEDIR  . '/cxm/import/data.json';
           if (file_exists($file)) {
@@ -272,9 +315,7 @@ class eMonitorImport extends Feature
 
     $this->addToLog('emonitor data retriaval start: ' . time());
 
-    if (PluginOptions::get_option('cxm_emonitor_api', false)) {
-      $apikey = PluginOptions::get_option('cxm_emonitor_api', false);
-    }
+    $apikey = (string) PluginOptions::get_option('cxm_emonitor_api', '');
 
     if (str_contains($apikey, '/v2/')) {
       $version = 'v2';
@@ -666,7 +707,18 @@ class eMonitorImport extends Feature
         'numberposts' =>  100,
         'exclude'     =>  $found_posts,
         'post_type'   =>  'complex_unit',
-        'post_status' =>  'publish'
+        'post_status' =>  'publish',
+        'meta_query'  => array(
+          'relation' => 'OR',
+          array(
+            'key' => 'casawp_id',
+            'compare' => 'EXISTS',
+          ),
+          array(
+            'key' => '_complexmanager_import_source',
+            'value' => 'emonitor',
+          ),
+        ),
       )
     );
 
@@ -944,6 +996,10 @@ class eMonitorImport extends Feature
   public function updateUnit($casawp_id, $offer_pos, $property, $wp_post, $version)
   {
 
+    // Existing eMonitor posts are identified by casawp_id and receive this
+    // ownership marker on their next import. It keeps source cleanup isolated.
+    update_post_meta($wp_post->ID, '_complexmanager_import_source', 'emonitor');
+
     $new_meta_data = array();
 
     $old_meta_data = array();
@@ -965,7 +1021,7 @@ class eMonitorImport extends Feature
       $old_meta_data['last_import_hash'] = 'no_hash';
     }
 
-    if ($wp_post->post_status == 'publish' && isset($old_meta_data['last_import_hash']) && !isset($_GET['force_all_properties'])) {
+    if ($wp_post->post_status == 'publish' && isset($old_meta_data['last_import_hash']) && !$this->force_all_properties) {
       if ($curImportHash == $old_meta_data['last_import_hash']) {
         $this->addToLog('skipped property: ' . $casawp_id);
         return 'skipped';
